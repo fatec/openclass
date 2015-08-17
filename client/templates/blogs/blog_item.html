@@ -1,0 +1,14 @@
+<template name="blogItem">
+  <div class="blog">
+    <div class="blog-content">
+      <h3>{{title}}</h3>
+
+	  <div class="posts">
+	    {{#each posts}}
+	      {{> postItem}}
+	    {{/each}}
+	  </div>
+
+    </div>
+  </div>
+</template>
