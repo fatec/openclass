@@ -2,6 +2,9 @@
   <div class="post">
     <div class="post-content">
       <p>{{body}}</p>
+	{{#if currentUser}}
+      <a href="{{pathFor 'postEdit'}}" >Edit</a>
+    {{/if}}
     </div>
   </div>
 </template>

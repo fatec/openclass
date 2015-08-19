@@ -1,0 +1,13 @@
+<template name="postEdit">
+  <form name="post" class="post-form form">
+    <div class="form-group">
+        <div class="controls">
+            <label for="body">Modifier la publication</label>
+            <textarea name="body" id="body" class="form-control" rows="3">{{body}}</textarea>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Modifier</button>
+    <hr/>
+    <a class="btn btn-danger delete" href="#">Désintégrer la publication</a>
+  </form>
+</template>
