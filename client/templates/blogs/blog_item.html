@@ -2,6 +2,7 @@
   <div class="blog">
     <div class="blog-content">
       <a href="{{pathFor 'blogPage'}}">{{title}}</a>
+      {{#if ownBlog}}<a href="{{pathFor 'blogEdit'}}">Edit</a>{{/if}}
     </div>
   </div>
 </template>
