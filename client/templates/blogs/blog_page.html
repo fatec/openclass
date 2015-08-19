@@ -8,6 +8,12 @@
 	      {{> postItem}}
 	    {{/each}}
 	  </div>
+	  
+	{{#if currentUser}}
+      {{> postSubmit}}
+    {{else}}
+      <p>Connectez vous pour ajouter une publication</p>
+    {{/if}}
 
     </div>
   </div>
