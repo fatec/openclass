@@ -1,5 +1,5 @@
 Template.blogPage.helpers({
   posts: function() {
-    return Posts.find({blogId: this._id});
+    return Posts.find({blogId: this._id}, {sort: {submitted: -1}});
   }
 });
