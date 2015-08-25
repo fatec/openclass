@@ -4,9 +4,13 @@
       <h3 class="blog-title">{{title}} ({{postCount}})</h3>
 
 	  <div class="posts">
+    {{#if posts.count}}
 	    {{#each posts}}
 	      {{> postItem}}
 	    {{/each}}
+     {{else}}
+   <p>Il n'y pas encore de publication à afficher...</p>
+     {{/if}}
 	  </div>
 	  
 	{{#if currentUser}}
