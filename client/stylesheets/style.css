@@ -60,7 +60,61 @@ background-color: white;
 padding: 10px;
 margin: 20px;
 	border-top:solid 1px #fff;
+}
 
+.button-delete {
+
+	border-top:solid 1px #c5c5c5;
+		border-left:solid 1px #c5c5c5;
+				border-right:solid 1px #c5c5c5;
+
+	border-bottom:solid 1px #c5c5c5;
+
+	border-top-left-radius:3px;
+		border-bottom-left-radius:3px;
+}
+
+.button-edit {
+
+	border-top:solid 1px #c5c5c5;
+		border-right:solid 1px #c5c5c5;
+
+	border-top-right-radius:3px;
+		border-bottom-right-radius:3px;
+	border-bottom:solid 1px #c5c5c5;
+
+}
+
+.button-post {
+		float:right;
+	text-decoration:none;
+	display:inline-block;
+	font-size:.8em;
+	color:grey;
+/*
+	margin-left:12px;
+	margin-right:5px;
+*/
+/* 	margin-bottom: 5px; */
+	cursor:pointer;
+	text-shadow:0 -1px 0 rgba(255,255,255,.3);
+		padding:3px 8px 4px 8px;
+
+}
+
+.button-post:hover {
+
+	background-color:#dedede;
+}
+
+.icon-button-deletepost {
+		height:15px;
+
+
+}
+
+.icon-button-editpost {
+		height:15px;
 
 
 }
