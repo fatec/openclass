@@ -3,6 +3,7 @@
     <div class="form-group">
         <div class="controls">
             <label for="body">Ajouter une publication</label>
+            {{> upload_bootstrap fileTypes='.png,.jpg' formData=specificFormData }}
             <textarea name="body" id="body" class="form-control" rows="3"></textarea>
         </div>
     </div>

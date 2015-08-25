@@ -11,3 +11,8 @@ Meteor.publish('postsEdit', function(postId) {
   check(postId, String);
   return Posts.find({_id: postId});
 });	
+
+
+Meteor.publish('uploads', function() {
+  return Uploads.find();
+})

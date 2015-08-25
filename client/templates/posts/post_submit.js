@@ -23,3 +23,15 @@ Template.postSubmit.events({
     });
   }
 });
+
+
+Template.postSubmit.helpers({
+  specificFormData: function() {
+    return {
+      id: this._id,
+      blogId: this._id
+    }
+  }
+});
+
+
