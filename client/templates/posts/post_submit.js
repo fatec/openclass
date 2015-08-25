@@ -1,12 +1,15 @@
 Template.postSubmit.events({
   'submit form': function(e, template) {
     e.preventDefault();
-    
+
+
     var $body = $(e.target).find('[name=body]');
     var post = {
       body: $body.val(),
-      blogId: template.data._id
+      blogId: template.data.blog._id
     };
+
+    //console.log("On va trouver ce pb! :D body:"+post.body+ " blogId: "+post.blogId);
 
     var errors = {};
     if (! post.body) {
@@ -26,12 +29,10 @@ Template.postSubmit.events({
 
 
 Template.postSubmit.helpers({
-  specificFormData: function() {
+  myFormData: function() {
+    //console.log("MyFormData "+ this.blog._id);
     return {
-      id: this._id,
-      blogId: this._id
+      blogId: this.blog._id
     }
   }
 });
-
-

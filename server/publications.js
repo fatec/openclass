@@ -12,7 +12,6 @@ Meteor.publish('postsEdit', function(postId) {
   return Posts.find({_id: postId});
 });	
 
-
 Meteor.publish('uploads', function() {
   return Uploads.find();
-})
+});

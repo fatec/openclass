@@ -1,9 +1,10 @@
 <template name="postSubmit">
+  {{> uploadedImage uploads }}
   <form name="post" class="post-form form">
     <div class="form-group">
         <div class="controls">
             <label for="body">Ajouter une publication</label>
-            {{> upload_bootstrap fileTypes='.png,.jpg' formData=specificFormData }}
+            {{> upload_bootstrap fileTypes='image/*' formData=myFormData }}
             <textarea name="body" id="body" class="form-control" rows="3"></textarea>
         </div>
     </div>

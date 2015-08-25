@@ -2,7 +2,7 @@ Template.blogEdit.events({
   'submit form': function(e) {
     e.preventDefault();
 
-    var currentBlogId = this._id;
+    var currentBlogId = this.blog._id;
 
     var blogProperties = {
       title: $(e.target).find('[name=title]').val()
@@ -22,7 +22,7 @@ Template.blogEdit.events({
     e.preventDefault();
 
     if (confirm("Effacer ce journal?")) {
-      var currentBlogId = this._id;
+      var currentBlogId = this.blog._id;
       Blogs.remove(currentBlogId);
       // Effacer les posts qui correspondent a ce blogId
       // TODO
