@@ -24,6 +24,9 @@ Template.blogEdit.events({
     if (confirm("Effacer ce journal?")) {
       var currentBlogId = this._id;
       Blogs.remove(currentBlogId);
+      // Effacer les posts qui correspondent a ce blogId
+      // TODO
+      //Posts.remove();
       Router.go('blogsList');
     }
   }
