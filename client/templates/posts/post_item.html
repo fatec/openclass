@@ -1,10 +1,11 @@
 <template name="postItem">
   <div class="post">
     <div class="post-content">
+ 	{{#if currentUser}}
+  	<a href="{{pathFor 'postEdit'}}"><div class="button-post button-edit"><img class="icon-button-editpost" src="/img/icon-button-editpost.png"></div></a>	
+ 	<div class="button-post button-delete delete" href="#"><img class="icon-button-deletepost" src="/img/icon-button-deletepost.png"></div>
+    {{/if}}   
       <p>{{body}}</p>
-	{{#if currentUser}}
-      <a href="{{pathFor 'postEdit'}}" >Edit</a>
-    {{/if}}
     </div>
   </div>
 </template>
