@@ -1,3 +1,8 @@
+/*
+application.css
+Authors : Vincent Widmer & Stéphane Morand;
+*/
+
 .wrapper {
 	table-layout: fixed;
 	display: table;
@@ -21,3 +26,8 @@
 
 /*	border:solid 1px red;
 */}
+
+.menu-link-all-posts {
+	text-decoration: none;
+
+}
