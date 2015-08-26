@@ -2,21 +2,28 @@ Template.postSubmit.events({
   'submit form': function(e, template) {
     e.preventDefault();
 
+    // On récupère la valeur du champ body ainsi que le blogId trasféré par le router
     var $body = $(e.target).find('[name=body]');
-
-    image_name = e.target.file.value;
-
-
     var post = {
       body: $body.val(),
-      blogId: template.data._id
+      blogId: template.data.blog._id
     };
+    // On vérifie s'il y a une image qui possède ce timestamp
+    image = Images.findOne({'metadata.timestamp': template.data.timestamp, 'metadata.blogId': post.blogId})
+
+    if (image) {
+      post['imageId'] = image._id;
+      console.log("On a l'image!!!!");
+    }
+
 
     var errors = {};
     if (! post.body) {
       errors.body = "Please write some content";
       return Session.set('postSubmitErrors', errors);
     }
+
+    //console.log("post.blogId "+post.blogId+" post.body "+post.body);
 
     Meteor.call('postInsert', post, function(error, postId) {
       if (error){
