@@ -1,0 +1,39 @@
+/*
+includes.css
+Authors : Vincent Widmer & Stéphane Morand;
+*/
+
+.header {
+	height:46px;
+	width:100%;
+
+	box-shadow:0 0 5px 0 #cfcfcf;
+
+	background-color: #77b3d4;
+}
+
+.header-title{
+	line-height:45px;
+	margin-left:15px;
+
+	text-decoration: none;
+	color:white;
+	font-size:1.5em;
+}
+
+.btn-header-add-post {
+	float:right;
+	height:100%;
+	width:180px;
+
+	border:none;
+
+	background-color:#5c89a2;
+
+	color:white;
+	font-size:1.1em;
+}
+
+.btn-header-add-post:hover {
+	background-color:grey;
+}

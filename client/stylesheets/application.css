@@ -1,0 +1,23 @@
+.wrapper {
+	table-layout: fixed;
+	display: table;
+	width:100%;
+
+/*	border:solid 1px yellow;
+*/}
+
+.main {
+	display: table-cell;
+	padding: 15px 20px 20px 0px;
+
+/*	border:solid 1px blue;
+*/}
+
+.menu {
+	width:26%;
+	display: table-cell;
+	vertical-align: top;
+	padding: 25px 0 0 15px;
+
+/*	border:solid 1px red;
+*/}

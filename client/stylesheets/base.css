@@ -1,0 +1,16 @@
+/*
+base.css
+Authors : Vincent Widmer & Stéphane Morand;
+*/
+
+
+
+body {
+	background-color:#f1f1f1;
+
+	font-family: 'Roboto',Arial;
+}
+
+.btn {
+	cursor: pointer;
+}
