@@ -1,6 +1,8 @@
 Template.postSubmit.events({
   'submit form': function(e, template) {
     e.preventDefault();
+
+    var currentBlogId = this._id;
     
     var $body = $(e.target).find('[name=body]');
     var post = {
@@ -21,5 +23,8 @@ Template.postSubmit.events({
         $body.val('');
       }
     });
+    Meteor.defer(function() {
+      Router.go('blogPage', { _id: currentBlogId });
+  });
   }
 });
