@@ -26,5 +26,8 @@ Template.postSubmit.events({
     Meteor.defer(function() {
       Router.go('blogPage', { _id: currentBlogId });
   });
-  }
+  },    
+  'cancel form': function(e) {
+    e.preventDefault();
+  },
 });

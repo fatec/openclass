@@ -1,11 +1,10 @@
 <template name="postSubmit">
-  <form name="post" class="post-form form">
-    <div class="form-group">
-        <div class="controls">
-            <label for="body">Ajouter une publication</label>
-            <textarea name="body" id="body" class="form-control" rows="3"></textarea>
-        </div>
-    </div>
-    <button type="submit" class="button button-primary">Bazounga</button>
-  </form>
+	<div class="post-submit">
+		<form name="post">
+			<div class="post-submit-title">Ajouter une publication</div>
+            <textarea name="body" id="body" class="post-submit-textarea"></textarea><br />
+			<button type="submit" class="button button-primary">Bazounga</button>
+            <button type="cancel" class="button" href="{{pathFor 'blogPage'}}">Annuler</button>
+		</form>
+  	</div>
 </template>
