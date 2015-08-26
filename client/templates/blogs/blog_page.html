@@ -9,6 +9,18 @@
 	    {{/each}}
 	  </div>
 	  
+
+    <div class="images">
+    {{#each images}}
+      <div>
+   
+<a href="{{this.url store='images'}}" target="_blank"><img src="{{this.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>
+
+      </div>
+    {{/each}}
+    </div>
+
+
 	{{#if currentUser}}
       {{> postSubmit}}
     {{else}}
