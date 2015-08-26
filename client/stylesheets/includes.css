@@ -12,13 +12,20 @@ Authors : Vincent Widmer & Stéphane Morand;
 	background-color: #77b3d4;
 }
 
-.header-title{
+.header-title {
 	line-height:45px;
 	margin-left:15px;
 
 	text-decoration: none;
 	color:white;
 	font-size:1.5em;
+}
+
+.header-blog-title {
+	display: inline-block;
+	margin-left: 10px;
+
+	color: #e7e7e7;
 }
 
 .btn-header-add-post {
