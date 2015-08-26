@@ -37,7 +37,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 1em;
 }
 
-.btn-header-add-post {
+.header-button-add-post {
 	float:right;
 	height:100%;
 	width:180px;
@@ -50,6 +50,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size:1.1em;
 }
 
-.btn-header-add-post:hover {
+.header-button-add-post:hover {
 	background-color:grey;
 }

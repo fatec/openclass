@@ -13,7 +13,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	background-color: white;
 }
 
-.btn-post {
+.button-post {
 	float:right;
 	padding:3px 8px 3px 8px;
 
@@ -25,11 +25,11 @@ Authors : Vincent Widmer & Stéphane Morand;
 	cursor:pointer;
 }
 
-.btn-post:hover {
+.button-post:hover {
 	background-color:#dedede;
 }
 
-.btn-post-edit {
+.button-post-edit {
 	border-top:solid 1px #c5c5c5;
 	border-right:solid 1px #c5c5c5;
 	border-top-right-radius:3px;
@@ -37,7 +37,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	border-bottom:solid 1px #c5c5c5;
 }
 
-.btn-post-delete {
+.button-post-delete {
 
 	border-top:solid 1px #c5c5c5;
 	border-left:solid 1px #c5c5c5;
@@ -47,11 +47,11 @@ Authors : Vincent Widmer & Stéphane Morand;
 	border-bottom-left-radius:3px;
 }
 
-.icn-btn-post-edit {
+.icn-button-post-edit {
 	height:15px;
 }
 
-.icn-btn-post-delete {
+.icn-button-post-delete {
 	height:15px;
 }
 
@@ -74,4 +74,15 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .post-text {
 	margin: 20px 0 0 0;
+}
+
+.post-edit-title {
+	margin:10px 0 25px 0;
+
+	font-size: 1.2em;
+}
+
+.post-edit-textarea {
+	width:450px;
+	height:50px;
 }
