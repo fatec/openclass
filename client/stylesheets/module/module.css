@@ -1,0 +1,80 @@
+/*
+module.css
+These are for the building blocks of your pages. Most of your styles will be written here. (SMACSS structure)
+*/
+
+.header-title{
+	line-height:45px;
+	margin-left:15px;
+
+	text-decoration: none;
+	color:white;
+	font-size:1.5em;
+}
+
+.btn {
+	cursor: pointer;
+}
+
+.btn-header-add-post {
+	float:right;
+	height:100%;
+	width:180px;
+
+	border:none;
+
+	background-color:#5c89a2;
+
+	color:white;
+	font-size:1.1em;
+}
+
+.btn-header-add-post:hover {
+	background-color:grey;
+}
+
+.btn-post {
+	float:right;
+	display:inline-block;
+	padding:3px 8px 4px 8px;
+
+	text-decoration:none;
+	font-size:.8em;
+	color:grey;
+	text-shadow:0 -1px 0 rgba(255,255,255,.3);
+
+	cursor:pointer;
+}
+
+.btn-post:hover {
+	background-color:#dedede;
+}
+
+.btn-post-edit {
+	border-top:solid 1px #c5c5c5;
+	border-right:solid 1px #c5c5c5;
+	border-top-right-radius:3px;
+	border-bottom-right-radius:3px;
+	border-bottom:solid 1px #c5c5c5;
+
+}
+
+.btn-post-delete {
+
+	border-top:solid 1px #c5c5c5;
+	border-left:solid 1px #c5c5c5;
+	border-right:solid 1px #c5c5c5;
+	border-bottom:solid 1px #c5c5c5;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
+.icn-btn-post-edit {
+	height:15px;
+
+}
+
+.icn-btn-post-delete {
+	height:15px;
+
+}
