@@ -1,0 +1,20 @@
+/*
+base.css
+Base rules that apply to elements and used throughout the site. These are normally HTML elements (SMACSS structure)
+*/
+
+html,body {
+	margin:0;
+}
+
+body {
+	background-color:#f1f1f1;
+
+	font-family: 'Roboto',Arial;
+}
+
+p {}
+
+h1{}
+
+li{}

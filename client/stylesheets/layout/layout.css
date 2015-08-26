@@ -1,0 +1,19 @@
+/*
+layout.css
+These target your template regions. They define widths and positioning of your regions in your pages (SMACSS structure)
+*/
+
+.header {
+	height:46px;
+	width:100%;
+
+	box-shadow:0 0 5px 0 #cfcfcf;
+
+	background-color: #77b3d4;
+}
+
+.main {
+	width:100%;
+
+
+}
