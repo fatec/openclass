@@ -1,8 +1,8 @@
 <template name="blogsList">
-  <div class="blogsList-welcome">Tous les journaux</div>
+  <div class="blogs-list-title">Tous les journaux</div>
   <div class="blogs">
     {{#each blogs}}
       {{> blogItem}}
     {{/each}}
-  </div>
+  </div><a href="{{pathFor 'blogSubmit'}}"><button class="blogs-button-submit-blog">Créer un nouveau journal...</button></a>
 </template>

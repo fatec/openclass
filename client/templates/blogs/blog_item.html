@@ -1,8 +1,6 @@
 <template name="blogItem">
   <div class="blog">
-    <div class="blog-content">
-      <a href="{{pathFor 'blogPage'}}">{{title}}</a>
+      <a class="blog-link-title" href="{{pathFor 'blogPage'}}">{{title}}</a>
       {{#if ownBlog}}<a href="{{pathFor 'blogEdit'}}"> (modifier)</a>{{/if}}
     </div>
-  </div>
 </template>

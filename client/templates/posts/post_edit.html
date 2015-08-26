@@ -1,14 +1,10 @@
 <template name="postEdit">
-  <form name="post" class="post-form form">
-    <div class="form-group">
-        <div class="controls">
-            <label for="body">Modifier la publication</label>
-            <textarea name="body" id="body" class="form-control" rows="3">{{body}}</textarea>
-        </div>
+    <div class="post-edit">
+        <form name="post" class="">
+            <div class="post-edit-title">Modifier la publication</div>
+            <textarea name="body" id="body" class="post-edit-textarea">{{body}}</textarea><br />
+            <button type="submit" class="button button-primary">Modifier</button>
+            <button type="cancel" class="button" href="{{pathFor 'blogPage'}}">Annuler</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Modifier</button>
-    <button type="cancel" class="btn" href="{{pathFor 'blogPage'}}">Annuler</button>
-
-    <hr/>
-  </form>
 </template>
