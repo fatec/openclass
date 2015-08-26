@@ -4,8 +4,9 @@
     <nav class="header" role="navigation">
       <a class="header-title" href="{{pathFor 'blogsList'}}">openclass</a><div class="header-blog-title">{{title}}</div>
       <a href="{{pathFor 'postSubmit'}}"><button class="btn btn-header-add-post">Publier</button></a>
-    </nav>
+      <div class="header-login">{{> loginButtons}}</div>
 
+    </nav>
 
 
 <!--       <ul class="nav navbar-nav">

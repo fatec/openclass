@@ -1,7 +1,7 @@
 <template name="postItem">
 	<div class="post">
-<!--  	{{#if currentUser}}
- -->	<a href="{{pathFor 'postEdit'}}">
+ 	{{#if currentUser}}
+	<a href="{{pathFor 'postEdit'}}">
   		<div class="btn btn-post btn-post-edit">
   			<img class="icn-btn-post-edit" src="/img/icon-button-editpost.png" />
   		</div>
@@ -9,11 +9,10 @@
  	<div class="btn btn-post btn-post-delete delete" href="#">
  		<img class="icn-btn-post-delete" src="/img/icon-button-deletepost.png" />
  	</div>
+	{{/if}}   
  	<div class="post-author">{{author}}</div>
  	<div class="post-date">• {{livestamp submitted}}</div>
  	<div class="post-img"></div>
- 	<div class="post-text">{{body}}</div>
-<!--     {{/if}}   
- -->     
+ 	<div class="post-text">{{body}}</div>     
 	</div>
 </template>

@@ -28,6 +28,15 @@ Authors : Vincent Widmer & Stéphane Morand;
 	color: #e7e7e7;
 }
 
+.header-login {
+	float:right;
+	margin: 0 40px 0 0;
+	height:100%;
+
+	line-height:42px;
+	font-size: 1em;
+}
+
 .btn-header-add-post {
 	float:right;
 	height:100%;
