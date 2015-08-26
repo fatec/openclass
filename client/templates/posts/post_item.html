@@ -1,10 +1,14 @@
 <template name="postItem">
   <div class="post">
     <div class="post-content">
-      <p>{{body}}</p>
-	{{#if currentUser}}
-      <a href="{{pathFor 'postEdit'}}" >Edit</a>
-    {{/if}}
+     	<p>{{body}}</p>
+     	{{#if image}}
+     	<a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>
+     	{{/if}}
+		{{#if currentUser}}
+      		<a href="{{pathFor 'postEdit'}}" >Edit</a>
+    	{{/if}}
     </div>
   </div>
 </template>
+

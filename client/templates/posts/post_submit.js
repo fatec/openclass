@@ -13,7 +13,8 @@ Template.postSubmit.events({
 
     if (image) {
       post['imageId'] = image._id;
-      console.log("On a l'image!!!!");
+      //post['timestamp']=template.data.timestamp;
+      //console.log("On a l'image!!!!");
     }
 
 
@@ -30,7 +31,12 @@ Template.postSubmit.events({
         throwError(error.reason);
       } else {
         $body.val('');
-      }
+        // On ajoute l'id du post à l'image associée s'il y en a une
+        if (post.imageId){
+          Images.update({_id: post.imageId}, {$set: {'metadata.postId': postId}});
+        }
+        Router.go('blogPage', {_id: post.blogId});
+      };
     });
   },
   'change .myFileInput': function(event, template) {
@@ -50,7 +56,7 @@ Template.postSubmit.events({
 
       Images.insert(newFile, function (err, fileObj) {
 
-        console.log("Image Inserted with id "+fileObj._id);
+        //console.log("Image Inserted with id "+fileObj._id);
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
 
@@ -59,8 +65,14 @@ Template.postSubmit.events({
 });
 
 Template.postSubmit.helpers({
-  images: function () {
-    return Images.find(); // Where Images is an FS.Collection instance
+  image: function () {
+/*   console.log("Les données dispo ici: ");
+    console.log("_id: "+this._id);
+    console.log("timestamp: "+this.timestamp);
+    console.log("body: "+ this.body);
+    console.log("blogId: "+this.blogId);*/
+
+    return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
   }
 });
 
