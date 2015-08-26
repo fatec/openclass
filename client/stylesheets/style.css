@@ -2,9 +2,15 @@
 Youhouhou let's make it nice!
 */
 
+html {
+
+	margin:0;
+}
+
 body {
 	font-family: 'Roboto',Arial;
 	background-color:#f1f1f1;
+	margin:0;
 }
 
 .container {
@@ -12,7 +18,7 @@ body {
 	padding:0;
 }
 
-.header {
+.header2 {
 	background-color: #77b3d4;
 	height:46px;
 	width:100%;
