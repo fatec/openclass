@@ -31,3 +31,54 @@ Authors : Vincent Widmer & Stéphane Morand;
 	text-decoration: none;
 
 }
+
+.header {
+	height:46px;
+	width:100%;
+
+	box-shadow:0 0 5px 0 #cfcfcf;
+
+	background-color: #77b3d4;
+}
+
+.header-title {
+	line-height:45px;
+	margin-left:15px;
+
+	text-decoration: none;
+	color:white;
+	font-size:1.5em;
+}
+
+.header-blog-title {
+	display: inline-block;
+	margin-left: 10px;
+
+	color: #e7e7e7;
+}
+
+.header-login {
+	float:right;
+	margin: 0 40px 0 0;
+	height:100%;
+
+	line-height:42px;
+	font-size: 1em;
+}
+
+.header-button-add-post {
+	float:right;
+	height:100%;
+	width:180px;
+
+	border:none;
+
+	background-color:#5c89a2;
+
+	color:white;
+	font-size:1.1em;
+}
+
+.header-button-add-post:hover {
+	background-color:grey;
+}
