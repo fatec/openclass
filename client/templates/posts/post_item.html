@@ -1,10 +1,5 @@
 <template name="postItem">
 	<div class="post">
-     	{{#if image}}
-     	<a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>
-{{/if}}
-
-
  	{{#if currentUser}}
 
 
@@ -19,7 +14,11 @@
 	{{/if}}   
  	<div class="post-author">{{author}}</div>
  	<div class="post-date">• {{livestamp submitted}}</div>
- 	<div class="post-img"></div>
+        {{#if image}}
+      <div class="post-image">
+      <a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-img-image thumbnail" /></a>
+      </div>
+{{/if}}
  	<div class="post-text">{{body}}</div>     
 	</div>
 </template>
