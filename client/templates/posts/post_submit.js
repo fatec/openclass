@@ -63,7 +63,13 @@ Template.postSubmit.events({
       });
 
     });
-  }
+  },
+    'cancel form': function(e) {
+    e.preventDefault();
+    //Router.go('blogPage', {_id: post.blogId});
+ 
+
+  },
 });
 
 Template.postSubmit.helpers({
