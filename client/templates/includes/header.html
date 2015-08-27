@@ -29,7 +29,11 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-           {{#if currentUser}}<li><a href="{{pathFor 'blogSubmit'}}">Créer un journal</a></li>{{/if}}
+           {{#if currentUser}}<li><a href="{{pathFor 'blogSubmit'}}">Créer un journal</a></li>
+             {{#if true}}
+                <li><a href="{{pathFor 'postSubmit'}}">Ajouter une publication</a></li>
+             {{/if}}
+           {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}

@@ -1,7 +1,20 @@
 <template name="postSubmit">
-	<div class="post-submit">
+
+<div class="post-submit">
+
+    <div class="images">
+   
+        {{#if image}}
+        <a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>
+        {{/if}}
+
+    </div>
+
+
+
 		<form name="post">
 			<div class="post-submit-title">Ajouter une publication</div>
+<input type="file" name="file" class="myFileInput">
             <textarea name="body" id="body" class="post-submit-textarea"></textarea><br />
 			<button type="submit" class="button button-primary">Bazounga</button>
             <button type="cancel" class="button" href="{{pathFor 'blogPage'}}">Annuler</button>

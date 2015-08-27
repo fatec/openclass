@@ -1,6 +1,14 @@
 <template name="postItem">
 	<div class="post">
+     	<p>{{body}}</p>
+     	{{#if image}}
+     	<a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>
+{{/if}}
+
+
  	{{#if currentUser}}
+
+
 	<a href="{{pathFor 'postEdit'}}">
   		<div class="button button-post button-post-edit">
   			<img class="icn-button-post-edit" src="/img/icon-button-editpost.png" />
@@ -16,3 +24,4 @@
  	<div class="post-text">{{body}}</div>     
 	</div>
 </template>
+

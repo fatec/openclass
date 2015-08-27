@@ -9,6 +9,11 @@ underscore
 iron:router
 sacha:spin
 accounts-password
+cfs:standard-packages
+cfs:filesystem
+cfs:graphicsmagick
+cfs:ejson-file
 jquery
 copleykj:livestamp
 accounts-ui
+cfs:gridfs
