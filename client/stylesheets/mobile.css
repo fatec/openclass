@@ -1,0 +1,29 @@
+@media (max-width: 750px) {
+.menu {
+	display:none;
+}
+.wrapper {
+width:97%;
+}
+
+.main {
+	width:100%;
+}
+
+.header-wrapper {
+	width:100%;
+}
+.header-title {
+	display:none;
+}
+
+.header-logo {
+	margin-left:5px;
+}
+
+.header-button-submit-post {
+width:50px;
+margin:5px 5px 0 0;
+
+}
+}

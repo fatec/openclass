@@ -3,9 +3,9 @@
  -->
     <nav class="header" role="navigation">
     <div class="header-wrapper">
-    <img class="header-logo" src="/img/logo-laruche.png" />
-      <a class="header-title" href="{{pathFor 'blogsList'}}">bzzbox</a><div class="header-blog-title">{{title}}</div>
-      <a href="{{pathFor 'postSubmit'}}"><button class="button header-button-add-post">+ Publier</button></a>
+      <a href="{{pathFor 'blogsList'}}"><img class="header-logo" src="/img/logo-laruche.png" /><div class="header-title">bzzbox</div></a>
+        <div class="header-blog-title">{{title}}</div>
+      <a href="{{pathFor 'postSubmit'}}"><button class="button header-button-submit-post">+ Publier</button></a>
       <div class="header-login">{{> loginButtons}}</div>
 </div>
     </nav>
