@@ -6,12 +6,16 @@ Authors : Vincent Widmer & Stéphane Morand;
 .wrapper {
 	table-layout: fixed;
 	display: table;
-	width:100%;
+	padding-top:46px;
+	margin-left:auto;
+	margin-right:auto;
+	width:800px;
 
 /*	border:solid 1px yellow;
 */}
 
 .main {
+	width:500px;
 	display: table-cell;
 	padding: 15px 20px 20px 0px;
 
@@ -19,10 +23,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 */}
 
 .menu {
-	width:26%;
+	width:235px;
 	display: table-cell;
 	vertical-align: top;
-	padding: 25px 0 0 15px;
+	padding: 25px 0 0 0;
 
 /*	border:solid 1px red;
 */}
@@ -33,28 +37,53 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .header {
+	position: fixed;
 	height:46px;
 	width:100%;
+	opacity: 0.9;
 
 	box-shadow:0 0 5px 0 #cfcfcf;
 
 	background-color: #77b3d4;
+		background-color: white;
+		border-bottom: solid 1px #85b8d3;
+
+}
+
+.header-wrapper {
+
+	width:800px;
+	height:100%;
+	margin-left:auto;
+	margin-right: auto;
+}
+
+.header-logo {
+	width:20px;
+	margin-top:10px;
+/*	vertical-align: middle;
+*/	display: inline-block;
 }
 
 .header-title {
-	line-height:45px;
-	margin-left:15px;
-
+	line-height:40px;
+	display: inline-block;
+/*	margin-left:15px;
+*/
 	text-decoration: none;
-	color:white;
+	color:#3270ae;
 	font-size:1.5em;
+}
+
+.header-title:hover {
+	color:#2a90c6;
 }
 
 .header-blog-title {
 	display: inline-block;
 	margin-left: 10px;
 
-	color: #e7e7e7;
+	color: #7e7e7e;
 }
 
 .header-login {
@@ -62,23 +91,26 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin: 0 40px 0 0;
 	height:100%;
 
-	line-height:42px;
+	line-height:46px;
 	font-size: 1em;
 }
 
 .header-button-add-post {
 	float:right;
-	height:100%;
-	width:180px;
+	height:36px;
+	width:140px;
+margin-top:5px;
+	border:solid 1px #3270ae;
+	-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
 
-	border:none;
-
-	background-color:#5c89a2;
+	background-color:#2a90c6;
 
 	color:white;
-	font-size:1.1em;
+	font-size:1em;
 }
 
 .header-button-add-post:hover {
-	background-color:grey;
+	background-color:#3270ae;
 }
