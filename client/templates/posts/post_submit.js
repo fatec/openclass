@@ -25,11 +25,13 @@ Template.postSubmit.events({
     }
 
     //console.log("post.blogId "+post.blogId+" post.body "+post.body);
-
+   
     Meteor.call('postInsert', post, function(error, postId) {
       if (error){
+
         throwError(error.reason);
       } else {
+
         $body.val('');
         // On ajoute l'id du post à l'image associée s'il y en a une
         if (post.imageId){
