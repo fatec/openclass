@@ -8,8 +8,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 body {
 	background-color:#f1f1f1;
 
-	font-family: 'Roboto',Arial;
-}
+/*	font-family: 'Roboto',Arial;
+*/	font-family: 'Droid Sans', sans-serif;
+/*font-family: 'PT Sans', sans-serif;
+*/}
 
 .button {
 	cursor: pointer;
