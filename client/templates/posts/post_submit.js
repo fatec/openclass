@@ -71,8 +71,12 @@ Template.postSubmit.events({
     e.preventDefault();
     $('#post-submit-form').submit();
   },
-    'cancel form': function(e) {
+    'click .post-submit-cancel-button': function(e, template) {
     e.preventDefault();
+
+
+    Router.go('blogPage', {_id: template.data.blog._id});
+
     //Router.go('blogPage', {_id: post.blogId});
  
 
