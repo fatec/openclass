@@ -2,7 +2,17 @@
 blogs.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
+.blogs-layout-wrapper {
+	width:100%;
+	padding-top:60px;
 
+	text-align:center;
+/*	border:solid 1px yellow;
+*/}
+
+.blogs-layout-wrapper a {
+		text-decoration: none;
+}
 
 .blogs-list-title {
 	margin:20px 0 40px 0;

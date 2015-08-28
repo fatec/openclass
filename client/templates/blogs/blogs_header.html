@@ -1,0 +1,11 @@
+ <template name="blogsHeader">
+<!--     <nav class="navbar navbar-default" role="navigation">
+ -->
+    <nav class="header" role="navigation">
+    <div class="header-wrapper">
+      <a href="{{pathFor 'blogsList'}}"><img class="header-logo" src="/img/logo-laruche.png" /><div class="header-title">bzzbox</div></a>
+        <div class="header-blog-title">{{title}}</div>
+      <div class="header-login">{{> loginButtons}}</div>
+</div>
+    </nav>
+</template>

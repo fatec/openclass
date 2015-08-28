@@ -1,0 +1,10 @@
+<template name="postsLayout">
+    {{>postsHeader}}  
+    <div class="post-layout-wrapper">
+
+    {{>postsMenu}}
+    <div class="post-layout-main">
+      {{> yield}}
+    </div>
+  </div>
+</template>

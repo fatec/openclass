@@ -2,6 +2,28 @@
 posts.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
+.post-layout-wrapper {
+	table-layout: fixed;
+	display: table;
+	padding-top:46px;
+	margin-left:auto;
+	margin-right:auto;
+	width:800px;
+
+/*	border:solid 1px yellow;
+*/}
+
+.post-layout-wrapper a {
+		text-decoration: none;
+}
+
+.post-layout-main {
+	width:500px;
+	display: table-cell;
+	padding: 15px 20px 20px 0px;
+
+/*	border:solid 1px blue;
+*/}
 
 .post {
 	margin:10px 0 20px 0;
