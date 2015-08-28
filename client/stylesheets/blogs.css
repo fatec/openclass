@@ -3,7 +3,9 @@ blogs.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
 .blogs-layout-wrapper {
-	width:100%;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
 	padding-top:60px;
 
 	text-align:center;
@@ -18,6 +20,26 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin:20px 0 40px 0;
 
 	font-size: 2.5em;
+}
+
+.blog-item-list {
+	margin-left:auto;
+	margin-right:auto;
+	width: 300px;
+	padding: 4px 3px 4px 7px;
+
+	background-color: white;
+
+	border-top: solid 1px #cfd7df;
+		border-bottom: solid 1px #cfd7df;
+
+		text-align: left;
+
+}
+
+.blog-item-list:hover {
+	background-color: #3270ae;
+	color:white;
 }
 
 .blog-link-title {
