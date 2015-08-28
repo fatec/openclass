@@ -89,15 +89,129 @@ Authors : Vincent Widmer & Stéphane Morand;
 	height:50px;
 }
 
+.post-submit-content {
+		margin:10px 0 20px 0;
+	padding: 8px 8px 15px 8px;
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+
+	border: 1px solid #e2e3e7;
+
+	background-color: white;
+}
+
 .post-submit-title {
 	margin:10px 0 25px 0;
 
 	font-size: 1.2em;
 }
 
+.post-submit-image {
+	width:100%;
+}
+
+.post-submit-input-file-button {
+	display: block;
+line-height:34px;
+text-align: center;
+	height:34px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+
+	border:solid 1px #3270ae;
+	-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+
+	background-color:#2a90c6;
+
+	text-decoration: none;
+	font-size:1em;
+
+/*	margin: 5px 0 0 0;
+*/
+	width:200px;
+
+
+	background-color:#2a90c6;
+
+	color:white;
+}
+
+.post-submit-input-file-button:hover {
+	background-color:#3270ae;
+}
+
+/* CSS Tric to hide original file input */
+.post-submit-input-file {
+  position: fixed;
+    top: -1000px;
+}
+
+
+
 .post-submit-textarea {
-	width:450px;
-	height:50px;
+	display: block;
+	width:99%;
+	height:100px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top: 25px;
+
+		border:solid 1px #c4c5cb;
+font-family: inherit;
+		font-size: 1em;
+
+
+}
+
+.post-submit-button {
+	height:36px;
+
+	-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+
+	text-decoration: none;
+	font-size:1em;
+
+}
+
+.post-submit-send-button {
+	margin: 5px 0 0 0;
+
+	width:140px;
+	border:solid 1px #3e9657;
+
+
+	background-color:#32ae55;
+
+	color:white;
+
+}
+
+.post-submit-send-button:hover {
+	background-color:#3e9657;
+}
+
+.post-submit-cancel-button {
+	margin: 5px 0 0 10px;
+
+	width:140px;
+	border:solid 1px #8a3a3a;
+
+
+	background-color:#ae3232;
+
+	color:white;
+
+}
+
+.post-submit-cancel-button:hover {
+	background-color:#8a3a3a;
 }
 
 .post-image {

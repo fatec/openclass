@@ -41,7 +41,10 @@ Template.postSubmit.events({
       };
     });
   },
-  'change .myFileInput': function(event, template) {
+  'change .post-submit-input-file': function(event, template) {
+
+        $(".post-submit-input-file-button").hide();
+
     //var file = event.target.file;
     //console.log("myfile change event "+Object.keys(file));
     /*
@@ -64,6 +67,10 @@ Template.postSubmit.events({
 
     });
   },
+    'click .post-submit-send-button': function(e) {
+    e.preventDefault();
+    $('#post-submit-form').submit();
+  },
     'cancel form': function(e) {
     e.preventDefault();
     //Router.go('blogPage', {_id: post.blogId});
@@ -83,7 +90,3 @@ Template.postSubmit.helpers({
     return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
   }
 });
-
-
-
-

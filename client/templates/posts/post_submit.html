@@ -1,23 +1,25 @@
 <template name="postSubmit">
 
 <div class="post-submit">
+            <div class="post-submit-title">Ajouter une publication</div>
+<div class="post-submit-content">
 
     <div class="images">
    
         {{#if image}}
-        <a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>
+        <a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-submit-image thumbnail" /></a>
         {{/if}}
 
     </div>
 
+		<form name="post-submit-form" id="post-submit-form">
+        <label class="post-submit-input-file-button">
 
-
-		<form name="post">
-			<div class="post-submit-title">Ajouter une publication</div>
-<input type="file" name="file" class="myFileInput" />
-            <textarea name="body" id="body" class="post-submit-textarea"></textarea><br />
-			<button type="submit" class="button button-primary">Bazounga</button>
-            <button type="cancel" class="button" href="#">Annuler</button>
+<input type="file" name="file" class="post-submit-input-file" />Ajouter une photo...</label>
+            <textarea name="body" id="body" class="post-submit-textarea" placeholder="Écrivez quelque chose..."></textarea><br />
 		</form>
+  </div>
+    <button class="button post-submit-button post-submit-send-button">Bazounga</button>
+    <button class="button post-submit-button post-submit-cancel-button">Annuler</button>
   </div>
 </template>
