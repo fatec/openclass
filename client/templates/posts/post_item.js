@@ -21,3 +21,13 @@ Template.postItem.helpers({
     }
   }
   });
+
+// Show image in a lightbox with magnificPopup plugin
+Template.postItem.rendered = function(){
+  $('.post-image').imagesLoaded(function(){
+    $('.imageLink').magnificPopup({
+      type:'image',
+      closeOnContentClick:'true',
+    });
+  });
+}

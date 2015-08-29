@@ -35,6 +35,7 @@ deps@1.0.7
 ejson@1.0.6
 email@1.0.6
 fastclick@1.0.3
+gabrielengel:konecty-magnific-popup@0.9.9
 geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
@@ -63,6 +64,7 @@ mobile-status-bar@1.0.3
 momentjs:moment@2.9.0
 mongo@1.1.0
 mongo-livedata@1.0.8
+mrt:jquery-imagesloaded@0.0.2
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ordered-dict@1.0.3
