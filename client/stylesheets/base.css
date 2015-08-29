@@ -2,17 +2,27 @@
 base.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url('/fonts/Montserrat-Light.otf');
+}
+
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url('/fonts/Montserrat-Light.otf');
+}
+
 
 html {
-font-family: 'Droid Sans', sans-serif;
-
-
+	font-family: 'Montserrat-Light', sans-serif;
 }
+
 body {
 	background-color:#f1f1f1;
 
 /*	font-family: 'Roboto',Arial;
-*/	font-family: 'Droid Sans', sans-serif;
+*/	/*font-family: 'Droid Sans', sans-serif;*/
+
 /*font-family: 'PT Sans', sans-serif;
 */}
 
