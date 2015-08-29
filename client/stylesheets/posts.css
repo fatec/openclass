@@ -8,7 +8,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	padding-top:46px;
 	margin-left:auto;
 	margin-right:auto;
-	width:750px;
+	width:730px;
 
 /*	border:solid 1px yellow;
 */}
@@ -20,7 +20,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 .post-layout-main {
 	width:450px;
 	display: table-cell;
-	padding: 15px 20px 20px 0px;
+	padding: 15px 0px 20px 0px;
 
 /*	border:solid 1px blue;
 */}
@@ -28,7 +28,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 .post {
 	margin:10px 0 20px 0;
 	padding: 4px 7px 15px 7px;
-	width: 100%;
+	width: 470px;
 	margin-left:auto;
 	margin-right:auto;
 
@@ -237,7 +237,7 @@ border-radius: 3px;
 }
 
 .post-image {
-	margin-top:10px;	
+	margin-top:11px;	
 	text-align:center;
 }
 

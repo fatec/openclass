@@ -1,5 +1,5 @@
 .menu {
-	width:235px;
+	width:225px;
 	display: table-cell;
 	vertical-align: top;
 	padding: 35px 0 0 0;
@@ -9,27 +9,28 @@
 
 .menu a:visited {
 	text-decoration: none; 
-	color:black; 
+	color:inherit; 
 }
 
 .menu-link-all-posts {
 		display: block;
 
-	font-size: 0.95em;
+	font-size: 0.9em;
+	color: #3270ae;
 }
 
 .menu-link-last-posts {
 	display: block;
-	margin: 20px 0 20px 0;
+	margin: 12px 0 20px 0;
 
-	font-size: 0.95em;
+	font-size: 0.9em;
 }
 
 .menu-title {
 	margin:25px 0 0 0;
 	color:grey;
-	font-size: 0.85em;
-	font-weight: 600;
+	font-size: 0.8em;
+	font-weight: 500;
 }
 
 .menu-icon-title-authors {
