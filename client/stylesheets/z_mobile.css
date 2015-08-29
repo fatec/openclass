@@ -2,8 +2,12 @@
 .menu {
 	display:none;
 }
+
+.post {
+	width:97%;
+}
 .post-layout-wrapper {
-width:97%;
+width:98%;
 
 }
 
