@@ -2,11 +2,12 @@
 .menu {
 	display:none;
 }
-.wrapper {
+.post-layout-wrapper {
 width:97%;
+
 }
 
-.main {
+.post-layout-main {
 	width:100%;
 }
 
