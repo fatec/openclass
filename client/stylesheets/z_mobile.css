@@ -7,16 +7,18 @@
 	width:97%;
 }
 .post-layout-wrapper {
-width:98%;
-
+width:96%;
+border:solid 1px red;
 }
 
 .post-layout-main {
 	width:100%;
+	border:solid 1px blue;
+
 }
 
 .header-wrapper {
-	width:100%;
+	width:96%;
 }
 .header-title {
 	display:none;
