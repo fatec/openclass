@@ -1,3 +1,18 @@
 <template name="login">
-{{> atForm}}
+    <div class="login">
+        <span>S'identifier</span><br />
+        <form class="login-form">
+            <label>Nom d'utilisateur :</label>
+            <input type="text"  class="form-control" id="username" value=""><br />
+            <label>Mot de passe :</label>
+            <input type="password" name="" class="form-control" id="password" value=""><br /><br />
+            {{#if errorMessage}}
+                <div class="login-error">
+                    <span style="color:red;">{{errorMessage}}</span><br />
+                </div> 
+            {{/if}}            
+            <button type="submit" class="button login-submit-button">S'identifier</button>
+            <button class="login-button-cancel">Annuler</button>                    
+        </form>
+    </div>
 </template>
