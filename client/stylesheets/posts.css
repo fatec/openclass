@@ -96,10 +96,12 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .post-item--icon-button-edit {
 	height:15px;
+	margin:1px 0 -1px 0;	
 }
 
 .post-item--icon-button-delete {
 	height:15px;
+	margin:1px 0 -1px 0;
 }
 
 .post-item--author {

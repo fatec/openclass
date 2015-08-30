@@ -1,38 +1,48 @@
+/*
+z_mobile.css
+Authors : Vincent Widmer & Stéphane Morand;
+*/
+
 @media (max-width: 750px) {
 .menu {
 	display:none;
 }
 
-.post {
+.post-item {
 	width:96%;
 }
-.post-layout-wrapper {
+
+.post-item--image{
+	width:100%;
+}
+
+.post-layout--wrapper {
 width:100%;
 
 }
 
-.post-layout-main {
+.post-layout--main {
 	width:100%;
 
 }
 
-.blogs-layout-wrapper {
+.blogs-layout--wrapper {
 width:100%;
 
 }
 
-.header-wrapper {
+.header--wrapper {
 	width:96%;
 }
-.header-title {
+.header--title {
 	display:none;
 }
 
-.header-logo {
+.header--logo {
 	margin-left:5px;
 }
 
-.header-button-submit-post {
+.header--button-submit-post {
 width:50px;
 margin:5px 5px 0 0;
 

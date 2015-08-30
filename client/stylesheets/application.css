@@ -29,7 +29,6 @@
 .login--button-submit {
 	float:right;
 	margin:0px -7px 0 15px;
-	width:140px;	
 }
 
 .login--button-cancel {
@@ -62,7 +61,6 @@
 .logout--button-confirm {
 	float:right;
 	margin:0px -7px 0 15px;
-	width:140px;	
 }
 
 .logout--button-cancel {
@@ -101,7 +99,6 @@
 .register--button-submit {
 	float:right;
 	margin:0px -7px 0 15px;
-	width:140px;	
 }
 
 .register--button-cancel {
