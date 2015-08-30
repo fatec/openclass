@@ -10,7 +10,7 @@
  					{{#if currentUser}}
 						<a href="{{pathFor 'postSubmit'}}">
 							<button class="button button-primary posts-header--button-submit">+ Publier</button></a>
-						<a class="posts-header--logout-button" href="{{pathFor 'logout'}}">(x) {{currentUser.username}}</a>				
+						<a class="posts-header--logout-button" href="{{pathFor 'logout'}}">{{currentUser.username}} (déconnexion)</a>				
 		 			{{else}}
 						<a class="posts-header--login-button" href="{{pathFor 'login'}}">S'identifier</a>
 						<a class="posts-header--register-button" href="{{pathFor 'register'}}">Créer un compte</a>
