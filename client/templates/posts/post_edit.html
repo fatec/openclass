@@ -2,7 +2,7 @@
     <div class="post-edit">
         <div class="post-edit--title">Modifier la publication</div>
         <div class="post-item">
-            <form name="post-edit--form">
+            <form name="post-edit--form" id="post-edit--form">
                 {{#if image}}
                     <a class="post-item--image" href="{{image.url store='images'}}" target="_blank">
                         <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image thumbnail" />
@@ -11,7 +11,9 @@
                         <button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
                     </div>
                 {{else}}
-                    <input type="file" name="file" class="post-edit--file-input">
+                    <label class="post-edit--input-file-wrapper">
+                        <input type="file" name="file" class="post-edit--input-file" />Ajouter une photo...
+                    </label>        
                 {{/if}}
                 <textarea name="body" id="body" class="post-edit--textarea">{{body}}</textarea>
             </form>

@@ -1,5 +1,5 @@
 Template.postEdit.events({
-  'submit post-edit--form': function(e) {
+  'submit form': function(e) {
     e.preventDefault();
     
     var currentPostId = this._id;
@@ -20,6 +20,10 @@ Template.postEdit.events({
       }
     });
   },
+  'click .post-edit--button-edit': function(e) {
+    e.preventDefault();
+    $('#post-edit--form').submit();
+  },  
   'click .post-edit--button-cancel': function(e) {
     e.preventDefault();
     history.back();  
@@ -44,7 +48,7 @@ Template.postEdit.events({
       };
     }
   },
-  'change .post-edit--file-input': function(event, template) {
+  'change .post-edit--input-file': function(event, template) {
     FS.Utility.eachFile(event, function(file) {
       var currentPostId = template.data._id;
       //console.log("Posts.findOne("+currentPostId+").blogId");

@@ -17,6 +17,52 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin-top:3px;
 }
 
+.post-edit--input-file-wrapper {
+	display: block;
+	width:200px;	
+	height:34px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom:20px;
+
+	border:solid 1px #206e98;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	background-color: #2A90C6; background-image: -webkit-gradient(linear, left top, left bottom, from(#2A90C6), to(#3270AE));
+ 	background-image: -webkit-linear-gradient(top, #2A90C6, #3270AE);
+ 	background-image: -moz-linear-gradient(top, #2A90C6, #3270AE);
+ 	background-image: -ms-linear-gradient(top, #2A90C6, #3270AE);
+ 	background-image: -o-linear-gradient(top, #2A90C6, #3270AE);
+ 	background-image: linear-gradient(to bottom, #2A90C6, #3270AE);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#2A90C6, endColorstr=#3270AE);	
+
+	text-align: center;
+	text-decoration: none;
+	font-size:1em;
+	line-height:34px;
+	color:white;
+
+	cursor: pointer;
+}
+
+.post-edit--input-file-wrapper:hover {
+ 	border-color: #185372;
+ 	background-color: #21719c; background-image: -webkit-gradient(linear, left top, left bottom, from(#21719c), to(#275686));
+ 	background-image: -webkit-linear-gradient(top, #21719c, #275686);
+ 	background-image: -moz-linear-gradient(top, #21719c, #275686);
+ 	background-image: -ms-linear-gradient(top, #21719c, #275686);
+ 	background-image: -o-linear-gradient(top, #21719c, #275686);
+ 	background-image: linear-gradient(to bottom, #21719c, #275686);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#21719c, endColorstr=#275686);
+ }
+
+/* CSS Tric to hide original file input */
+.post-edit--input-file {
+	position: fixed;
+	top: -1000px;
+}
+
 .post-edit--button-delete-image-wrapper {
 	margin:3px 0 10px 0;
 	
