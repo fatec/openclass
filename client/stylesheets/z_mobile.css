@@ -4,15 +4,20 @@
 }
 
 .post {
-	width:97%;
+	width:96%;
 }
 .post-layout-wrapper {
-width:96%;
+width:100%;
 
 }
 
 .post-layout-main {
 	width:100%;
+
+}
+
+.blogs-layout-wrapper {
+width:100%;
 
 }
 
