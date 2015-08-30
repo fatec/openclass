@@ -3,43 +3,48 @@
 	display: table-cell;
 	vertical-align: top;
 	padding: 35px 0 0 0;
+
 	font-size: 0.9em;
-/*	border:solid 1px red;
-*/}
+}
 
 .menu a:visited {
 	text-decoration: none; 
 	color:inherit; 
 }
 
-.menu-link-all-posts {
-		display: block;
+.menu--link-all-posts {
+	display: block;
 
 	font-size: 0.9em;
 	color: #3270ae;
 }
 
-.menu-link-last-posts {
+.menu--link-last-posts {
 	display: block;
 	margin: 12px 0 20px 0;
 
 	font-size: 0.9em;
 }
 
-.menu-title {
+.menu--title {
 	margin:25px 0 0 0;
+
 	color:grey;
 	font-size: 0.8em;
 	font-weight: 500;
 }
 
-.menu-icon-title-authors {
-margin-left:5px;margin-bottom:-2px;margin-right:5px;width:22px;}
-
-.menu-icon-title-categories {
-	margin-left:5px;margin-bottom:-2px;margin-right:5px;width:18px;
+.menu--icon-title-authors {
+	margin: 0 5px -2px 5px;
+	width:22px;
 }
 
-.menu-icon-title-tags {
-	margin-left:5px;margin-bottom:-2px;margin-right:5px;width:18px;
+.menu--icon-title-categories {
+	margin: 0 5px -2px 5px;
+	width:18px;
+}
+
+.menu--icon-title-tags {
+	margin: 0 5px -2px 5px;
+	width:18px;
 }

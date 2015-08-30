@@ -1,5 +1,5 @@
 Template.register.events({
-    'submit .register-form': function (event) {
+    'submit form': function (event) {
  
         event.preventDefault();
  
@@ -15,7 +15,11 @@ Template.register.events({
             }
         });
     },
-    'click .register-button-cancel': function(e) {
+    'click .register--button-submit': function(e) {
+        e.preventDefault();
+        $('#register--form').submit();
+    },        
+    'click .register--button-cancel': function(e) {
         e.preventDefault();
         history.back();  
     }

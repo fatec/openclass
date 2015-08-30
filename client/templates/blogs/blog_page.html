@@ -1,17 +1,13 @@
 <template name="blogPage">
-
-    <div class="blog-content">
-      <h3 class="blog-title"></h3>
-
-	  <div class="posts">
+  <div class="blog-page">
     {{#if posts.count}}
-	    {{#each posts}}
-	      {{> postItem}}
+      {{#each posts}}
+        {{> postItem}}
 	    {{/each}}
-     {{else}}
-   <p>Il n'y pas encore de publication à afficher...</p>
-     {{/if}}
-	  </div>
-
-    </div>
+    {{else}}
+      <div class="blog-page--no-post-message">
+        <span>Il n'y pas encore de publication à afficher...</span>
+      </div>
+    {{/if}}
+  </div>
 </template>

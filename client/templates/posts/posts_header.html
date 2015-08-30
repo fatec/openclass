@@ -1,17 +1,21 @@
- <template name="postsHeader">
-    <nav class="header" role="navigation">
-    	<div class="header-wrapper">
-      		<a href="{{pathFor 'blogsList'}}"><img class="header-logo" src="/img/logo-laruche.png" /><div class="header-title">bzzbox</div></a>
-        	<div class="header-blog-title">{{title}}</div>       	
-      		<div class="header-login">
-				{{#if currentUser}}
-					<a href="{{pathFor 'logout'}}">(x) {{currentUser.username}}</a>
-					<a href="{{pathFor 'postSubmit'}}"><button class="button header-button-submit-post">+ Publier</button></a> 					
- 				{{else}}
-					<a href="{{pathFor 'login'}}">S'identifier</a>
-					<a href="{{pathFor 'register'}}">Créer un compte</a>
-				{{/if}}
+<template name="postsHeader">
+	<div class="posts-header">
+	    <div class="header">
+	    	<div class="header--wrapper">
+		      	<a href="{{pathFor 'blogsList'}}">
+		      		<img class="header--logo" src="/img/logo-laruche.png" />
+		      		<div class="header--title">bzzbox</div>
+		      	</a>
+		        <div class="posts-header--blog-title">{{title}}</div>       	
+ 					{{#if currentUser}}
+						<a href="{{pathFor 'postSubmit'}}">
+							<button class="button button-primary posts-header--button-submit">+ Publier</button></a>
+						<a class="posts-header--logout-button" href="{{pathFor 'logout'}}">(x) {{currentUser.username}}</a>				
+		 			{{else}}
+						<a class="posts-header--login-button" href="{{pathFor 'login'}}">S'identifier</a>
+						<a class="posts-header--register-button" href="{{pathFor 'register'}}">Créer un compte</a>
+					{{/if}}
 			</div>
 		</div>
-    </nav>
+	</div>
 </template>

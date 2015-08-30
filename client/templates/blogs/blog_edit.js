@@ -9,16 +9,24 @@ Template.blogEdit.events({
     }
 
     Blogs.update(currentBlogId, {$set: blogProperties}, function(error) {
-      if (error) {
-        // affiche l'erreur à l'utilisateur
-        alert(error.reason);
-      } else {
-        Router.go('blogPage', {_id: currentBlogId});
+      if(!error) {
+        Router.go('blogsList');
       }
+      else
+      {      
+        Session.set('errorMessage', err.message);
+      } 
     });
   },
-
-  'click .delete': function(e) {
+  'click .blog-edit--button-submit': function(e) {
+    e.preventDefault();
+    $('#blog-edit--form').submit();
+  },
+  'click .blog-edit--button-cancel': function(e) {
+    e.preventDefault();
+    history.back();  
+  },   
+  'click .blog-edit--button-delete': function(e) {
     e.preventDefault();
 
     if (confirm("Effacer ce journal?")) {
@@ -30,4 +38,4 @@ Template.blogEdit.events({
       Router.go('blogsList');
     }
   }
-});
+});  

@@ -1,7 +1,8 @@
 <template name="blogItem">
-  <div class="blog">
-      <a class="blog-link-title" href="{{pathFor 'blogPage'}}"><div class="blog-item-list">{{title}}
-      {{#if ownBlog}}<a class="blog-item-edit" href="{{pathFor 'blogEdit'}}"> (modifier)</a>{{/if}}
-      </div></a>
-    </div>
+	<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+		{{title}}
+      	{{#if ownBlog}}
+      		<a class="blog-item--button-edit" href="{{pathFor 'blogEdit'}}"> (modifier)</a>
+      	{{/if}}
+	</a>
 </template>

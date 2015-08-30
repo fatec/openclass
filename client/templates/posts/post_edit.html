@@ -1,22 +1,22 @@
 <template name="postEdit">
     <div class="post-edit">
-        <form name="post">
-            <div class="post-edit-title">Modifier la publication</div>
-
-
-        {{#if image}}
-
-    <a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>-
-        <a class="btn btn-danger deleteImage" href="#">Enlever l'image</a>
-        {{else}}
-            <input type="file" name="file" class="myFileInput">
-        {{/if}}
-
-            <textarea name="body" id="body" class="post-edit-textarea">{{body}}</textarea><br />
-
-            <button type="submit" class="button button-primary">Modifier</button>
-
-            <button type="cancel" class="button" href="{{pathFor 'blogPage'}}">Annuler</button>
-        </form>
+        <div class="post-edit--title">Modifier la publication</div>
+        <div class="post-item">
+            <form name="post-edit--form">
+                {{#if image}}
+                    <a class="post-item--image" href="{{image.url store='images'}}" target="_blank">
+                        <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image thumbnail" />
+                    </a>
+                    <div class="post-edit--button-delete-image-wrapper">
+                        <button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
+                    </div>
+                {{else}}
+                    <input type="file" name="file" class="post-edit--file-input">
+                {{/if}}
+                <textarea name="body" id="body" class="post-edit--textarea">{{body}}</textarea>
+            </form>
+        </div>
+        <button type="submit" class="button button-primary post-edit--button-edit">Modifier</button>
+        <button class="button button-cancel post-edit--button-cancel">Annuler</button>
     </div>
 </template>

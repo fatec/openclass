@@ -1,25 +1,25 @@
 <template name="postItem">
-	<div class="post">
- 	{{#if currentUser}}
-
-
-	<a href="{{pathFor 'postEdit'}}">
-  		<div class="button button-post button-post-edit">
-  			<img class="icn-button-post-edit" src="/img/icon-button-editpost.png" />
-  		</div>
-  	</a>	
- 	<div class="button button-post button-post-delete delete" href="#">
- 		<img class="icn-button-post-delete" src="/img/icon-button-deletepost.png" />
- 	</div>
-	{{/if}}   
- 	<div class="post-author">{{author}}</div>
- 	<div class="post-date">• {{livestamp submitted}}</div>
-        {{#if image}}
-      <div class="post-image">
-      <a class="imageLink" href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-img-image thumbnail" /></a>
+  <div class="post-item">
+    {{#if currentUser}}
+      <a href="{{pathFor 'postEdit'}}">
+        <div class="post-item--button post-item--button-edit">
+          <img class="post-item--icon-button-edit" src="/img/icon-button-editpost.png" />
+        </div>
+      </a>	
+	      <div class="post-item--button post-item--button-delete">
+        <img class="post-item--icon-button-delete" src="/img/icon-button-deletepost.png" />
+     	</div>
+    {{/if}}   
+    <div class="post-item--author">{{author}}</div>
+    <div class="post-item--date">• {{livestamp submitted}}</div>
+    {{#if image}}
+      <div class="post-item--image-wrapper">
+        <a class="post-item--image-link" href="{{image.url store='images'}}" target="_blank">
+          <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-item--image thumbnail" />
+        </a>
       </div>
-{{/if}}
- 	<div class="post-text">{{body}}</div>     
-	</div>
+    {{/if}}
+	    <div class="post-item--text">{{body}}</div>     
+  </div>
 </template>
 

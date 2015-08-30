@@ -1,16 +1,18 @@
- <template name="blogsHeader">
-    <nav class="header" role="navigation">
-    	<div class="header-wrapper">
-      		<a href="{{pathFor 'blogsList'}}"><img class="header-logo" src="/img/logo-laruche.png" /><div class="header-title">bzzbox</div></a>
-        	<div class="header-blog-title">{{title}}</div>
-      		<div class="header-login">
-				{{#if currentUser}}
-					<a href="{{pathFor 'logout'}}">(x) {{currentUser.username}}</a>
- 				{{else}}
-					<a href="{{pathFor 'login'}}">S'identifier</a>
-					<a href="{{pathFor 'register'}}">Créer un compte</a>
-				{{/if}}
+<template name="blogsHeader">
+	<div class="blogs-header">
+	    <div class="header">
+	    	<div class="header--wrapper">
+		      	<a href="{{pathFor 'blogsList'}}">
+		      		<img class="header--logo" src="/img/logo-laruche.png" />
+		      		<div class="header--title">bzzbox</div>
+		      	</a>
+ 					{{#if currentUser}}
+						<a class="blogs-header--logout-button" href="{{pathFor 'logout'}}">(x) {{currentUser.username}}</a>				
+		 			{{else}}
+						<a class="blogs-header--login-button" href="{{pathFor 'login'}}">S'identifier</a>
+						<a class="blogs-header--register-button" href="{{pathFor 'register'}}">Créer un compte</a>
+					{{/if}}
 			</div>
 		</div>
-    </nav>
+	</div>
 </template>

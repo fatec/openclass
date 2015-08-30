@@ -2,72 +2,164 @@
 blogs.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
-.blogs-layout-wrapper {
-	width:730px;
-	margin-left:auto;
-	margin-right:auto;
-	padding-top:60px;
 
-	text-align:center;
-/*	border:solid 1px yellow;
-*/}
-
-.blogs-layout-wrapper a {
-		text-decoration: none;
-}
-
-.blogs-list-title {
-	margin:20px 0 40px 0;
-
-	font-size: 2.5em;
-}
-
-.blog-item-list {
-	margin-left:auto;
-	margin-right:auto;
-	width: 300px;
-	padding: 4px 3px 4px 7px;
-
-	background-color: white;
-
-	border-top: solid 1px #cfd7df;
-		border-bottom: solid 1px #cfd7df;
-
-		text-align: left;
-
-}
-
-.blog-item-list:hover {
-	background-color: #3270ae;
-	color:white;
-}
 
 .blog-link-title {
 	line-height: 25px;	
 	text-decoration: none;
 }
 
-.blogs-button-submit-blog {
-	display: inline-block;
-	margin: 50px 0 0 0;
+/* ----- blog-edit template ----- */
 
-	text-decoration: none;
-/*	font-size: 1.1em;
-*/
-	height:36px;
-	width:220px;
-	border:solid 1px #3e9657;
-	-webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
+.blog-edit--wrapper {
+	margin:0 0 20px 0;
+	padding: 20px 7px 20px 7px;
+	width: 60%;
+	margin-left:auto;
+	margin-right:auto;
 
-	background-color:#32ae55;
+	border: 1px solid #e2e3e7;
 
-	color:white;
-	font-size:1em;
-
+	background-color: white;
+	text-align:left;
 }
 
-.blogs-button-submit-blog:hover {
-	background-color:#3e9657;
+.blog-edit--input {
+	width: 98%;
+
+	font-size: 1em;
+}
+
+.blog-edit--button-wrapper {
+	width: 60%;
+	margin-left:auto;
+	margin-right:auto;	
+}
+
+.blog-edit--button-submit {
+	float:right;
+	margin:0px -7px 0 15px;
+/*	width:170px;
+*/}
+
+.blog-edit--button-cancel {
+	float:right;
+	margin-top:0px;
+}
+
+.blog-edit--button-delete {
+	margin-bottom: 20px;
+}
+
+
+/* ----- blog-item template ----- */
+
+.blog-item--button-edit {
+	font-size:0.8em;
+}
+
+
+/* ----- blog-page template ----- */
+
+.blog-page--no-post-message {
+	margin-top:30px;
+	text-align: center;
+}
+
+
+/* ----- blog-submit template ----- */
+
+.blog-submit--wrapper {
+	margin:0 0 20px 0;
+	padding: 20px 7px 20px 7px;
+	width: 60%;
+	margin-left:auto;
+	margin-right:auto;
+
+	border: 1px solid #e2e3e7;
+
+	background-color: white;
+	text-align:left;
+}
+
+.blog-submit--input {
+	width: 98%;
+
+	font-size: 1em;
+}
+
+.blog-submit--button-wrapper {
+	width: 60%;
+	margin-left:auto;
+	margin-right:auto;	
+}
+
+.blog-submit--button-submit {
+	float:right;
+	margin:0px -7px 0 15px;
+/*	width:170px;
+*/}
+
+.blog-submit--button-cancel {
+	float:right;
+	margin-top:0px;
+}
+
+/* ----- posts-header template ----- */
+
+.blogs-header--logout-button {
+	float:right;
+
+	line-height: 46px;
+	text-decoration: none;
+}
+
+.blogs-header--logout-button:hover {
+	text-decoration: underline;;
+}
+
+.blogs-header--login-button {
+	float:right;
+	margin:0 0 0 20px;
+
+	line-height: 46px;
+	text-decoration: none;
+}
+
+.blogs-header--login-button:hover {
+	text-decoration: underline;;
+}
+
+.blogs-header--register-button {
+	float:right;
+
+	line-height: 46px;
+	text-decoration: none;	
+}
+
+.blogs-header--register-button:hover {
+	text-decoration: underline;;
+}
+
+
+/* ----- blogs-layout template ----- */
+
+.blogs-layout--wrapper {
+	width:730px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:60px;
+
+	text-align:center;
+}
+
+.blogs-layout--wrapper a {
+	text-decoration: none;
+}
+
+
+/* ----- blogs-list template ----- */
+
+.blogs-list--button-submit-blog {
+	margin:30px 0 0 0;
 }

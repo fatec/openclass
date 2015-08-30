@@ -17,18 +17,15 @@ Template.postSubmit.events({
       //console.log("On a l'image!!!!");
     }
 
-
     var errors = {};
     if (! post.body) {
       errors.body = "Please write some content";
       return Session.set('postSubmitErrors', errors);
     }
-
     //console.log("post.blogId "+post.blogId+" post.body "+post.body);
    
     Meteor.call('postInsert', post, function(error, postId) {
       if (error){
-
         throwError(error.reason);
       } else {
 
@@ -41,19 +38,9 @@ Template.postSubmit.events({
       };
     });
   },
-  'change .post-submit-input-file': function(event, template) {
+  'change .post-submit--input-file': function(event, template) {
+    $(".post-submit--input-file-button").hide();
 
-        $(".post-submit-input-file-button").hide();
-
-    //var file = event.target.file;
-    //console.log("myfile change event "+Object.keys(file));
-    /*
-      Trick pour utiliser le form submit event
-    */
-
-    /* 
-      Upload en utilisant le change event
-    */
     FS.Utility.eachFile(event, function(file) {
       var newFile = new FS.File(file);
       newFile.metadata = {blogId: template.data.blog._id, timestamp: template.data.timestamp};
@@ -67,30 +54,38 @@ Template.postSubmit.events({
 
     });
   },
-    'click .post-submit-send-button': function(e) {
+    'click .post-submit--button-submit': function(e) {
     e.preventDefault();
-    $('#post-submit-form').submit();
+    $('#post-submit--form').submit();
   },
-    'click .post-submit-cancel-button': function(e, template) {
+    'click .post-submit--button-cancel': function(e, template) {
+      e.preventDefault();
+      Router.go('blogPage', {_id: template.data.blog._id});
+    },
+  'click .post-submit--button-delete-image': function(e) {
     e.preventDefault();
-
-
-    Router.go('blogPage', {_id: template.data.blog._id});
-
-    //Router.go('blogPage', {_id: post.blogId});
- 
-
-  },
+    if (confirm("Effacer l'image?")) {
+      var currentPostId = this._id;
+      var image = Images.findOne({'metadata.timestamp': this.timestamp});
+      if (image){
+        //console.log("On efface l'image "+image._id);
+        Images.remove(image._id, function(error, file){
+          if (error) {
+            // display the error to the user
+            //throwError(error.reason);
+            console.log("Il y a une erreur ici "+error.reason);
+        } else {
+            //console.log("Posts.update("+currentPostId+",{$unset: {imageId: 1}});");
+            Posts.update(currentPostId, {$unset: {imageId: 1}});
+          };        
+        });
+      };
+    }
+  }    
 });
 
 Template.postSubmit.helpers({
   image: function () {
-/*   console.log("Les données dispo ici: ");
-    console.log("_id: "+this._id);
-    console.log("timestamp: "+this.timestamp);
-    console.log("body: "+ this.body);
-    console.log("blogId: "+this.blogId);*/
-
     return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
   }
 });

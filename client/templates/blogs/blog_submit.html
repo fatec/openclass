@@ -1,11 +1,20 @@
 <template name="blogSubmit">
-    <form class="main form page">
-      <div class="form-group">
-          <label class="control-label" for="title">Titre</label>
-          <div class="controls">
-              <input name="title" id="title" type="text" value="" placeholder="Nom de votre journal" class="form-control"/>
-            </div>
+	<div class="blog-submit">
+		<div class="page-title">Créer un journal</div>
+		<div class="blog-submit--wrapper">
+    		<form id="blog-submit--form" class="blog-submit--form">
+    		    <label>Nom du journal</label><br />
+				<input name="title" id="title" type="text" value="" class="blog-submit--input form-control"/>
+                {{#if errorMessage}}
+                    <div class="blog-submit--error">
+                        <br /><span style="color:red;">{{errorMessage}}</span><br />
+                    </div> 
+                {{/if}}  				
+			</form>
         </div>
-      <input type="submit" value="Submit" class="button button-primary"/>
-    </form>
+        <div class="blog-submit--button-wrapper">
+			<button type="submit" class="button button-primary blog-submit--button-submit">Créer ce journal</button>
+			<button class="button button-cancel blog-submit--button-cancel">Annuler</button>  
+		</div> 
+    </div>
 </template>

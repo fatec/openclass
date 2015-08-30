@@ -1,5 +1,5 @@
 Template.login.events({
-    'submit .login-form': function (event) {
+    'submit form': function (event) {
         event.preventDefault();
         var username = event.target.username.value;
         var password = event.target.password.value;
@@ -14,7 +14,11 @@ Template.login.events({
             }
         });
     },
-    'click .login-button-cancel': function(e) {
+    'click .login--button-submit': function(e) {
+        e.preventDefault();
+        $('#login--form').submit();
+  },    
+    'click .login--button-cancel': function(e) {
         e.preventDefault();
         history.back();  
     }

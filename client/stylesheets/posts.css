@@ -2,30 +2,50 @@
 posts.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
-.post-layout-wrapper {
-	table-layout: fixed;
-	display: table;
-	padding-top:46px;
-	margin-left:auto;
-	margin-right:auto;
-	width:730px;
 
-/*	border:solid 1px yellow;
-*/}
 
-.post-layout-wrapper a {
-		text-decoration: none;
+/* ----- post-edit template ----- */
+
+.post-edit--title {
+	margin:20px 0 25px 0;
+
+	font-size: 1.2em;
 }
 
-.post-layout-main {
-	width:450px;
-	display: table-cell;
-	padding: 15px 0px 20px 0px;
+.post-edit--image {
+	width:100%;
+	margin-top:3px;
+}
 
-/*	border:solid 1px blue;
-*/}
+.post-edit--button-delete-image-wrapper {
+	margin:3px 0 10px 0;
+	
+	text-align: center;
+}
 
-.post {
+.post-edit--textarea {
+	width:99%;
+	height:80px;
+
+	font-family: inherit;
+	font-size: 0.9em;
+
+	resize:vertical;
+}
+
+.post-edit--button-edit {
+	float:right;
+	margin-left:10px;
+}
+
+.post-edit--button-cancel {
+	float:right;
+}
+
+
+/* ----- post-item template ----- */
+
+.post-item {
 	margin:10px 0 20px 0;
 	padding: 4px 7px 15px 7px;
 	width: 470px;
@@ -37,9 +57,12 @@ Authors : Vincent Widmer & Stéphane Morand;
 	background-color: white;
 }
 
-.button-post {
+.post-item--button {
 	float:right;
 	padding:3px 8px 3px 8px;
+
+	border-top:solid 1px #c5c5c5;
+	border-bottom:solid 1px #c5c5c5;	
 
 	text-decoration:none;
 	font-size:.8em;
@@ -49,37 +72,37 @@ Authors : Vincent Widmer & Stéphane Morand;
 	cursor:pointer;
 }
 
-.button-post:hover {
+.post-item--button:hover {
 	background-color:#dedede;
 }
 
-.button-post-edit {
-	border-top:solid 1px #c5c5c5;
+.post-item--button:active {
+	border-color:grey;
+	background-color:grey;
+}
+
+.post-item--button-edit {
 	border-right:solid 1px #c5c5c5;
 	border-top-right-radius:3px;
 	border-bottom-right-radius:3px;
-	border-bottom:solid 1px #c5c5c5;
 }
 
-.button-post-delete {
-
-	border-top:solid 1px #c5c5c5;
+.post-item--button-delete {
 	border-left:solid 1px #c5c5c5;
 	border-right:solid 1px #c5c5c5;
-	border-bottom:solid 1px #c5c5c5;
 	border-top-left-radius:3px;
 	border-bottom-left-radius:3px;
 }
 
-.icn-button-post-edit {
+.post-item--icon-button-edit {
 	height:15px;
 }
 
-.icn-button-post-delete {
+.post-item--icon-button-delete {
 	height:15px;
 }
 
-.post-author {
+.post-item--author {
 	display: inline-block;
 	margin: 0px 0 0 0;
 
@@ -88,7 +111,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 0.9em;
 }
 
-.post-date {
+.post-item--date {
 	display:inline-block;
 	margin: 5px 0 0 0;
 
@@ -96,112 +119,101 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 0.8em;	
 }
 
-.post-text {
-	margin: 20px 0 0 0;
+.post-item--image-wrapper {
+	margin-top:11px;	
+	text-align:center;
+}
+
+.post-item--image {
+	max-width:100%;
+}
+
+.post-item--text {
+	margin: 12px 0 0 0;
 
 	font-size: 0.9em;
 }
 
-.post-edit-title {
-	margin:10px 0 25px 0;
+
+/* ----- post-submit template ----- */
+
+.post-submit--title {
+	margin:20px 0 25px 0;
 
 	font-size: 1.2em;
 }
 
-.post-edit-textarea {
-	width:450px;
-	height:50px;
-}
-
-.post-submit-content {
-		margin:10px 0 20px 0;
-	padding: 8px 8px 15px 8px;
-	width: 100%;
-	margin-left:auto;
-	margin-right:auto;
-
-	border: 1px solid #e2e3e7;
-
-	background-color: white;
-}
-
-.post-submit-title {
-	margin:10px 0 25px 0;
-
-	font-size: 1.2em;
-}
-
-.post-submit-image {
+.post-submit--image {
 	width:100%;
+	margin-top:3px;
 }
 
-.post-submit-input-file-button {
-	display: block;
-line-height:34px;
-text-align: center;
-	height:34px;
+.post-submit--image-wrapper {
+	margin-top:11px;	
+	text-align:center;
+}
 
+.post-submit--input-file-wrapper {
+	display: block;
+	width:200px;	
+	height:34px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
+	margin-bottom:20px;
 
 	border:solid 1px #3270ae;
 	-webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 
 	background-color:#2a90c6;
 
+	text-align: center;
 	text-decoration: none;
 	font-size:1em;
-
-/*	margin: 5px 0 0 0;
-*/
-	width:200px;
-
-
-	background-color:#2a90c6;
-
+	line-height:34px;
 	color:white;
 }
 
-.post-submit-input-file-button:hover {
+.post-submit--input-file-wrapper:hover {
 	background-color:#3270ae;
 }
 
 /* CSS Tric to hide original file input */
-.post-submit-input-file {
-  position: fixed;
-    top: -1000px;
+.post-submit--input-file {
+	position: fixed;
+	top: -1000px;
 }
 
-
-
-.post-submit-textarea {
-	display: block;
+.post-submit--textarea {
 	width:99%;
-	height:100px;
-	margin-left:auto;
-	margin-right: auto;
-	margin-top: 25px;
+	height:80px;
 
-		border:solid 1px #c4c5cb;
-font-family: inherit;
-		font-size: 1em;
+	font-family: inherit;
+	font-size: 0.9em;
 
-
+	resize:vertical;
 }
 
-.post-submit-button {
+.post-submit--button-submit {
+	float:right;
+	margin: 0 0 0 15px;
+}
+
+.post-submit--button-cancel {
+	float:right;
+}
+
+/*.post-submit-button {
 	height:36px;
 
 	-webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 
 	text-decoration: none;
 	font-size:1em;
-
 }
 
 .post-submit-send-button {
@@ -236,14 +248,75 @@ border-radius: 3px;
 
 .post-submit-cancel-button:hover {
 	background-color:#8a3a3a;
+}*/
+
+
+/* ----- posts-header template ----- */
+
+.posts-header--blog-title {
+	display: inline-block;
+	margin-left: 10px;
+
+	color: #7e7e7e;
 }
 
-.post-image {
-	margin-top:11px;	
-	text-align:center;
+.posts-header--logout-button {
+	float:right;
+
+	line-height: 46px;
+	text-decoration: none;
 }
 
-.post-img-image {
-width:100%;
+.posts-header--logout-button:hover {
+	text-decoration: underline;;
+}
 
+.posts-header--login-button {
+	float:right;
+	margin:0 0 0 20px;
+
+	line-height: 46px;
+	text-decoration: none;
+}
+
+.posts-header--login-button:hover {
+	text-decoration: underline;;
+}
+
+.posts-header--register-button {
+	float:right;
+
+	line-height: 46px;
+	text-decoration: none;	
+}
+
+.posts-header--register-button:hover {
+	text-decoration: underline;;
+}
+
+.posts-header--button-submit{
+	float:right;
+	margin:5px 0 0 20px;
+}
+
+
+/* ----- post-layout template ----- */
+
+.post-layout--wrapper {
+	table-layout: fixed;
+	display: table;
+	padding-top:46px;
+	margin-left:auto;
+	margin-right:auto;
+	width:730px;
+}
+
+.post-layout--wrapper a {
+	text-decoration: none;
+}
+
+.post-layout--main {
+	width:450px;
+	display: table-cell;
+	padding: 15px 0px 20px 0px;
 }

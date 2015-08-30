@@ -1,18 +1,22 @@
 <template name="login">
     <div class="login">
-        <span>S'identifier</span><br />
-        <form class="login-form">
-            <label>Nom d'utilisateur :</label>
-            <input type="text"  class="form-control" id="username" value=""><br />
-            <label>Mot de passe :</label>
-            <input type="password" name="" class="form-control" id="password" value=""><br /><br />
-            {{#if errorMessage}}
-                <div class="login-error">
-                    <span style="color:red;">{{errorMessage}}</span><br />
-                </div> 
-            {{/if}}            
-            <button type="submit" class="button login-submit-button">S'identifier</button>
-            <button class="login-button-cancel">Annuler</button>                    
-        </form>
+        <div class="page-title">S'identifier</div>
+        <div class="login--wrapper">
+            <form id="login--form" class="login--form">
+                <label>Nom d'utilisateur</label><br />
+                <input type="text"  class="login--input form-control" id="username" value=""><br /><br />
+                <label>Mot de passe</label><br />
+                <input type="password" name="" class="login--input form-control" id="password" value=""><br />
+                {{#if errorMessage}}
+                    <div class="login--error">
+                        <br /><span style="color:red;">{{errorMessage}}</span><br />
+                    </div> 
+                {{/if}}                                   
+            </form>
+        </div> 
+        <div class="login--button-wrapper">
+            <button type="submit" class="button button-primary login--button-submit">S'identifier</button>
+            <button class="button button-cancel login--button-cancel">Annuler</button>  
+        </div>          
     </div>
 </template>

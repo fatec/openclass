@@ -1,25 +1,28 @@
 <template name="postSubmit">
-
-<div class="post-submit">
-            <div class="post-submit-title">Ajouter une publication</div>
-<div class="post-submit-content">
-
-    <div class="images">
-   
-        {{#if image}}
-        <a href="{{image.url store='images'}}" target="_blank"><img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-submit-image thumbnail" /></a>
-        {{/if}}
-
+    <div class="post-submit">
+        <div class="post-submit--title">Ajouter une publication</div>
+        <div class="post-item">
+            <div class="images">
+                {{#if image}}
+                    <a href="{{image.url store='images'}}" target="_blank">
+                    <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-submit--image thumbnail" />
+                    </a>
+                {{/if}}
+            </div>        
+            <form name="post-submit--form" id="post-submit--form">
+                {{#if image}}
+                    <div class="post-edit--button-delete-image-wrapper">
+                        <button class="button button-danger post-submit--button-delete-image" href="#">Supprimer l'image</button>
+                    </div>
+                {{else}}                
+                    <label class="post-submit--input-file-wrapper">
+                        <input type="file" name="file" class="post-submit--input-file" />Ajouter une photo...
+                    </label>
+                {{/if}}
+                <textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..."></textarea>
+            </form>
+        </div>
+        <button class="button button-primary post-submit--button-submit">Bazounga!</button>
+        <button class="button button-cancel post-submit--button-cancel">Annuler</button>
     </div>
-
-		<form name="post-submit-form" id="post-submit-form">
-        <label class="post-submit-input-file-button">
-
-<input type="file" name="file" class="post-submit-input-file" />Ajouter une photo...</label>
-            <textarea name="body" id="body" class="post-submit-textarea" placeholder="Écrivez quelque chose..."></textarea><br />
-		</form>
-  </div>
-    <button class="button post-submit-button post-submit-send-button">Bazounga</button>
-    <button class="button post-submit-button post-submit-cancel-button">Annuler</button>
-  </div>
 </template>
