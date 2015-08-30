@@ -8,8 +8,13 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 @font-face {
+    font-family: "Montserrat-UltraLight";
+    src: url('/fonts/Montserrat-UltraLight.otf');
+}
+
+@font-face {
     font-family: "Montserrat-Bold";
-    src: url('/fonts/Montserrat-Light.otf');
+    src: url('/fonts/Montserrat-Bold.otf');
 }
 
 

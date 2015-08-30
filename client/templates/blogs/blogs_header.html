@@ -7,7 +7,7 @@
 		      		<div class="header--title">bee.box</div>
 		      	</a>
  					{{#if currentUser}}
-						<a class="blogs-header--logout-button" href="{{pathFor 'logout'}}">{{currentUser.username}} (déconnexion)</a>				
+						<a class="blogs-header--logout-button" href="{{pathFor 'logout'}}">{{currentUser.username}}<span style="font-size:0.9em"> (déconnexion)</span></a>
 		 			{{else}}
 						<a class="blogs-header--login-button" href="{{pathFor 'login'}}">S'identifier</a>
 						<a class="blogs-header--register-button" href="{{pathFor 'register'}}">Créer un compte</a>

@@ -162,8 +162,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .blogs-list--title {
 	color:#3270ae;
+	font-size: 3em;
+	font-family: 'Montserrat-UltraLight', sans-serif;
 }
 
 .blogs-list--button-submit-blog {
-	margin:30px 0 0 0;
+	margin:40px 0 0 0;
 }
