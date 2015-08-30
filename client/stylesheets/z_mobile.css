@@ -31,6 +31,10 @@ width:100%;
 
 }
 
+.posts-header--blog-title {
+	font-size:0.9em;
+}
+
 .header--wrapper {
 	width:96%;
 }
@@ -46,5 +50,37 @@ width:100%;
 width:50px;
 margin:5px 5px 0 0;
 
+}
+
+.logout--wrapper{
+	width:100%;
+}
+
+.logout--button-wrapper {
+	width:90%;
+}
+
+.login--wrapper {
+	width:95%;
+}
+
+.login--button-wrapper {
+	width:90%;
+}
+
+.register--wrapper {
+	width:95%;
+}
+
+.register--button-wrapper {
+	width:90%;
+}
+
+.list-group {
+	width:95%;
+}
+
+.blogs-list--message-connect {
+	font-size:0.9em;
 }
 }
