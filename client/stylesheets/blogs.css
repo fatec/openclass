@@ -110,7 +110,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 .blogs-header--logout-button {
 	float:right;
 
-	line-height: 46px;
+	line-height: 48px;
 	text-decoration: none;
 }
 
@@ -122,7 +122,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	float:right;
 	margin:0 0 0 20px;
 
-	line-height: 46px;
+	line-height: 48px;
 	text-decoration: none;
 }
 
@@ -133,7 +133,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 .blogs-header--register-button {
 	float:right;
 
-	line-height: 46px;
+	line-height: 48px;
 	text-decoration: none;	
 }
 
@@ -159,6 +159,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 
 /* ----- blogs-list template ----- */
+
+.blogs-list--title {
+	color:#3270ae;
+}
 
 .blogs-list--button-submit-blog {
 	margin:30px 0 0 0;

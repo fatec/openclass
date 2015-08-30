@@ -2,9 +2,9 @@
 	<div class="blogs-header">
 	    <div class="header">
 	    	<div class="header--wrapper">
-		      	<a href="{{pathFor 'blogsList'}}">
+		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogsList'}}">
 		      		<img class="header--logo" src="/img/logo-laruche.png" />
-		      		<div class="header--title">bzzbox</div>
+		      		<div class="header--title">bee.box</div>
 		      	</a>
  					{{#if currentUser}}
 						<a class="blogs-header--logout-button" href="{{pathFor 'logout'}}">(x) {{currentUser.username}}</a>				
