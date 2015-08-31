@@ -17,6 +17,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin-top:3px;
 }
 
+.post-edit--spinner {
+	text-align: center;
+}
+
 .post-edit--input-file-wrapper {
 	display: block;
 	width:200px;	
@@ -157,6 +161,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 	color: #5996b8;
 	font-weight: 600;
 	font-size: 0.9em;
+}
+
+.post-item--spinner {
+	text-align: center;
 }
 
 .post-item--date {
