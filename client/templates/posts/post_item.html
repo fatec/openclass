@@ -12,6 +12,13 @@
     {{/if}}   
     <div class="post-item--author">{{author}}</div>
     <div class="post-item--date">• {{livestamp submitted}}</div>
+
+                    {{#with image}}
+                    {{#unless isUploaded}}
+                        <i class="fa fa-spinner fa-spin"></i>
+                    {{/unless}}
+                {{/with}}
+
     {{#if image}}
       <div class="post-item--image-wrapper">
         <a class="post-item--image-link" href="{{image.url store='images'}}" target="_blank">
@@ -19,7 +26,10 @@
         </a>
       </div>
     {{/if}}
-	    <div class="post-item--text">{{body}}</div>     
+	    <div class="post-item--text">{{body}}</div>    
+      <div class="post-item--tags">
+        {{commaSeparatedTags}}
+      </div>
   </div>
 </template>
 

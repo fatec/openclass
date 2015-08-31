@@ -48,12 +48,63 @@ if (Blogs.find().count() === 0) {
     submitted: new Date(now - 7 * 3600 * 1000),
   });
 
+    var secondBlogId = Blogs.insert({
+    title: 'Autre example pour le developpement',
+    userId: example._id,
+    author: example.profile.name,
+    submitted: new Date(now - 7 * 3600 * 1000),
+  });
+
+
+  Posts.insert({
+    blogId: secondBlogId,
+    userId: example._id,
+    author: example.profile.name,
+    submitted: new Date(now - 5 * 3600 * 1000),
+    body: 'Un publication pour le blog 2',
+    //tags: "coool, c'est de la balle!!!"
+    tags: ["coool", "c'est de la balle!!!"]
+  });
+  Posts.insert({
+    blogId: secondBlogId,
+    userId: example._id,
+    author: example.profile.name,
+    submitted: new Date(now - 5 * 3600 * 500),
+    body: 'Encore une autre publication pour le blog 2',
+    //tags: "cool"
+    tags: ["coool"]
+  });
+
   Posts.insert({
     blogId: firstBlogId,
     userId: example._id,
     author: example.profile.name,
     submitted: new Date(now - 5 * 3600 * 1000),
-    body: 'Voici votre première publication !'
+    body: 'Voici votre première publication !',
+    //tags: "coool"
+    tags: ["coool"]
+  });
+
+  var tags = [
+    {
+      name: "coool",
+      blogId: firstBlogId,
+      nRefs: 1
+    },
+    {
+      name: "coool",
+      blogId: secondBlogId,
+      nRefs: 2
+    },
+    {
+      name: "c'est de la balle!!!",
+      blogs: secondBlogId,
+      nRefs: 1
+    }
+  ];
+
+  _.each(tags, function(doc) { 
+    Tags.insert(doc);
   });
 
 }

@@ -1,6 +1,14 @@
 Template.postItem.helpers({
   image: function() {
     return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
+  },
+  commaSeparatedTags: function(){
+    var str = "";
+    _.each(this.tags, function (val) {
+    str += val + ", "; 
+    });
+    //strip off the extra ", " here
+    return str.slice(0,-2);
   }
 });
 
@@ -26,3 +34,5 @@ Template.postItem.rendered = function(){
     });
   });
 }
+
+

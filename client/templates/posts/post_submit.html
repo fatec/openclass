@@ -6,7 +6,7 @@
 
                 {{#with image}}
                     {{#unless isUploaded}}
-                        La photo est bientôt sur le serveur.. :)
+                        <i class="fa fa-spinner fa-spin"></i>
                     {{/unless}}
                 {{/with}}
 
@@ -27,6 +27,15 @@
                     </label>
                 {{/if}}
                 <textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..." autofocus></textarea>
+
+
+                <div class="form-group">
+                    <label>Tags</label><br />
+                    <input id="my-tags" type="text" placeholder="Add tags" data-provide="typeahead"/>
+
+                </div>
+
+
             </form>
         </div>
         <button class="button button-primary post-submit--button-submit">Bazounga!</button>
