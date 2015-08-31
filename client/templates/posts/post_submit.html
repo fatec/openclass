@@ -3,6 +3,13 @@
         <div class="post-submit--title">Ajouter une publication</div>
         <div class="post-item">
             <div class="images">
+
+                {{#with image}}
+                    {{#unless isUploaded}}
+                        La photo est bientôt sur le serveur.. :)
+                    {{/unless}}
+                {{/with}}
+
                 {{#if image}}
                     <a href="{{image.url store='images'}}" target="_blank">
                     <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-submit--image thumbnail" />

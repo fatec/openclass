@@ -3,6 +3,14 @@
         <div class="post-edit--title">Modifier la publication</div>
         <div class="post-item">
             <form name="post-edit--form" id="post-edit--form">
+
+                {{#with image}}
+                    {{#unless isUploaded}}
+                        La photo est bientôt sur le serveur.. :)
+                    {{/unless}}
+                {{/with}}
+
+
                 {{#if image}}
                     <a class="post-item--image" href="{{image.url store='images'}}" target="_blank">
                         <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image thumbnail" />
