@@ -1,8 +1,8 @@
 <template name="login">
     <div class="login">
         <div class="page-title">S'identifier</div>
-        <div class="login--wrapper">
-            <form id="login--form" class="login--form">
+        <form id="login--form" class="login--form">        
+            <div class="login--wrapper">
                 <label>Nom d'utilisateur</label><br />
                 <input type="text"  class="login--input form-control" id="username" value="" autofocus><br /><br />
                 <label>Mot de passe</label><br />
@@ -11,12 +11,12 @@
                     <div class="login--error">
                         <br /><span style="color:red;">{{errorMessage}}</span><br />
                     </div> 
-                {{/if}}                                   
-            </form>
-        </div> 
-        <div class="login--button-wrapper">
-            <button type="submit" class="button button-primary login--button-submit">S'identifier</button>
-            <button class="button button-cancel login--button-cancel">Annuler</button>  
-        </div>          
+                {{/if}}                 
+            </div> 
+            <div class="login--button-wrapper">
+                <button type="submit" class="button button-primary login--button-submit">S'identifier</button>
+                <button class="button button-cancel login--button-cancel">Annuler</button>  
+            </div>   
+        </form>
     </div>
 </template>

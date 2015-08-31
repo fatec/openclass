@@ -1,8 +1,8 @@
 <template name="postEdit">
     <div class="post-edit">
         <div class="post-edit--title">Modifier la publication</div>
-        <div class="post-item">
-            <form name="post-edit--form" id="post-edit--form">
+        <form name="post-edit--form" id="post-edit--form">
+            <div class="post-item">
 
                 {{#with image}}
                     {{#unless isUploaded}}
@@ -24,9 +24,9 @@
                     </label>        
                 {{/if}}
                 <textarea name="body" id="body" class="post-edit--textarea" autofocus>{{body}}</textarea>
-            </form>
-        </div>
-        <button type="submit" class="button button-primary post-edit--button-edit">Modifier</button>
-        <button class="button button-cancel post-edit--button-cancel">Annuler</button>
+            </div>
+            <button type="submit" class="button button-primary post-edit--button-edit">Modifier</button>
+            <button class="button button-cancel post-edit--button-cancel">Annuler</button>
+        </form>
     </div>
 </template>

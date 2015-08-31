@@ -2,8 +2,8 @@
 	<div class="blog-edit">
 		<div class="page-title">Modifier le journal</div>
 		<button class="button button-danger blog-edit--button-delete">Supprimer le journal</button>
-		<div class="blog-edit--wrapper">
-    		<form id="blog-edit--form" class="blog-edit--form">
+    	<form id="blog-edit--form" class="blog-edit--form">		
+			<div class="blog-edit--wrapper">
     		    <label>Nom du journal</label><br />
 				<input name="title" id="title" type="text" value="{{title}}" class="blog-edit--input form-control" autofocus/>
                 {{#if errorMessage}}
@@ -11,11 +11,11 @@
                         <br /><span style="color:red;">{{errorMessage}}</span><br />
                     </div> 
                 {{/if}}  
-            </form>
-        </div>				
-        <div class="blog-edit--button-wrapper">
-			<button type="submit" class="button button-primary blog-edit--button-submit">Modifier le nom du journal</button>
-			<button class="button button-cancel blog-edit--button-cancel">Annuler</button>
-		</div> 
+        	</div>				
+        	<div class="blog-edit--button-wrapper">
+				<button type="submit" class="button button-primary blog-edit--button-submit">Modifier le nom du journal</button>
+				<button class="button button-cancel blog-edit--button-cancel">Annuler</button>
+			</div> 
+		</form>
 	</div>
 </template>

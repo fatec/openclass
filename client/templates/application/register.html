@@ -1,8 +1,8 @@
 <template name="register">
     <div class="register">
         <div class="page-title">Créer un compte</div>
-        <div class="register--wrapper">
-            <form id="register--form" class="register--form">
+        <form id="register--form" class="register--form">
+            <div class="register--wrapper">
                 <label>Nom d'utilisateur</label><br />
                 <input type="text"  class="register--input form-control" id="username" value="" autofocus><br /><br />
                 <label>Mot de passe</label><br />
@@ -12,11 +12,11 @@
                         <br /><span style="color:red;">{{errorMessage}}</span><br />
                     </div> 
                 {{/if}}  
-            </form>
-        </div>
-        <div class="register--button-wrapper">
-            <button type="submit" class="button button-primary register--button-submit">S'enregistrer</button>
-            <button class="button button-cancel register--button-cancel">Annuler</button> 
-        </div>           
+            </div>
+            <div class="register--button-wrapper">
+                <button type="submit" class="button button-primary register--button-submit">S'enregistrer</button>
+                <button class="button button-cancel register--button-cancel">Annuler</button> 
+            </div>    
+        </form>
     </div>
 </template>

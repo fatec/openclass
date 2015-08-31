@@ -1,8 +1,13 @@
 Template.login.events({
-    'submit form': function (event) {
-        event.preventDefault();
-        var username = event.target.username.value;
-        var password = event.target.password.value;
+    'submit form': function(e) {
+            console.log("Form submitted");
+    e.preventDefault();
+
+        e.preventDefault();
+            console.log("Form submitted");
+
+        var username = e.target.username.value;
+        var password = e.target.password.value;
         
         Meteor.loginWithPassword(username,password,function(err){
             if(!err) {
@@ -17,7 +22,7 @@ Template.login.events({
     'click .login--button-submit': function(e) {
         e.preventDefault();
         $('#login--form').submit();
-  },    
+    },    
     'click .login--button-cancel': function(e) {
         e.preventDefault();
         history.back();  
@@ -29,3 +34,4 @@ Template.login.helpers({
     return Session.get('errorMessage');
   }
 });
+
