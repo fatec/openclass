@@ -1,5 +1,5 @@
 Template.blogsList.helpers({
-  blogs: function() {
-    return Blogs.find();
-  }
+	blogs: function() {
+		return Blogs.find();
+	}
 });
