@@ -9,11 +9,12 @@
 		        <div class="posts-header--blog-title">{{title}}</div>       	
  					{{#if currentUser}}
 						<a href="{{pathFor 'postSubmit'}}">
-							<button class="button button-primary posts-header--button-submit">+ Publier</button></a>
+							<button class="button button-primary posts-header--button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header--button-text"> Publier</span></button>
+						</a>
 						<a class="posts-header--logout-button" href="{{pathFor 'logout'}}">{{currentUser.username}} <i class="fa fa-sign-out"></i></a>				
 		 			{{else}}
 						<a class="posts-header--login-button" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i>
-</a>
+						</a>
 						<a class="posts-header--register-button" href="{{pathFor 'register'}}">Créer un compte</a>
 					{{/if}}
 			</div>
