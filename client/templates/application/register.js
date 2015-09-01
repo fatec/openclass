@@ -24,3 +24,7 @@ Template.register.events({
         history.back();  
     }
 });
+
+Template.register.rendered = function(){
+  this.$('.register--input-username').focus() 
+}

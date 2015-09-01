@@ -89,3 +89,7 @@ Template.postSubmit.helpers({
     return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
   }
 });
+
+Template.postSubmit.rendered = function(){
+  this.$('.post-submit--textarea').focus() 
+}

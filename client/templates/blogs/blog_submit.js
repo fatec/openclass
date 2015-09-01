@@ -32,3 +32,7 @@ Template.blogSubmit.helpers({
     return Session.get('errorMessage');
   }
 });
+
+Template.blogSubmit.rendered = function(){
+  this.$('.blog-submit--input').focus() 
+}
