@@ -103,9 +103,6 @@ if (Blogs.find().count() === 0) {
     }
   ];
 
-  _.each(tags, function(doc) { 
-    Tags.insert(doc);
-  });
 
 }
 

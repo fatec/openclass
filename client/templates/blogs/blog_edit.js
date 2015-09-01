@@ -13,8 +13,9 @@ Template.blogEdit.events({
         Router.go('blogsList');
       }
       else
-      {      
-        Session.set('errorMessage', err.message);
+      {
+        console.log("BlogEdit submit-form event "+error.message);
+        Session.set('errorMessage', error.message);
       } 
     });
   },

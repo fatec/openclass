@@ -28,6 +28,9 @@ Template.postSubmit.events({
    
     Meteor.call('postInsert', post, function(error, postId) {
       if (error){
+        console.log("##############");
+        console.log(Posts.simpleSchema().namedContext().invalidKeys());
+        console.log("##############");
         throwError(error.reason);
       } else {
 

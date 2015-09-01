@@ -3,22 +3,44 @@ Template.postEdit.events({
     e.preventDefault();
     
     var currentPostId = this._id;
-    
+    var body = $(e.target).find('[name=body]').val()
+    /*
     var postProperties = {
       body: $(e.target).find('[name=body]').val()
     }
+    */
 
     var currentPost = Posts.findOne(currentPostId);
 
-    Posts.update(currentPostId, {$set: postProperties}, function(error) {
+
+    if (body==''){
+      Posts.update(currentPostId, {$unset: {body: ''}}, function(error) {
       if (error) {
         // display the error to the user
         //throwError(error.reason);
+        console.log("#### unset ###");
+        console.log(Posts.simpleSchema().namedContext().invalidKeys());
+        console.log("##############");
+        console.log(error.reason);
+      } else {
+        Router.go('blogPage', {_id: currentPost.blogId});
+      }
+    });      
+    } else {
+      Posts.update(currentPostId, {$set: {body: body}}, function(error) {
+      if (error) {
+        // display the error to the user
+        //throwError(error.reason);
+        console.log("#### set ####");
+        console.log(Posts.simpleSchema().namedContext().invalidKeys());
+        console.log("##############");
         console.log(error.reason);
       } else {
         Router.go('blogPage', {_id: currentPost.blogId});
       }
     });
+    }
+
   },
   'click .post-edit--button-edit': function(e) {
     e.preventDefault();

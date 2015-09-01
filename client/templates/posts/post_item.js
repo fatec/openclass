@@ -21,8 +21,11 @@ Template.postItem.events({
       var currentPost = Posts.findOne(currentPostId);
       Posts.remove(currentPostId);
       // TODO : remove in one call :D
-      imageId = Images.findOne({'metadata.postId': currentPostId})._id;
-      Images.remove(imageId);
+      image = Images.findOne({'metadata.postId': currentPostId});
+      if (image){
+        Images.remove(image._id);
+      }
+      
       // Images.remove({'metadata.postId': "Mik2bg7nvT7yHEpR2"});
       Router.go('blogPage', {_id: currentPost.blogId});
     }
