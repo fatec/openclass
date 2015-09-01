@@ -1,3 +1,5 @@
+
+
 if (Blogs.find().count() === 0) {
   var now = new Date().getTime();
 

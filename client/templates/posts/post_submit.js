@@ -18,6 +18,7 @@ Template.postSubmit.events({
 
         imageId = Session.get("imageId");
         if (imageId) {
+          delete Session.keys['imageId']
           Images.update({_id: imageId}, {$set: {'metadata.postId': postId}});
         }
 
@@ -30,10 +31,12 @@ Template.postSubmit.events({
 
     FS.Utility.eachFile(event, function(file) {
       var newFile = new FS.File(file);
-      newFile.metadata = {blogId: template.data.blog._id, timestamp: template.data.timestamp};
+      //newFile.metadata = {blogId: template.data.blog._id, timestamp: template.data.timestamp};
+      newFile.metadata = {blogId: template.data.blog._id};
       // TODO On ajoute le timestamp a l'image pour retrouver l'image lorsque l'on envoie le formulaire et la lier au post
 
       imageId = Images.insert(newFile, function (err, fileObj) {
+      //console.log("On ajoute l'image Id dans la session: "+imageId._id);
       Session.set("imageId", imageId._id);
         //console.log("Image Inserted with id "+fileObj._id);
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
@@ -76,10 +79,21 @@ Template.postSubmit.events({
 
 Template.postSubmit.helpers({
   image: function () {
-    return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
+    var imageId = Session.get("imageId");
+
+    if (imageId) {
+      console.log("On a récupéré l'image "+imageId);
+      return Images.findOne(imageId);
+    } else {
+      console.log("On a pas d'image");
+      return false
+    }
+    //return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
   }
 });
 
 Template.postSubmit.rendered = function(){
   this.$('.post-submit--textarea').focus() 
 }
+
+
