@@ -18,10 +18,12 @@ Template.postSubmit.events({
     }
 
     var errors = {};
+/*
     if (! post.body) {
       errors.body = "Please write some content";
       return Session.set('postSubmitErrors', errors);
     }
+*/
     //console.log("post.blogId "+post.blogId+" post.body "+post.body);
    
     Meteor.call('postInsert', post, function(error, postId) {
@@ -60,6 +62,9 @@ Template.postSubmit.events({
   },
     'click .post-submit--button-cancel': function(e, template) {
       e.preventDefault();
+
+      Meteor.call('removeGhostImages');
+
       Router.go('blogPage', {_id: template.data.blog._id});
     },
   'click .post-submit--button-delete-image': function(e) {
