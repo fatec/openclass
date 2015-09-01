@@ -3,17 +3,17 @@
         <div class="post-submit--title">Ajouter une publication</div>
         <div class="post-item">
             <div class="images">
-
                 {{#with image}}
-                    {{#unless isUploaded}}
-                        <br /><div class="post-item--spinner"><i class="fa fa-3x fa-spinner fa-spin"></i></div>
+                    {{#unless hasStored 'thumbs'}}
+                        <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
                     {{/unless}}
                 {{/with}}
-
                 {{#if image}}
-                    <a href="{{image.url store='images'}}" target="_blank">
-                    <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-submit--image thumbnail" />
-                    </a>
+                    {{#if image.hasStored 'thumbs'}}
+                        <a href="{{image.url store='images'}}" target="_blank">
+                            <img src="{{image.url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail" />
+                        </a>
+                    {{/if}}
                 {{/if}}
             </div>        
             <form name="post-submit--form" id="post-submit--form">
