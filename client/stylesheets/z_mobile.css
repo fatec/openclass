@@ -32,6 +32,14 @@ width:100%;
 }
 
 .posts-header--blog-title {
+	font-size:0.8em;
+}
+
+.posts-header--button-text {
+	display:none;
+}
+
+.posts-header--logout-button {
 	font-size:0.9em;
 }
 
