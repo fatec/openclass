@@ -1,10 +1,7 @@
 Template.login.events({
     'submit form': function(e) {
-            console.log("Form submitted");
-    e.preventDefault();
 
         e.preventDefault();
-            console.log("Form submitted");
 
         var username = e.target.username.value;
         var password = e.target.password.value;
@@ -35,3 +32,6 @@ Template.login.helpers({
   }
 });
 
+Template.login.rendered = function(){
+  this.$('.login--input-username').focus() 
+}
