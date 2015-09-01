@@ -8,9 +8,13 @@ Template.postSubmit.events({
       body: $body.val(),
       blogId: template.data.blog._id
     };
-    // On vérifie s'il y a une image qui possède ce timestamp
-    image = Images.findOne({'metadata.timestamp': template.data.timestamp, 'metadata.blogId': post.blogId})
+    
 
+
+    // On vérifie s'il y a une image qui possède ce timestamp
+    //image = Images.findOne({'metadata.timestamp': template.data.timestamp, 'metadata.blogId': post.blogId})
+
+    image = Session.get("imageId")
     if (image) {
       post['imageId'] = image._id;
       //post['timestamp']=template.data.timestamp;
@@ -51,8 +55,8 @@ Template.postSubmit.events({
       newFile.metadata = {blogId: template.data.blog._id, timestamp: template.data.timestamp};
       // TODO On ajoute le timestamp a l'image pour retrouver l'image lorsque l'on envoie le formulaire et la lier au post
 
-      Images.insert(newFile, function (err, fileObj) {
-
+      imageId = Images.insert(newFile, function (err, fileObj) {
+      Session.set("imageId", imageId);
         //console.log("Image Inserted with id "+fileObj._id);
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
