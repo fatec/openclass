@@ -6,15 +6,12 @@
                 {{#with image}}
                     {{#unless hasStored 'thumbs'}}
                         <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
+                    {{else}}
+                        <a href="{{url store='images'}}" target="_blank">
+                            <img src="{{url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail" />
+                        </a>
                     {{/unless}}
                 {{/with}}
-                {{#if image}}
-                    {{#if image.hasStored 'thumbs'}}
-                        <a href="{{image.url store='images'}}" target="_blank">
-                            <img src="{{image.url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail" />
-                        </a>
-                    {{/if}}
-                {{/if}}
             </div>        
             <form name="post-submit--form" id="post-submit--form">
                 {{#if image}}
