@@ -3,34 +3,12 @@ Template.postSubmit.events({
     e.preventDefault();
 
     // On récupère la valeur du champ body ainsi que le blogId trasféré par le router
-    var $body = $(e.target).find('[name=body]');
-    var post = {
-      body: $body.val(),
-      blogId: template.data.blog._id
-    };
-    
+    var body = $(e.target).find('[name=body]').val();
+    var blogId = template.data.blog._id;
+    var imageId = Session.get("imageId");
 
-
-    // On vérifie s'il y a une image qui possède ce timestamp
-    //image = Images.findOne({'metadata.timestamp': template.data.timestamp, 'metadata.blogId': post.blogId})
-
-    image = Session.get("imageId")
-    if (image) {
-      post['imageId'] = image._id;
-      //post['timestamp']=template.data.timestamp;
-      //console.log("On a l'image!!!!");
-    }
-
-    var errors = {};
-/*
-    if (! post.body) {
-      errors.body = "Please write some content";
-      return Session.set('postSubmitErrors', errors);
-    }
-*/
-    //console.log("post.blogId "+post.blogId+" post.body "+post.body);
    
-    Meteor.call('postInsert', post, function(error, postId) {
+    Meteor.call('postInsert', {body: body, blogId: blogId, imageId: imageId}, function(error, postId) {
       if (error){
         console.log("##############");
         console.log(Posts.simpleSchema().namedContext().invalidKeys());
@@ -38,11 +16,11 @@ Template.postSubmit.events({
         throwError(error.reason);
       } else {
 
-        $body.val('');
-        // On ajoute l'id du post à l'image associée s'il y en a une
-        if (post.imageId){
-          Images.update({_id: post.imageId}, {$set: {'metadata.postId': postId}});
+        imageId = Session.get("imageId");
+        if (imageId) {
+          Images.update({_id: imageId}, {$set: {'metadata.postId': postId}});
         }
+
         Router.go('blogPage', {_id: post.blogId});
       };
     });
@@ -56,7 +34,7 @@ Template.postSubmit.events({
       // TODO On ajoute le timestamp a l'image pour retrouver l'image lorsque l'on envoie le formulaire et la lier au post
 
       imageId = Images.insert(newFile, function (err, fileObj) {
-      Session.set("imageId", imageId);
+      Session.set("imageId", imageId._id);
         //console.log("Image Inserted with id "+fileObj._id);
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
