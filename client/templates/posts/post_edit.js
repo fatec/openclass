@@ -42,10 +42,10 @@ Template.postEdit.events({
     }
 
   },
-  'click .post-edit--button-edit': function(e) {
-    e.preventDefault();
-    $('#post-edit--form').submit();
-  },  
+  // 'click .post-edit--button-edit': function(e) {
+  //   e.preventDefault();
+  //   $('#post-edit--form').submit();
+  // },  
   'click .post-edit--button-cancel': function(e) {
     e.preventDefault();
     history.back();  

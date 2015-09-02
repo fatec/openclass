@@ -1,0 +1,20 @@
+<template name="postEditHeader">
+	<div class="post-edit--header">
+	    <div class="header">
+	    	<div class="header--wrapper">
+		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogsList'}}">
+		      		<img class="header--logo" src="/img/logo-laruche.png" />
+		      		<div class="header--title">bee.box</div>
+		      	</a>
+		 		<a href="{{pathFor 'blogPage' _id=blog._id}}">
+		        	<div class="posts-header--blog-title">{{shortIt blog.title 20}}</div>  
+		        </a>
+					{{#if currentUser}}
+					<a href="{{pathFor 'postSubmit'}}">
+						<button class="button button-primary post-edit--button-submit"><span><i class="fa fa-paper-plane"></i></span> <span class="posts-header--button-text"> Modifier</span></button>
+					</a>	
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
