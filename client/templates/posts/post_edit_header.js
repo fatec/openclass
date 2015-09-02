@@ -4,3 +4,11 @@ Template.postEditHeader.events({
     $('#post-edit--form').submit();
   }
 });
+Template.postEditHeader.helpers({
+	blog: function() {
+		var currentPostId = this._id;
+		var currentPost = Posts.findOne(currentPostId);
+		var blogId = Blogs.findOne(currentPost.blogId);
+		return blogId
+	}
+});
