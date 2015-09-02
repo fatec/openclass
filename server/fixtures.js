@@ -51,7 +51,7 @@ if (Blogs.find().count() === 0) {
   });
 
     var secondBlogId = Blogs.insert({
-    title: 'Autre example pour le developpement',
+    title: 'Autre exemple pour le developpement',
     userId: example._id,
     author: example.profile.name,
     submitted: new Date(now - 7 * 3600 * 1000),
