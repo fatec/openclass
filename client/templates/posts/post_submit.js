@@ -91,5 +91,3 @@ Template.postSubmit.helpers({
 Template.postSubmit.rendered = function(){
   this.$('.post-submit--textarea').focus() 
 }
-
-
