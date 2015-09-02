@@ -6,7 +6,9 @@
 		      		<img class="header--logo" src="/img/logo-laruche.png" />
 		      		<div class="header--title">bee.box</div>
 		      	</a>
-		        <div class="posts-header--blog-title">{{title}}</div>       	
+		 		<a href="{{pathFor 'blogPage'}}">
+		        	<div class="posts-header--blog-title">{{shortIt title 30}}</div>  
+		        </a>
 					{{#if currentUser}}
 					<a href="{{pathFor 'postSubmit'}}">
 						<button class="button button-primary post-submit--button-submit"><span><i class="fa fa-paper-plane"></i></span> <span class="posts-header--button-text"> Envoyer</span></button>

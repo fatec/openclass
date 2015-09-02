@@ -6,8 +6,10 @@
 		      		<img class="header--logo" src="/img/logo-laruche.png" />
 		      		<div class="header--title">bee.box</div>
 		      	</a>
-		        <div class="posts-header--blog-title">{{title}}</div>       	
- 					{{#if currentUser}}
+		 		<a href="{{pathFor 'blogPage'}}">
+		        	<div class="posts-header--blog-title">{{shortIt title 30}}</div>  
+		        </a>   
+					{{#if currentUser}}
 						<a href="{{pathFor 'postSubmit'}}">
 							<button class="button button-secondary posts-header--button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header--button-text"> Publier</span></button>
 						</a>
