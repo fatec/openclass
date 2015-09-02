@@ -43,6 +43,10 @@ width:100%;
 	font-size:0.9em;
 }
 
+.posts-header--button-submit{
+	margin:5px 0 0 10px;
+}
+
 .header--wrapper {
 	width:96%;
 }
