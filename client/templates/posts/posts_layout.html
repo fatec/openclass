@@ -1,10 +1,23 @@
-<template name="postsLayout">
+<!-- <template name="postsLayout">
 	<div class="posts-layout">
     	{{>postsHeader}}  
     	<div class="post-layout--wrapper">
     		{{>postsMenu}}
     		<div class="post-layout--main">
       			{{> yield}}
+    		</div>
+		</div>
+  	</div>
+</template> -->
+
+<template name="postsLayout">
+	<div class="posts-layout">
+		{{> yield "header"}}
+    	<!-- {{>postsHeader}}  --> 
+    	<div class="post-layout--wrapper">
+    		{{> yield "menu"}}
+    		<div class="post-layout--main">
+      			{{> yield "main"}}
     		</div>
 		</div>
   	</div>

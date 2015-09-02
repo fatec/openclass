@@ -1,0 +1,18 @@
+<template name="postSubmitHeader">
+	<div class="post-submit--header">
+	    <div class="header">
+	    	<div class="header--wrapper">
+		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogsList'}}">
+		      		<img class="header--logo" src="/img/logo-laruche.png" />
+		      		<div class="header--title">bee.box</div>
+		      	</a>
+		        <div class="posts-header--blog-title">{{title}}</div>       	
+					{{#if currentUser}}
+					<a href="{{pathFor 'postSubmit'}}">
+						<button class="button button-primary post-submit--button-submit"><span><i class="fa fa-paper-plane"></i></span> <span class="posts-header--button-text"> Envoyer</span></button>
+					</a>	
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>
