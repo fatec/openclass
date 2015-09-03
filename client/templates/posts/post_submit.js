@@ -1,9 +1,41 @@
+
+Template.postSubmit.helpers({
+  image: function () {
+    var imageId = Session.get("imageId");
+
+    if (imageId) {
+      //console.log("On a récupéré l'image "+imageId);
+      return Images.findOne(imageId);
+    } else {
+      //console.log("On a pas d'image");
+      return false
+    }
+    //return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
+  },
+  myData: function () {
+    var blogId = this.blog._id;
+    return {
+      blogId: blogId
+    }
+  }
+});
+
+Template.postSubmit.rendered = function(){
+  this.$('.post-submit--textarea').focus() 
+}
+
+
+/*
 Template.postSubmit.events({
-  'submit form': function(e, template) {
+  'submit formaaa': function(e, template) {
     e.preventDefault();
+
+//console.log @data.atts;
 
     // On récupère la valeur du champ body ainsi que le blogId trasféré par le router
     var body = $(e.target).find('[name=body]').val();
+    var tags = $(e.target).find('[name=tags]').val();
+    console.log("les tags: "+tags);
     var blogId = template.data.blog._id;
     var imageId = Session.get("imageId");
 
@@ -76,24 +108,5 @@ Template.postSubmit.events({
     }
   }    
 });
-
-Template.postSubmit.helpers({
-  image: function () {
-    var imageId = Session.get("imageId");
-
-    if (imageId) {
-      console.log("On a récupéré l'image "+imageId);
-      return Images.findOne(imageId);
-    } else {
-      console.log("On a pas d'image");
-      return false
-    }
-    //return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
-  }
-});
-
-Template.postSubmit.rendered = function(){
-  this.$('.post-submit--textarea').focus() 
-}
-
+*/
 

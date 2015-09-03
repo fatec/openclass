@@ -1,31 +1,58 @@
 <template name="postEdit">
     <div class="post-edit">
         <div class="post-edit--title">Modifier la publication</div>
-        <form name="post-edit--form" id="post-edit--form">
+
+<!--
+        <form name="post-edit- -form" id="post-edit- -form">
             <div class="post-item">
                 {{#with image}}
                     {{#unless hasStored 'thumbs'}}
-                        <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
+                        <div class="post-edit- -spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
                     {{/unless}}
                 {{/with}}
                 {{#if image}}
                     {{#if image.hasStored 'thumbs'}}
-                        <a class="post-item--image" href="{{image.url store='images'}}" target="_blank">
-                            <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image thumbnail" />
+                        <a class="post-item- -image" href="{{image.url store='images'}}" target="_blank">
+                            <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit- -image thumbnail" />
                         </a>
-                        <div class="post-edit--button-delete-image-wrapper">
-                            <button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
+                        <div class="post-edit- -button-delete-image-wrapper">
+                            <button class="button button-danger post-edit- -button-delete-image" href="#">Supprimer l'image</button>
                         </div>
                     {{/if}}
                 {{else}}
-                    <label class="post-edit--input-file-wrapper">
-                        <input type="file" name="file" class="post-edit--input-file" />Ajouter une photo...
+                    <label class="post-edit- -input-file-wrapper">
+                        <input type="file" name="file" class="post-edit- -input-file" />Ajouter une photo...
                     </label>
                 {{/if}}
-                <textarea name="body" id="body" class="post-edit--textarea" autofocus>{{body}}</textarea>
+                <textarea name="body" id="body" class="post-edit- -textarea" autofocus>{{body}}</textarea>
             </div>
-            <button type="submit" class="button button-primary post-edit--button-edit">Modifier</button>
-            <button class="button button-cancel post-edit--button-cancel">Annuler</button>
+            <button type="submit" class="button button-primary post-edit- -button-edit">Modifier</button>
+            <button class="button button-cancel post-edit- -button-cancel">Annuler</button>
         </form>
+
+        
+
+{{#autoForm collection="Posts" doc=this id="editPostForm" dataForHook=myData type="update"}}
+    {{> afQuickField name="body"}}
+    {{> afQuickField name="tags"}}
+    <button type="submit" class="btn btn-primary">Edit</button>
+{{/autoForm}}
+-->
+
+{{_id}}
+
+{{#autoForm collection="Posts" id="updatePostForm" type="method" meteormethod="postUpdate" }}
+    {{> afQuickField name="body" value=body}}
+    {{> afQuickField name="tags" value=tags}}
+    {{> afQuickField type="hidden" name="postId" value=_id}}  
+
+
+  {{> afQuickField name="imageId" type="cfs-file" collection="images"}}
+
+    <button type="submit" class="btn btn-primary">Insert</button>
+{{/autoForm}}
+
+
+
     </div>
 </template>

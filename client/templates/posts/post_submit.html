@@ -12,30 +12,28 @@
                         </a>
                     {{/unless}}
                 {{/with}}
-            </div>        
-            <form name="post-submit--form" id="post-submit--form">
-                {{#if image}}
-                    <div class="post-edit--button-delete-image-wrapper">
-                        <button class="button button-danger post-submit--button-delete-image" href="#">Supprimer l'image</button>
-                    </div>
-                {{else}}                
-                    <label class="post-submit--input-file-wrapper">
-                        <input type="file" name="file" class="post-submit--input-file" />Ajouter une photo...
-                    </label>
-                {{/if}}
-                <textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..." autofocus></textarea>
+            </div>  <!-- images -->
+
+<!--
+Option d'essayer avec cela
+type="method-update" meteormethod="postInsert"
+dataForHook=myData
+type="insert"
+-->
 
 
-                <div class="form-group">
-                    <label>Tags</label><br />
-                    <input id="my-tags" type="text" placeholder="Add tags" data-provide="typeahead"/>
+{{#autoForm collection="Posts" id="insertPostForm" type="method" meteormethod="postInsert" dataForHook=myData}}
+    {{> afQuickField name="body"}}
+    {{> afQuickField name="tags"}}
+    {{> afQuickField type="hidden" name="blogId" value=blog._id}}
+  {{> afQuickField name="imageId" type="cfs-file" collection="images"}}
+    <button type="submit" class="btn btn-primary">Insert</button>
+{{/autoForm}}
 
-                </div>
 
 
-            </form>
-        </div>
-        <button class="button button-primary post-submit--button-submit">Bazounga!</button>
-        <button class="button button-cancel post-submit--button-cancel">Annuler</button>
+
+        </div> <!-- post-item -->
+
     </div>
 </template>

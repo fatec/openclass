@@ -1,14 +1,32 @@
+
+Template.postEdit.helpers({
+  image: function() {
+    return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
+  },
+  myData: function () {
+    var blogId = this.blogId;
+    return {
+      blogId: blogId
+    }
+  }
+});
+
+
+
+
+/*
+
 Template.postEdit.events({
   'submit form': function(e) {
     e.preventDefault();
     
     var currentPostId = this._id;
     var body = $(e.target).find('[name=body]').val()
-    /*
-    var postProperties = {
-      body: $(e.target).find('[name=body]').val()
-    }
-    */
+    
+  //  var postProperties = {
+  //    body: $(e.target).find('[name=body]').val()
+ //   }
+    
 
     var currentPost = Posts.findOne(currentPostId);
 
@@ -89,8 +107,5 @@ Template.postEdit.events({
   }
 });
 
-Template.postEdit.helpers({
-  image: function() {
-    return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
-  }
-});
+
+*/
