@@ -25,6 +25,14 @@ Authors : Vincent Widmer & Stéphane Morand;
 font-size:1.5em;
 }
 
+.blog-edit--wrapper {
+	width: 100%;
+}
+
+.blog-submit--wrapper {
+	width: 100%;
+}
+
 .posts-header--blog-title {
 	font-size:0.8em;
 }

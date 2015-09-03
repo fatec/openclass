@@ -2,11 +2,8 @@
 	<div class="post-submit--header">
 	    <div class="header">
 	    	<div class="header--wrapper">
-		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogsList'}}">
-		      		<img class="header--logo" src="/img/logo-laruche.png" />
-		      		<div class="header--title">bee.box</div>
-		      	</a>
-		 		<a href="{{pathFor 'blogPage' _id=blog._id}}">
+		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogPage' _id=blog._id}}">
+		      		<img class="header--button-back" src="/img/icon-button-back.png" />
 		        	<div class="posts-header--blog-title">{{shortIt blog.title 20}}</div>  
 		        </a>
 					{{#if currentUser}}

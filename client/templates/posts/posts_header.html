@@ -3,10 +3,7 @@
 	    <div class="header">
 	    	<div class="header--wrapper">
 		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogsList'}}">
-		      		<img class="header--logo" src="/img/logo-laruche.png" />
-		      		<div class="header--title">bee.box</div>
-		      	</a>
-		 		<a href="{{pathFor 'blogPage'}}">
+		      		<img class="header--button-back" src="/img/icon-button-back.png" />
 		        	<div class="posts-header--blog-title">{{shortIt title 20}}</div>  
 		        </a>   
 					{{#if currentUser}}
@@ -17,7 +14,6 @@
 		 			{{else}}
 						<a class="posts-header--login-button" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i>
 						</a>
-						<a class="posts-header--register-button" href="{{pathFor 'register'}}">Créer un compte</a>
 					{{/if}}
 			</div>
 		</div>
