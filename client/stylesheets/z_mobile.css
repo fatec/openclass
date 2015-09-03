@@ -8,27 +8,21 @@ Authors : Vincent Widmer & Stéphane Morand;
 	display:none;
 }
 
+.layout--main {
+	width:100%;
+}
+
 .post-item {
 	width:96%;
+	margin-bottom:10px;
 }
 
 .post-item--image{
 	width:100%;
 }
 
-.post-layout--wrapper {
-width:100%;
-
-}
-
-.post-layout--main {
-	width:100%;
-
-}
-
-.blogs-layout--wrapper {
-width:100%;
-
+.page-title {
+font-size:1.5em;
 }
 
 .posts-header--blog-title {
@@ -95,4 +89,8 @@ margin:5px 5px 0 0;
 .blogs-list--message-connect {
 	font-size:0.9em;
 }
+
+.blogs-list--title {
+	margin:10px 0 30px 0;
+	}
 }

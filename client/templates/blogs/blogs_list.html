@@ -1,19 +1,21 @@
 <template name="blogsList">
 	<div class="blogs-list">
-		<div class="page-title blogs-list--title">bee.box</div>	  
+		<div class="blogs-list--title">bee.box</div>	  
   		<div class="list-group">
     		{{#each blogs}}
       			{{> blogItem}}
     		{{/each}}
     	</div>
   	</div>
-	{{#if currentUser}}
-		<a href="{{pathFor 'blogSubmit'}}">
-			<button class="button button-secondary blogs-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouveau journal</button>
-		</a>
+	<div class="blogs-list--wrapper">
+		{{#if currentUser}}
+			<a href="{{pathFor 'blogSubmit'}}">
+				<button class="button button-secondary blogs-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouveau journal</button>
+			</a>
 		{{else}}
-		<div class="blogs-list--message-connect"><a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouveau journal.</div>
-	{{/if}}
+			<div class="blogs-list--message-connect"><a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouveau journal.</div>
+		{{/if}}
+	</div>
 </template>
 
 

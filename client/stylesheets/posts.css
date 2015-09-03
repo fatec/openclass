@@ -193,12 +193,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 /* ----- post-submit template ----- */
 
-.post-submit--title {
-	margin:20px 0 25px 0;
-
-	font-size: 1.2em;
-}
-
 .post-submit--image {
 	width:100%;
 	margin-top:3px;
@@ -369,26 +363,4 @@ Authors : Vincent Widmer & Stéphane Morand;
 .posts-header--button-submit{
 	float:right;
 	margin:5px 0 0 20px;
-}
-
-
-/* ----- post-layout template ----- */
-
-.post-layout--wrapper {
-	table-layout: fixed;
-	display: table;
-	padding-top:46px;
-	margin-left:auto;
-	margin-right:auto;
-	width:730px;
-}
-
-.post-layout--wrapper a {
-	text-decoration: none;
-}
-
-.post-layout--main {
-	width:450px;
-	display: table-cell;
-	padding: 15px 0px 20px 0px;
 }

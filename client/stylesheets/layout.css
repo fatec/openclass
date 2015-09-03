@@ -1,0 +1,12 @@
+.layout {}
+
+.layout--header {}
+
+.layout--main {
+	width:730px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:60px;
+}
+
+.layout--footer {}

@@ -61,6 +61,20 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 /* ----- blog-page template ----- */
 
+.blog-page--wrapper {
+	table-layout: fixed;
+	display: table;
+	width: 100%;
+}
+
+.blog-page-main {
+	width:450px;
+	display: table-cell;
+	padding: 15px 0px 20px 0px;
+}
+
+/*menu -> menu.css */
+
 .blog-page--no-post-message {
 	margin-top:30px;
 	text-align: center;
@@ -142,32 +156,25 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 
-/* ----- blogs-layout template ----- */
-
-.blogs-layout--wrapper {
-	width:730px;
-	margin-left:auto;
-	margin-right:auto;
-	padding-top:60px;
-
-	text-align:center;
-}
-
-.blogs-layout--wrapper a {
-	text-decoration: none;
-}
-
-
 /* ----- blogs-list template ----- */
 
 .blogs-list--title {
+	margin:30px 0 30px 0;
+	padding-left:10px;
+	padding-right:10px;
+
+	text-align: center;
+	font-size: 3.2em;
 	color:#3270ae;
-	font-size: 3em;
-	font-family: 'Montserrat-UltraLight', sans-serif;
+    font-family: "Montserrat-UltraLight";
 }
 
 .blogs-list--title:hover {
 	color:#2a90c6;
+}
+
+.blogs-list--wrapper {
+	text-align: center;
 }
 
 .blogs-list--button-submit-blog {
