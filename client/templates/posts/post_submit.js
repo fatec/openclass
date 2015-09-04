@@ -7,21 +7,24 @@ Template.postSubmit.events({
     var blogId = template.data.blog._id;
     var imageId = Session.get("imageId");
 
+    // tags est le tableau contenant les tags 
+    var tags = $(e.target).find('[name=tags]').val().split(',');
+    // il faudrait enlever les espaces avant et après pour chacun des tags
+
+
    
-    Meteor.call('postInsert', {body: body, blogId: blogId, imageId: imageId}, function(error, postId) {
+    Meteor.call('postInsert', {body: body, blogId: blogId, imageId: imageId, tags: tags}, function(error, postId) {
       if (error){
-        console.log("##############");
-        console.log(Posts.simpleSchema().namedContext().invalidKeys());
-        console.log("##############");
         throwError(error.reason);
       } else {
-
         imageId = Session.get("imageId");
         if (imageId) {
           delete Session.keys['imageId']
           Images.update({_id: imageId}, {$set: {'metadata.postId': postId}});
         }
-
+        if (tags) {
+          console.log("On ajout les tags coté client ou serveur?");
+        }
         Router.go('blogPage', {_id: post.blogId});
       };
     });
@@ -89,5 +92,38 @@ Template.postSubmit.helpers({
 });
 
 Template.postSubmit.rendered = function(){
-  this.$('.post-submit--textarea').focus() 
+  this.$('.post-submit--textarea').focus();
+
+
+    console.log('rendered here ')
+    var tags = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: [{name:"one"}, {name:"two"}, {name:"three"}]
+    });
+    tags.initialize();
+
+    //$('[data-role="tagsinput"]').tagsinput();
+
+    
+    $('.suggest').tagsinput({
+      typeaheadjs: {
+        name: 'tags',
+        displayKey: 'name',
+        valueKey: 'name',
+        source: tags.ttAdapter()
+      }
+    });
+
+    //$('#prefetch .typeahead').typeahead(null, {
+    //  // `ttAdapter` wraps the suggestion engine in an adapter that
+    //  // is compatible with the typeahead jQuery plugin
+    //  name: 'states',
+    //  source: function(){
+    //    return ['Mumbai', 'Amsterdam', 'Paris']
+    //  }
+    //
+    //});
+  
+
 }
