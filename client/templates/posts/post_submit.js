@@ -24,6 +24,7 @@ Template.postSubmit.events({
         }
         if (tags) {
           console.log("On ajout les tags coté client ou serveur?");
+          Meteor.call('tagsInsert', {blogId: blogId, tags: tags} );
         }
         Router.go('blogPage', {_id: post.blogId});
       };
