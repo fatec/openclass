@@ -1,14 +1,14 @@
 <template name="postSubmit">
     <div class="post-submit">
         <div class="page-title">Ajouter une publication</div>
-        <div class="post-item">
-            <div class="images">
-                {{#with image}}
+        <div class="post-item post-submit--wrapper">
+            <div class="images post-submit--image-wrapper">
+                           {{#with image}}
                     {{#if hasStored 'thumbs'}}
-                        <a href="{{url store='images'}}" target="_blank">
-                            <img src="{{url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail" />
-                        </a>
-                    {{else}}
+<!--                         <a href="{{url store='images'}}" target="_blank">
+ -->                            <img src="{{url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail" />
+<!--                         </a>
+ -->                    {{else}}
                         <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
                     {{/if}}
                 {{/with}}
@@ -20,16 +20,23 @@
                     </div>
                 {{else}}                
                     <label class="post-submit--input-file-wrapper">
-                        <input type="file" name="file" class="post-submit--input-file" />Ajouter une photo...
+                        <input type="file" name="file" accept="image/*" capture="camera" class="post-submit--input-file" /><span class="post-submit--input-file-icon"><i class="fa fa-camera"></i>
+</span><span class="post-submit--input-file-text"> Ajouter une photo...</span>
                     </label>
                 {{/if}}
                 <textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..." autofocus></textarea>
+                <input class="post-submit--input-tags" id="tags" type="text" placeholder="Ajoutez des tags..." data-provide="typeahead"/>
 
 
-                <div class="form-group">
+<!--                 <div class="form-group">
                     <label>Tags</label><br />
+<<<<<<< Updated upstream
                     <input name="tags" type="text" data-role="tagsinput" class="suggest"/>
                 </div>
+=======
+                    <input id="my-tags" type="text" placeholder="Add tags" data-provide="typeahead"/>
+                </div> -->
+>>>>>>> Stashed changes
             </form>
         </div>
     </div>

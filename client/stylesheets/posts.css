@@ -204,7 +204,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
-	margin-bottom:20px;
+	margin-bottom:30px;
 
 	border:solid 1px #206e98;
 	-webkit-border-radius: 3px;
@@ -251,6 +251,14 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 0.9em;
 
 	resize:vertical;
+}
+
+.post-submit--input-tags {
+	width:99%;
+	margin-top:20px;
+		
+	font-family: inherit;
+	font-size: 0.9em;
 }
 
 .post-submit--button-submit {
@@ -356,5 +364,5 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .posts-header--button-submit{
 	float:right;
-	margin:4px 0 0 20px;
+	margin:5px 0 0 20px;
 }
