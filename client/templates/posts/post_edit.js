@@ -3,7 +3,14 @@ Template.postEdit.events({
     e.preventDefault();
     
     var currentPostId = this._id;
-    var body = $(e.target).find('[name=body]').val()
+    var body = $(e.target).find('[name=body]').val();
+
+    // tags est le tableau contenant les tags 
+    var tags = $(e.target).find('[name=tags]').val().split(',');
+    console.log("tags "+tags);
+    // il faudrait enlever les espaces avant et après pour chacun des tags
+
+
     /*
     var postProperties = {
       body: $(e.target).find('[name=body]').val()
@@ -14,12 +21,12 @@ Template.postEdit.events({
 
 
     if (body==''){
-      Posts.update(currentPostId, {$unset: {body: ''}}, function(error) {
+      Posts.update(currentPostId, {$unset: {body: ''}, $set: {tags: tags}}, function(error) {
       if (error) {
         // display the error to the user
         //throwError(error.reason);
         console.log("#### unset ###");
-        console.log(Posts.simpleSchema().namedContext().invalidKeys());
+//        console.log(Posts.simpleSchema().namedContext().invalidKeys());
         console.log("##############");
         console.log(error.reason);
       } else {
@@ -27,12 +34,12 @@ Template.postEdit.events({
       }
     });      
     } else {
-      Posts.update(currentPostId, {$set: {body: body}}, function(error) {
+      Posts.update(currentPostId, {$set: {body: body, tags: tags}}, function(error) {
       if (error) {
         // display the error to the user
         //throwError(error.reason);
         console.log("#### set ####");
-        console.log(Posts.simpleSchema().namedContext().invalidKeys());
+ //       console.log(Posts.simpleSchema().namedContext().invalidKeys());
         console.log("##############");
         console.log(error.reason);
       } else {
@@ -94,3 +101,39 @@ Template.postEdit.helpers({
     return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
   }
 });
+
+Template.postEdit.rendered = function(){
+
+
+    console.log('rendered here ')
+    var tags = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: [{name:"one"}, {name:"two"}, {name:"three"}]
+    });
+    tags.initialize();
+
+    //$('[data-role="tagsinput"]').tagsinput();
+
+    
+    $('.suggest').tagsinput({
+      typeaheadjs: {
+        name: 'tags',
+        displayKey: 'name',
+        valueKey: 'name',
+        source: tags.ttAdapter()
+      }
+    });
+
+    //$('#prefetch .typeahead').typeahead(null, {
+    //  // `ttAdapter` wraps the suggestion engine in an adapter that
+    //  // is compatible with the typeahead jQuery plugin
+    //  name: 'states',
+    //  source: function(){
+    //    return ['Mumbai', 'Amsterdam', 'Paris']
+    //  }
+    //
+    //});
+  
+
+}
