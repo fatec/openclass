@@ -16,7 +16,7 @@ Template.postItem.events({
   'click .post-item--button-delete': function(e) {
     e.preventDefault();
 
-    if (confirm("Delete this post?")) {
+    if (confirm("Effacer la publication de "+this.author+"?")) {
       var currentPostId = this._id;
       var currentPost = Posts.findOne(currentPostId);
       Posts.remove(currentPostId);
