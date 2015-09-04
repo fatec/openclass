@@ -48,10 +48,10 @@ body {
 	cursor: pointer;
 }
 
-.button:active {
+/*.button:active {
 	background-color: grey;
 	border-color: grey;
-}
+}*/
 
 .button-primary {
 	border-color:#258240;
@@ -75,6 +75,17 @@ body {
  	background-image: linear-gradient(to bottom, #278642, #2f7242);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#278642, endColorstr=#2f7242);
 }
 
+.button-primary:hover {
+	background-color:#2f7242;
+	background-image: none;
+}
+
+.button-primary:active {
+	background-color:grey;
+	border-color:grey;
+	background-image: none;
+}
+
 .button-secondary {
 	border-color: #206e98;
 
@@ -87,7 +98,14 @@ body {
 }
 
 .button-secondary:hover {
-	background-color:#3270ae;
+	background-color:#3270AE;
+	background-image: none;
+}
+
+.button-secondary:active {
+	background-color:grey;
+	border-color:grey;
+	background-image: none;
 }
 
 .button-cancel {
@@ -106,14 +124,14 @@ body {
 }
 
 .button-cancel:hover {
- 	border-color: #b3b3b3;
+	background-color:#afafaf;
+	background-image: none;
+}
 
- 	background-color: #cdcdcd; background-image: -webkit-gradient(linear, left top, left bottom, from(#cdcdcd), to(#969696));
- 	background-image: -webkit-linear-gradient(top, #cdcdcd, #969696);
- 	background-image: -moz-linear-gradient(top, #cdcdcd, #969696);
- 	background-image: -ms-linear-gradient(top, #cdcdcd, #969696);
- 	background-image: -o-linear-gradient(top, #cdcdcd, #969696);
- 	background-image: linear-gradient(to bottom, #cdcdcd, #969696);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#cdcdcd, endColorstr=#969696);
+.button-cancel:active {
+	background-color:grey;
+	border-color:grey;
+	background-image: none;
 }
 
 .button-danger {
@@ -132,13 +150,14 @@ body {
 }
 
 .button-danger:hover {
- border-color: #731b24;
- background-color: #9c2530; background-image: -webkit-gradient(linear, left top, left bottom, from(#9c2530), to(#701b23));
- background-image: -webkit-linear-gradient(top, #9c2530, #701b23);
- background-image: -moz-linear-gradient(top, #9c2530, #701b23);
- background-image: -ms-linear-gradient(top, #9c2530, #701b23);
- background-image: -o-linear-gradient(top, #9c2530, #701b23);
- background-image: linear-gradient(to bottom, #9c2530, #701b23);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#9c2530, endColorstr=#701b23);
+	background-color:#992530;
+	background-image: none;
+}
+
+.button-danger:active {
+	background-color:grey;
+	border-color:grey;
+	background-image: none;
 }
 
 /* Page title header */
