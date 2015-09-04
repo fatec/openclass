@@ -12,5 +12,8 @@ Meteor.publish('postsEdit', function(postId) {
   return Posts.find({_id: postId});
 });	
 
+
+
 Meteor.publish("images", function(blogId){ return Images.find({'metadata.blogId': blogId}); });
 Meteor.publish("postImage", function(postId){ return Images.find({'metadata.postId': postId}); });
+Meteor.publish("tags", function(blogId){ return Tags.find({blogId: blogId}); });
