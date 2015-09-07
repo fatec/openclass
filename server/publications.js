@@ -12,7 +12,9 @@ Meteor.publish('postsEdit', function(postId) {
   return Posts.find({_id: postId});
 });	
 
-
+Meteor.publish('allUsers', function() {
+   return Meteor.users.find({}, {fields:{username:1}})
+ })
 
 Meteor.publish("images", function(blogId){ return Images.find({'metadata.blogId': blogId}); });
 Meteor.publish("postImage", function(postId){ return Images.find({'metadata.postId': postId}); });
