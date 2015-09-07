@@ -1,6 +1,8 @@
 <template name="accessDenied">
-    <div class="access-denied page jumbotron">
-        <h2>Accès refusé</h2>
-        <p>Vous ne pouvez pas accéder à cette page ! Veuillez vous connecter.</p>
+    <div class="access-denied">
+        <div class="page-title">Accès refusé !</div>
+        <div style="text-align:center"><br /><br />
+        	<p><a href="{{pathFor 'login'}}">Connectez-vous</a> si vous êtes un administrateur.</p>
+		</div>
     </div>
 </template>
