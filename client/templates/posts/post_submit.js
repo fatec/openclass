@@ -82,10 +82,10 @@ Template.postSubmit.helpers({
     var imageId = Session.get("imageId");
 
     if (imageId) {
-      console.log("On a récupéré l'image "+imageId);
+      //console.log("On a récupéré l'image "+imageId);
       return Images.findOne(imageId);
     } else {
-      console.log("On a pas d'image");
+      //console.log("On a pas d'image");
       return false
     }
     //return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
@@ -96,11 +96,19 @@ Template.postSubmit.rendered = function(){
   this.$('.post-submit--textarea').focus();
 
 
-    console.log('rendered here ')
+
+    proposedTags = Tags.find({blogId: this.data.blog._id});
+    //console.log("On veux proposer les tags du blog. Il y en a "+proposedTags.count());
+    processed_data = [];
+    proposedTags.forEach(function(row) {
+        //console.log(row.name)
+        processed_data.push({name: row.name});
+    });
+
     var tags = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: [{name:"one"}, {name:"two"}, {name:"three"}]
+      local: processed_data
     });
     tags.initialize();
 
@@ -116,10 +124,10 @@ Template.postSubmit.rendered = function(){
       }
     });
 
-    //$('#prefetch .typeahead').typeahead(null, {
+    //$('.typeahead').typeahead(null, {
     //  // `ttAdapter` wraps the suggestion engine in an adapter that
     //  // is compatible with the typeahead jQuery plugin
-    //  name: 'states',
+    //  name: 'tags',
     //  source: function(){
     //    return ['Mumbai', 'Amsterdam', 'Paris']
     //  }

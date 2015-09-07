@@ -20,6 +20,9 @@ Template.postItem.events({
       var currentPostId = this._id;
       var currentPost = Posts.findOne(currentPostId);
 
+
+      // TODO : faire le nettoyage de l'image et des tags dans un hook before remove...
+
       Meteor.call('tagsEdit', {blogId: this.blogId, newTags: [], oldTags: currentPost.tags}, function(error) {
         if (error) {
           console.log("#### Zut une erreur dans le delete post button ####");
