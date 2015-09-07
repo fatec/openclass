@@ -122,11 +122,13 @@ Template.postEdit.helpers({
 
 Template.postEdit.rendered = function(){
 
+    //proposedTags = Tags.find({blogId: this.data.blogId});
+    //console.log("On veux proposer les tags du blog. Il y en a "+proposedTags.count());
 
     var tags = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: Tags.find({blogId: this.data._id}).fetch()
+      local: Tags.find({blogId: this.data.blogId}).fetch()
     });
     tags.initialize();
 
