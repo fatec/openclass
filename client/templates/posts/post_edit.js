@@ -6,9 +6,13 @@ Template.postEdit.events({
     var body = $(e.target).find('[name=body]').val();
 
     // tags est le tableau contenant les tags 
-    var tags = $(e.target).find('[name=tags]').val().split(',');
-    console.log("tags "+tags);
+    var oldTags = this.tags;
+    console.log("anciens tags "+oldTags);
+    // tags est le tableau contenant les tags 
+    var newTags = $(e.target).find('[name=tags]').val().split(',');
+    console.log("nouveaux tags "+newTags);
     // il faudrait enlever les espaces avant et après pour chacun des tags
+
 
 
     /*
@@ -21,20 +25,27 @@ Template.postEdit.events({
 
 
     if (body==''){
-      Posts.update(currentPostId, {$unset: {body: ''}, $set: {tags: tags}}, function(error) {
+      Posts.update(currentPostId, {$unset: {body: ''}, $set: {tags: newTags}}, function(error) {
       if (error) {
         // display the error to the user
-        //throwError(error.reason);
+        throwError(error.reason);
         console.log("#### unset ###");
 //        console.log(Posts.simpleSchema().namedContext().invalidKeys());
         console.log("##############");
         console.log(error.reason);
       } else {
-        Router.go('blogPage', {_id: currentPost.blogId});
+        Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
+          if (error) {
+            console.log("#### tag update1 ####");
+            throwError(error.reason);
+          } else {
+            Router.go('blogPage', {_id: currentPost.blogId});
+          }
+       });
       }
-    });      
+    });
     } else {
-      Posts.update(currentPostId, {$set: {body: body, tags: tags}}, function(error) {
+      Posts.update(currentPostId, {$set: {body: body, tags: newTags}}, function(error) {
       if (error) {
         // display the error to the user
         //throwError(error.reason);
@@ -43,7 +54,14 @@ Template.postEdit.events({
         console.log("##############");
         console.log(error.reason);
       } else {
-        Router.go('blogPage', {_id: currentPost.blogId});
+        Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
+          if (error) {
+            console.log("#### tag update2 ####");
+            throwError(error.reason);
+          } else {
+            Router.go('blogPage', {_id: currentPost.blogId});
+          }
+       });
       }
     });
     }

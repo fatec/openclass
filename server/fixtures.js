@@ -87,24 +87,23 @@ if (Blogs.find().count() === 0) {
     tags: ["coool"]
   });
 
-  var tags = [
-    {
-      name: "coool",
-      blogId: firstBlogId,
-      nRefs: 1
-    },
-    {
-      name: "coool",
-      blogId: secondBlogId,
-      nRefs: 2
-    },
-    {
-      name: "c'est de la balle!!!",
-      blogs: secondBlogId,
-      nRefs: 1
-    }
-  ];
+  Tags.insert({
+    blogId: firstBlogId,
+    name: "coool",
+    nRefs: 1
+  });
 
+  Tags.insert({
+    blogId: secondBlogId,
+    name: "coool",
+    nRefs: 2
+  });
+
+  Tags.insert({
+    blogId: secondBlogId,
+    name: "c'est de la balle!!!",
+    nRefs: 1
+  });
 
 }
 
