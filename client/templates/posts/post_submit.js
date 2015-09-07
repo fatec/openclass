@@ -23,7 +23,7 @@ Template.postSubmit.events({
           Images.update({_id: imageId}, {$set: {'metadata.postId': postId}});
         }
         if (tags) {
-          console.log("On ajout les tags coté client ou serveur?");
+          //console.log("On ajout les tags coté client ou serveur?");
           Meteor.call('tagsInsert', {blogId: blogId, tags: tags} );
         }
         Router.go('blogPage', {_id: post.blogId});
@@ -96,7 +96,7 @@ Template.postSubmit.rendered = function(){
   this.$('.post-submit--textarea').focus();
 
 
-
+    /*
     proposedTags = Tags.find({blogId: this.data.blog._id});
     //console.log("On veux proposer les tags du blog. Il y en a "+proposedTags.count());
     processed_data = [];
@@ -104,11 +104,12 @@ Template.postSubmit.rendered = function(){
         //console.log(row.name)
         processed_data.push({name: row.name});
     });
+    */
 
     var tags = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: processed_data
+      local: Tags.find({blogId: this.data.blog._id}).fetch()
     });
     tags.initialize();
 

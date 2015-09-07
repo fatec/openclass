@@ -123,11 +123,10 @@ Template.postEdit.helpers({
 Template.postEdit.rendered = function(){
 
 
-    console.log('rendered here ')
     var tags = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: [{name:"one"}, {name:"two"}, {name:"three"}]
+      local: Tags.find({blogId: this.data._id}).fetch()
     });
     tags.initialize();
 
