@@ -1,6 +1,6 @@
 <template name="postItem">
   <div class="post-item">
-    {{#if currentUser}}
+    {{#if ownPost}}
       <a href="{{pathFor 'postEdit'}}">
         <div class="post-item--button post-item--button-edit">
           <img class="post-item--icon-button-edit" src="/img/icon-button-editpost.png" />

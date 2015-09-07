@@ -9,7 +9,11 @@ Template.postItem.helpers({
     });
     //strip off the extra ", " here
     return str.slice(0,-2);
-  }
+  },
+  ownPost: function() {
+    if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+        return true;
+    }  
 });
 
 Template.postItem.events({
