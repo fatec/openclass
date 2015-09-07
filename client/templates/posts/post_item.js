@@ -19,6 +19,15 @@ Template.postItem.events({
     if (confirm("Effacer la publication de "+this.author+"?")) {
       var currentPostId = this._id;
       var currentPost = Posts.findOne(currentPostId);
+
+      Meteor.call('tagsEdit', {blogId: this.blogId, newTags: [], oldTags: currentPost.tags}, function(error) {
+        if (error) {
+          console.log("#### Zut une erreur dans le delete post button ####");
+          throwError(error.reason);
+        }
+     });
+
+
       Posts.remove(currentPostId);
       // TODO : remove in one call :D
       image = Images.findOne({'metadata.postId': currentPostId});
