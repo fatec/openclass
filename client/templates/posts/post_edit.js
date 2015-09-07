@@ -141,7 +141,8 @@ Template.postEdit.rendered = function(){
         displayKey: 'name',
         valueKey: 'name',
         source: tags.ttAdapter()
-      }
+      }, 
+      confirmKeys: [32, 9, 13]
     });
 
     //$('#prefetch .typeahead').typeahead(null, {

@@ -65,7 +65,7 @@ if (Blogs.find().count() === 0) {
     submitted: new Date(now - 5 * 3600 * 1000),
     body: 'Un publication pour le blog 2',
     //tags: "coool, c'est de la balle!!!"
-    tags: ["coool", "c'est de la balle!!!"]
+    tags: ["coool", "Top!!!"]
   });
   Posts.insert({
     blogId: secondBlogId,
@@ -101,7 +101,7 @@ if (Blogs.find().count() === 0) {
 
   Tags.insert({
     blogId: secondBlogId,
-    name: "c'est de la balle!!!",
+    name: "Top!!!",
     nRefs: 1
   });
 

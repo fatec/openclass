@@ -95,7 +95,6 @@ Template.postSubmit.helpers({
 Template.postSubmit.rendered = function(){
   this.$('.post-submit--textarea').focus();
 
-
     /*
     proposedTags = Tags.find({blogId: this.data.blog._id});
     //console.log("On veux proposer les tags du blog. Il y en a "+proposedTags.count());
@@ -121,8 +120,9 @@ Template.postSubmit.rendered = function(){
         name: 'tags',
         displayKey: 'name',
         valueKey: 'name',
-        source: tags.ttAdapter()
-      }
+        source: tags.ttAdapter(),
+      }, 
+      confirmKeys: [32, 9, 13]
     });
 
     //$('.typeahead').typeahead(null, {
