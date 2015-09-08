@@ -48,6 +48,27 @@ Template.postSubmit.events({
 
     });
   },
+/*
+  'click #photo': function(event, template) {
+    $(".post-submit--input-file-button").hide();
+
+    var file = $(event.target).find('[type=file]');
+    console.log("On veux ajouter la photo "+Object.keys(file.context));
+    FS.Utility.eachFile(event, function(file) {
+      var newFile = new FS.File(file);
+      //newFile.metadata = {blogId: template.data.blog._id, timestamp: template.data.timestamp};
+      newFile.metadata = {blogId: template.data.blog._id};
+      // TODO On ajoute le timestamp a l'image pour retrouver l'image lorsque l'on envoie le formulaire et la lier au post
+
+      imageId = Images.insert(newFile, function (err, fileObj) {
+      //console.log("On ajoute l'image Id dans la session: "+imageId._id);
+      Session.set("imageId", imageId._id);
+        //console.log("Image Inserted with id "+fileObj._id);
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      });
+
+    });
+  },*/
     'click .post-submit--button-cancel': function(e, template) {
       e.preventDefault();
 
@@ -108,7 +129,7 @@ Template.postSubmit.rendered = function(){
     var tags = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: Tags.find({blogId: this.data.blog._id}).fetch()
+      local: Tags.find().fetch()
     });
     tags.initialize();
 

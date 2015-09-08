@@ -128,7 +128,7 @@ Template.postEdit.rendered = function(){
     var tags = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: Tags.find({blogId: this.data.blogId}).fetch()
+      local: Tags.find().fetch()
     });
     tags.initialize();
 
