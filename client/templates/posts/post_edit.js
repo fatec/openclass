@@ -142,8 +142,15 @@ Template.postEdit.rendered = function(){
         valueKey: 'name',
         source: tags.ttAdapter()
       }, 
-      confirmKeys: [32, 9, 13]
+      confirmKeys: [32, 9, 13, 44]
     });
+
+    $('.suggest').tagsinput('input').blur(function() {
+        $('.suggest').tagsinput('add', $(this).val());
+        $(this).val('');
+    })
+
+
 
     //$('#prefetch .typeahead').typeahead(null, {
     //  // `ttAdapter` wraps the suggestion engine in an adapter that
