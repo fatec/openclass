@@ -181,7 +181,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .post-item--text {
-	margin: 12px 0 0 0;
+	margin: 12px 0 5px 0;
 
 	font-size: 0.9em;
 	white-space: pre; /* render line breaks */
@@ -190,7 +190,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .post-item--tags {
 	display: inline-block;
-	margin: 15px 0 0px 0;
+	margin: 10px 0 0px 0;
 	padding:6px;
 
 	background-color: #3270ae;

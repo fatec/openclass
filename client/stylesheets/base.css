@@ -31,6 +31,14 @@ body {
 /*font-family: 'PT Sans', sans-serif;
 */}
 
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 .button {
 	display:inline-block;
 	height:36px;
@@ -195,6 +203,7 @@ body {
 	background-color: #3270ae;
 	
 	color:white;
+	text-decoration: none;
 }
 
 .list-group-item:active {
