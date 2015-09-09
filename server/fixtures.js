@@ -27,7 +27,7 @@ if (Blogs.find().count() === 0) {
 
   // Create example user
   var exampleId = Meteor.users.insert({
-    profile: { name: 'bee.box' }
+    profile: { name: 'beebox.one' }
   });
   var example = Meteor.users.findOne(exampleId);
 
