@@ -5,6 +5,15 @@ Meteor.publish('blogs', function() {
 Meteor.publish('posts', function(blogId) {
   check(blogId, String);
   return Posts.find({blogId: blogId});
+});
+
+Meteor.publish('postsTag', function(options) {
+  check(options, {
+  	blogId: String,
+  	tag: String 
+  });
+  console.log("Posts.find({blogId: '"+options.blogId+"', tags: {$in: ['"+options.tag+"']}});");
+  return Posts.find({blogId: options.blogId, tags: {$in: [options.tag]}});
 });	
 
 Meteor.publish('postsEdit', function(postId) {
