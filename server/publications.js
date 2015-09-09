@@ -12,7 +12,7 @@ Meteor.publish('postsTag', function(options) {
   	blogId: String,
   	tag: String 
   });
-  console.log("Posts.find({blogId: '"+options.blogId+"', tags: {$in: ['"+options.tag+"']}});");
+  //console.log("Posts.find({blogId: '"+options.blogId+"', tags: {$in: ['"+options.tag+"']}});");
   return Posts.find({blogId: options.blogId, tags: {$in: [options.tag]}});
 });	
 
