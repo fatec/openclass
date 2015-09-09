@@ -6,7 +6,7 @@ Template.login.events({
         var username = e.target.username.value;
         var password = e.target.password.value;
         
-        Meteor.loginWithPassword(username,password,function(err){
+        Meteor.loginWithPassword(username.toLowerCase(),password,function(err){
             if(!err) {
                 history.back();  
             }
