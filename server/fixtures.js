@@ -49,6 +49,12 @@ if (Blogs.find().count() === 0) {
     tags: ["exemple"]
   });
 
+  Tags.insert({
+    name: "exemple",
+    blogId: firstBlogId,
+    nRefs: 1
+  });
+
 }
 
 
