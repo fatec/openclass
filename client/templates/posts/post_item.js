@@ -2,14 +2,12 @@ Template.postItem.helpers({
   image: function() {
     return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
   },
-  commaSeparatedTags: function(){
-    var str = "";
-    _.each(this.tags, function (val) {
-    str += val + ", "; 
-    });
-    //strip off the extra ", " here
-    return str.slice(0,-2);
-  },
+  tags: function(){
+    if (this.tags.length > 1 || this.tags[0] != "")
+    return this.tags;
+  else
+    return 0;
+  },  
   ownPost: function() {
     if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
         return true;

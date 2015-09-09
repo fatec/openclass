@@ -33,7 +33,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--title {
-	margin:25px 0 0 0;
+	margin:25px 0 -2px 0;
 
 	color:grey;
 	font-size: 0.8em;
@@ -53,4 +53,18 @@ Authors : Vincent Widmer & Stéphane Morand;
 .menu--icon-title-tags {
 	margin: 0 5px -2px 5px;
 	width:18px;
+}
+
+.menu--tags {
+	display: inline-block;
+	width:auto;
+	margin: 5px 0 0px 0;
+	padding:6px;
+
+	background-color: #3270ae;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	color:white;
 }

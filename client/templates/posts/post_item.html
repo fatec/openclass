@@ -24,10 +24,10 @@
         </a>
       </div>
     {{/if}}
-	    <div class="post-item--text">{{body}}</div>    
-      <div class="post-item--tags">
-        {{commaSeparatedTags}}
-      </div>
+	    <div class="post-item--text">{{body}}</div>
+      {{#each tags}}
+        <div class="post-item--tags">{{this}}</div>
+      {{/each}}
   </div>
 </template>
 
