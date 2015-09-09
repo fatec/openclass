@@ -3,16 +3,6 @@
 if (Blogs.find().count() === 0) {
   var now = new Date().getTime();
 
-  // create two users
-  var stephId = Meteor.users.insert({
-    profile: { name: 'Stéphane Morand' }
-  });
-  var steph = Meteor.users.findOne(stephId);
-  var vincentId = Meteor.users.insert({
-    profile: { name: 'Vincent Widmer' }
-  });
-  var vincent = Meteor.users.findOne(vincentId);
-  
 // Create users
   var users = [
    // Create admin user
@@ -35,10 +25,9 @@ if (Blogs.find().count() === 0) {
 
   });
 
-
   // Create example user
   var exampleId = Meteor.users.insert({
-    profile: { name: 'bzzbox' }
+    profile: { name: 'bee.box' }
   });
   var example = Meteor.users.findOne(exampleId);
 
@@ -50,33 +39,6 @@ if (Blogs.find().count() === 0) {
     submitted: new Date(now - 7 * 3600 * 1000),
   });
 
-    var secondBlogId = Blogs.insert({
-    title: 'Autre exemple pour le developpement',
-    userId: example._id,
-    author: example.profile.name,
-    submitted: new Date(now - 7 * 3600 * 1000),
-  });
-
-
-  Posts.insert({
-    blogId: secondBlogId,
-    userId: example._id,
-    author: example.profile.name,
-    submitted: new Date(now - 5 * 3600 * 1000),
-    body: 'Un publication pour le blog 2',
-    //tags: "coool, c'est de la balle!!!"
-    tags: ["coool", "Top!!!"]
-  });
-  Posts.insert({
-    blogId: secondBlogId,
-    userId: example._id,
-    author: example.profile.name,
-    submitted: new Date(now - 5 * 3600 * 500),
-    body: 'Encore une autre publication pour le blog 2',
-    //tags: "cool"
-    tags: ["coool"]
-  });
-
   Posts.insert({
     blogId: firstBlogId,
     userId: example._id,
@@ -84,25 +46,7 @@ if (Blogs.find().count() === 0) {
     submitted: new Date(now - 5 * 3600 * 1000),
     body: 'Voici votre première publication !',
     //tags: "coool"
-    tags: ["coool"]
-  });
-
-  Tags.insert({
-    blogId: firstBlogId,
-    name: "coool",
-    nRefs: 1
-  });
-
-  Tags.insert({
-    blogId: secondBlogId,
-    name: "coool",
-    nRefs: 2
-  });
-
-  Tags.insert({
-    blogId: secondBlogId,
-    name: "Top!!!",
-    nRefs: 1
+    tags: ["exemple"]
   });
 
 }
