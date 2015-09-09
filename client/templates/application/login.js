@@ -8,7 +8,7 @@ Template.login.events({
         
         Meteor.loginWithPassword(username.toLowerCase(),password,function(err){
             if(!err) {
-                history.back();  
+                Router.go('blogsList');
             }
             else
             {      
@@ -22,7 +22,7 @@ Template.login.events({
     },    
     'click .login--button-cancel': function(e) {
         e.preventDefault();
-        history.back();  
+        Router.go('blogsList');
     }
 });
 

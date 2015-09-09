@@ -8,7 +8,7 @@ Template.register.events({
   
         Accounts.createUser({username:username.toLowerCase(),password:password},function(err){
             if(!err) {
-                history.back();  
+                Router.go('blogsList');
             }
             else {
                 console.log(err);
@@ -21,7 +21,7 @@ Template.register.events({
     },        
     'click .register--button-cancel': function(e) {
         e.preventDefault();
-        history.back();  
+        Router.go('blogsList');
     }
 });
 
