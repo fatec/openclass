@@ -21,6 +21,6 @@ mrt:jquery-imagesloaded
 accounts-ui-unstyled
 alanning:roles
 msavin:mongol
-ajduke:bootstrap-tagsinput
 fortawesome:fontawesome
 sergeyt:typeahead
+smallhacks:bootstrap-tagsinput-custom
