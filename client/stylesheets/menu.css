@@ -15,7 +15,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu a:visited {
 	text-decoration: none; 
-	color:inherit; 
 }
 
 .menu--link-all-posts {
@@ -66,5 +65,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 
+	color:white;
+}
+
+.menu--tags a:visited {
 	color:white;
 }

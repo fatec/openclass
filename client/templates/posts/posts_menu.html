@@ -16,9 +16,8 @@
 
 			<ul>
 	          {{#each tags}}
-	          	<li class="menu--tags">
-	        	  	<a href="{{pathFor 'blogPageTag' _id=this.blogId tag=this.name}}">{{name}} ({{nRefs}})</a>
-	            </li><br />
+	        	  	<a class="menu--tags" href="{{pathFor 'blogPageTag' _id=this.blogId tag=this.name}}">{{name}} ({{nRefs}})</a>
+	            <br />
 	          {{/each}}
 			</ul>
 		</div>
