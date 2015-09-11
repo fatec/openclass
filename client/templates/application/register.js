@@ -6,7 +6,7 @@ Template.register.events({
         var username = event.target.username.value;
         var password = event.target.password.value;
   
-        Accounts.createUser({username:username.toLowerCase(),password:password},function(err){
+        Accounts.createUser({username:username.toLowerCase().trim(),password:password},function(err){
             if(!err) {
                 Router.go('blogsList');
             }
