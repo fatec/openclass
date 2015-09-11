@@ -2,6 +2,8 @@
   <div class="blog-page">
     <div class="blog-page--wrapper">
       <div class="menu">{{> postsMenu}}</div>
+      
+      <button class="button button-send-to-api" href="#">Envoyer le journal</button>
       <div class="blog-page--main">  
         {{#if posts.count}}
           {{#each posts}}

@@ -14,3 +14,11 @@ Template.blogPage.helpers({
     return Posts.find().count();
   }
 });
+
+Template.blogPage.events({
+	'click .button-send-to-api': function(e, template) {
+      e.preventDefault();
+      //console.log("On clique sur le bouton "+template.data._id)
+      Meteor.call('sendBlog', {blogId: template.data._id} );
+    }
+});
