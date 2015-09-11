@@ -99,6 +99,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin-right:auto;
 
 	border: 1px solid #e2e3e7;
+	border-radius: 3px;	
 
 	background-color: white;
 }
@@ -177,7 +178,21 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .post-item--image {
-	max-width:100%;
+	max-width:100%;	
+	display: block;
+	padding: 4px;
+	margin-bottom: 20px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: border .2s ease-in-out;
+	-o-transition: border .2s ease-in-out;
+	transition: border .2s ease-in-out;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .post-item--text {
