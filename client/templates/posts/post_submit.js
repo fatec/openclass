@@ -20,7 +20,7 @@ Template.postSubmit.events({
         imageId = Session.get("imageId");
         if (imageId) {
           delete Session.keys['imageId']
-          Images.update({_id: imageId}, {$set: {'metadata.postId': postId}});
+          Images.update({_id: imageId}, {$set: {'metadata.postId': postId, 'metadata.blogId': blogId}});
         }
         if (tags) {
           //console.log("On ajout les tags coté client ou serveur?");
