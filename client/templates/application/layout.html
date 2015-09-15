@@ -1,13 +1,18 @@
 <template name="layout">
-	<div class="layout">
-		<div class="layout--header">
-			{{> yield "layout--header"}}
-		</div>
-		<div class="layout--main">
-			{{> yield "layout--main"}}
-		</div>
-		<div class="layout--footer">
-			{{> yield "layout--footer"}}
-		</div>
+	<div id="slideout-menu">
+		{{> yield "layout--menu"}}
+	</div>
+    <div id="content">
+		<div class="layout">	
+			<div class="layout--header">
+				{{> yield "layout--header"}}
+			</div>
+			<div class="layout--main">
+				{{> yield "layout--main"}}
+			</div>
+			<div class="layout--footer">
+				{{> yield "layout--footer"}}
+			</div>
+	  	</div>
   	</div>
 </template>

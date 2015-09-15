@@ -208,7 +208,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin: 10px 0 0px 0;
 	padding:6px;
 
-	background-color: #3270ae;
+	background-color: #2A90C6;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -351,7 +351,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 /* ----- posts-header template ----- */
 
-.posts-header--blog-title {
+/*.posts-header--blog-title2 {
 	display: inline-block;
 	margin-left: 10px;
 	height:46px;
@@ -359,9 +359,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 	vertical-align: middle;
 	line-height:47px;
 	color: #7e7e7e;
-}
+}*/
 
-.posts-header--logout-button {
+/*.posts-header--logout-button {
 	float:right;
 
 	line-height: 48px;
@@ -382,8 +382,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .posts-header--login-button:hover {
 	text-decoration: underline;;
-}
-
+}*/
+/*
 .posts-header--register-button {
 	float:right;
 
@@ -393,7 +393,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .posts-header--register-button:hover {
 	text-decoration: underline;;
-}
+}*/
 
 .posts-header--button-submit{
 	float:right;

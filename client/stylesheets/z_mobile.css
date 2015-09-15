@@ -102,6 +102,10 @@ margin:5px 5px 0 0;
 
 }
 
+.header--button-menu-wrapper {
+	display:inline-block;
+}
+
 .logout--wrapper{
 	width:100%;
 }

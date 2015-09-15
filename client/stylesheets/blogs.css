@@ -71,7 +71,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	width: 100%;
 }
 
-.blog-page-main {
+.blog-page-2-main {
 	width:450px;
 	display: table-cell;
 	padding: 15px 0px 20px 0px;
@@ -125,7 +125,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 /* ----- posts-header template ----- */
 
-.blogs-header--logout-button {
+/*.blogs-header--logout-button {
 	float:right;
 
 	line-height: 48px;
@@ -157,7 +157,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .blogs-header--register-button:hover {
 	text-decoration: underline;;
-}
+}*/
 
 
 /* ----- blogs-list template ----- */

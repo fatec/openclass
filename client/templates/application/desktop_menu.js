@@ -1,4 +1,4 @@
-Template.postsMenu.helpers({
+Template.desktopMenu.helpers({
 	postCount: function() { // return the number of posts
 		return Posts.find().count();
 	},

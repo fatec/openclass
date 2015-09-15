@@ -37,22 +37,23 @@ Authors : Vincent Widmer & Stéphane Morand;
 	color:grey;
 	font-size: 0.8em;
 	font-weight: 500;
-}
+/*	border:solid 1px red;
+*/}
 
-.menu--icon-title-authors {
+/*.menu--icon-title-authors {
 	margin: 0 5px -2px 5px;
 	width:22px;
-}
+}*/
 
 .menu--icon-title-categories {
 	margin: 0 5px -2px 5px;
 	width:18px;
 }
 
-.menu--icon-title-tags {
+/*.menu--icon-title-tags {
 	margin: 0 5px -2px 5px;
 	width:18px;
-}
+}*/
 
 .menu--tags {
 	display: inline-block;
@@ -60,7 +61,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin: 5px 0 0px 0;
 	padding:6px;
 
-	background-color: #3270ae;
+	background-color: #2A90C6;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
