@@ -9,6 +9,13 @@
   });
 
   Template.layout.events({
+  // Speedup focus on input for mobile devices
+  'touchend input': function(e) {
+    $(e.target).focus();
+  },
+  'touchend textarea': function(e) {
+    $(e.target).focus();
+  },  
     'click .header--button-menu-wrapper': function(e) {
         e.preventDefault();
         slideout.toggle();

@@ -166,6 +166,4 @@ Template.postSubmit.rendered = function(){
     //  }
     //
     //});
-  
-
 }
