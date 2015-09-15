@@ -25,16 +25,8 @@
 	width: 60%;
 	margin-left:auto;
 	margin-right:auto;	
-}
 
-.login--button-submit {
-	float:right;
-	margin:0px -7px 0 15px;
-}
-
-.login--button-cancel {
-	float:right;
-	margin-top:0px;
+	text-align: center;
 }
 
 
@@ -58,16 +50,8 @@
 	width: 60%;
 	margin-left:auto;
 	margin-right:auto;	
-}
 
-.logout--button-confirm {
-	float:right;
-	margin:0px -7px 0 15px;
-}
-
-.logout--button-cancel {
-	float:right;
-	margin-top:0px;
+	text-align: center;
 }
 
 
@@ -97,16 +81,8 @@
 	width: 60%;
 	margin-left:auto;
 	margin-right:auto;	
-}
 
-.register--button-submit {
-	float:right;
-	margin:0px -7px 0 15px;
-}
-
-.register--button-cancel {
-	float:right;
-	margin-top:0px;
+	text-align: center;
 }
 
 

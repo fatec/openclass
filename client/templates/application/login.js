@@ -19,10 +19,6 @@ Template.login.events({
     'click .login--button-submit': function(e) {
         e.preventDefault();
         $('#login--form').submit();
-    },    
-    'click .login--button-cancel': function(e) {
-        e.preventDefault();
-        Router.go('blogsList');
     }
 });
 

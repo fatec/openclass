@@ -40,20 +40,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 /*	border:solid 1px red;
 */}
 
-/*.menu--icon-title-authors {
-	margin: 0 5px -2px 5px;
-	width:22px;
-}*/
-
-.menu--icon-title-categories {
-	margin: 0 5px -2px 5px;
-	width:18px;
-}
-
-/*.menu--icon-title-tags {
-	margin: 0 5px -2px 5px;
-	width:18px;
-}*/
 
 .menu--tags {
 	display: inline-block;

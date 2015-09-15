@@ -3,9 +3,5 @@ Template.logout.events({
 		e.preventDefault();
     	Meteor.logout(); 
         Router.go('blogsList');
-  	},
-    'click .logout--button-cancel': function(e) {
-    	e.preventDefault();
-        Router.go('blogsList');
   	}
 });

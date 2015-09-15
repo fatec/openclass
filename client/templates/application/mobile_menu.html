@@ -1,17 +1,17 @@
 <template name="mobileMenu">
-	<div class="menu2">
+	<div class="mobileMenu">
 		<a class="menu--link-all-posts" href="{{pathFor 'blogPage'}}" style="color:#3270ae;font-weight:600;">Toutes les publications ({{postCount}})</a>
 		<a class="menu--link-last-posts" href="{{pathFor 'blogPage'}}">Les dernières publications</a>
 		<div class="menu--title menu--title-authors">
-			<img class="menu--icon-title-authors" src="/img/icon-menu-authors.png" />
-			<span>AUTEURS</span>
+		<i class="fa fa-lg fa-users"></i>
+			<span style="">AUTEURS</span>
 		</div>
 		<div class="menu--title menu--title-categories">
-			<img class="menu--icon-title-categories" src="/img/icon-menu-categories.png" />
+			<i class="fa fa-lg fa-list"></i>
 			<span>CATEGORIES</span>
 		</div>
 		<div class="menu--title menu--title-tags">
-			<img class="menu--icon-title-tags" src="/img/icon-menu-tags.png" />
+			<i class="fa fa-lg fa-tags"></i>
 			<span>TAGS</span><br /><br />
 
 			<ul>

@@ -4,10 +4,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 */
 
 
-/*.blog-link-title {
-	line-height: 25px;	
-	text-decoration: none;
-}*/
 
 /* ----- blog-edit template ----- */
 
@@ -122,42 +118,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 	float:right;
 	margin-top:0px;
 }
-
-/* ----- posts-header template ----- */
-
-/*.blogs-header--logout-button {
-	float:right;
-
-	line-height: 48px;
-	text-decoration: none;
-}
-
-.blogs-header--logout-button:hover {
-	text-decoration: underline;;
-}
-
-.blogs-header--login-button {
-	float:right;
-	margin:0 0 0 20px;
-
-	line-height: 48px;
-	text-decoration: none;
-}
-
-.blogs-header--login-button:hover {
-	text-decoration: underline;;
-}
-
-.blogs-header--register-button {
-	float:right;
-
-	line-height: 48px;
-	text-decoration: none;	
-}
-
-.blogs-header--register-button:hover {
-	text-decoration: underline;;
-}*/
 
 
 /* ----- blogs-list template ----- */

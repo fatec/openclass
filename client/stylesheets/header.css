@@ -71,29 +71,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 	line-height:46px;
 }
 
-/*.header--button-back {
-	float:left;
-	margin-top:9px;
-	width:16px;
-	margin-right:1px;
-	vertical-align: middle;
-
-	border: solid 0px red;
-}*/
-
-.header--buton-back-text {
-	float:left;
-	margin:2px 0 0 5px;
-	vertical-align: middle;
-
-
-	text-decoration: none;
-	color:#3270ae;
-	font-size:1em;
-	border:solid 0px green;
-
-}
-
 .header--title {
 	float:left;
 	margin:2px 0 0 5px;

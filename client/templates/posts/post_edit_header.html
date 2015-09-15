@@ -2,9 +2,9 @@
 	<div class="post-edit--header">
 	    <div class="header">
 	    	<div class="header--wrapper">
-		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogPage' _id=blog._id}}">
-		      		<img class="header--button-back" src="/img/icon-button-back.png" />
-		        	<div class="posts-header--blog-title">{{shortIt blog.title 20}}</div>  
+	    		<a class="header--button-back-wrapper" href="{{pathFor 'blogPage' _id=blog._id}}">
+	    			<i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i>
+	    			<span class="header--button-back-text">Retour</span>
 		        </a>
 					{{#if currentUser}}
 					<a href="{{pathFor 'postSubmit'}}">

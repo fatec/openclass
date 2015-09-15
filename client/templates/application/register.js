@@ -18,10 +18,6 @@ Template.register.events({
     'click .register--button-submit': function(e) {
         e.preventDefault();
         $('#register--form').submit();
-    },        
-    'click .register--button-cancel': function(e) {
-        e.preventDefault();
-        Router.go('blogsList');
     }
 });
 
