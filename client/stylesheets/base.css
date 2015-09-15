@@ -24,7 +24,7 @@ html {
 }
 
 body {
-	background-color:#f1f1f1;
+	background-color:#fafafa;
 }
 
 a {
@@ -33,6 +33,12 @@ a {
 
 a:hover {
 	text-decoration: underline;
+}
+
+.fixed_to_absolute{
+  position:absolute !important;
+  background-color: blue;
+  border:solid 5px red;
 }
 
 .button {

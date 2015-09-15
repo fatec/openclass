@@ -9,13 +9,13 @@ Authors : Vincent Widmer & Stéphane Morand;
 	height:46px;
 	width:100%;
 
-	border-bottom: solid 1px #cfdde4;
+	border-bottom: solid 1px #e3e3e3;
 
 	background-color: #77b3d4;
 	background-color: white;
 
 	opacity: 0.9;
-	box-shadow:0 0 5px 0 #cfcfcf;
+	box-shadow:0 0 2px 0 #cfcfcf;
 	line-height: 47px;
 }
 
