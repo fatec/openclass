@@ -23,10 +23,16 @@ Authors : Vincent Widmer & Stéphane Morand;
 	border:solid 1px red;
 }
 
+.post-edit--wrapper{
+	margin-top: 0px;
+	background-color: #f6f6f6;
+	border-color: #f6f6f6;
+}
+
 .post-submit--wrapper{
 	margin-top: 0px;
-	background-color: #f1f1f1;
-	border-color: #f1f1f1;
+	background-color: #f6f6f6;
+	border-color: #f6f6f6;
 }
 
 .post-item--image{
@@ -42,18 +48,18 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .post-submit--image {
 	width: 60%;
-	text-align: center;
-	display:inline;
+/*	text-align: center;
+	display:inline;*/
 
 }
 
-.post-submit--input-file-icon {
+/*.post-submit--input-file-icon {
 	display:inline;
 }
 
 .post-submit--input-file-text {
 	display:inline;
-}
+}*/
 
 .page-title {
 font-size:1.5em;
@@ -73,9 +79,9 @@ display:none;
 	font-weight: 800;
 }
 
-.posts-header--button-text {
+/*.posts-header--button-text {
 	display:none;
-}
+}*/
 
 .posts-header--logout-button {
 	font-size:0.9em;
@@ -94,6 +100,14 @@ display:none;
 
 .header--logo {
 	margin-left:5px;
+}
+
+.post-submit--button-submit {
+	width: 100%;
+}
+
+.post-edit--button-submit {
+	width: 100%;
 }
 
 .header--button-submit-post {

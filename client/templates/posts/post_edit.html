@@ -2,30 +2,37 @@
     <div class="post-edit">
         <div class="page-title">Modifier la publication</div>
         <form name="post-edit--form" id="post-edit--form">
-            <div class="post-item">
-                {{#if image}}
-                    {{#if image.hasStored 'thumbs'}}
-                        {{#if image.isUploaded}}
-                            <a class="post-item--image" href="{{image.url store='images'}}" target="_blank">
-                                <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image thumbnail" />
-                            </a>
-                            <div class="post-edit--button-delete-image-wrapper">
-                                <button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
-                            </div>
+            <div class="post-item post-edit--wrapper">
+                <div class="post-edit--image-wrapper">
+                    {{#if image}}
+                        {{#if image.hasStored 'thumbs'}}
+                            {{#if image.isUploaded}}
+                                <a href="{{image.url store='images'}}" target="_blank">
+                                    <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image" />
+                                </a>
+                                <div class="post-edit--button-delete-image-wrapper">
+                                    <button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
+                                </div>
+                            {{/if}}
+                        {{else}}
+                            <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
                         {{/if}}
                     {{else}}
-                        <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
+                        <label class="post-edit--input-file-wrapper">
+                            <input type="file" name="file" class="post-edit--input-file" />Ajouter une photo...
+                        </label>
                     {{/if}}
-                {{else}}
-                    <label class="post-edit--input-file-wrapper">
-                        <input type="file" name="file" class="post-edit--input-file" />Ajouter une photo...
-                    </label>
-                {{/if}}
+                </div>
                 <textarea name="body" id="body" class="post-edit--textarea" autofocus>{{body}}</textarea>
 
                     <br /><br />
                     <input name="tags" type="text" value={{tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/>
             </div>
         </form>
+        <a href="{{pathFor 'postSubmit'}}">
+            <button class="button button-primary post-edit--button-submit">
+                <span><i class="fa fa-paper-plane"></i></span> <span class="posts-header--button-text"> Modifier</span>
+            </button>
+        </a>         
     </div>
 </template>
