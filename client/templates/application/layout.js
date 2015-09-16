@@ -4,7 +4,8 @@
       'panel': template.$('#content').get(0),
       'menu': template.$('#slideout-menu').get(0),
       'padding': 256,
-      'tolerance': 70
+      'tolerance': 70,
+      'touch': false
     });
   });
 

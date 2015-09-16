@@ -69,13 +69,10 @@ Template.postSubmit.events({
 
     });
   },*/
-    'click .post-submit--button-cancel': function(e, template) {
-      e.preventDefault();
-
-      Meteor.call('removeGhostImages');
-
-      Router.go('blogPage', {_id: template.data.blog._id});
-    },
+    'click .post-submit--button-submit': function(e) {
+    e.preventDefault();
+    $('#post-submit--form').submit();
+  },
   'click .post-submit--button-delete-image': function(e) {
     e.preventDefault();
     if (confirm("Effacer l'image?")) {

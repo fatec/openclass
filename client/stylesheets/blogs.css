@@ -7,7 +7,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 /* ----- blog-edit template ----- */
 
-.blog-edit--wrapper {
+/*.blog-edit--wrapper {
 	margin:0 0 20px 0;
 	padding: 20px 7px 20px 7px;
 	width: 60%;
@@ -18,7 +18,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 	background-color: white;
 	text-align:left;
-}
+}*/
 
 .blog-edit--input {
 	width: 98%;
@@ -26,30 +26,33 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 1em;
 }
 
-.blog-edit--button-wrapper {
+/*.blog-edit--button-wrapper {
 	width: 60%;
 	margin-left:auto;
 	margin-right:auto;	
+}*/
+
+.blog-edit--chapter-wrapper {
+	padding:10px;
+	background-color: white;
+	border: 1px solid #e8e8e8;
+	border-radius: 3px;	
 }
 
-.blog-edit--button-submit {
-	float:right;
-	margin:0px -7px 0 15px;
-/*	width:170px;
-*/}
 
-.blog-edit--button-cancel {
+
+/*.blog-edit--button-cancel {
 	float:right;
 	margin-top:0px;
-}
+}*/
 
 .blog-edit--button-delete-wrapper {
 	text-align: center;
 }
 
-.blog-edit--button-delete {
+/*.blog-edit--button-delete {
 	margin-bottom: 20px;
-}
+}*/
 
 
 /* ----- blog-item template ----- */

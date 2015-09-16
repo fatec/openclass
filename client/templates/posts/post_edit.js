@@ -67,13 +67,9 @@ Template.postEdit.events({
     }
 
   },
-  // 'click .post-edit--button-edit': function(e) {
-  //   e.preventDefault();
-  //   $('#post-edit--form').submit();
-  // },  
-  'click .post-edit--button-cancel': function(e) {
+    'click .post-edit--button-submit': function(e) {
     e.preventDefault();
-    history.back();  
+    $('#post-edit--form').submit();
   },
   'click .post-edit--button-delete-image': function(e) {
     e.preventDefault();
@@ -117,6 +113,12 @@ Template.postEdit.events({
 Template.postEdit.helpers({
   image: function() {
     return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
+  },
+  blog: function() {
+    var currentPostId = this._id;
+    var currentPost = Posts.findOne(currentPostId);
+    var blogId = Blogs.findOne(currentPost.blogId);
+    return blogId
   }
 });
 

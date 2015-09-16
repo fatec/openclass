@@ -1,23 +1,41 @@
 <template name="blogEdit">
 	<div class="blog-edit">
-		<div class="page-title">Modifier le journal</div>
-		<div class="blog-edit--button-delete-wrapper">
-			<button class="button button-danger blog-edit--button-delete">Supprimer le journal</button>
-    	</div>
+	    <div class="blog-page--wrapper">
+      <div class="menu">{{> settingsMenu}}</div>
+		<div class="page-title">Paramètres du journal</div>
+		<div class="chapter-title" id="blog-edit--authors-settings">Gérer les auteurs</div>
+		<div class="blog-edit--chapter-wrapper">
+		<p><i>Liste des auteurs...</i></p><br />
+		</div>
+		<div class="chapter-title" id="blog-edit--categories-settings">Gérer les catégories</div>
+		<div class="blog-edit--chapter-wrapper">
+		<p><i>Liste des catégories...</i></p><br />
+		</div>		
+				<div class="chapter-title">Syncroniser le journal</div>
+		<div class="blog-edit--chapter-wrapper">
+		<p>Syncroniser le journal avec le cloud.</p><br />
+		      <button class="button button-primary button-send-to-api" href="#"><i class="fa fa-refresh"></i> <span>Syncroniser le journal</span></button><br /><br />
+		      <p>Dernière syncronisation : jamais (c'est normal, ça marche pas encore hein)</p>
+		 </div>
+		<div class="chapter-title">Renommer le journal</div>
+		<div class="blog-edit--chapter-wrapper">
+
     	<form id="blog-edit--form" class="blog-edit--form">		
-			<div class="blog-edit--wrapper">
     		    <label>Nom du journal</label><br />
-				<input name="title" id="title" type="text" value="{{title}}" class="blog-edit--input form-control" autofocus/>
+				<input name="title" id="title" type="text" value="{{title}}" class="blog-edit--input form-control" autofocus/><br /><br />
                 {{#if errorMessage}}
                     <div class="blog-edit--error">
                         <br /><span style="color:red;">{{errorMessage}}</span><br />
                     </div> 
                 {{/if}}  
-        	</div>				
-        	<div class="blog-edit--button-wrapper">
-				<button type="submit" class="button button-primary blog-edit--button-submit">Modifier le nom du journal</button>
-				<button class="button button-cancel blog-edit--button-cancel">Annuler</button>
-			</div> 
+				<button type="submit" class="button button-primary blog-edit--button-submit"><i class="fa fa-pencil"></i> Modifier le nom du journal</button>
 		</form>
+		</div>
+		<div class="chapter-title">Supprimer le journal</div>
+		<div class="blog-edit--chapter-wrapper">
+		<p>Vous pouvez supprimer ce journal et ses publications.</p><br />
+			<button class="button button-danger blog-edit--button-delete"><i class="fa fa-trash-o"></i> Supprimer le journal</button>
+		</div>
+	</div>
 	</div>
 </template>
