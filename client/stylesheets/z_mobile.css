@@ -79,9 +79,9 @@ display:none;
 	font-weight: 800;
 }
 
-/*.posts-header--button-text {
+.posts-header--button-text {
 	display:none;
-}*/
+}
 
 .posts-header--logout-button {
 	font-size:0.9em;
@@ -100,6 +100,15 @@ display:none;
 
 .header--logo {
 	margin-left:5px;
+}
+
+.truncate-text {
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
 }
 
 .post-submit--button-submit {
