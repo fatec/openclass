@@ -1,5 +1,5 @@
 Meteor.startup(function() {
-
+/*
 var net = Npm.require('net');
 var fs = Npm.require('fs');
 var buffer = Npm.require('buffer');
@@ -29,7 +29,7 @@ server.listen(PORT, HOST, function() {
         console.log('connection made...\n')
     })
 });
-
+*/
 
 
 
