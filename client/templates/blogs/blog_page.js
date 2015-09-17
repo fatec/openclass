@@ -1,6 +1,6 @@
 Template.blogPage.helpers({
   posts: function() {
-    if (Router.current().params.query.last_posts == "true")
+    if (Router.current().params.query.sort_posts == "last")
           return Posts.find({blogId: this._id}, {sort: {submitted: -1}});
     else if (Router.current().params.query.tags)
         return Posts.find({tags: {$in: [Router.current().params.query.tags]}});

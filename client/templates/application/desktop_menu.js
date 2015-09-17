@@ -6,7 +6,8 @@ Template.desktopMenu.helpers({
 		return Tags.find({}, {sort: {nRefs: -1}});
 	},
 	tagQuery: function() {
-		return "tags="+this.name;
+		return "sort_posts="+Router.current().params.query.sort_posts+"&tags="+this.name;
+		//return "tags="+this.name;
 	},
 	'selectedTagClass': function(){
 		var tagId = this.name;
@@ -14,7 +15,19 @@ Template.desktopMenu.helpers({
 	    if(tagId == selectedTag){
 	        return "menu--tag-selected"
 	    }
-	}
+	},
+	'selectedAllPostsClass': function(){
+	    var sortPosts = Session.get('sortPosts');
+	    if(sortPosts != "last"){
+	        return "menu--link-sort-selected"
+	    }
+	},
+	'selectedLastPostsClass': function(){
+    	var sortPosts = Session.get('sortPosts');
+    	if(sortPosts == "last"){
+        	return "menu--link-sort-selected"
+    	}
+	} 
 });
 
   Template.desktopMenu.events({
