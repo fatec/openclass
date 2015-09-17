@@ -1,7 +1,7 @@
 <template name="desktopMenu">
 	<div class="menu">
 		<a class="menu--link-all-posts" href="{{pathFor 'blogPage'}}" style="color:#3270ae;font-weight:600;">Toutes les publications ({{postCount}})</a>
-		<a class="menu--link-last-posts" href="{{pathFor 'blogPage'}}">Les dernières publications</a>
+		<a class="menu--link-last-posts" href="{{pathFor 'blogPage' _id=this._id query='last_posts=true'}}">Les dernières publications</a>
 		<div class="menu--title menu--title-authors">
 		<i class="fa fa-lg fa-users"></i>
 			<span style="">AUTEURS</span>

@@ -4,11 +4,7 @@ Meteor.publish('blogs', function() {
 
 Meteor.publish('posts', function(blogId) {
   check(blogId, String);
-  return Posts.find({blogId: blogId});
-});
-
-Meteor.publish('posts_by_tag', function (_tag) {
-  return Posts.find({tags: {$in: [_tag]}})
+  return Posts.find({blogId: blogId}, {sort: {submitted: 1}});
 });
 
 Meteor.publish('postsEdit', function(postId) {
