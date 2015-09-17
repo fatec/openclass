@@ -13,12 +13,10 @@
 		<div class="menu--title menu--title-tags">
 			<i class="fa fa-lg fa-tags"></i>
 			<span>TAGS</span><br /><br />
-
 			<ul>
-	          {{#each tags}}
-	        	  	<a class="menu--tags" href="{{pathFor 'blogPage' _id=this.blogId query='tags=' hash=name}}">{{name}} ({{nRefs}})</a>
-	            <br />
-	          {{/each}}
+				{{#each tags}}
+					<a class="menu--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=tagQuery}}">{{name}} ({{nRefs}})</a><br />
+				{{/each}}
 			</ul>
 		</div>
 	</div>

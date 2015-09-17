@@ -218,6 +218,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 0.8em;
 }
 
+.post-item--tag-selected {
+	background-color: #28527c;
+}
+
 
 /* ----- post-submit template ----- */
 

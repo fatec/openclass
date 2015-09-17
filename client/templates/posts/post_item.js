@@ -11,7 +11,17 @@ Template.postItem.helpers({
   ownPost: function() {
     if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
         return true;
-    }  
+    },
+  tagQuery: function() {
+    return "tags="+this.toString();
+  },    
+  'selectedTagClass': function(){
+    var tagId = this.toString();
+    var selectedTag = Session.get('selectedTag');
+    if(tagId == selectedTag){
+      return "post-item--tag-selected"
+    }
+  }  
 });
 
 Template.postItem.events({

@@ -58,3 +58,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 .menu--tags a:visited {
 	color:white;
 }
+
+.menu--tag-selected {
+	background-color: #28527c;
+}

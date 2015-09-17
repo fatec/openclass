@@ -29,7 +29,7 @@
     {{/if}}
 	    <div class="post-item--text">{{body}}</div>
       {{#each tags}}
-        <div class="post-item--tags">{{this}}</div>
+        <a class="post-item--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=../blogId query=tagQuery}}">{{this}}</a>
       {{/each}}
   </div>
 </template>
