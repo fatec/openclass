@@ -114,6 +114,9 @@ Template.postSubmit.helpers({
 Template.postSubmit.rendered = function(){
   this.$('.post-submit--textarea').focus();
 
+  // Textarea autosize
+  $('.post-submit--textarea').autosize()
+
     /*
     proposedTags = Tags.find({blogId: this.data.blog._id});
     //console.log("On veux proposer les tags du blog. Il y en a "+proposedTags.count());

@@ -33,6 +33,7 @@ cfs:worker@0.1.4
 check@1.0.5
 chriswessels:slideout@0.1.9_2
 coffeescript@1.0.6
+copleykj:jquery-autosize@1.17.8
 copleykj:livestamp@1.1.7
 dburles:mongo-collection-instances@0.3.4
 ddp@1.1.0

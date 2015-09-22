@@ -75,7 +75,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .post-edit--textarea {
 	width:99%;
-	height:80px;
+	height:50px;
 
 	font-family: inherit;
 	font-size: 0.9em;
@@ -282,8 +282,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .post-submit--textarea {
+
 	width:99%;
-	height:80px;
+	height:50px;
 
 	font-family: inherit;
 	font-size: 0.9em;

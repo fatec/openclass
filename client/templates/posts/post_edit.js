@@ -124,6 +124,9 @@ Template.postEdit.helpers({
 
 Template.postEdit.rendered = function(){
 
+    // Textarea autosize
+  $('.post-edit--textarea').autosize()
+
     //proposedTags = Tags.find({blogId: this.data.blogId});
     //console.log("On veux proposer les tags du blog. Il y en a "+proposedTags.count());
 
