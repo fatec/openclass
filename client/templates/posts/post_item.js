@@ -14,7 +14,10 @@ Template.postItem.helpers({
     },
   tagQuery: function() {
     return "tags="+this.toString();
-  },    
+  },   
+  authorQuery: function() {
+    return "author="+this.author.toString();
+  },     
   'selectedTagClass': function(){
     var tagId = this.toString();
     var selectedTag = Session.get('selectedTag');

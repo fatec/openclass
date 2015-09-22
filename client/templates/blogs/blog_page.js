@@ -8,6 +8,8 @@ Template.blogPage.helpers({
       sort = 1;
     if (Router.current().params.query.tags)
       return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {submitted: sort}});
+    else if (Router.current().params.query.author)
+      return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {submitted: sort}});
     else
       return Posts.find({blogId: this._id}, {sort: {submitted: sort}});
   },

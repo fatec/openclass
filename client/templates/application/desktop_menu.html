@@ -5,6 +5,11 @@
 		<div class="menu--title menu--title-authors">
 			<i class="fa fa-lg fa-users"></i>
 			<span style="">AUTEURS</span>
+			<ul>
+				{{#each authors}}
+					<a class="menu--authors {{selectedAuthorClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=authorQuery}}">{{name}} ({{nRefs}})</a><br />
+				{{/each}}
+			</ul>
 		</div>
 		<div class="menu--title menu--title-categories">
 			<i class="fa fa-lg fa-list"></i>

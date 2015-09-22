@@ -7,7 +7,6 @@ Template.desktopMenu.helpers({
 	},
 	tagQuery: function() {
 		return "tags="+this.name;
-		//return "tags="+this.name;
 	},
 	'selectedTagClass': function(){
 		var tagId = this.name;
@@ -27,7 +26,20 @@ Template.desktopMenu.helpers({
     	if(sortPosts == "last"){
         	return "menu--link-sort-selected"
     	}
-	} 
+	},
+	'selectedAuthorClass': function(){
+		var authorName = this.name;
+	    var selectedAuthor = Session.get('selectedAuthor');
+	    if(authorName == selectedAuthor){
+	        return "menu--authors-selected"
+	    }
+	},	
+	authors: function() {
+		return Authors.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});
+	},
+	authorQuery: function() {
+		return "author="+this.name;
+	},	
 });
 
   Template.desktopMenu.events({

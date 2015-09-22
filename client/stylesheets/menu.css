@@ -46,6 +46,21 @@ Authors : Vincent Widmer & Stéphane Morand;
 */}
 
 
+.menu--authors {
+	display: inline-block;
+	margin-top:8px;
+	color: #2A90C6;
+}
+
+.menu--authors a:visited {
+	color:white;
+}
+
+.menu--authors-selected {
+	font-weight: 600;
+	color: #2c5267;
+}
+
 .menu--tags {
 	display: inline-block;
 	width:auto;
