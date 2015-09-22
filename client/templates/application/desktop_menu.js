@@ -6,7 +6,7 @@ Template.desktopMenu.helpers({
 		return Tags.find({}, {sort: {nRefs: -1}});
 	},
 	tagQuery: function() {
-		return "sort_posts="+Router.current().params.query.sort_posts+"&tags="+this.name;
+		return "tags="+this.name;
 		//return "tags="+this.name;
 	},
 	'selectedTagClass': function(){
@@ -18,7 +18,7 @@ Template.desktopMenu.helpers({
 	},
 	'selectedAllPostsClass': function(){
 	    var sortPosts = Session.get('sortPosts');
-	    if(sortPosts != "last"){
+	    if(sortPosts == "all"){
 	        return "menu--link-sort-selected"
 	    }
 	},
@@ -31,8 +31,10 @@ Template.desktopMenu.helpers({
 });
 
   Template.desktopMenu.events({
-  // Speedup focus on input for mobile devices
-  'click .hum': function(e) {
-Router.go(myURL)
-  }
+  'click .menu--link-last-posts': function(e) {
+    Session.set("sortPosts", "last");    
+  },
+  'click .menu--link-all-posts': function(e) {
+    Session.set("sortPosts", "all");    
+  }  
 });
