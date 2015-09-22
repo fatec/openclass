@@ -55,6 +55,18 @@ if (Blogs.find().count() === 0) {
     nRefs: 1
   });
 
+  Authors.insert({
+  name: "Invité",
+  blogId: firstBlogId,
+  nRefs: 0
+});
+
+  Authors.insert({
+  name: "Enseignant",
+  blogId: firstBlogId,
+  nRefs: 0  
+});
+
 }
 
 

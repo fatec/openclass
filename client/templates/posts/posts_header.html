@@ -9,15 +9,23 @@
 		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i></a>
 		      	{{/if}}
 		      	<span class="header--button-back-text truncate-text">{{title}}</span>
-					{{#if currentUser}}
 						<a href="{{pathFor 'postSubmit'}}">
 							<button class="button button-secondary posts-header--button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header--button-text"> Publier</span></button>
 						</a>
+									{{#if currentUser}}
+		
 						<a class="header--button-setings" href="{{pathFor 'blogEdit' _id=this._id}}">Paramètres <i class="fa fa-cog"></i></a>
 		 				<a class="header--button-login" href="{{pathFor 'logout'}}">{{currentUser.username}} <i class="fa fa-sign-out"></i></a>	
 		 			{{else}}
 		 				<a class="header--button-login" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i></a>
 					{{/if}}
+					<div class="header--select-author-wrapper">
+					<select class="header--select-author">
+						{{#each authors}}
+							<option selected="{{optionIsSelected name}}">{{name}}</option>
+						{{/each}}
+					</select>
+					</div>
 			</div>
 		</div>
 	</div>

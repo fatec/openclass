@@ -19,3 +19,4 @@ Meteor.publish('allUsers', function() {
 Meteor.publish("images", function(blogId){ return Images.find({'metadata.blogId': blogId}); });
 Meteor.publish("postImage", function(postId){ return Images.find({'metadata.postId': postId}); });
 Meteor.publish("tags", function(blogId){ return Tags.find({blogId: blogId}); });
+Meteor.publish("authors", function(blogId){ return Authors.find({blogId: blogId}); });

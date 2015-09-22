@@ -49,6 +49,9 @@ Template.postItem.events({
       if (image){
         Images.remove(image._id);
       }
+
+      author = Authors.findOne({blogId: this.blogId, name: currentPost.author});
+      Authors.update(author._id, {$inc: {nRefs: -1}});
       
       // Images.remove({'metadata.postId': "Mik2bg7nvT7yHEpR2"});
       Router.go('blogPage', {_id: currentPost.blogId});
