@@ -30,6 +30,9 @@ Template.postSubmit.events({
         Router.go('blogPage', {_id: post.blogId});
       };
     });
+
+    Session.set("sortPosts", "last");    
+
   },
   'change .post-submit--input-file': function(event, template) {
     $(".post-submit--input-file-button").hide();

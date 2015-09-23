@@ -1,5 +1,5 @@
 Template.blogEdit.events({
-  'submit form': function(e) {
+  'submit form.blog-edit--form': function(e) {
     e.preventDefault();
 
     var currentBlogId = this._id;
@@ -10,7 +10,7 @@ Template.blogEdit.events({
 
     Blogs.update(currentBlogId, {$set: blogProperties}, function(error) {
       if(!error) {
-        Router.go('blogsList');
+        alert("Le nom du journal a été changé.")
       }
       else
       {
@@ -19,10 +19,41 @@ Template.blogEdit.events({
       } 
     });
   },
+  'submit form.blog-edit--form-add-author': function(e) {
+    e.preventDefault();
+
+    var currentBlogId = this._id;
+    var authorName = $('#authorName').val();
+
+    Meteor.call('authorInsert', authorName, this._id );
+
+    $('#authorName').val('');
+
+  }, 
+  'click .blog-edit--delete-author': function(event) {
+          //Posts.remove(currentPostId);
+    var currentBlogId = Template.data;
+                  console.log(currentBlogId._id);
+
+    var authorName = $(event.target).data("name");
+          //$(event.target).val();
+    var author = Authors.findOne({name: authorName, blogId: this._id});
+              //console.log(this._id);
+
+    Authors.remove(author._id);
+    //Authors.remove({name: 'dfdsfs'});      
+
+        //Authors.remove('YGQyAKXDQk9KLBtwR');
+
+  }, 
   'click .blog-edit--button-submit': function(e) {
     e.preventDefault();
     $('#blog-edit--form').submit();
   },
+   'click .blog-edit--button-submit-add-author': function(e) {
+    e.preventDefault();
+    $('#blog-edit--form-add-author').submit();
+  }, 
   'click .blog-edit--button-cancel': function(e) {
     e.preventDefault();
     history.back();  
@@ -44,4 +75,14 @@ Template.blogEdit.events({
       //console.log("On clique sur le bouton "+template.data._id)
       Meteor.call('sendBlog', {blogId: template.data._id} );
     }  
-});  
+}); 
+
+
+Template.blogEdit.helpers({
+  authors: function(){
+    return Authors.find({blogId: this._id});  
+  },
+  authorsCount: function() {
+    return Authors.find({blogId: this._id}).count();  
+  }
+});

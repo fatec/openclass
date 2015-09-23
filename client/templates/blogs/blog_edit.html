@@ -3,9 +3,19 @@
 	    <div class="blog-page--wrapper">
       <div class="menu">{{> settingsMenu}}</div>
 		<div class="page-title">Paramètres du journal</div>
-		<div class="chapter-title" id="blog-edit--authors-settings">Gérer les auteurs</div>
+		<div class="chapter-title" id="blog-edit--authors-settings">Gérer les auteurs ({{authorsCount}})</div>
 		<div class="blog-edit--chapter-wrapper">
-		<p><i>Liste des auteurs...</i></p><br />
+		<ul>
+			{{#each authors}}
+				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-user"></i>
+ {{name}} <i style="color:blue;font-size:0.8em;" data-name="{{name}}" class="blog-edit--delete-author fa fa-trash-o" href="#"></i></li>
+			{{/each}}
+		</ul><br />
+		<form id="blog-edit--form-add-author" class="blog-edit--form-add-author">
+			<input id="authorName" class="blog-edit--input-add-author" style="font-size:1.1em" />
+			<button type="submit" class="button button-primary blog-edit--button-submit-add-author"><i class="fa fa-user-plus"></i> Ajouter</button>
+
+		</form>
 		</div>
 		<div class="chapter-title" id="blog-edit--categories-settings">Gérer les catégories</div>
 		<div class="blog-edit--chapter-wrapper">
