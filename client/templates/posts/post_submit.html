@@ -1,7 +1,7 @@
 <template name="postSubmit">
     <div class="post-submit">
         <div class="page-title">Ajouter une publication</div>
-        <div class="post-item post-submit--wrapper">
+        <div class="post-submit--wrapper">
             <div class="images post-submit--image-wrapper">
                 {{#with image}}
                     {{#if hasStored 'thumbs'}}
@@ -24,16 +24,16 @@
 </span><span class="post-submit--input-file-text"> Ajouter une photo...</span>
                     </label>
                 {{/if}}
-                <textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..." autofocus></textarea>
+                <textarea name="body" id="body" rows='2' class="post-submit--textarea" placeholder="Écrivez quelque chose..." autofocus></textarea>
 
                 <br /><br />
-                    <input name="tags" type="text" data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/>
+                    <input name="tags" type="text" data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/><br /><br />
             </form>
         </div>
         <a href="{{pathFor 'postSubmit'}}">
             <button class="button button-primary post-submit--button-submit">
-                <span><i class="fa fa-paper-plane"></i></span> <span class="posts-header--button-text"> Envoyer</span>
+                <i class="fa fa-paper-plane"></i> Envoyer
             </button>
-        </a>                           
+        </a>                       
     </div>
 </template>

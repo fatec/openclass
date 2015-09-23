@@ -282,14 +282,17 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .post-submit--textarea {
-
-	width:99%;
-	height:50px;
+	width:97.5%;
 
 	font-family: inherit;
-	font-size: 0.9em;
+	font-size: 1em;
 
-	resize:vertical;
+	background-color: #fff;
+border: 1px solid #ccc;
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+padding: 4px 6px;
+border-radius: 4px;
+
 }
 
 .post-submit--input-tags {
