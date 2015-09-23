@@ -9,7 +9,8 @@ Template.postItem.helpers({
     return 0;
   },  
   ownPost: function() {
-    if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+    //if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+    if (Session.get("author") === this.author || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
         return true;
     },
   tagQuery: function() {

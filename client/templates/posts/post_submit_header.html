@@ -6,6 +6,13 @@
 	    			<i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i>
 	    			<span class="header--button-back-text">Retour</span>
 		        </a>
+					<div class="header--select-author-wrapper">
+					<select class="header--select-author">
+						{{#each authors}}
+							<option selected="{{optionIsSelected name}}">{{name}}</option>
+						{{/each}}
+					</select>
+					</div>
 			</div>
 		</div>
 	</div>
