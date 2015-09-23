@@ -30,20 +30,13 @@ Template.blogEdit.events({
     $('#authorName').val('');
 
   }, 
-  'click .blog-edit--delete-author': function(event) {
-          //Posts.remove(currentPostId);
-    var currentBlogId = Template.data;
-                  console.log(currentBlogId._id);
+  'click .blog-edit--delete-author': function(event, template) {
 
+    var currentBlogId = template.data._id;
     var authorName = $(event.target).data("name");
-          //$(event.target).val();
-    var author = Authors.findOne({name: authorName, blogId: this._id});
-              //console.log(this._id);
-
-    Authors.remove(author._id);
-    //Authors.remove({name: 'dfdsfs'});      
-
-        //Authors.remove('YGQyAKXDQk9KLBtwR');
+    var author = Authors.findOne({name: authorName, blogId: currentBlogId});
+    if(confirm("Supprimer l'auteur "+authorName+" ?"))
+      Authors.remove(author._id);
 
   }, 
   'click .blog-edit--button-submit': function(e) {
