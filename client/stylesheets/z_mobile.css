@@ -23,6 +23,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 	border:solid 1px red;
 }
 
+.header--select-author {
+	width:56px;
+}
+
 .post-edit--wrapper{
 	margin-top: 0px;
 	background-color: #f6f6f6;
