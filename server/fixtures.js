@@ -1,7 +1,6 @@
 
 
 if (Blogs.find().count() === 0) {
-  var now = new Date().getTime();
 
 // Create users
   var users = [
@@ -36,14 +35,14 @@ if (Blogs.find().count() === 0) {
     title: 'Exemple de journal',
     userId: example._id,
     author: example.profile.name,
-    submitted: new Date(now - 7 * 3600 * 1000),
+    submitted: Date.now(),
   });
 
   Posts.insert({
     blogId: firstBlogId,
     userId: example._id,
     author: example.profile.name,
-    submitted: new Date(now - 5 * 3600 * 1000),
+    submitted: Date.now(),
     body: 'Voici votre première publication !',
     //tags: "coool"
     tags: ["exemple"]
@@ -52,7 +51,7 @@ if (Blogs.find().count() === 0) {
   Tags.insert({
     name: "exemple",
     blogId: firstBlogId,
-    nRefs: 1
+    nRefs: 1g
   });
 
   Authors.insert({
