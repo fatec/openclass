@@ -51,7 +51,7 @@ if (Blogs.find().count() === 0) {
   Tags.insert({
     name: "exemple",
     blogId: firstBlogId,
-    nRefs: 1g
+    nRefs: 1
   });
 
   Authors.insert({
