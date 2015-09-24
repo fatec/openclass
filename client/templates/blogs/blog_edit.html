@@ -8,7 +8,7 @@
 		<ul>
 			{{#each authors}}
 				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-user"></i>
- {{name}} <a href="#" class="blog-edit--delete-author"><i style="color:red;font-size:0.8em;" data-name="{{name}}" class="fa fa-trash-o"></i></a></li>
+ {{name}} {{#unless guest}}<a href="#" class="blog-edit--delete-author"><i style="color:red;font-size:0.8em;" data-name="{{name}}" class="fa fa-trash-o"></i></a>{{/unless}}</li>
 			{{/each}}
 		</ul><br />
 		<form id="blog-edit--form-add-author" class="blog-edit--form-add-author">

@@ -65,6 +65,12 @@ Template.postItem.events({
 
 // Show image in a lightbox with magnificPopup plugin
 Template.postItem.rendered = function(){
+    // Set default author
+  if (!Session.get(Template.parentData(2).blog._id))
+  {
+    Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
+  }
+
   $('.post-item--image-wrapper').imagesLoaded(function(){
     $('.post-item--image-link').magnificPopup({
       type:'image',
@@ -72,5 +78,3 @@ Template.postItem.rendered = function(){
     });
   });
 }
-
-

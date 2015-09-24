@@ -124,8 +124,16 @@ Template.postEdit.helpers({
 
 Template.postEdit.rendered = function(){
 
+    // Set default author
+  if (!Session.get(Template.parentData(2).blog._id))
+  {
+    Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
+  }
+
     // Textarea autosize
-  $('.post-edit--textarea').autosize()
+  $('.post-edit--textarea').autosize();
+
+
 
     //proposedTags = Tags.find({blogId: this.data.blogId});
     //console.log("On veux proposer les tags du blog. Il y en a "+proposedTags.count());
