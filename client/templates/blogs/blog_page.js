@@ -11,17 +11,27 @@ Template.blogPage.helpers({
     else if (Router.current().params.query.author)
       return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {submitted: sort}});
     else
-      return Posts.find({blogId: this._id}, {sort: {submitted: sort}});
+      return Posts.find({blogId: this.blog._id}, {sort: {submitted: sort}});
   },
   postCount: function() { // return the number of posts
     return Posts.find().count();
   }
 });
 
+
 Template.blogPage.events({
 	'click .button-send-to-api': function(e, template) {
       e.preventDefault();
       //console.log("On clique sur le bouton "+template.data._id)
-      Meteor.call('sendBlog', {blogId: template.data._id} );
+      Meteor.call('sendBlog', {blogId: template.data.blog._id} );
     }
 });
+
+
+Template.blogPage.rendered = function(){
+  // Set default author
+  if (!Session.get(Template.parentData(2).blog._id))
+  {
+    Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
+  }
+}

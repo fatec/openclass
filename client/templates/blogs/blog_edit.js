@@ -2,7 +2,7 @@ Template.blogEdit.events({
   'submit form.blog-edit--form': function(e) {
     e.preventDefault();
 
-    var currentBlogId = this._id;
+    var currentBlogId = this.blog._id;
 
     var blogProperties = {
       title: $(e.target).find('[name=title]').val()
@@ -22,10 +22,10 @@ Template.blogEdit.events({
   'submit form.blog-edit--form-add-author': function(e) {
     e.preventDefault();
 
-    var currentBlogId = this._id;
+    var currentBlogId = this.blog._id;
     var authorName = $('#authorName').val();
 
-    Meteor.call('authorInsert', authorName, this._id );
+    Meteor.call('authorInsert', authorName, this.blog._id );
 
     $('#authorName').val('');
 
@@ -55,7 +55,7 @@ Template.blogEdit.events({
     e.preventDefault();
 
     if (confirm("Effacer ce journal?")) {
-      var currentBlogId = this._id;
+      var currentBlogId = this.blog._id;
       Blogs.remove(currentBlogId);
       // Effacer les posts qui correspondent a ce blogId
       // TODO
@@ -73,9 +73,12 @@ Template.blogEdit.events({
 
 Template.blogEdit.helpers({
   authors: function(){
-    return Authors.find({blogId: this._id});  
+    return Authors.find({blogId: this.blog._id});  
+  },
+  guest: function(){
+    return this.name === 'Invité';
   },
   authorsCount: function() {
-    return Authors.find({blogId: this._id}).count();  
+    return Authors.find({blogId: this.blog._id}).count();  
   }
 });
