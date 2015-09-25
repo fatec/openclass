@@ -65,8 +65,8 @@ Template.blogEdit.events({
   },
   'click .button-send-to-api': function(e, template) {
       e.preventDefault();
-      //console.log("On clique sur le bouton "+template.data._id)
-      Meteor.call('sendBlog', {blogId: template.data._id} );
+      console.log("On clique sur le bouton "+this.blog._id)
+      Meteor.call('sendBlog', {blogId: this.blog._id} );
     }  
 }); 
 
