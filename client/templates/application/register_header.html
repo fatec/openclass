@@ -1,12 +1,13 @@
 <template name="registerHeader">
-	<div class="register-header">
+	<div class="login-header">
 	    <div class="header">
 	    	<div class="header--wrapper">
-		      	<a class="header--logo-title-wrapper login-header--button-back" href="#">
-		      		<img class="header--button-back" src="/img/icon-button-back.png" />
-		      		<span class="header--buton-back-text">Retour</span>
-		        </a>
-				<a class="blogs-header--login-button" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i></a>
+		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i><span class="header--button-back-text">Retour</span>
+		        </a>   
+ 					{{#unless currentUser}}
+						<a class="header--button-login" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i>
+						</a>
+					{{/unless}}
 			</div>
 		</div>
 	</div>

@@ -2,11 +2,11 @@ Template.postEdit.events({
   'submit form': function(e) {
     e.preventDefault();
     
-    var currentPostId = this._id;
+    var currentPostId = this.post._id;
     var body = $(e.target).find('[name=body]').val();
 
     // tags est le tableau contenant les tags 
-    var oldTags = this.tags;
+    var oldTags = this.post.tags;
     console.log("anciens tags "+oldTags);
     // tags est le tableau contenant les tags 
     var newTags = $(e.target).find('[name=tags]').val().split(',');
@@ -74,7 +74,7 @@ Template.postEdit.events({
   'click .post-edit--button-delete-image': function(e) {
     e.preventDefault();
     if (confirm("Effacer l'image?")) {
-      var currentPostId = this._id;
+      var currentPostId = this.post._id;
       var image = Images.findOne({'metadata.postId': currentPostId});
       if (image){
         //console.log("On efface l'image "+image._id);
@@ -115,7 +115,7 @@ Template.postEdit.helpers({
     return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
   },
   blog: function() {
-    var currentPostId = this._id;
+    var currentPostId = this.post._id;
     var currentPost = Posts.findOne(currentPostId);
     var blogId = Blogs.findOne(currentPost.blogId);
     return blogId

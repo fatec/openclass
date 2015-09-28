@@ -9,8 +9,12 @@ Template.postItem.helpers({
     return 0;
   },  
   ownPost: function() {
+    //console.log((this.blog._id).author);
+        //console.log(Session.get(Template.parentData(1).blog._id).author);
+
+
     //if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-    if (Session.get("author") === this.author || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+    if (Session.get(Template.parentData(1).blog._id).author === this.author || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
         return true;
     },
   tagQuery: function() {
@@ -66,9 +70,9 @@ Template.postItem.events({
 // Show image in a lightbox with magnificPopup plugin
 Template.postItem.rendered = function(){
     // Set default author
-  if (!Session.get(Template.parentData(2).blog._id))
+  if (!Session.get(Template.parentData(1).blog._id))
   {
-    Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
+    Session.set(Template.parentData(1).blog._id, {author: 'Invité'});    
   }
 
   $('.post-item--image-wrapper').imagesLoaded(function(){

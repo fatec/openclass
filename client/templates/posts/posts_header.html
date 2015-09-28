@@ -8,17 +8,18 @@
 	    		{{#if isAdmin}}
 		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i></a>
 		      	{{/if}}
-		      	<span class="header--button-back-text truncate-text">{{title}}</span>
-						<a href="{{pathFor 'postSubmit'}}">
+		      	<span class="header--button-back-text truncate-text">{{blog.title}}</span>
+						<a href="{{pathFor 'postSubmit' _id=this.blog._id}}">
 							<button class="button button-secondary posts-header--button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header--button-text"> Publier</span></button>
 						</a>
-									{{#if currentUser}}
-		
-						<a class="header--button-setings" href="{{pathFor 'blogEdit' _id=this._id}}">Paramètres <i class="fa fa-cog"></i></a>
-		 				<a class="header--button-login" href="{{pathFor 'logout'}}">{{currentUser.username}} <i class="fa fa-sign-out"></i></a>	
+					{{#if currentUser}}
+						<a class="header--button-setings" href="{{pathFor 'blogEdit' _id=this.blog._id}}"><i class="fa fa-lg fa-cog" style="vertical-align:middle"></i></a>
+		 				<a class="header--button-login" href="{{pathFor 'logout'}}"><i class="fa fa-lg fa-sign-out"></i></a>	
 		 			{{else}}
 <!-- 		 				<a class="header-2-button-login" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i></a> -->
 					{{/if}}
+										{{#unless currentUser}}
+
 					<div class="header--select-author-wrapper">
 					<select class="header--select-author">
 						{{#each authors}}
@@ -26,6 +27,7 @@
 						{{/each}}
 					</select>
 					</div>
+					{{/unless}}
 			</div>
 		</div>
 	</div>

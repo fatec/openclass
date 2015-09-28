@@ -4,11 +4,9 @@
 	    	<div class="header--wrapper">
 		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i><span class="header--button-back-text">Retour</span>
 		        </a>   
- 					{{#if currentUser}}
-						<a class="header--button-login" href="{{pathFor 'logout'}}">{{currentUser.username}} <i class="fa fa-sign-out"></i></a>
-		 			{{else}}
-						<a class="header--button-login" href="{{pathFor 'register'}}">Créer un compte</a>
-					{{/if}}
+ 					{{#unless currentUser}}
+						<a class="header--button-login" href="{{pathFor 'register'}}"><i class="fa fa-plus"></i> Créer un compte</a>
+					{{/unless}}
 			</div>
 		</div>
 	</div>

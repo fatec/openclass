@@ -4,17 +4,16 @@
         return true;
 	},
 	authors: function() {
-		return Authors.find({blogId: this._id});  
+		return Authors.find({blogId: this.blog._id});  
 	},  
 	optionIsSelected: function(authorName) {
-		return authorName === Session.get("author");
+		return authorName === Session.get(Template.parentData(1).blog._id).author;
 	}  
 });
 
   Template.postsHeader.events({
 	'change .header--select-author': function(event) {
 		event.preventDefault();
-		//console.log($(event.target).val());
-		Session.set("author", $(event.target).val());    
-	}
+		Session.set(this.blog._id, {author: $(event.target).val()});    
+	} 
 });
