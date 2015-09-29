@@ -6,6 +6,8 @@
 	    			<i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i>
 	    			<span class="header--button-back-text">Retour</span>
 		        </a>
+				{{#unless currentUser}}
+
 					<div class="header--select-author-wrapper">
 					<select class="header--select-author">
 						{{#each authors}}
@@ -13,6 +15,7 @@
 						{{/each}}
 					</select>
 					</div>
+				{{/unless}}
 			</div>
 		</div>
 	</div>
