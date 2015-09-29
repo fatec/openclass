@@ -10,7 +10,7 @@ Template.blogEdit.events({
 
     Blogs.update(currentBlogId, {$set: blogProperties}, function(error) {
       if(!error) {
-        alert("Le nom du journal a été changé.")
+        alert("Le journal s'appelle désormais : "+blogProperties.title)
       }
       else
       {
