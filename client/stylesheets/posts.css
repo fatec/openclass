@@ -7,7 +7,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 /* ----- post-edit template ----- */
 
 .post-edit--image {
-	width:60%;
+	width:50%;
 	margin-top:3px;
 }
 
@@ -226,7 +226,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 /* ----- post-submit template ----- */
 
 .post-submit--image {
-	width:100%;
+	width:50%;
 	margin-top:3px;
 }
 

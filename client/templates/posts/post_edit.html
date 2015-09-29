@@ -1,8 +1,8 @@
 <template name="postEdit">
     <div class="post-edit">
         <div class="page-title">Modifier la publication</div>
-        <form name="post-edit--form" id="post-edit--form">
-            <div class="post-item post-edit--wrapper">
+            <div class="post-edit--wrapper">
+            <form name="post-edit--form" id="post-edit--form">        
                 <div class="post-edit--image-wrapper">
                     {{#if image}}
                         {{#if image.hasStored 'thumbs'}}
@@ -26,12 +26,12 @@
                 <textarea name="body" id="body" class="post-edit--textarea" autofocus>{{post.body}}</textarea>
 
                     <br /><br />
-                    <input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/>
+                    <input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/><br /><br />
+                </form>
             </div>
-        </form>
         <a href="{{pathFor 'postSubmit'}}">
             <button class="button button-primary post-edit--button-submit">
-                <span><i class="fa fa-paper-plane"></i></span> <span class="posts-header--button-text"> Modifier</span>
+                <i class="fa fa-paper-plane"></i> Modifier
             </button>
         </a>         
     </div>
