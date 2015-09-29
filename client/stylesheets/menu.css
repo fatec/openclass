@@ -21,7 +21,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	display: block;
 
 	font-size: 0.9em;
-	color: #3270ae;
+	color: #2A90C6;
 }
 
 .menu--link-last-posts {
@@ -29,6 +29,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin: 12px 0 20px 0;
 
 	font-size: 0.9em;
+	color:#2A90C6;
 }
 
 .menu--link-sort-selected {
