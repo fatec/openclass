@@ -124,7 +124,6 @@ Template.postEdit.helpers({
 
 //Template.postEdit.onRendered = function(){
   Template.postEdit.onRendered(function () {
-  alert("jhgvhjb");
 
     // Set default author
   // if (!Session.get(Template.parentData(2).blog._id))
