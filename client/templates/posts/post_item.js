@@ -14,7 +14,9 @@ Template.postItem.helpers({
 
 
     //if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-    if (Session.get(Template.parentData(1).blog._id).author === this.author || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+    if (Session.get(Template.parentData().blog._id).author === this.author || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+          //if (Session.get(Template.parentData(1).blog._id).author === this.author)
+
         return true;
     },
   tagQuery: function() {

@@ -6,7 +6,7 @@ Template.postEditHeader.events({
 });
 Template.postEditHeader.helpers({
 	blog: function() {
-		var currentPostId = this._id;
+		var currentPostId = this.post._id;
 		var currentPost = Posts.findOne(currentPostId);
 		var blogId = Blogs.findOne(currentPost.blogId);
 		return blogId

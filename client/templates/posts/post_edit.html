@@ -26,7 +26,7 @@
                 <textarea name="body" id="body" class="post-edit--textarea" autofocus>{{post.body}}</textarea>
 
                     <br /><br />
-                    <input name="tags" type="text" value={{tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/>
+                    <input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/>
             </div>
         </form>
         <a href="{{pathFor 'postSubmit'}}">

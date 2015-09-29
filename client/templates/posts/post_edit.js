@@ -93,7 +93,7 @@ Template.postEdit.events({
   },
   'change .post-edit--input-file': function(event, template) {
     FS.Utility.eachFile(event, function(file) {
-      var currentPostId = template.data._id;
+      var currentPostId = template.data.post._id;
       //console.log("Posts.findOne("+currentPostId+").blogId");
       var blogId = Posts.findOne({_id: currentPostId}).blogId;
 
@@ -112,7 +112,7 @@ Template.postEdit.events({
 
 Template.postEdit.helpers({
   image: function() {
-    return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
+    return Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id});
   },
   blog: function() {
     var currentPostId = this.post._id;
@@ -122,13 +122,15 @@ Template.postEdit.helpers({
   }
 });
 
-Template.postEdit.rendered = function(){
+//Template.postEdit.onRendered = function(){
+  Template.postEdit.onRendered(function () {
+  alert("jhgvhjb");
 
     // Set default author
-  if (!Session.get(Template.parentData(2).blog._id))
-  {
-    Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
-  }
+  // if (!Session.get(Template.parentData(2).blog._id))
+  // {
+  //   Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
+  // }
 
     // Textarea autosize
   $('.post-edit--textarea').autosize();
@@ -159,6 +161,7 @@ Template.postEdit.rendered = function(){
     });
 
     $('.suggest').tagsinput('input').blur(function() {
+      console.log("ok");
         $('.suggest').tagsinput('add', $(this).val());
         $(this).val('');
     })
@@ -176,4 +179,4 @@ Template.postEdit.rendered = function(){
     //});
   
 
-}
+});

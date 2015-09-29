@@ -28,7 +28,7 @@ Template.blogPage.events({
 });
 
 
-Template.blogPage.rendered = function(){
+Template.blogPage.onRendered = function(){
   // Set default author
   if (!Session.get(Template.parentData(2).blog._id))
   {
