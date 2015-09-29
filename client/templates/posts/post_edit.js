@@ -112,6 +112,7 @@ Template.postEdit.events({
 
 Template.postEdit.helpers({
   image: function() {
+    console.log(Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id}));
     return Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id});
   },
   blog: function() {

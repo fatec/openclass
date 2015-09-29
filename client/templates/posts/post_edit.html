@@ -5,15 +5,13 @@
             <form name="post-edit--form" id="post-edit--form">        
                 <div class="post-edit--image-wrapper">
                     {{#if image}}
-                        {{#if image.hasStored 'thumbs'}}
-                            {{#if image.isUploaded}}
+                            {{#if image.url}}
                                 <a href="{{image.url store='images'}}" target="_blank">
                                     <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image" />
                                 </a>
                                 <div class="post-edit--button-delete-image-wrapper">
                                     <button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
                                 </div>
-                            {{/if}}
                         {{else}}
                             <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
                         {{/if}}

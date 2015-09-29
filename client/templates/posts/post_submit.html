@@ -4,10 +4,8 @@
         <div class="post-submit--wrapper">
             <div class="images post-submit--image-wrapper">
                 {{#with image}}
-                    {{#if hasStored 'thumbs'}}
-                        {{#if isUploaded}}
+                        {{#if url}}
                             <img src="{{url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail" />
-                        {{/if}}
                     {{else}}
                         <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
                     {{/if}}
