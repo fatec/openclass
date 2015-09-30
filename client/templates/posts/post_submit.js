@@ -1,28 +1,25 @@
 Template.postSubmit.events({
   'submit form': function(e, template) {
-    e.preventDefault();
-
-    // On récupère la valeur du champ body ainsi que le blogId trasféré par le router
+   e.preventDefault();
+    
     var author = Session.get(this.blog._id).author;  
     var body = $(e.target).find('[name=body]').val();
     var blogId = template.data.blog._id;
     var imageId = Session.get("imageId");
-
-    // tags est le tableau contenant les tags 
     var tags = $(e.target).find('[name=tags]').val().split(',');
-    // il faudrait enlever les espaces avant et après pour chacun des tags
 
-    console.log("On appelle postInsert avec imageId = "+imageId);
-
+    var imagesToDelete = Session.get('imagesToDelete');
+    imagesToDelete.forEach(function(imageId) {
+        Images.remove(imageId);
+    });
    
     Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId, tags: tags}, function(error, postId) {
       if (error){
         console.log("Il y a une erreur dans postSumbit metor.call postinsert");
-        throwError(error.reason);
+        console.log(error.reason);
       } else {
         if (imageId) {
-          delete Session.keys['imageId']
-          Images.update({_id: imageId}, {$set: {'metadata.postId': postId, 'metadata.blogId': blogId}});
+          Images.update(imageId, {$unset: {'metadata.unvalid': ''},$set: {'metadata.postId': postId, 'metadata.blogId': blogId}});
         }
         if (tags) {
           //console.log("On ajout les tags coté client ou serveur?");
@@ -32,48 +29,27 @@ Template.postSubmit.events({
       };
     });
 
-    Session.set("sortPosts", "last");    
+    Session.set("sortPosts", "last");
+
+
 
   },
   'change .post-submit--input-file': function(event, template) {
     $(".post-submit--input-file-button").hide();
 
     FS.Utility.eachFile(event, function(file) {
-      var newFile = new FS.File(file);
-      //newFile.metadata = {blogId: template.data.blog._id, timestamp: template.data.timestamp};
-      newFile.metadata = {blogId: template.data.blog._id};
-      // TODO On ajoute le timestamp a l'image pour retrouver l'image lorsque l'on envoie le formulaire et la lier au post
+      var blogId = template.data.blog._id;
 
-      imageId = Images.insert(newFile, function (err, fileObj) {
-      console.log("On ajoute l'image Id dans la session: "+imageId._id);
-      Session.set("imageId", imageId._id);
-        //console.log("Image Inserted with id "+fileObj._id);
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      var newFile = new FS.File(file);
+      newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true};
+
+      var imageId = Images.insert(newFile, function (err, fileObj) {
+        Session.set('imageId', imageId._id);
+        Session.set('imageToAdd', imageId._id);
       });
 
     });
   },
-/*
-  'click #photo': function(event, template) {
-    $(".post-submit--input-file-button").hide();
-
-    var file = $(event.target).find('[type=file]');
-    console.log("On veux ajouter la photo "+Object.keys(file.context));
-    FS.Utility.eachFile(event, function(file) {
-      var newFile = new FS.File(file);
-      //newFile.metadata = {blogId: template.data.blog._id, timestamp: template.data.timestamp};
-      newFile.metadata = {blogId: template.data.blog._id};
-      // TODO On ajoute le timestamp a l'image pour retrouver l'image lorsque l'on envoie le formulaire et la lier au post
-
-      imageId = Images.insert(newFile, function (err, fileObj) {
-      //console.log("On ajoute l'image Id dans la session: "+imageId._id);
-      Session.set("imageId", imageId._id);
-        //console.log("Image Inserted with id "+fileObj._id);
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-      });
-
-    });
-  },*/
     'click .post-submit--button-submit': function(e) {
     e.preventDefault();
     $('#post-submit--form').submit();
@@ -81,37 +57,26 @@ Template.postSubmit.events({
   'click .post-submit--button-delete-image': function(e) {
     e.preventDefault();
     if (confirm("Effacer l'image?")) {
-      var currentPostId = this._id;
-      var image = Images.findOne({'metadata.timestamp': this.timestamp});
-      if (image){
-        //console.log("On efface l'image "+image._id);
-        Images.remove(image._id, function(error, file){
-          if (error) {
-            // display the error to the user
-            //throwError(error.reason);
-            console.log("Il y a une erreur ici "+error.reason);
-        } else {
-            //console.log("Posts.update("+currentPostId+",{$unset: {imageId: 1}});");
-            Posts.update(currentPostId, {$unset: {imageId: 1}});
-          };        
-        });
-      };
-    }
-  }    
+      var toDeleteImages = Session.get('imagesToDelete');
+      var nextImageId = Session.get('imageId');
+      toDeleteImages.push(nextImageId);
+      Session.set('imagesToDelete', toDeleteImages);
+      Session.set('imageToAdd', false);
+      Session.set('imageId', false);
+    }  
+  }
 });
 
 Template.postSubmit.helpers({
-  image: function () {
+ image: function() {
     var imageId = Session.get("imageId");
 
     if (imageId) {
-      //console.log("On a récupéré l'image "+imageId);
       return Images.findOne(imageId);
     } else {
-      //console.log("On a pas d'image");
       return false
     }
-    //return Images.findOne({'metadata.timestamp': this.timestamp}); // Where Images is an FS.Collection instance
+
   }
 });
 
