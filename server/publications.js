@@ -7,6 +7,11 @@ Meteor.publish('posts', function(blogId) {
   return Posts.find({blogId: blogId}, {sort: {submitted: 1}});
 });
 
+Meteor.publish('postsVersions', function(blogId) {
+  check(blogId, String);
+  return PostsVersions.find({blogId: blogId}, {sort: {submitted: 1}});
+});
+
 Meteor.publish('postsEdit', function(postId) {
   check(postId, String);
   return Posts.find({_id: postId});
