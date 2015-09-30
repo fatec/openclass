@@ -27,11 +27,10 @@ Template.blogPage.events({
     }
 });
 
-
-Template.blogPage.onRendered = function(){
+  Template.blogPage.onRendered(function () {
   // Set default author
   if (!Session.get(Template.parentData(2).blog._id))
   {
     Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
   }
-}
+});

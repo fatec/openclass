@@ -115,6 +115,13 @@ Template.postSubmit.helpers({
 });
 
 Template.postSubmit.rendered = function(){
+
+    // Set default author
+  if (!Session.get(Template.parentData(2).blog._id))
+  {
+    Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
+  }
+
   this.$('.post-submit--textarea').focus();
 
   // Textarea autosize
