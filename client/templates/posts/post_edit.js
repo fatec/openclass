@@ -1,4 +1,5 @@
 Template.postEdit.events({
+  // TODO : On cancel.. remove all images de imagesToDelete sauf la [0] et aussi celle de imagesToAdd (ou alors effacer toutes les unvalid qui correspondent a ce postId)
   'submit form': function(e) {
     e.preventDefault();
     

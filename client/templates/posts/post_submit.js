@@ -1,4 +1,5 @@
 Template.postSubmit.events({
+  // TODO: on cancel.. effacer toutes les images de imagesToDelete et aussi celle de imagetoAdd 
   'submit form': function(e, template) {
    e.preventDefault();
     
