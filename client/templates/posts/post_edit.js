@@ -18,46 +18,37 @@ Template.postEdit.events({
     var unset = {dummy: ''};
     var set = {tags: newTags};
     var currentPost = Posts.findOne(currentPostId);
-    // Changement de body?
 
-    if (body != this.post.body) {
-      console.log("On a changé le body");
+    if (body != this.post.body) { // body changed
       _.extend(set, {body: body});
     }
     // Changement d'image?
     var imageToDelete = Session.get('imageToDelete');
     var imageToAdd = Session.get('imageToAdd');
-    if (!imageToAdd && typeof imageToDelete == "string" ) {
-      console.log("On souhaite effacer l'image "+imageToDelete+" mais en ajouter aucune");
+    if (!imageToAdd && typeof imageToDelete == "string" ) { // Delete an image but don't add any
       _.extend(unset, {imageId: ""});
-    } else if (typeof imageToAdd == "string") {
-      console.log("On souhaite ajouter une image "+imageToAdd);
-      console.log("On souhaite effacer l'image "+imageToDelete);
+    } else if (typeof imageToAdd == "string") { // Delete one image and add one
       _.extend(set, {imageId: imageToAdd});
-      // On doit aussi modifier le metadata de l'image ajoutée pour dire qu'elle est valide?
-    } else if (!imageToAdd && !imageToDelete) {
-      console.log("Rien ne change pour l'image");
+    } else if (!imageToAdd && !imageToDelete) { // Nothings happens with images..
     } 
 
 
       Posts.update(currentPostId, {$unset: unset, $set: set}, function(error) {
       if (error) {
-        // display the error to the user
-        console.log("#### Error update post ###");
         console.log(error.reason);
       } else {
         Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
           if (error) {
-            console.log("#### Error tag edit ####");
             console.log(error.reason);
           } else {
-            console.log("Appelons la méthode pour effacer toutes les images intermédiares du blog "+currentPost.blogId+" et du post "+currentPost._id);
             if (typeof imageToAdd == "string") {
               Images.update(imageToAdd, {$unset: {'metadata.unvalid': ""}});
             }
+            if (typeof imageToDelete == "string") {
+              Images.remove(imageToDelete);
+            }
             Meteor.call('deleteUnvalidImages', {blogId: currentPost.blogId, postId: currentPost._id}, function(error) {
               if (error) {
-                console.log("#### Error delete unvalid images ####");
                 console.log(error.reason);
               } else {
                 Router.go('blogPage', {_id: currentPost.blogId});
@@ -69,54 +60,6 @@ Template.postEdit.events({
       }
     });
 
-
-/*
-    var currentPost = Posts.findOne(currentPostId);
-// 
-
-    if (body==''){
-      Posts.update(currentPostId, {$unset: {body: ''}, $set: {tags: newTags}}, function(error) {
-      if (error) {
-        // display the error to the user
-        throwError(error.reason);
-        console.log("#### unset ###");
-//        console.log(Posts.simpleSchema().namedContext().invalidKeys());
-        console.log("##############");
-        console.log(error.reason);
-      } else {
-        Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
-          if (error) {
-            console.log("#### tag update1 ####");
-            throwError(error.reason);
-          } else {
-            Router.go('blogPage', {_id: currentPost.blogId});
-          }
-       });
-      }
-    });
-    } else {
-
-      Posts.update(currentPostId, {$set: {body: body, tags: newTags}}, function(error) {
-      if (error) {
-        // display the error to the user
-        //throwError(error.reason);
-        console.log("#### set ####");
- //       console.log(Posts.simpleSchema().namedContext().invalidKeys());
-        console.log("##############");
-        console.log(error.reason);
-      } else {
-        Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
-          if (error) {
-            console.log("#### tag update2 ####");
-            throwError(error.reason);
-          } else {
-            Router.go('blogPage', {_id: currentPost.blogId});
-          }
-       });
-      }
-    });
-    }*/
-
   },
     'click .post-edit--button-submit': function(e) {
     e.preventDefault();
@@ -127,72 +70,28 @@ Template.postEdit.events({
     if (confirm("Effacer l'image?")) {
       var currentPostId = this.post._id;
 
-      if (Session.get('imageToDelete')=='') {
-        console.log("on veux effacer l'image "+this.post.imageId)
-        Session.set('imageToDelete', Session.get("imageId"));
-        Session.set('imageToAdd', false);
-        Session.set('imageId', false);
-      } else {
-        console.log("on veux effacer plusieurs fois l'image? "+Session.get('imageToDelete')+" et "+this.post.imageId);
-        // faut il garder une trace de toutes les images intermédaires que l'on a pas ajouté?
-
-        Session.set('imageToDelete', Session.get("imageId"));
-        Session.set('imageToAdd', false);
-        Session.set('imageId', false);
+      
+      if (typeof Session.get('imageToDelete') == "string") {
+            console.log("On a deja une image dans imageToDelete")
+      } else{
+            Session.set('imageToDelete', Session.get("imageId"));
       }
+      Session.set('imageToAdd', false);
+      Session.set('imageId', false);
 
-      /*
-      var image = Images.findOne({'metadata.postId': currentPostId});
-      if (image){
-        //console.log("On efface l'image "+image._id);
-
-        // When we delete we remove the image from post.imageId
-        //Posts.update(this.post._id, {$unset: {imageId: 1}})
-        // if we 
-        
-        Images.remove(image._id, function(error, file){
-          if (error) {
-            // display the error to the user
-            //throwError(error.reason);
-            console.log("Il y a une erreur ici "+error.reason);
-        } else {
-            //console.log("Posts.update("+currentPostId+",{$unset: {imageId: 1}});");
-            Posts.update(currentPostId, {$unset: {imageId: 1}});
-          };        
-        });
-        
-      };
-      */
     }
   },
   'change .post-edit--input-file': function(event, template) {
     FS.Utility.eachFile(event, function(file) {
       var currentPostId = template.data.post._id;
-      //console.log("Posts.findOne("+currentPostId+").blogId");
       var blogId = Posts.findOne({_id: currentPostId}).blogId;
 
       var newFile = new FS.File(file);
       newFile.metadata = {blogId: blogId, postId: currentPostId, unvalid: true};
 
-      console.log("On veux ajouter une image ");
       var imageId = Images.insert(newFile, function (err, fileObj) {
         Session.set('imageId', imageId._id);
         Session.set('imageToAdd', imageId._id);
-        console.log("C'est l'image "+imageId._id);
-/*        Posts.update(currentPostId, {
-          $set: {imageId: imageId}
-        });
-*/
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-
-/*
-          if (Session.get('imageToAdd')=='') {
-            console.log("on veux effacer l'image "+this.post.imageId)
-            Session.set('imageToAdd', imageId);
-          } else {
-            console.log("on veux effacer plusieurs fois l'image? "+Session.get('imageToDelete')+" et "+this.post.imageId)
-          }
-*/
       });
 
 
@@ -205,15 +104,10 @@ Template.postEdit.helpers({
     var imageId = Session.get("imageId");
 
     if (imageId) {
-      //console.log("On a récupéré l'image "+imageId);
       return Images.findOne(imageId);
     } else {
-      //console.log("On a pas d'image");
       return false
     }
-    // Version en cherchant dans les images
-    //console.log(Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id}));
-    //return Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id});
 
   },
   blog: function() {
