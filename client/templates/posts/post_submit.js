@@ -12,13 +12,14 @@ Template.postSubmit.events({
     var tags = $(e.target).find('[name=tags]').val().split(',');
     // il faudrait enlever les espaces avant et après pour chacun des tags
 
+    console.log("On appelle postInsert avec imageId = "+imageId);
 
    
     Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId, tags: tags}, function(error, postId) {
       if (error){
+        console.log("Il y a une erreur dans postSumbit metor.call postinsert");
         throwError(error.reason);
       } else {
-        imageId = Session.get("imageId");
         if (imageId) {
           delete Session.keys['imageId']
           Images.update({_id: imageId}, {$set: {'metadata.postId': postId, 'metadata.blogId': blogId}});

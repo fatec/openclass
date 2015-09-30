@@ -18,6 +18,8 @@ Template.postEdit.events({
     var currentPost = Posts.findOne(currentPostId);
 
 
+// 
+
     if (body==''){
       Posts.update(currentPostId, {$unset: {body: ''}, $set: {tags: newTags}}, function(error) {
       if (error) {
@@ -134,18 +136,18 @@ Template.postEdit.events({
 
 Template.postEdit.helpers({
   image: function() {
-    // Version en cherchant l'image qui correspond au post.imageId
-    //return Images.findOne(this.post.imageId._id);
+    var imageId = Session.get("imageId");
 
-    // On devrait utiliser cela plutôt.. 
-    // return Images.findOne(this.post.imageId);
-
-    var imageId = Session.get('imageId');
-    console.log("On récupère l'id de l'image via la session "+imageId);
-
+    if (imageId) {
+      //console.log("On a récupéré l'image "+imageId);
+      return Images.findOne(imageId);
+    } else {
+      //console.log("On a pas d'image");
+      return false
+    }
     // Version en cherchant dans les images
     //console.log(Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id}));
-    return Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id});
+    //return Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id});
 
   },
   blog: function() {
@@ -159,11 +161,6 @@ Template.postEdit.helpers({
 //Template.postEdit.onRendered = function(){
   Template.postEdit.onRendered(function () {
 
-      // On mets dans la session l'image actuelle et on reinitialise la valeur de session imageToDelete
-      Session.set('imageId', this.post.imageId);
-      Session.set('imageToDelete', "");
-      Session.set('imageToAdd', "");
-      //delete Session.keys['imageToDelete'];
 
     // Set default author
   // if (!Session.get(Template.parentData(2).blog._id))
