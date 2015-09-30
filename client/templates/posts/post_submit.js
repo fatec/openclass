@@ -3,7 +3,7 @@ Template.postSubmit.events({
     e.preventDefault();
 
     // On récupère la valeur du champ body ainsi que le blogId trasféré par le router
-    //var author = Session.get(this.blog._id).author;  
+    var author = Session.get(this.blog._id).author;  
     var body = $(e.target).find('[name=body]').val();
     var blogId = template.data.blog._id;
     var imageId = Session.get("imageId");
