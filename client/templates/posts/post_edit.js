@@ -23,13 +23,13 @@ Template.postEdit.events({
       _.extend(set, {body: body});
     }
     // Changement d'image?
-    var imageToDelete = Session.get('imageToDelete');
+    var imagesToDelete = Session.get('imagesToDelete');
     var imageToAdd = Session.get('imageToAdd');
-    if (!imageToAdd && typeof imageToDelete == "string" ) { // Delete an image but don't add any
+    if (!imageToAdd && typeof imagesToDelete[0] == "string" ) { // Delete an image but don't add any
       _.extend(unset, {imageId: ""});
     } else if (typeof imageToAdd == "string") { // Delete one image and add one
       _.extend(set, {imageId: imageToAdd});
-    } else if (!imageToAdd && !imageToDelete) { // Nothings happens with images..
+    } else if (!imageToAdd && !imagesToDelete) { // Nothings happens with images..
     } 
 
 
@@ -44,17 +44,12 @@ Template.postEdit.events({
             if (typeof imageToAdd == "string") {
               Images.update(imageToAdd, {$unset: {'metadata.unvalid': ""}});
             }
-            if (typeof imageToDelete == "string") {
-              Images.remove(imageToDelete);
-            }
-            Meteor.call('deleteUnvalidImages', {blogId: currentPost.blogId, postId: currentPost._id}, function(error) {
-              if (error) {
-                console.log(error.reason);
-              } else {
-                Router.go('blogPage', {_id: currentPost.blogId});
-              }
+            //var imagesToDelete = Session.get('imagesToDelete');
+            console.log("On doit effacer "+imagesToDelete.length+" images");
+            imagesToDelete.forEach(function(imageId) {
+                Images.remove(imageId);
             });
-            
+            Router.go('blogPage', {_id: currentPost.blogId});  
           }
        });
       }
@@ -71,11 +66,11 @@ Template.postEdit.events({
       var currentPostId = this.post._id;
 
       
-      if (typeof Session.get('imageToDelete') == "string") {
-            console.log("On a deja une image dans imageToDelete")
-      } else{
-            Session.set('imageToDelete', Session.get("imageId"));
-      }
+      var toDeleteImages = Session.get('imagesToDelete');
+      var nextImageId = Session.get('imageId');
+      toDeleteImages.push(nextImageId);
+      console.log("On voudra effacer l'image "+nextImageId);
+      Session.set('imagesToDelete', toDeleteImages);
       Session.set('imageToAdd', false);
       Session.set('imageId', false);
 
