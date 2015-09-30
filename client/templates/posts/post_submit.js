@@ -44,7 +44,7 @@ Template.postSubmit.events({
       // TODO On ajoute le timestamp a l'image pour retrouver l'image lorsque l'on envoie le formulaire et la lier au post
 
       imageId = Images.insert(newFile, function (err, fileObj) {
-      //console.log("On ajoute l'image Id dans la session: "+imageId._id);
+      console.log("On ajoute l'image Id dans la session: "+imageId._id);
       Session.set("imageId", imageId._id);
         //console.log("Image Inserted with id "+fileObj._id);
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP

@@ -13,13 +13,7 @@ Template.postEdit.events({
     console.log("nouveaux tags "+newTags);
     // il faudrait enlever les espaces avant et après pour chacun des tags
 
-
-
-    /*
-    var postProperties = {
-      body: $(e.target).find('[name=body]').val()
-    }
-    */
+    // si l'image à été changée
 
     var currentPost = Posts.findOne(currentPostId);
 
@@ -75,9 +69,23 @@ Template.postEdit.events({
     e.preventDefault();
     if (confirm("Effacer l'image?")) {
       var currentPostId = this.post._id;
+
+      if (Session.get('imageToDelete')=='') {
+        console.log("on veux effacer l'image "+this.post.imageId)
+        Session.set('imageToDelete', this.post.imageId);
+      } else {
+        console.log("on veux effacer plusieurs fois l'image? "+Session.get('imageToDelete')+" et "+this.post.imageId)
+      }
+
+
       var image = Images.findOne({'metadata.postId': currentPostId});
       if (image){
         //console.log("On efface l'image "+image._id);
+
+        // When we delete we remove the image from post.imageId
+        //Posts.update(this.post._id, {$unset: {imageId: 1}})
+        // if we 
+        
         Images.remove(image._id, function(error, file){
           if (error) {
             // display the error to the user
@@ -88,6 +96,9 @@ Template.postEdit.events({
             Posts.update(currentPostId, {$unset: {imageId: 1}});
           };        
         });
+        
+
+
       };
     }
   },
@@ -105,15 +116,37 @@ Template.postEdit.events({
           $set: {imageId: imageId}
         });
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+
+/*
+          if (Session.get('imageToAdd')=='') {
+            console.log("on veux effacer l'image "+this.post.imageId)
+            Session.set('imageToAdd', imageId);
+          } else {
+            console.log("on veux effacer plusieurs fois l'image? "+Session.get('imageToDelete')+" et "+this.post.imageId)
+          }
+*/
       });
+
+
     });
   }
 });
 
 Template.postEdit.helpers({
   image: function() {
-    console.log(Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id}));
+    // Version en cherchant l'image qui correspond au post.imageId
+    //return Images.findOne(this.post.imageId._id);
+
+    // On devrait utiliser cela plutôt.. 
+    // return Images.findOne(this.post.imageId);
+
+    var imageId = Session.get('imageId');
+    console.log("On récupère l'id de l'image via la session "+imageId);
+
+    // Version en cherchant dans les images
+    //console.log(Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id}));
     return Images.findOne({'metadata.blogId': this.post.blogId, 'metadata.postId': this.post._id});
+
   },
   blog: function() {
     var currentPostId = this.post._id;
@@ -125,6 +158,12 @@ Template.postEdit.helpers({
 
 //Template.postEdit.onRendered = function(){
   Template.postEdit.onRendered(function () {
+
+      // On mets dans la session l'image actuelle et on reinitialise la valeur de session imageToDelete
+      Session.set('imageId', this.post.imageId);
+      Session.set('imageToDelete', "");
+      Session.set('imageToAdd', "");
+      //delete Session.keys['imageToDelete'];
 
     // Set default author
   // if (!Session.get(Template.parentData(2).blog._id))
