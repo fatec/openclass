@@ -20,7 +20,7 @@ Template.postSubmit.events({
         console.log(error.reason);
       } else {
         if (imageId) {
-          Images.update(imageId, {$unset: {'metadata.unvalid': ''},$set: {'metadata.postId': postId, 'metadata.blogId': blogId}});
+          Images.update(imageId, {$unset: {'metadata.unvalid': ''},$set: {'metadata.postId': postId, 'metadata.blogId': blogId, 'metadata.last': true}});
         }
         if (tags) {
           //console.log("On ajout les tags coté client ou serveur?");

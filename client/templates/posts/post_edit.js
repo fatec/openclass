@@ -43,13 +43,18 @@ Template.postEdit.events({
             console.log(error.reason);
           } else {
             if (typeof imageToAdd == "string") {
-              Images.update(imageToAdd, {$unset: {'metadata.unvalid': ""}});
+              Images.update(imageToAdd, {$unset: {'metadata.unvalid': ""}, $set: {'metadata.last': true}});
             }
             //var imagesToDelete = Session.get('imagesToDelete');
             console.log("On doit effacer "+imagesToDelete.length+" images");
-            imagesToDelete.forEach(function(imageId) {
-                Images.remove(imageId);
-            });
+            
+            if (imagesToDelete.length > 1) {
+              var imageItem =  1;
+              while (imageItem < imagesToDelete.length) {
+                Images.remove(imagesToDelete[imageItem]);
+                imageItem++;
+              }
+            }
             Router.go('blogPage', {_id: currentPost.blogId});  
           }
        });

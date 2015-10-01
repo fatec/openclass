@@ -34,8 +34,7 @@ if (Blogs.find().count() === 0) {
   var firstBlogId = Blogs.insert({
     title: 'Exemple de journal',
     userId: example._id,
-    author: example.profile.name,
-    submitted: Date.now(),
+    author: example.profile.name
   });
 
   Posts.insert({
