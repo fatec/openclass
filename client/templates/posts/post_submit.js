@@ -42,12 +42,13 @@ Template.postSubmit.events({
       var blogId = template.data.blog._id;
 
       var newFile = new FS.File(file);
-      newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true};
+      newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
 
       var imageId = Images.insert(newFile, function (err, fileObj) {
         Session.set('imageId', imageId._id);
         Session.set('imageToAdd', imageId._id);
       });
+
 
     });
   },
