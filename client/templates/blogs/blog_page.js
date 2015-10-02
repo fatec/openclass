@@ -10,8 +10,15 @@ Template.blogPage.helpers({
       return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {submitted: sort}});
     else if (Router.current().params.query.author)
       return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {submitted: sort}});
-    else
-      return Posts.find({blogId: this.blog._id}, {sort: {submitted: sort}});
+    else {
+      // check to avoid an exception on changing template
+      if (this.blog !== undefined) {
+        console.log("this.blog "+ this.blog);
+        return Posts.find({blogId: this.blog._id}, {sort: {submitted: sort}});
+      } else {
+        return null;
+      }
+    }
   },
   postCount: function() { // return the number of posts
     return Posts.find().count();
