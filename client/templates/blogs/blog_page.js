@@ -13,7 +13,6 @@ Template.blogPage.helpers({
     else {
       // check to avoid an exception on changing template
       if (this.blog !== undefined) {
-        console.log("this.blog "+ this.blog);
         return Posts.find({blogId: this.blog._id}, {sort: {submitted: sort}});
       } else {
         return null;
