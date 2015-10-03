@@ -32,7 +32,7 @@ Template.postItem.helpers({
     if(tagId == selectedTag){
       return "post-item--tag-selected"
     }
-  }  
+  }
 });
 
 Template.postItem.events({
@@ -72,6 +72,43 @@ Template.postItem.events({
 
 // Show image in a lightbox with magnificPopup plugin
 Template.postItem.rendered = function(){
+
+
+    var drawing = document.getElementById("canvas-"+this.data.imageId);
+    var con = drawing.getContext("2d");
+    var goofyPic = document.getElementById("img-"+this.data.imageId);
+    con.drawImage(goofyPic, 0, 0, 400, 350);
+
+    var pin = { x: "40", y: "70", color: "red" };
+    
+    con.save();
+    con.translate(pin.x,pin.y);
+
+    con.beginPath();
+    con.moveTo(0,0);
+    con.bezierCurveTo(2,-10,-20,-25,0,-30);
+    con.bezierCurveTo(20,-25,-2,-10,0,0);
+    con.fillStyle=pin.color;
+    con.fill();
+    con.strokeStyle="black";
+    con.lineWidth=1.5;
+    con.stroke();
+    con.beginPath();
+    con.arc(0,-21,3,0,Math.PI*2);
+    con.closePath();
+    con.fillStyle="black";
+    con.fill();
+
+    con.restore();
+
+
+   /*
+    var image2 = new Image();
+    image2.src = "andyGoofy.gif";
+    con.drawImage(image2, 100, 100, 70, 50);
+*/
+
+
     // Set default author
   if (!Session.get(Template.parentData(1).blog._id))
   {
@@ -85,3 +122,5 @@ Template.postItem.rendered = function(){
     });
   });
 }
+
+

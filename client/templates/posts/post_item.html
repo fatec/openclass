@@ -20,12 +20,20 @@
         <br /><td class="post-item--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></td>
       {{/unless}}
     {{/with}}
-    {{#if image}}
-      <div class="post-item--image-wrapper">
+    {{#if image}}  
+      <div class="post-item--image-wrapper ">
+              <canvas id = "canvas-{{this.imageId}}"
+                height = "400"
+                width = "400">
         <a class="post-item--image-link" href="{{image.url store='images'}}" target="_blank">
-          <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-item--image" />
+          <img id="img-{{this.imageId}}" src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-item--image" />
         </a>
+                </canvas>
       </div>
+
+
+
+
     {{/if}}
 	    <div class="post-item--text">{{body}}</div>
       {{#each tags}}
