@@ -79,11 +79,13 @@ Template.postItem.rendered = function(){
     var goofyPic = document.getElementById("img-"+this.data.imageId);
     con.drawImage(goofyPic, 0, 0, 400, 350);
 
+    // save the pins in mongo
     var pin = { x: "40", y: "70", color: "red" };
     
+
+    // On edit page make pins moveable and allow add / delete them
     con.save();
     con.translate(pin.x,pin.y);
-
     con.beginPath();
     con.moveTo(0,0);
     con.bezierCurveTo(2,-10,-20,-25,0,-30);
