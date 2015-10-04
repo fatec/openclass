@@ -84,6 +84,21 @@ Template.postItem.rendered = function(){
     
 
     // On edit page make pins moveable and allow add / delete them
+    // Maybe use:
+    // https://atmospherejs.com/ryanswapp/fabricjs
+    // https://atmospherejs.com/philippspo/reactive-canvas
+    //
+    // Peut être un outil pour faire des crop pourra être utile aussi..
+    // https://atmospherejs.com/digz6666/image-crop-canvas
+    // https://atmospherejs.com/jonblum/jquery-cropper
+    //
+    // Ca c'est joli.. 
+    // https://atmospherejs.com/overture8/wordcloud2
+    // 
+    // Pour un module de vote il faudra plutot
+    // https://atmospherejs.com/chart/chart
+    // https://atmospherejs.com/mrt/chartjs
+    // 
     con.save();
     con.translate(pin.x,pin.y);
     con.beginPath();
