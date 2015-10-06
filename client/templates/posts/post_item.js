@@ -74,6 +74,103 @@ Template.postItem.events({
 Template.postItem.rendered = function(){
 
 
+
+var img = Images.findOne(this.data.imageId);
+var goofyPic = document.getElementById("img-"+this.data.imageId);
+// create a wrapper around native canvas element (with id="c")
+var canvas = new fabric.Canvas("canvas-"+this.data.imageId);
+
+
+//canvas.setBackgroundImage(img.url({store: "thumbs"});
+// On peut aussi redimensionner l'image 
+canvas.setBackgroundImage(img.url({store: "thumbs"}), canvas.renderAll.bind(canvas), {
+
+    scaleY: canvas.height / 400,
+    scaleX: canvas.width / 400,
+
+       });
+
+
+
+fabric.loadSVGFromURL('/img/map_pin_fill.svg', function(objects, options) {
+  var shape = fabric.util.groupSVGElements(objects, options);
+      if (shape.isSameColor && shape.isSameColor() || !shape.paths) {
+      shape.setFill("red");
+    }
+    else if (shape.paths) {
+      for (var i = 0; i < shape.paths.length; i++) {
+        shape.paths[i].setFill("blue");
+      }
+    }
+  canvas.add(shape).renderAll();
+});
+
+
+var comicSansText = new fabric.Text("mon texte", {shadow: 'rgba(0,0,0,0.5) 5px 5px 5px', fontSize: 30,
+  fontFamily: 'Comic Sans', left: 100, top: 100 }); 
+
+canvas.add(comicSansText);
+
+//canvas.backgroundImage = "http://lorempixel.com/300/350/";
+
+/*
+// Ajoute l'image au canevas et la rend non selectionnable
+fabric.Image.fromURL(img.url({store: "thumbs"}), function(oImg) {
+
+  oImg.set('selectable', false); // make object unselectable
+  canvas.add(oImg);
+});
+*/
+
+//console.log("url "+img.url({store: "thumbs"}));
+//canvas.backgroundImage = img.url({store: "thumbs"});
+
+// create a rectangle object
+var rect = new fabric.Rect({
+  left: 100,
+  top: 100,
+  fill: 'red',
+  width: 20,
+  height: 20
+});
+
+
+
+var triangle = new fabric.Triangle({
+  width: 20, height: 30, fill: 'blue', left: 50, top: 50
+});
+
+canvas.add(rect, triangle);
+
+/*
+canvas.on('mouse:down', function(options) {
+  if (options.target) {
+    console.log('an object was clicked! ', options.target.type);
+  }
+});
+triangle.on('moving', function() {
+  console.log('moving triangle');
+});
+*/
+
+
+
+var rwidth = rect.getWidth(); // 0
+var rheight = rect.getHeight(); // 0
+
+var rleft = rect.getLeft(); // 0
+var rtop = rect.getTop(); // 0
+
+var rfill = rect.getFill(); // rgb(0,0,0)
+var rstroke = rect.getStroke(); // null
+
+var ropacity = rect.getOpacity(); // 1
+
+//console.log("coordonnées du rectangle : "+rwidth+", "+rheight+", "+rleft+", "+rtop+", "+rfill+", "+rstroke+", "+ropacity);
+
+
+/*
+
     var drawing = document.getElementById("canvas-"+this.data.imageId);
     var con = drawing.getContext("2d");
     var goofyPic = document.getElementById("img-"+this.data.imageId);
@@ -118,7 +215,7 @@ Template.postItem.rendered = function(){
 
     con.restore();
 
-
+*/
    /*
     var image2 = new Image();
     image2.src = "andyGoofy.gif";
