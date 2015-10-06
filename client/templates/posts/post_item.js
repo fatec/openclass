@@ -81,6 +81,7 @@ var goofyPic = document.getElementById("img-"+this.data.imageId);
 var canvas = new fabric.Canvas("canvas-"+this.data.imageId);
 
 
+
 //canvas.setBackgroundImage(img.url({store: "thumbs"});
 // On peut aussi redimensionner l'image 
 canvas.setBackgroundImage(img.url({store: "thumbs"}), canvas.renderAll.bind(canvas), {
@@ -90,9 +91,26 @@ canvas.setBackgroundImage(img.url({store: "thumbs"}), canvas.renderAll.bind(canv
 
        });
 
+/*
+if (img.metadata.canvasObjects) {
+  console.log("Il y a deja des objets sur le canvas sauvegardés");
+  var canvasObjects = img.metadata.canvasObjects;
+} else {
+  console.log("Il n'y a pas de canvasObjects");
+  var canvasObjects = {"objects":
+    [{"type":"text","originX":"left","originY":"top","left":100,"top":100,"width":119.1,"height":39.32,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":{"color":"rgba(0,0,0,0.5)","blur":5,"offsetX":5,"offsetY":5},"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","text":"mon texte","fontSize":30,"fontWeight":"normal","fontFamily":"Comic Sans","fontStyle":"","lineHeight":1.16,"textDecoration":"","textAlign":"left","textBackgroundColor":""},
+    {"type":"rect","originX":"left","originY":"top","left":100,"top":100,"width":20,"height":20,"fill":"red","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","rx":0,"ry":0},
+    {"type":"triangle","originX":"left","originY":"top","left":50,"top":50,"width":20,"height":30,"fill":"blue","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over"}],
+    "background":""};
+}
+canvas.loadFromJSON('{"objects":[{"type":"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{"type":"circle","left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}');
+canvas.loadFromJSON(canvasObjects);
+*/
 
 
-fabric.loadSVGFromURL('/img/map_pin_fill.svg', function(objects, options) {
+
+var path = fabric.loadSVGFromURL('/img/map_pin_fill.svg', function(objects, options) {
+//fabric.loadSVGFromString('public/img/map_pin_fill.svg', function(objects, options) {
   var shape = fabric.util.groupSVGElements(objects, options);
       if (shape.isSameColor && shape.isSameColor() || !shape.paths) {
       shape.setFill("red");
@@ -102,8 +120,11 @@ fabric.loadSVGFromURL('/img/map_pin_fill.svg', function(objects, options) {
         shape.paths[i].setFill("blue");
       }
     }
+console.log("shape "+shape);
   canvas.add(shape).renderAll();
 });
+
+console.log("path "+path);
 
 
 var comicSansText = new fabric.Text("mon texte", {shadow: 'rgba(0,0,0,0.5) 5px 5px 5px', fontSize: 30,
@@ -167,7 +188,8 @@ var rstroke = rect.getStroke(); // null
 var ropacity = rect.getOpacity(); // 1
 
 //console.log("coordonnées du rectangle : "+rwidth+", "+rheight+", "+rleft+", "+rtop+", "+rfill+", "+rstroke+", "+ropacity);
-
+var string = JSON.stringify(canvas);
+console.log("Le canvas "+string);
 
 /*
 
