@@ -97,36 +97,37 @@ if (img.metadata.canvasObjects) {
   var canvasObjects = img.metadata.canvasObjects;
 } else {
   console.log("Il n'y a pas de canvasObjects");
-  var canvasObjects = {"objects":
-    [{"type":"text","originX":"left","originY":"top","left":100,"top":100,"width":119.1,"height":39.32,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":{"color":"rgba(0,0,0,0.5)","blur":5,"offsetX":5,"offsetY":5},"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","text":"mon texte","fontSize":30,"fontWeight":"normal","fontFamily":"Comic Sans","fontStyle":"","lineHeight":1.16,"textDecoration":"","textAlign":"left","textBackgroundColor":""},
-    {"type":"rect","originX":"left","originY":"top","left":100,"top":100,"width":20,"height":20,"fill":"red","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","rx":0,"ry":0},
-    {"type":"triangle","originX":"left","originY":"top","left":50,"top":50,"width":20,"height":30,"fill":"blue","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over"}],
-    "background":""};
+  var canvasObjects = {"objects":[{"type":"text","originX":"left","originY":"top","left":100,"top":100,"width":119.1,"height":39.32,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":{"color":"rgba(0,0,0,0.5)","blur":5,"offsetX":5,"offsetY":5},"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","text":"mon texte","fontSize":30,"fontWeight":"normal","fontFamily":"Comic Sans","fontStyle":"","lineHeight":1.16,"textDecoration":"","textAlign":"left","textBackgroundColor":""},{"type":"rect","originX":"left","originY":"top","left":100,"top":100,"width":20,"height":20,"fill":"red","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","rx":0,"ry":0},{"type":"triangle","originX":"left","originY":"top","left":50,"top":50,"width":20,"height":30,"fill":"blue","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over"}],"background":""};
 }
-canvas.loadFromJSON('{"objects":[{"type":"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{"type":"circle","left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}');
+//canvas.loadFromJSON('{"objects":[{"type":"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{"type":"circle","left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}');
 canvas.loadFromJSON(canvasObjects);
 */
 
+var map_pin_fill = '<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC \'-//W3C//DTD SVG 1.1//EN\'  \'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\'><svg height="32px" style="enable-background:new 0 0 20 32;" version="1.1" viewBox="0 0 20 32" width="20px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_1"/><g id="map_x5F_pin_x5F_fill"><g><g><path d="M17.07,2.93c-3.906-3.906-10.234-3.906-14.141,0c-3.906,3.904-3.906,10.238,0,14.141     c0,0,7.066,6.93,7.066,14.93c0-8,7.074-14.93,7.074-14.93C20.977,13.168,20.977,6.834,17.07,2.93z M9.996,14.006     c-2.207,0-3.996-1.789-3.996-4s1.789-4,3.996-4c2.215,0,4.004,1.789,4.004,4S12.211,14.006,9.996,14.006z" style="fill:#4E4E50;"/></g></g></g></svg>';
 
 
-var path = fabric.loadSVGFromURL('/img/map_pin_fill.svg', function(objects, options) {
-//fabric.loadSVGFromString('public/img/map_pin_fill.svg', function(objects, options) {
+//var path = fabric.loadSVGFromURL('/img/map_pin_fill.svg', function(objects, options) {
+fabric.loadSVGFromString(map_pin_fill, function(objects, options) {
   var shape = fabric.util.groupSVGElements(objects, options);
       if (shape.isSameColor && shape.isSameColor() || !shape.paths) {
-      shape.setFill("red");
+      shape.setFill("blue");
     }
     else if (shape.paths) {
       for (var i = 0; i < shape.paths.length; i++) {
         shape.paths[i].setFill("blue");
       }
     }
-console.log("shape "+shape);
+//console.log("shape "+shape);
   canvas.add(shape).renderAll();
 });
 
-console.log("path "+path);
+var string = JSON.stringify(canvas);
+console.log("Le canvas "+string);
 
+//canvas.item(0).sourcePath = '/img/map_pin_fill.svg';
+console.log("Version 2 "+JSON.stringify(canvas.toDatalessJSON()));
 
+/*
 var comicSansText = new fabric.Text("mon texte", {shadow: 'rgba(0,0,0,0.5) 5px 5px 5px', fontSize: 30,
   fontFamily: 'Comic Sans', left: 100, top: 100 }); 
 
@@ -145,7 +146,7 @@ fabric.Image.fromURL(img.url({store: "thumbs"}), function(oImg) {
 
 //console.log("url "+img.url({store: "thumbs"}));
 //canvas.backgroundImage = img.url({store: "thumbs"});
-
+/*
 // create a rectangle object
 var rect = new fabric.Rect({
   left: 100,
@@ -175,7 +176,7 @@ triangle.on('moving', function() {
 */
 
 
-
+/*
 var rwidth = rect.getWidth(); // 0
 var rheight = rect.getHeight(); // 0
 
