@@ -218,6 +218,14 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 0.8em;
 }
 
+.post-item--category {
+	display: inline-block;
+	margin: 10px 0 0px 0;
+
+	font-size: 0.8em;
+	color: #5996b8;
+}
+
 .post-item--tag-selected {
 	background-color: #28527c;
 }
@@ -298,6 +306,14 @@ border-radius: 4px;
 .post-submit--input-tags {
 	width:99%;
 	margin-top:20px;
+		
+	font-family: inherit;
+	font-size: 1em;
+}
+
+.post-submit--select-categories {
+	width:99%;
+	margin-bottom:20px;
 		
 	font-family: inherit;
 	font-size: 1em;

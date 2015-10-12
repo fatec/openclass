@@ -65,6 +65,12 @@ if (Blogs.find().count() === 0) {
   nRefs: 0  
 });
 
+  Categories.insert({
+  name: "Exemple de catégorie",
+  blogId: firstBlogId,
+  nRefs: 0  
+});
+
 }
 
 

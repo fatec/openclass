@@ -36,6 +36,9 @@
 
     {{/if}}
 	    <div class="post-item--text">{{body}}</div>
+      {{#if category}}
+        <a class="post-item--category {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=../blogId query=categoryQuery}}">Catégorie : {{category}}</a>
+      {{/if}}
       {{#each tags}}
         <a class="post-item--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=../blogId query=tagQuery}}">{{this}}</a>
       {{/each}}

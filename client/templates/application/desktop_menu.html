@@ -13,7 +13,12 @@
 		</div>
 		<div class="menu--title menu--title-categories">
 			<i class="fa fa-lg fa-list"></i>
-			<span>CATEGORIES</span>
+			<span>CATEGORIES</span><br /><br />
+			<ul>
+				{{#each categories}}
+					<a class="menu--categories {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=categoryQuery}}">{{name}} ({{nRefs}})</a><br />
+				{{/each}}
+			</ul>
 		</div>
 		<div class="menu--title menu--title-tags">
 			<i class="fa fa-lg fa-tags"></i>

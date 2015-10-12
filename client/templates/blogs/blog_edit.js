@@ -30,15 +30,33 @@ Template.blogEdit.events({
     $('#authorName').val('');
 
   }, 
+  'submit form.blog-edit--form-add-category': function(e) {
+    e.preventDefault();
+
+    var currentBlogId = this.blog._id;
+    var categoryName = $('#categoryName').val();
+
+    Meteor.call('categoryInsert', categoryName, this.blog._id );
+
+    $('#categoryName').val('');
+
+  },  
   'click .blog-edit--delete-author': function(event, template) {
 
-    var currentBlogId = template.data._id;
+    var currentBlogId = template.data.blog._id;
     var authorName = $(event.target).data("name");
     var author = Authors.findOne({name: authorName, blogId: currentBlogId});
     if(confirm("Supprimer l'auteur "+authorName+" ?"))
       Authors.remove(author._id);
+  },
+  'click .blog-edit--delete-category': function(event, template) {
 
-  }, 
+    var currentBlogId = template.data.blog._id;
+    var categoryName = $(event.target).data("name");
+    var category = Categories.findOne({name: categoryName, blogId: currentBlogId});
+    if(confirm("Supprimer la catégorie "+categoryName+" ?"))
+      Categories.remove(category._id);
+  },   
   'click .blog-edit--button-submit': function(e) {
     e.preventDefault();
     $('#blog-edit--form').submit();
@@ -47,6 +65,10 @@ Template.blogEdit.events({
     e.preventDefault();
     $('#blog-edit--form-add-author').submit();
   }, 
+   'click .blog-edit--button-submit-add-category': function(e) {
+    e.preventDefault();
+    $('#blog-edit--form-add-category').submit();
+  },   
   'click .blog-edit--button-cancel': function(e) {
     e.preventDefault();
     history.back();  
@@ -80,5 +102,11 @@ Template.blogEdit.helpers({
   },
   authorsCount: function() {
     return Authors.find({blogId: this.blog._id}).count();  
-  }
+  },
+  categories: function(){
+    return Categories.find({blogId: this.blog._id});  
+  },  
+  categoriesCount: function() {
+    return Categories.find({blogId: this.blog._id}).count();  
+  }  
 });

@@ -8,13 +8,14 @@ Template.postSubmit.events({
     var blogId = template.data.blog._id;
     var imageId = Session.get("imageId");
     var tags = $(e.target).find('[name=tags]').val().split(',');
+    var category = $(e.target).find('[name=category]').val();
 
     var imagesToDelete = Session.get('imagesToDelete');
     imagesToDelete.forEach(function(imageId) {
         Images.remove(imageId);
     });
    
-    Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId, tags: tags}, function(error, postId) {
+    Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId, tags: tags, category: category}, function(error, postId) {
       if (error){
         console.log("Il y a une erreur dans postSumbit metor.call postinsert");
         console.log(error.reason);
@@ -79,7 +80,10 @@ Template.postSubmit.helpers({
       return false
     }
 
-  }
+  },
+  categories: function() {
+    return Categories.find({blogId: this.blog._id});  
+  }  
 });
 
 Template.postSubmit.rendered = function(){
