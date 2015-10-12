@@ -130,8 +130,11 @@ Authors : Vincent Widmer & Stéphane Morand;
 	padding-left:10px;
 	padding-right:10px;
 
+	cursor: default;
+
 	text-align: center;
 	font-size: 3.2em;
+	letter-spacing: -0.06em;
 	color:#3270ae;
     font-family: "Montserrat-UltraLight";
 }

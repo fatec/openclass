@@ -8,7 +8,7 @@ Template.postItem.helpers({
     return this.tags;
   else
     return 0;
-  },  
+  },     
   ownPost: function() {
     //console.log((this.blog._id).author);
         //console.log(Session.get(Template.parentData(1).blog._id).author);
