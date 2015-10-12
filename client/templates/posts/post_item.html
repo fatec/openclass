@@ -22,13 +22,9 @@
     {{/with}}
     {{#if image}}  
       <div class="post-item--image-wrapper ">
-              <canvas id = "canvas-{{this.imageId}}"
-                height = "400"
-                width = "400">
         <a class="post-item--image-link" href="{{image.url store='images'}}" target="_blank">
           <img id="img-{{this.imageId}}" src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-item--image" />
         </a>
-                </canvas>
       </div>
 
 
