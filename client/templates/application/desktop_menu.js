@@ -13,6 +13,9 @@ Template.desktopMenu.helpers({
 	tagQuery: function() {
 		return "tags="+this.name;
 	},
+	categoryQuery: function() {
+		return "category="+this.name;
+	},	
 	'selectedTagClass': function(){
 		var tagId = this.name;
 	    var selectedTag = Session.get('selectedTag');
@@ -20,6 +23,13 @@ Template.desktopMenu.helpers({
 	        return "menu--tag-selected"
 	    }
 	},
+	'selectedCategoryClass': function(){
+		var categoryId = this.name;
+	    var selectedCategory = Session.get('selectedCategory');
+	    if(categoryId == selectedCategory){
+	        return "menu--author-selected"
+	    }
+	},	
 	'selectedAllPostsClass': function(){
 	    var sortPosts = Session.get('sortPosts');
 	    if(sortPosts == "all"){
@@ -36,7 +46,7 @@ Template.desktopMenu.helpers({
 		var authorName = this.name;
 	    var selectedAuthor = Session.get('selectedAuthor');
 	    if(authorName == selectedAuthor){
-	        return "menu--authors-selected"
+	        return "menu--author-selected"
 	    }
 	},	
 	authors: function() {

@@ -23,6 +23,22 @@ Template.postEdit.events({
     if (body != this.post.body) { // body changed
       _.extend(set, {body: body});
     }
+
+    var category = $(e.target).find('[name=category]').val();
+    if (category != this.post.category) {
+      _.extend(set, {category: category})
+      
+      // Increment category list
+      var newCategoryItem = Categories.findOne({blogId: blogId, name: category});
+      if (newCategoryItem)
+        Categories.update(newCategoryItem._id, {$inc: {nRefs: 1}});    
+
+      // Decrement category list
+      var oldCategoryItem = Categories.findOne({blogId: blogId, name: this.post.category});
+      if (oldCategoryItem)
+        Categories.update(oldCategoryItem._id, {$inc: {nRefs: -1}});         
+    }
+
     // Changement d'image?
     var imagesToDelete = Session.get('imagesToDelete');
     var imageToAdd = Session.get('imageToAdd');
@@ -55,12 +71,12 @@ Template.postEdit.events({
                 imageItem++;
               }
             }
+            
             Router.go('blogPage', {_id: currentPost.blogId});  
           }
        });
       }
     });
-
   },
     'click .post-edit--button-submit': function(e) {
     e.preventDefault();
@@ -116,7 +132,18 @@ Template.postEdit.helpers({
     var currentPost = Posts.findOne(currentPostId);
     var blogId = Blogs.findOne(currentPost.blogId);
     return blogId
-  }
+  },
+    categories: function() {
+    var currentPostId = this.post._id;
+    var currentPost = Posts.findOne(currentPostId);
+    var blogId = Blogs.findOne(currentPost.blogId);
+    return Categories.find({blogId: blogId._id});  
+  },
+    selectedCategory: function(){
+    var category = this.name;
+    var categoryItem = Template.parentData().post.category;
+    return category === categoryItem;
+  },  
 });
 
 //Template.postEdit.onRendered = function(){

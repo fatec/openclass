@@ -25,12 +25,22 @@ Template.postItem.helpers({
   },   
   authorQuery: function() {
     return "author="+this.author.toString();
+  },   
+  categoryQuery: function() {
+    return "category="+this.category.toString();
   },     
-  'selectedTagClass': function(){
+  selectedTagClass: function(){
     var tagId = this.toString();
     var selectedTag = Session.get('selectedTag');
     if(tagId == selectedTag){
       return "post-item--tag-selected"
+    }
+  },
+  selectedCategoryClass: function(){
+    var categoryId = this.category.toString();
+    var selectedCategory = Session.get('selectedCategory');
+    if(categoryId == selectedCategory){
+      return "post-item--category-selected"
     }
   }
 });
