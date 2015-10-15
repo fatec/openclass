@@ -2,10 +2,10 @@ Template.blogSubmit.events({
   'submit form': function(e) {
     e.preventDefault();
 
-    var blogTitle = Meteor.user().username + '/' + $(e.target).find('[name=title]').val();
+    //var blogTitle = Meteor.user().username + '/' + $(e.target).find('[name=title]').val();
 
     var blog = {
-      title: blogTitle
+      title: $(e.target).find('[name=title]').val()
     };
     //blog = 'widmer' + blogTitle;
     

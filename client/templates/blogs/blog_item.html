@@ -1,6 +1,6 @@
 <template name="blogItem">
 	<a class="list-group-item" href="{{pathFor 'blogPage'}}">
-		{{title}}
+		{{author}}/{{title}}
       	{{#if ownBlog}} <!-- TODO : add security (server side permissions) -->
       		<a class="blog-item--button-edit" href="{{pathFor 'blogEdit'}}"> (paramètres)</a>
       	{{/if}}
