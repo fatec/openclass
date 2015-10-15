@@ -1,8 +1,8 @@
   Template.postsHeader.helpers({
-  isAdmin: function() {
-    if (Roles.userIsInRole(Meteor.userId(), ['admin']) === true && Meteor.userId())
-        return true;
-	},
+ //  isAdmin: function() {
+ //    if (Roles.userIsInRole(Meteor.userId(), ['admin']) === true && Meteor.userId())
+ //        return true;
+	// },
 	authors: function() {
 		return Authors.find({blogId: this.blog._id});  
 	},  

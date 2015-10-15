@@ -5,9 +5,7 @@
 	    		<a class="header--button-menu-wrapper">
 	    			<i class="fa fa-2x fa-bars" style=" vertical-align: middle;"></i>
 	    		</a>
-	    		{{#if isAdmin}}
 		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i></a>
-		      	{{/if}}
 		      	<span class="header--button-back-text truncate-text">{{blog.title}}</span>
 						<a href="{{pathFor 'postSubmit' _id=this.blog._id}}">
 							<button class="button button-secondary posts-header--button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header--button-text"> Publier</span></button>
