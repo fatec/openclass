@@ -27,6 +27,7 @@
                     <input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/><br /><br />
                     <select name="category" class="post-submit--select-categories" placeholder="dsd">
                         <option value="" disabled selected >Sélectionnez une catégorie :</option>
+                        <option value="" >Aucune catégorie</option>
                         {{#each categories}}
                             <option selected="{{selectedCategory}}">{{name}}</option>
                         {{/each}}
