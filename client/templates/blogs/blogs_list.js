@@ -9,9 +9,9 @@ Template.blogsList.events({
 	'submit form.blogs-list--code-link-form': function(e) {
 		e.preventDefault();
 		var code = $(e.target).find('[id=code]').val();
-		console.log(Blogs.findOne(code));
-		if (Blogs.findOne(code))
-        	Router.go('blogPage', {_id: code});
+		console.log(Blogs.findOne({title:code}));
+		if (Blogs.findOne({title:code}))
+        	Router.go('blogPage', {_id: Blogs.findOne({title:code})._id});
 		else
 			alert("Ce journal n'existe pas.");
 },
@@ -21,3 +21,10 @@ Template.blogsList.events({
   },
 
 });
+
+
+Template.blogsList.rendered = function(){
+
+  this.$('#code').focus();
+
+  }
