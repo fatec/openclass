@@ -18,6 +18,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin-bottom:10px;
 }
 
+.blogs-list--code-wrapper {
+	width: 80%;
+}
+
 .blog-page-2-main {
 	width:100%;
 	border:solid 1px red;

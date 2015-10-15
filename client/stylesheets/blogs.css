@@ -147,6 +147,11 @@ Authors : Vincent Widmer & Stéphane Morand;
 	text-align: center;
 }
 
+.blogs-list--code-wrapper {
+	width:50%;padding:10px;margin-bottom:30px;margin-left:auto;margin-right:auto;text-align:center;border:solid 1px #3270AE;background-color:white;	border-radius: 4px;
+
+}
+
 .blogs-list--button-submit-blog {
 	margin:25px 0 0 0;
 }
