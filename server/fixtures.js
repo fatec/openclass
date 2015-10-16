@@ -2,6 +2,8 @@
 
 if (Blogs.find().count() === 0) {
 
+  if (Meteor.users.find().count() === 0)
+  {
 // Create users
   var users = [
    // Create admin user
@@ -23,6 +25,7 @@ if (Blogs.find().count() === 0) {
     }
 
   });
+
 
   // Create example user
   var exampleId = Meteor.users.insert({
@@ -73,5 +76,6 @@ if (Blogs.find().count() === 0) {
 
 }
 
+}
 
 
