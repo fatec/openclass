@@ -3,10 +3,14 @@ Template.login.events({
 
         e.preventDefault();
 
-        var username = e.target.username.value;
+         var email = e.target.email.value;
+       
+
+        //var username = e.target.username.value;
         var password = e.target.password.value;
         
-        Meteor.loginWithPassword(username.toLowerCase().trim(),password,function(err){
+        // Meteor.loginWithPassword(username.toLowerCase().trim(),password,function(err){
+        Meteor.loginWithPassword(email,password,function(err){
             if(!err) {
                 Router.go('blogsList');
             }

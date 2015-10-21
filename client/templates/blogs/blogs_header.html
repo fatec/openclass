@@ -3,15 +3,13 @@
 	    <div class="header">
 	    	<div class="header--wrapper">
 		      	<a class="header--logo-title-wrapper" href="{{pathFor 'blogsList'}}">
-		      		<img class="header--logo" src="/img/logo-laruche.png" />
-		      		<div class="header--title"></div>
+<!-- 		      		<img class="header-2-logo" src="/img/logo-laruche.png" />
+ -->		      		<div class="header--title">combeen</div>
 		      	</a>
  					{{#if currentUser}}
-						<a class="header--button-login" href="{{pathFor 'logout'}}">{{currentUser.username}} <i class="fa fa-sign-out"></i></a>
+						<a class="header--button-login" href="{{pathFor 'logout'}}">{{currentUser.emails.[0].address}} <i class="fa fa-sign-out"></i></a>
 		 			{{else}}
-		 				<a class="header--button-login" href="{{pathFor 'login'}}"><i class="fa fa-sign-in"></i> S'identifier</a>		
-		 				<a class="header--button-login" href="{{pathFor 'register'}}"><i class="fa fa-plus"></i> Créer un compte</a> 			
-					{{/if}}
+		 				<a class="header--button-login" href="{{pathFor 'login'}}"><i class="fa fa-sign-in"></i> Accès enseignant</a>							{{/if}}
 			</div>
 		</div>
 	</div>

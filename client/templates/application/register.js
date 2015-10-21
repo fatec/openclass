@@ -3,10 +3,11 @@ Template.register.events({
  
         event.preventDefault();
  
-        var username = event.target.username.value;
+        var email = event.target.email.value;
+        //var username = event.target.username.value;
         var password = event.target.password.value;
   
-        Accounts.createUser({username:username.toLowerCase().trim(),password:password},function(err){
+        Accounts.createUser({email:email,password:password},function(err){
             if(!err) {
                 Router.go('blogsList');
             }

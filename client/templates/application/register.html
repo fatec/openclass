@@ -3,8 +3,10 @@
         <div class="page-title">Créer un compte</div>
         <form id="register--form" class="register--form">
             <div class="register--wrapper">
-                <label>Nom d'utilisateur</label><br />
-                <input type="text"  class="register--input register--input-username form-control" id="username" value="" autofocus><br /><br />
+                <label><b>E-mail</b></label><br /><span style="font-size:0.9em;color:grey">Si vous avez déjà un compte sur le site web ou sur une autre box, utilisez le même e-mail.</span><br />
+                <input type="text"  class="register--input register--input-email form-control" id="email" value="" autofocus><br /><br />           
+<!--                 <label><b>Nom court</b></label><br /><span style="font-size:0.9em;color:grey">Il servira à identifier vos journaux (ex. : nomcourt/journal).<br />Préférez un nom court qui vous identifie facilement.</span><br />
+                <input type="text"  class="register-2-input register-2-input-username form-control" id="username" value="" autofocus><br /> <br /> -->
                 <label>Mot de passe</label><br />
                 <input type="password" name="" class="register--input form-control" id="password" value=""><br />
                 {{#if errorMessage}}
