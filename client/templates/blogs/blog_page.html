@@ -9,7 +9,14 @@
           {{/each}}
         {{else}}
           <div class="blog-page--no-post-message">
-            <span>Il n'y pas encore de publication à afficher...</span>
+                    <div style="background-color:white;margin-bottom:10px;border:solid 1px #ddd;border-radius:4px;padding:15px;">
+
+            <span style="font-size:1.1em;">Code d'accès du journal :<br /><br /><b>{{blog.blogCode}}</b></span>
+            </div>
+          <div style="background-color:white;border:solid 1px #ddd;border-radius:4px;padding:15px;">
+            <span>Il n'y pas encore de publication à afficher...</span><br />
+            </div>
+
           </div>
         {{/if}}
       </div>

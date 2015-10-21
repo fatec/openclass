@@ -1,21 +1,23 @@
 <template name="blogsList">
 	<div class="blogs-list">
-		<div class="blogs-list--title">com<span style="color:#2a90c6">bee</span>n</div>
-				<form class="blogs-list--code-link-form">
+<!-- 		<div class="blogs-list-2-title">com<span style="color:#2a90c6">bee</span>n</div>
+ -->				<form class="blogs-list--code-link-form">
 	 
-		<div class="blogs-list--code-wrapper">
-			<span>Entrez le code du journal : </span><br /><span style="color:grey; font-size:0.8em;">(exemple : widmer/classe203)</span><br /><br /><input style="width:97%;font-size:1.2em;" id="code" type="text" /><br /><br /><button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%"><i class="fa fa-play-circle"></i>
+		<div class="blogs-list--code-wrapper" style="margin-top:30px">
+			<span>Entrez le code du journal : </span><br /><br /><input style="width:97%;font-size:1.2em;" id="code" type="text" /><br /><br /><button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%"><i class="fa fa-play-circle"></i>
  Aller</button>
 		</div>
 				</form>
 
-  		<div class="list-group">
+{{#if currentUser}}
+<div class="list-group">
   		<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
-  		<span style="font-size:1.3em;font-weight:400;">Journaux publics</span></div>
+  		<span style="font-size:1.3em;font-weight:400;">Journaux de <i>{{currentUser.emails.[0].address}}</i></span></div>
     		{{#each blogs}}
       			{{> blogItem}}
     		{{/each}}
     	</div>
+    	{{/if}}
   	</div>
 	<div class="blogs-list--wrapper">
 		{{#if currentUser}}
@@ -23,7 +25,7 @@
 				<button class="button button-secondary blogs-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouveau journal</button>
 			</a>
 		{{else}}
-			<div class="blogs-list--message-connect"><a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouveau journal.</div>
+			<div class="blogs-list--message-connect">Vous êtes enseignant ? <a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouveau journal.</div>
 		{{/if}}
 	</div>
 </template>

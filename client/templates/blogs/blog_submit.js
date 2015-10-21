@@ -16,7 +16,7 @@ Template.blogSubmit.events({
       else
       {      
         Session.set('errorMessage', err.message);
-      }     
+      }          
     });
     
   },
@@ -27,15 +27,24 @@ Template.blogSubmit.events({
   'click .blog-submit--button-cancel': function(e) {
     e.preventDefault();
     history.back();  
-  }     
+  },
+    'keyup .blog-submit--input': function () {
+        Session.set("blogTitle", $(".blog-submit--input").val());
+    }      
 });
 
 Template.blogSubmit.helpers({
   errorMessage: function() {
     return Session.get('errorMessage');
-  }
+  },
+  code: function() {
+    var blogTitle = Session.get("blogTitle");
+    var code = Meteor.user().username + '/' + blogTitle;
+    return code;   
+  }  
 });
 
 Template.blogSubmit.rendered = function(){
-  this.$('.blog-submit--input').focus() 
+  this.$('.blog-submit--input').focus();
+  Session.set("blogTitle", '');   
 }

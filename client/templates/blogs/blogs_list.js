@@ -13,8 +13,8 @@ Template.blogsList.events({
 		var owner = code.substr(0,code.indexOf('/')); // "72"
 		var blogTitle = code.substr(code.indexOf('/')+1); // "tocirah sneab"
 
-		if (Blogs.findOne({author:owner, title:blogTitle}))
-        	Router.go('blogPage', {_id: Blogs.findOne({author:owner, title:blogTitle})._id});
+		if (Blogs.findOne({blogCode:code}))
+        	Router.go('blogPage', {_id: Blogs.findOne({blogCode:code})._id});
 		else
 			alert("Ce journal n'existe pas.");
 },

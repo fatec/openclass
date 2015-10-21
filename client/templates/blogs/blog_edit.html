@@ -1,8 +1,11 @@
 <template name="blogEdit">
 	<div class="blog-edit">
 	    <div class="blog-page--wrapper">
-      <div class="menu">{{> settingsMenu}}</div>
 		<div class="page-title">Paramètres du journal</div>
+		<div class="chapter-title" id="blog-edit--authors-settings">Code d'accès rapide</div>
+		<div class="blog-edit--chapter-wrapper">
+			<span>Code d'accès : <b>{{blog.blogCode}}</b></span>
+		</div>
 		<div class="chapter-title" id="blog-edit--authors-settings">Gérer les auteurs ({{authorsCount}})</div>
 		<div class="blog-edit--chapter-wrapper">
 		<ul>
@@ -21,7 +24,7 @@
 		<div class="blog-edit--chapter-wrapper">
 		<ul>
 			{{#each categories}}
-				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-user"></i>
+				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-list"></i>
  {{name}} {{#unless guest}}<a href="#" class="blog-edit--delete-category"><i style="color:red;font-size:0.8em;" data-name="{{name}}" class="fa fa-trash-o"></i></a>{{/unless}}</li>
 			{{/each}}
 		</ul><br />

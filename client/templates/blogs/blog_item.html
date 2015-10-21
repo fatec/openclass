@@ -1,8 +1,10 @@
 <template name="blogItem">
-	<a class="list-group-item" href="{{pathFor 'blogPage'}}">
-		{{author}}/{{title}}
-      	{{#if ownBlog}} <!-- TODO : add security (server side permissions) -->
-      		<a class="blog-item--button-edit" href="{{pathFor 'blogEdit'}}"> (paramètres)</a>
-      	{{/if}}
-	</a>
+	{{#if ownBlog}} <!-- TODO : add security (server side permissions) -->
+		<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+			{{title}} <span style="font-size:0.9em">(code d'accès: <b>{{blogCode}}</b>)</span>
+      		<a class="blog-item--button-edit" href="{{pathFor 'blogEdit'}}" style="float:right">
+      			<i class="fa fa-lg fa-cog" style="vertical-align:middle"></i>
+      		</a>
+      	</a>
+    {{/if}}
 </template>
