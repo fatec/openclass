@@ -8,6 +8,16 @@ Authors : Vincent Widmer & Stéphane Morand;
 	display:none;
 }
 
+.mobileMenu {
+	padding-top:20px;
+	padding-left:20px;
+	color:white;
+}
+
+.mobileMenu a {
+	color:white;
+}
+
 .layout--main {
 	width:93%;
 	padding-top:50px;
@@ -19,7 +29,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .blogs-list--code-wrapper {
-	width: 80%;
+	width: 95%;
 }
 
 .blog-page-2-main {
@@ -28,7 +38,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .header--select-author {
-	width:56px;
+	width:70px;
 }
 
 .post-edit--wrapper{
@@ -70,9 +80,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 }*/
 
 .page-title {
-font-size:1.5em;
-display:none;
-}
+font-size:1.3em;
+/*display:none;
+*/}
 
 .blog-edit--wrapper {
 	width: 100%;
@@ -103,8 +113,8 @@ display:none;
 	width:96%;
 }
 .header--title {
-	display:none;
-}
+/*	display:none;
+*/}
 
 .header--logo {
 	margin-left:5px;
@@ -113,7 +123,7 @@ display:none;
 .truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 50%;
+    width: 40%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
@@ -162,7 +172,7 @@ margin:5px 5px 0 0;
 }
 
 .list-group {
-	width:95%;
+	width:100%;
 }
 
 .blogs-list--message-connect {

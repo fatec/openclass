@@ -79,7 +79,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 /*menu -> menu.css */
 
 .blog-page--no-post-message {
-	margin-top:30px;
+	margin-top:20px;
 	text-align: center;
 }
 
@@ -148,7 +148,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .blogs-list--code-wrapper {
-	width:50%;padding:10px;margin-bottom:30px;margin-left:auto;margin-right:auto;text-align:center;border:solid 1px #3270AE;background-color:white;	border-radius: 4px;
+	width:40%;padding:10px;margin-bottom:30px;margin-left:auto;margin-right:auto;text-align:center;border:solid 1px #3270AE;background-color:white;	border-radius: 4px;
 
 }
 
