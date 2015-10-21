@@ -1,24 +1,32 @@
 <template name="mobileMenu">
 	<div class="mobileMenu">
-		<a class="menu--link-all-posts" href="{{pathFor 'blogPage'}}" style="color:#3270ae;font-weight:600;">Toutes les publications ({{postCount}})</a>
-		<a class="menu--link-last-posts" href="{{pathFor 'blogPage'}}">Les dernières publications</a>
-		<div class="menu--title menu--title-authors">
-		<i class="fa fa-lg fa-users"></i>
+		<a class="menu--link-all-posts {{selectedAllPostsClass}}" href="{{pathFor 'blogPage' _id=this.blog._id}}">Toutes les publications ({{postCount}})</a>
+<!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
+ -->		<div class="menu--title menu--title-authors">
+			<i class="fa fa-lg fa-users"></i>
 			<span style="">AUTEURS</span>
+			<ul>
+				{{#each authors}}
+					<a class="menu--authors {{selectedAuthorClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=authorQuery}}">{{name}} ({{nRefs}})</a><br />
+				{{/each}}
+			</ul>
 		</div>
 		<div class="menu--title menu--title-categories">
 			<i class="fa fa-lg fa-list"></i>
 			<span>CATEGORIES</span>
+			<ul>
+				{{#each categories}}
+					<a class="menu--categories {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=categoryQuery}}">{{name}} ({{nRefs}})</a><br />
+				{{/each}}
+			</ul>
 		</div>
 		<div class="menu--title menu--title-tags">
 			<i class="fa fa-lg fa-tags"></i>
 			<span>TAGS</span><br /><br />
-
 			<ul>
-	          {{#each tags}}
-	        	  	<a class="menu--tags" href="{{pathFor 'blogPage' _id=this.blogId query='tags=' hash=name}}">{{name}} ({{nRefs}})</a>
-	            <br />
-	          {{/each}}
+				{{#each tags}}
+					<a class="menu--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=tagQuery}}">{{name}} ({{nRefs}})</a><br />
+				{{/each}}
 			</ul>
 		</div>
 	</div>
