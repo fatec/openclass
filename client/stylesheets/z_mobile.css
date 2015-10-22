@@ -147,6 +147,15 @@ margin:5px 5px 0 0;
 	display:inline-block;
 }
 
+.header--button-back-wrapper {
+	display:none;
+}
+
+.header--button-back-wrapper-mobile {
+	display:inline-block;
+margin-bottom:25px;
+}
+
 .logout--wrapper{
 	width:100%;
 }
