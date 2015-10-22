@@ -7,15 +7,15 @@ if (Blogs.find().count() === 0) {
 // Create users
   var users = [
    // Create admin user
-      {email:"admin",password:"admin",roles:['admin']},
+      {username:"admin",password:"admin",roles:['admin']},
   ];
 
   _.each(users, function (user) {
     var id;
 
     id = Accounts.createUser({
-      email: user.email,
-      password: user.password,
+      username: user.username,
+      password: user.password
     });
 
     if (user.roles.length > 0) {
