@@ -9,7 +9,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .mobileMenu {
-	padding-top:20px;
+	padding-top:10px;
 	padding-left:20px;
 	color:white;
 }
@@ -147,13 +147,13 @@ margin:5px 5px 0 0;
 	display:inline-block;
 }
 
-.header--button-back-wrapper {
+.posts-header .header--button-back-wrapper {
 	display:none;
 }
 
 .header--button-back-wrapper-mobile {
 	display:inline-block;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .logout--wrapper{
