@@ -15,6 +15,7 @@ if (Blogs.find().count() === 0) {
 
     id = Accounts.createUser({
       username: user.username,
+      email: "Admin",
       password: user.password
     });
 
@@ -27,52 +28,52 @@ if (Blogs.find().count() === 0) {
   });
 
 
-  // Create example user
-  var exampleId = Meteor.users.insert({
-    profile: { name: 'beebox.one' }
-  });
-  var example = Meteor.users.findOne(exampleId);
+//   // Create example user
+//   var exampleId = Meteor.users.insert({
+//     profile: { name: 'beebox.one' }
+//   });
+//   var example = Meteor.users.findOne(exampleId);
 
   
-  var firstBlogId = Blogs.insert({
-    title: 'Exemple de journal',
-    userId: example._id,
-    author: example.profile.name
-  });
+//   var firstBlogId = Blogs.insert({
+//     title: 'Exemple de journal',
+//     userId: example._id,
+//     author: example.profile.name
+//   });
 
-  Posts.insert({
-    blogId: firstBlogId,
-    userId: example._id,
-    author: example.profile.name,
-    submitted: Date.now(),
-    body: 'Voici votre première publication !',
-    //tags: "coool"
-    tags: ["exemple"]
-  });
+//   Posts.insert({
+//     blogId: firstBlogId,
+//     userId: example._id,
+//     author: example.profile.name,
+//     submitted: Date.now(),
+//     body: 'Voici votre première publication !',
+//     //tags: "coool"
+//     tags: ["exemple"]
+//   });
 
-  Tags.insert({
-    name: "exemple",
-    blogId: firstBlogId,
-    nRefs: 1
-  });
+//   Tags.insert({
+//     name: "exemple",
+//     blogId: firstBlogId,
+//     nRefs: 1
+//   });
 
-  Authors.insert({
-  name: "Invité",
-  blogId: firstBlogId,
-  nRefs: 0
-});
+//   Authors.insert({
+//   name: "Invité",
+//   blogId: firstBlogId,
+//   nRefs: 0
+// });
 
-  Authors.insert({
-  name: "Enseignant",
-  blogId: firstBlogId,
-  nRefs: 0  
-});
+//   Authors.insert({
+//   name: "Enseignant",
+//   blogId: firstBlogId,
+//   nRefs: 0  
+// });
 
-  Categories.insert({
-  name: "Exemple de catégorie",
-  blogId: firstBlogId,
-  nRefs: 0  
-});
+//   Categories.insert({
+//   name: "Exemple de catégorie",
+//   blogId: firstBlogId,
+//   nRefs: 0  
+// });
 
 }
 
