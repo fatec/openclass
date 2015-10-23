@@ -42,7 +42,7 @@ Template.postSubmit.events({
     FS.Utility.eachFile(event, function(file) {
       var blogId = template.data.blog._id;
 
-      //myCanvasFunction(file, function (image) {
+      //myCanvasFunction1(file, function (image) {
       myResizeFunction(file, function (image) {
         var newFile = image;
         //console.log("newFile1 "+ newFile);
@@ -266,6 +266,7 @@ var myCanvasFunction1 = function(file, callback){
     ctx.putImageData(imgData, 0, 0);    
 
 
+// TODO rote image on client with exif
 /*
     // rotate image
     var exif = EXIF.readFromBinaryFile(new BinaryFile(file));
