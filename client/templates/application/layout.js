@@ -5,7 +5,7 @@
       'menu': template.$('#slideout-menu').get(0),
       'padding': 256,
       'tolerance': 70,
-      'touch': true
+      'touch': false
     });
   });
 
