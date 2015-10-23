@@ -17,7 +17,7 @@
                         {{/if}}
                     {{else}}
                         <label class="post-edit--input-file-wrapper">
-                            <input type="file" name="file" class="post-edit--input-file" />Ajouter une photo...
+                            <input type="file" name="file" accept="image/*" class="post-edit--input-file" />Ajouter une photo...
                         </label>
                     {{/if}}
                 </div>
@@ -25,7 +25,7 @@
 
                     <br /><br />
                     <input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/><br /><br />
-                    <select name="category" class="post-submit--select-categories" placeholder="dsd">
+                    <select name="category" class="post-submit--select-categories">
                         <option value="" disabled selected >Sélectionnez une catégorie :</option>
                         <option value="" >Aucune catégorie</option>
                         {{#each categories}}
