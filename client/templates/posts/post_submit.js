@@ -110,7 +110,7 @@ Template.postSubmit.rendered = function(){
     Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
   }
 
-  this.$('.post-submit--textarea').focus();
+  //this.$('.post-submit--textarea').focus();
 
   // Textarea autosize
   $('.post-submit--textarea').autosize()
