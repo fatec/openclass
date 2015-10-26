@@ -38,7 +38,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .header--select-author {
-	width:70px;
+	width:90px;
 }
 
 .post-edit--wrapper{
@@ -191,4 +191,15 @@ margin-bottom:20px;
 .blogs-list--title {
 	margin:10px 0 30px 0;
 	}
+}
+
+@media (max-width: 550px) {
+	.truncate-text {
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 26%;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
 }
