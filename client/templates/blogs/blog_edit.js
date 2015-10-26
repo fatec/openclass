@@ -23,7 +23,7 @@ Template.blogEdit.events({
     e.preventDefault();
 
     var currentBlogId = this.blog._id;
-    var authorName = $('#authorName').val();
+    var authorName = $('#authorName').val().trim();
 
     Meteor.call('authorInsert', authorName, this.blog._id );
 
@@ -34,7 +34,7 @@ Template.blogEdit.events({
     e.preventDefault();
 
     var currentBlogId = this.blog._id;
-    var categoryName = $('#categoryName').val();
+    var categoryName = $('#categoryName').val().trim();
 
     Meteor.call('categoryInsert', categoryName, this.blog._id );
 
