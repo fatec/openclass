@@ -40,10 +40,11 @@ Template.postSubmit.events({
     $(".post-submit--input-file-button").hide();
 
     FS.Utility.eachFile(event, function(file) {
-      var blogId = template.data.blog._id;
+      var blogId = template.data.blog._id;   
 
-      //myCanvasFunction1(file, function (image) {
-      myResizeFunction(file, function (image) {
+      //myCanvasFunction(file, function (image) {
+      //myResizeFunction(file, function (image) {
+      myCanvasFunctionExif(file, function (image) {
         var newFile = image;
         //console.log("newFile1 "+ newFile);
 
@@ -313,7 +314,7 @@ var canvas = document.createElement("canvas");
     {
         return function(e)
         {
-            MinifyJpegAsync.minify(e.target.result, 800, function(minified) {
+            MinifyJpegAsync.minify(e.target.result, 100, function(minified) {
               var enc = "data:image/jpeg;base64," + btoa(minified);
               callback(enc);
             });
@@ -330,6 +331,61 @@ var canvas = document.createElement("canvas");
 
 
 
+
+var myCanvasFunctionExif = function(file, callback){
+  var canvas = document.createElement("canvas");
+   // Create an image
+      var img = document.createElement("img");
+      // Create a file reader
+      var reader = new FileReader();
+      // Set the image once loaded into file reader
+
+
+
+         reader.onload = function (readerEvent) {
+              var image = new Image();
+              image.onload = function (imageEvent) {
+
+                  // Resize the image
+                  var canvas = document.createElement('canvas'),
+                      max_size = 100,
+                      width = image.width,
+                      height = image.height;
+                  if (width > height) {
+                      if (width > max_size) {
+                          height *= max_size / width;
+                          width = max_size;
+                      }
+                  } else {
+                      if (height > max_size) {
+                          width *= max_size / height;
+                          height = max_size;
+                      }
+                  }
+                  canvas.width = width;
+                  canvas.height = height;
+                  var ctx = canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+
+
+
+
+                  resizedImage = canvas.toDataURL('image/jpeg');
+  callback(resizedImage);
+              }
+              image.src = readerEvent.target.result;
+              
+              EXIF.getData(image, function() {
+                  var make = EXIF.getTag(image, "Make"),
+                      model = EXIF.getTag(image, "Model");
+                  console.log("I was taken by a " + make + " " + model);
+              });
+
+          }
+          reader.readAsDataURL(file);
+
+
+
+}
 
 
 
