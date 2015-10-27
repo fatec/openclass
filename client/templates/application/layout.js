@@ -7,6 +7,8 @@
       'tolerance': 70,
       'touch': false
     });
+        T9n.setLanguage("fr");
+
   });
 
   Template.layout.events({

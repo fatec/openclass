@@ -12,7 +12,8 @@ Template.register.events({
                 Router.go('blogsList');
             }
             else {
-                console.log(err);
+                Session.set('errorMessage', err.reason);
+                console.log(err.reason);
             }
         });
     },
@@ -22,6 +23,20 @@ Template.register.events({
     }
 });
 
+Template.register.helpers({
+  errorMessage: function() {
+    return Session.get('errorMessage');
+  }
+});
+
 Template.register.rendered = function(){
-  this.$('.register--input-username').focus() 
+    this.$('.register--input-username').focus();
+
+    Session.set('errorMessage', '');
+
+    if (Meteor.isClient) {
+        T9n.map('fr', {
+            'Email already exists.': 'Un compte lié à cet e-mail existe déjà.'
+        });
+    }
 }

@@ -8,6 +8,9 @@ Template.login.events({
 
         //var username = e.target.username.value;
         var password = e.target.password.value;
+
+        Session.set('errorMessage', '');
+
         
         // Meteor.loginWithPassword(username.toLowerCase().trim(),password,function(err){
         Meteor.loginWithPassword(email.toLowerCase(),password,function(err){
@@ -16,7 +19,7 @@ Template.login.events({
             }
             else
             {      
-                Session.set('errorMessage', err.message);
+                Session.set('errorMessage', err.reason);
             }
         });
     },
@@ -33,5 +36,14 @@ Template.login.helpers({
 });
 
 Template.login.rendered = function(){
-  this.$('.login--input-username').focus() 
+    
+    Session.set('errorMessage', '');
+
+  this.$('.login--input-username').focus();
+  if (Meteor.isClient) {
+    T9n.map('fr', {
+        'User not found': 'L\'utilisateur n\'existe pas.',
+        'Incorrect password': 'Le mot de passe n\'est pas correct.'
+        });
+    }
 }
