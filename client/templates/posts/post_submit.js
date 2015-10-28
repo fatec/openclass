@@ -312,15 +312,16 @@ var canvas = document.createElement("canvas");
         {
             MinifyJpegAsync.minify(e.target.result, 1000, function(minified) {
               var enc = "data:image/jpeg;base64," + btoa(minified);
+              
+              $('.post-edit--spinner').hide();
 
-              console.log("image chargée!!");
               callback(enc);
             });
 
         }
     })(file);
     reader.readAsDataURL(file);
-    console.log("image se charge");
+    $('.post-edit--spinner').show();
 
     }
 
