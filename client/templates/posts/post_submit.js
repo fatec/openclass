@@ -49,8 +49,8 @@ Template.postSubmit.events({
 
 
       //myCanvasFunction(file, function (image) {
-      //myResizeFunction(file, function (image) {
-      myCanvasFunctionExif(file, function (image) {
+      myResizeFunction(file, function (image) {
+      //myCanvasFunctionExif(file, function (image) {
         var newFile = image;
         //console.log("newFile1 "+ newFile);
 
@@ -320,14 +320,17 @@ var canvas = document.createElement("canvas");
     {
         return function(e)
         {
-            MinifyJpegAsync.minify(e.target.result, 100, function(minified) {
+            MinifyJpegAsync.minify(e.target.result, 1000, function(minified) {
               var enc = "data:image/jpeg;base64," + btoa(minified);
+
+              console.log("image chargée!!");
               callback(enc);
             });
 
         }
     })(file);
     reader.readAsDataURL(file);
+    console.log("image se charge");
 
     }
 
@@ -353,11 +356,18 @@ var myCanvasFunctionExif = function(file, callback){
               var image = new Image();
               image.onload = function (imageEvent) {
 
+
                   // Resize the image
                   var canvas = document.createElement('canvas'),
                       max_size = 100,
                       width = image.width,
                       height = image.height;
+
+
+     
+
+
+                      
                   if (width > height) {
                       if (width > max_size) {
                           height *= max_size / width;
@@ -396,51 +406,6 @@ var myCanvasFunctionExif = function(file, callback){
 
                   //ctx.rotate(0.6);
 
-                                     EXIF.getData(image, function() {
-                        var make = EXIF.getTag(image, "Make"),
-                            model = EXIF.getTag(image, "Model");
-                            orientation = EXIF.getTag(image, "Orientation");
-                        console.log("I was taken by a " + make + " " + model + "Orientation : " + orientation);
-                    });
-
-                  switch(orientation){
-    case 2:
-        // horizontal flip
-        ctx.translate(canvas.width, 0);
-        ctx.scale(-1, 1);
-        break;
-    case 3:
-        // 180° rotate left
-        ctx.translate(canvas.width, canvas.height);
-        ctx.rotate(Math.PI);
-        break;
-    case 4:
-        // vertical flip
-        ctx.translate(0, canvas.height);
-        ctx.scale(1, -1);
-        break;
-    case 5:
-        // vertical flip + 90 rotate right
-        ctx.rotate(0.5 * Math.PI);
-        ctx.scale(1, -1);
-        break;
-    case 6:
-        // 90° rotate right
-        ctx.rotate(0.5 * Math.PI);
-        ctx.translate(0, -canvas.height);
-        break;
-    case 7:
-        // horizontal flip + 90 rotate right
-        ctx.rotate(0.5 * Math.PI);
-        ctx.translate(canvas.width, -canvas.height);
-        ctx.scale(-1, 1);
-        break;
-    case 8:
-        // 90° rotate left
-        ctx.rotate(-0.5 * Math.PI);
-        ctx.translate(-canvas.width, 0);
-        break;
-}
 
 
 
