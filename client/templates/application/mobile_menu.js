@@ -38,7 +38,7 @@ Template.mobileMenu.helpers({
 	},
 	'selectedLastPostsClass': function(){
     	var sortPosts = Session.get('sortPosts');
-    	if(sortPosts == "last"){
+    	if(sortPosts == "last" && !Router.current().params.query.tags && !Router.current().params.query.author && !Router.current().params.query.category){
         	return "menu--link-sort-selected"
     	}
 	},
