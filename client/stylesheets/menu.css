@@ -8,7 +8,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 	width:225px;
 	display: table-cell;
 	vertical-align: top;
-	padding: 10px 0 0 0;
+	padding: 9px 0 0 0;
 
 	font-size: 1em;
 }
@@ -26,7 +26,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu--link-last-posts {
 	display: block;
-	margin: 12px 0 20px 0;
+	margin: 0px 0 20px 0;
 
 	font-size: 0.9em;
 	color:#2A90C6;
@@ -38,7 +38,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--title {
-	margin:25px 0 -2px 0;
+	margin:28px 0 -2px 0;
 
 	color:grey;
 	font-size: 0.8em;
@@ -48,16 +48,24 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu--categories {
 	display: inline-block;
-		margin: 12px 0 0px 10px;
+		margin: 5px 0 0px 22px;
 
 	color: #2A90C6;
 }
 
+.menu--categories:first-of-type {
+	margin-top: 8px;
+}
+
 .menu--authors {
 	display: inline-block;
-		margin: 12px 0 0px 10px;
+		margin: 5px 0 0px 22px;
 
 	color: #2A90C6;
+}
+
+.menu--authors:first-of-type {
+	margin-top:8px;
 }
 
 .menu--authors a:visited {
@@ -72,7 +80,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 .menu--tags {
 	display: inline-block;
 	width:auto;
-	margin: 5px 0 0px 10px;
+	margin: 5px 0 0px 22px;
 	padding:6px;
 
 	background-color: #2A90C6;
@@ -81,6 +89,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 	border-radius: 3px;
 
 	color:white;
+}
+
+.menu--tags:first-of-type {
+	margin-top: -1px;
 }
 
 .menu--tags a:visited {
