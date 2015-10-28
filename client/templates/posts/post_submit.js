@@ -360,8 +360,9 @@ var myCanvasFunctionExif = function(file, callback){
               image.onload = function (imageEvent) {
 
                   //Resize the image
-                  var canvas = document.createElement('canvas'),
-                      max_size = 100,
+                  var canvas = document.createElement('canvas');
+
+                                      max_size = 100,
                       width = image.width,
                       height = image.height;
                   if (width > height) {
@@ -410,9 +411,15 @@ var myCanvasFunctionExif = function(file, callback){
                             model = EXIF.getTag(image, "Model");
                             orientation = EXIF.getTag(image, "Orientation");
                         console.log("I was taken by a " + make + " " + model + "Orientation : " + orientation);
+                        //alert(orientation);
                     });
 
                   switch(orientation){
+    case 0:
+        // 90° rotate right
+        ctx.rotate(0.5 * Math.PI);
+        ctx.translate(0, -canvas.height);
+        break;
     case 2:
         // horizontal flip
         ctx.translate(canvas.width, 0);
