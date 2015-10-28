@@ -46,18 +46,11 @@ Template.postSubmit.events({
       var blogId = template.data.blog._id;   
 
 
-    // loadImage(
-    //     file,
-    //     function (img) {
-    //         document.body.appendChild(img);
-    //     },
-    //     {maxWidth: 600} // Options
-    // );
 
 
       //myCanvasFunction(file, function (image) {
-      //myResizeFunction(file, function (image) {
-      myCanvasFunctionExif(file, function (image) {
+      myResizeFunction(file, function (image) {
+      //myCanvasFunctionExif(file, function (image) {
         var newFile = image;
         //console.log("newFile1 "+ newFile);
 
@@ -193,14 +186,11 @@ var myCanvasFunction1 = function(file, callback){
  /* 
   var reader = new FileReader();
   reader.onload = function(e) {
-
     var img = new Image();
     img.onload = function (imageEvent) {
-
     // use canvas
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
-
     // resize image
     var MAX_WIDTH = 800;
     var MAX_HEIGHT = 600;
@@ -222,15 +212,12 @@ var myCanvasFunction1 = function(file, callback){
     canvas.height = height;
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0, width, height);
-
     resizedImage = canvas.toDataURL('image/jpeg');
     callback(resizedImage);
     }
     img.src = e.target.result
-
   }
   reader.readAsDataURL(file);
-
 */
 
 
@@ -284,9 +271,7 @@ var myCanvasFunction1 = function(file, callback){
 /*
     // rotate image
     var exif = EXIF.readFromBinaryFile(new BinaryFile(file));
-
     switch(exif.Orientation){
-
        case 8:
            ctx.rotate(90*Math.PI/180);
            break;
@@ -296,8 +281,6 @@ var myCanvasFunction1 = function(file, callback){
        case 6:
            ctx.rotate(-90*Math.PI/180);
            break;
-
-
     }
     */
 
@@ -327,14 +310,17 @@ var canvas = document.createElement("canvas");
     {
         return function(e)
         {
-            MinifyJpegAsync.minify(e.target.result, 100, function(minified) {
+            MinifyJpegAsync.minify(e.target.result, 1000, function(minified) {
               var enc = "data:image/jpeg;base64," + btoa(minified);
+
+              console.log("image chargée!!");
               callback(enc);
             });
 
         }
     })(file);
     reader.readAsDataURL(file);
+    console.log("image se charge");
 
     }
 
@@ -346,7 +332,7 @@ var canvas = document.createElement("canvas");
 
 
 var myCanvasFunctionExif = function(file, callback){
-  var canvas = document.createElement("canvas");
+  //var canvas = document.createElement("canvas");
    // Create an image
       var img = document.createElement("img");
       // Create a file reader
@@ -355,16 +341,23 @@ var myCanvasFunctionExif = function(file, callback){
 
 
 
+
          reader.onload = function (readerEvent) {
               var image = new Image();
               image.onload = function (imageEvent) {
 
-                  //Resize the image
-                  var canvas = document.createElement('canvas');
 
-                                      max_size = 100,
+                  // Resize the image
+                  var canvas = document.createElement('canvas'),
+                      max_size = 100,
                       width = image.width,
                       height = image.height;
+
+
+     
+
+
+                      
                   if (width > height) {
                       if (width > max_size) {
                           height *= max_size / width;
@@ -376,9 +369,6 @@ var myCanvasFunctionExif = function(file, callback){
                           height = max_size;
                       }
                   }
-
-                  //width = 200;
-                  //height = 350;
                   canvas.width = width;
                   canvas.height = height;
                   ctx = canvas.getContext('2d');
@@ -406,57 +396,6 @@ var myCanvasFunctionExif = function(file, callback){
 
                   //ctx.rotate(0.6);
 
-                                     EXIF.getData(image, function() {
-                        var make = EXIF.getTag(image, "Make"),
-                            model = EXIF.getTag(image, "Model");
-                            orientation = EXIF.getTag(image, "Orientation");
-                        console.log("I was taken by a " + make + " " + model + "Orientation : " + orientation);
-                        //alert(orientation);
-                    });
-
-                  switch(orientation){
-    case 0:
-        // 90° rotate right
-        ctx.rotate(0.5 * Math.PI);
-        ctx.translate(0, -canvas.height);
-        break;
-    case 2:
-        // horizontal flip
-        ctx.translate(canvas.width, 0);
-        ctx.scale(-1, 1);
-        break;
-    case 3:
-        // 180° rotate left
-        ctx.translate(canvas.width, canvas.height);
-        ctx.rotate(Math.PI);
-        break;
-    case 4:
-        // vertical flip
-        ctx.translate(0, canvas.height);
-        ctx.scale(1, -1);
-        break;
-    case 5:
-        // vertical flip + 90 rotate right
-        ctx.rotate(0.5 * Math.PI);
-        ctx.scale(1, -1);
-        break;
-    case 6:
-        // 90° rotate right
-        ctx.rotate(0.5 * Math.PI);
-        ctx.translate(0, -canvas.height);
-        break;
-    case 7:
-        // horizontal flip + 90 rotate right
-        ctx.rotate(0.5 * Math.PI);
-        ctx.translate(canvas.width, -canvas.height);
-        ctx.scale(-1, 1);
-        break;
-    case 8:
-        // 90° rotate left
-        ctx.rotate(-0.5 * Math.PI);
-        ctx.translate(-canvas.width, 0);
-        break;
-}
 
 
 
@@ -496,23 +435,6 @@ console.log("après :"+canvas.width);
               }
 
               image.src = readerEvent.target.result;
-                  //console.log(ctx);
-
-      // switch('6'){
-
-      //  case 8:
-      //      image.rotate(90*Math.PI/180);
-      //      break;
-      //  case 3:
-      //      image.rotate(180*Math.PI/180);
-      //      break;
-      //  case 6:
-      //      file.rotate(-90*Math.PI/180);
-      //      break;
-      //    }
-              // image.src = readerEvent.target.result;
-              // console.log(image.src);
-              
 
 
           }
@@ -839,5 +761,3 @@ var MinifyJpegAsync = (function () {
 
     return that;
 })();
-
-
