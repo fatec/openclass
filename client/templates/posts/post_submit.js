@@ -46,13 +46,6 @@ Template.postSubmit.events({
       var blogId = template.data.blog._id;   
 
 
-    // loadImage(
-    //     file,
-    //     function (img) {
-    //         document.body.appendChild(img);
-    //     },
-    //     {maxWidth: 600} // Options
-    // );
 
 
       //myCanvasFunction(file, function (image) {
@@ -355,6 +348,7 @@ var myCanvasFunctionExif = function(file, callback){
 
 
 
+
          reader.onload = function (readerEvent) {
               var image = new Image();
               image.onload = function (imageEvent) {
@@ -486,23 +480,6 @@ console.log("après :"+canvas.width);
               }
 
               image.src = readerEvent.target.result;
-                  //console.log(ctx);
-
-      // switch('6'){
-
-      //  case 8:
-      //      image.rotate(90*Math.PI/180);
-      //      break;
-      //  case 3:
-      //      image.rotate(180*Math.PI/180);
-      //      break;
-      //  case 6:
-      //      file.rotate(-90*Math.PI/180);
-      //      break;
-      //    }
-              // image.src = readerEvent.target.result;
-              // console.log(image.src);
-              
 
 
           }
