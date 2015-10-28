@@ -27,9 +27,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 	margin-right: auto;
 }
 
-.header--wrapper a {
+/*.header--wrapper a {
 	text-decoration: none;
-}
+}*/
 
 .header--button-menu-wrapper {
 	display:none;

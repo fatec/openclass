@@ -193,6 +193,8 @@ margin-bottom:20px;
 	}
 }
 
+
+/* iPhone 4, 4S, 5 */
 @media (max-width: 550px) {
 	.truncate-text {
     text-overflow: ellipsis;

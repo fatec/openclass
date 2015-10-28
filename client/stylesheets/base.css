@@ -29,9 +29,13 @@ body {
 
 a {
 	text-decoration: none;
+	color: #2a8bbf;
 }
 
 a:hover {
+	color: #145679;
+}
+a:hover, a:active {
 	text-decoration: underline;
 }
 
