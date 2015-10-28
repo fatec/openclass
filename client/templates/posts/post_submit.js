@@ -346,7 +346,7 @@ var canvas = document.createElement("canvas");
 
 
 var myCanvasFunctionExif = function(file, callback){
-  //var canvas = document.createElement("canvas");
+  var canvas = document.createElement("canvas");
    // Create an image
       var img = document.createElement("img");
       // Create a file reader
@@ -359,7 +359,7 @@ var myCanvasFunctionExif = function(file, callback){
               var image = new Image();
               image.onload = function (imageEvent) {
 
-                  // Resize the image
+                  //Resize the image
                   var canvas = document.createElement('canvas'),
                       max_size = 100,
                       width = image.width,
@@ -375,6 +375,9 @@ var myCanvasFunctionExif = function(file, callback){
                           height = max_size;
                       }
                   }
+
+                  //width = 200;
+                  //height = 350;
                   canvas.width = width;
                   canvas.height = height;
                   ctx = canvas.getContext('2d');
