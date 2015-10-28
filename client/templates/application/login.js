@@ -13,7 +13,7 @@ Template.login.events({
 
         
         // Meteor.loginWithPassword(username.toLowerCase().trim(),password,function(err){
-        Meteor.loginWithPassword(email.toLowerCase(),password,function(err){
+        Meteor.loginWithPassword(email.toLowerCase().trim(),password,function(err){
             if(!err) {
                 Router.go('blogsList');
             }
