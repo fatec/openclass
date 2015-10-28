@@ -39,8 +39,21 @@ Template.postSubmit.events({
   'change .post-submit--input-file': function(event, template) {
     $(".post-submit--input-file-button").hide();
 
+
+
+
     FS.Utility.eachFile(event, function(file) {
       var blogId = template.data.blog._id;   
+
+
+    // loadImage(
+    //     file,
+    //     function (img) {
+    //         document.body.appendChild(img);
+    //     },
+    //     {maxWidth: 600} // Options
+    // );
+
 
       //myCanvasFunction(file, function (image) {
       //myResizeFunction(file, function (image) {
@@ -333,7 +346,7 @@ var canvas = document.createElement("canvas");
 
 
 var myCanvasFunctionExif = function(file, callback){
-  var canvas = document.createElement("canvas");
+  //var canvas = document.createElement("canvas");
    // Create an image
       var img = document.createElement("img");
       // Create a file reader
@@ -364,21 +377,133 @@ var myCanvasFunctionExif = function(file, callback){
                   }
                   canvas.width = width;
                   canvas.height = height;
-                  var ctx = canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                  ctx = canvas.getContext('2d');
+                  console.log("au début :"+canvas.width)
 
 
+    //                   ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // // save the unrotated context of the canvas so we can restore it later
+    // // the alternative is to untranslate & unrotate after drawing
+    // ctx.save();
+
+    // // move to the center of the canvas
+    // ctx.translate(canvas.width/2,canvas.height/2);
+
+    // // rotate the canvas to the specified degrees
+    // ctx.rotate(98*Math.PI/180);
+
+    // // draw the image
+    // // since the context is rotated, the image will be rotated also
+    // ctx.drawImage(image,-image.width/2,-image.width/2);
+
+    // // we’re done with the rotating so restore the unrotated context
+    // ctx.restore();
+
+                  //ctx.rotate(0.6);
+
+                                     EXIF.getData(image, function() {
+                        var make = EXIF.getTag(image, "Make"),
+                            model = EXIF.getTag(image, "Model");
+                            orientation = EXIF.getTag(image, "Orientation");
+                        console.log("I was taken by a " + make + " " + model + "Orientation : " + orientation);
+                    });
+
+                  switch(orientation){
+    case 2:
+        // horizontal flip
+        ctx.translate(canvas.width, 0);
+        ctx.scale(-1, 1);
+        break;
+    case 3:
+        // 180° rotate left
+        ctx.translate(canvas.width, canvas.height);
+        ctx.rotate(Math.PI);
+        break;
+    case 4:
+        // vertical flip
+        ctx.translate(0, canvas.height);
+        ctx.scale(1, -1);
+        break;
+    case 5:
+        // vertical flip + 90 rotate right
+        ctx.rotate(0.5 * Math.PI);
+        ctx.scale(1, -1);
+        break;
+    case 6:
+        // 90° rotate right
+        ctx.rotate(0.5 * Math.PI);
+        ctx.translate(0, -canvas.height);
+        break;
+    case 7:
+        // horizontal flip + 90 rotate right
+        ctx.rotate(0.5 * Math.PI);
+        ctx.translate(canvas.width, -canvas.height);
+        ctx.scale(-1, 1);
+        break;
+    case 8:
+        // 90° rotate left
+        ctx.rotate(-0.5 * Math.PI);
+        ctx.translate(-canvas.width, 0);
+        break;
+}
+
+
+
+
+console.log("après :"+canvas.width);
+//canvas.height = height;
+                  ctx.drawImage(image,0,0,width,height);
+
+
+
+//canvas.height = newHeight + 'px';
+
+       //                  switch('3'){
+
+       // case 8:
+       //     ctx.rotate(90*Math.PI/180);
+       //     break;
+       // case 3:
+       //     ctx.rotate(180*Math.PI/180);
+       //     break;
+       // case 6:
+       //     ctx.rotate(-90*Math.PI/180);
+       //     break;
+         //}
+                  //ctx.drawImage(image, 0, 0, width, height);
+
+                  console.log(ctx);
 
 
                   resizedImage = canvas.toDataURL('image/jpeg');
-  callback(resizedImage);
+                  callback(resizedImage);
+
+
+
+
+
               }
+
               image.src = readerEvent.target.result;
+                  //console.log(ctx);
+
+      // switch('6'){
+
+      //  case 8:
+      //      image.rotate(90*Math.PI/180);
+      //      break;
+      //  case 3:
+      //      image.rotate(180*Math.PI/180);
+      //      break;
+      //  case 6:
+      //      file.rotate(-90*Math.PI/180);
+      //      break;
+      //    }
+              // image.src = readerEvent.target.result;
+              // console.log(image.src);
               
-              EXIF.getData(image, function() {
-                  var make = EXIF.getTag(image, "Make"),
-                      model = EXIF.getTag(image, "Model");
-                  console.log("I was taken by a " + make + " " + model);
-              });
+
 
           }
           reader.readAsDataURL(file);
