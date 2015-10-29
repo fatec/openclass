@@ -45,15 +45,18 @@ Template.postSubmit.events({
     FS.Utility.eachFile(event, function(file) {
       var blogId = template.data.blog._id;   
 
-
-
-
       //myCanvasFunction(file, function (image) {
       myResizeFunction(file, function (image) {
         var newFile = image;
         //console.log("newFile1 "+ newFile);
 
+
+
       var newFile = new FS.File(newFile);
+
+      newFile.name(file.name);
+      newFile.name(file.name, {store: 'thumbs'});
+
       newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
 
       var imageId = Images.insert(newFile, function (err, fileObj) {

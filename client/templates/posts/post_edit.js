@@ -111,6 +111,10 @@ Template.postEdit.events({
         //console.log("newFile1 "+ newFile);
 
       var newFile = new FS.File(newFile);
+
+      newFile.name(file.name);
+      newFile.name(file.name, {store: 'thumbs'});
+      
       newFile.metadata = {blogId: blogId, postId: currentPostId, unvalid: true};
 
       var imageId = Images.insert(newFile, function (err, fileObj) {
