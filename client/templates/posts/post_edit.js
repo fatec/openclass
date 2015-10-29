@@ -102,29 +102,58 @@ Template.postEdit.events({
     $(".post-submit--input-file-button").hide();
 
     FS.Utility.eachFile(event, function(file) {
-      var currentPostId = template.data.post._id;
-      var blogId = Posts.findOne({_id: currentPostId}).blogId;
+    var currentPostId = template.data.post._id;
+    var blogId = Posts.findOne({_id: currentPostId}).blogId;
 
-      //myCanvasFunction(file, function (image) {
-      myResizeFunction(file, function (image) {
-        var newFile = image;
-        //console.log("newFile1 "+ newFile);
+    var extension = file.name.substr(file.name.lastIndexOf('.')+1).toLowerCase();
+    if (extension == "jpg" || extension == "jpeg") {
 
-      var newFile = new FS.File(newFile);
 
-      newFile.name(file.name);
-      
-      newFile.metadata = {blogId: blogId, postId: currentPostId, unvalid: true};
+            //myCanvasFunction(file, function (image) {
+            myResizeFunction(file, function (image) {
+              var newFile = image;
+              //console.log("newFile1 "+ newFile);
 
-      var imageId = Images.insert(newFile, function (err, fileObj) {
-        if (err) console.log("ERREUR "+err);
-        Session.set('imageId', imageId._id);
-        Session.set('imageToAdd', imageId._id);
+            var newFile = new FS.File(newFile);
 
-      });
-      //console.log("newFile "+ newFile);
+            newFile.name(file.name);
+            
+            newFile.metadata = {blogId: blogId, postId: currentPostId, unvalid: true};
 
-      });
+            var imageId = Images.insert(newFile, function (err, fileObj) {
+              if (err) console.log("ERREUR "+err);
+              Session.set('imageId', imageId._id);
+              Session.set('imageToAdd', imageId._id);
+
+            });
+            //console.log("newFile "+ newFile);
+
+            });
+      } else if (extension == "gif" || extension == "png") {
+            myCanvasFunction(file, function (image) {
+            //myResizeFunction(file, function (image) {
+              var newFile = image;
+              //console.log("newFile1 "+ newFile);
+
+            var newFile = new FS.File(newFile);
+
+            newFile.name(file.name);
+            
+            newFile.metadata = {blogId: blogId, postId: currentPostId, unvalid: true};
+
+            var imageId = Images.insert(newFile, function (err, fileObj) {
+              if (err) console.log("ERREUR "+err);
+              Session.set('imageId', imageId._id);
+              Session.set('imageToAdd', imageId._id);
+
+          });
+          //console.log("newFile "+ newFile);
+
+
+          });
+      }
+
+
     });
   }
 });
@@ -247,3 +276,58 @@ var canvas = document.createElement("canvas");
     $('.post-edit--spinner').show();
 
 }
+
+
+
+
+
+
+
+var myCanvasFunction = function(file, callback){
+
+var canvas = document.createElement("canvas");
+ // Create an image
+    var img = document.createElement("img");
+    // Create a file reader
+    var reader = new FileReader();
+    // Set the image once loaded into file reader
+
+
+
+       reader.onload = function (readerEvent) {
+            var image = new Image();
+            image.onload = function (imageEvent) {
+
+                // Resize the image
+                var canvas = document.createElement('canvas'),
+                    max_size = 1000,
+                    width = image.width,
+                    height = image.height;
+                if (width > height) {
+                    if (width > max_size) {
+                        height *= max_size / width;
+                        width = max_size;
+                    }
+                } else {
+                    if (height > max_size) {
+                        width *= max_size / height;
+                        height = max_size;
+                    }
+                }
+                canvas.width = width;
+                canvas.height = height;
+                var ctx = canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+
+
+
+
+                resizedImage = canvas.toDataURL('image/jpeg');
+callback(resizedImage);
+            }
+            image.src = readerEvent.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+
+
+

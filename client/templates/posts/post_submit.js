@@ -45,29 +45,56 @@ Template.postSubmit.events({
     FS.Utility.eachFile(event, function(file) {
       var blogId = template.data.blog._id;   
 
+      var extension = file.name.substr(file.name.lastIndexOf('.')+1).toLowerCase();
+
+      if (extension == "jpg" || extension == "jpeg") {
       //myCanvasFunction(file, function (image) {
-      myResizeFunction(file, function (image) {
-        var newFile = image;
-        //console.log("newFile1 "+ newFile);
+          myResizeFunction(file, function (image) {
+            var newFile = image;
+            //console.log("newFile1 "+ newFile);
 
 
 
-      var newFile = new FS.File(newFile);
+          var newFile = new FS.File(newFile);
 
-      newFile.name(file.name);
+          newFile.name(file.name);
 
-      newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
+          newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
 
-      var imageId = Images.insert(newFile, function (err, fileObj) {
-        if (err) console.log("ERREUR "+err);
-        Session.set('imageId', imageId._id);
-        Session.set('imageToAdd', imageId._id);
+          var imageId = Images.insert(newFile, function (err, fileObj) {
+            if (err) console.log("ERREUR "+err);
+            Session.set('imageId', imageId._id);
+            Session.set('imageToAdd', imageId._id);
 
-      });
-      //console.log("newFile "+ newFile);
+          });
+          //console.log("newFile "+ newFile);
 
 
-      });
+          });
+      } else if (extension == "gif" || extension == "png") {
+        myCanvasFunction(file, function (image) {
+            var newFile = image;
+            //console.log("newFile1 "+ newFile);
+
+
+
+          var newFile = new FS.File(newFile);
+
+          newFile.name(file.name);
+
+          newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
+
+          var imageId = Images.insert(newFile, function (err, fileObj) {
+            if (err) console.log("ERREUR "+err);
+            Session.set('imageId', imageId._id);
+            Session.set('imageToAdd', imageId._id);
+
+          });
+          //console.log("newFile "+ newFile);
+
+
+          });
+      }
 
 
     });
@@ -226,7 +253,7 @@ var canvas = document.createElement("canvas");
 
                 // Resize the image
                 var canvas = document.createElement('canvas'),
-                    max_size = 100,
+                    max_size = 1000,
                     width = image.width,
                     height = image.height;
                 if (width > height) {
