@@ -113,7 +113,6 @@ Template.postEdit.events({
       var newFile = new FS.File(newFile);
 
       newFile.name(file.name);
-      newFile.name(file.name, {store: 'thumbs'});
       
       newFile.metadata = {blogId: blogId, postId: currentPostId, unvalid: true};
 

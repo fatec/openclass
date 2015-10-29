@@ -55,7 +55,6 @@ Template.postSubmit.events({
       var newFile = new FS.File(newFile);
 
       newFile.name(file.name);
-      newFile.name(file.name, {store: 'thumbs'});
 
       newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
 
