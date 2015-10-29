@@ -38,7 +38,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .header--select-author {
-	width:90px;
+	width:80px;
 }
 
 .post-edit--wrapper{
@@ -123,7 +123,7 @@ font-size:1.3em;
 .truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 40%;
+    width: 38%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
@@ -193,13 +193,17 @@ margin-bottom:20px;
 	}
 }
 
+/* iPhone 4, 4S, 5, 5S */
+/*@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) {*/
+@media (max-width: 320px) {
 
-/* iPhone 4, 4S, 5 */
-@media (max-width: 550px) {
-	.truncate-text {
+/*@media (max-width: 550px) {
+*/	.truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 26%;
+    width: 30%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
