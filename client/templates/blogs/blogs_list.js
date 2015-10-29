@@ -28,6 +28,6 @@ Template.blogsList.events({
 
 Template.blogsList.rendered = function(){
 
-  this.$('#code').focus();
+  //this.$('#code').focus();
 
   }
