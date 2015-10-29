@@ -99,19 +99,29 @@ Template.postEdit.events({
     }
   },
   'change .post-edit--input-file': function(event, template) {
+    $(".post-submit--input-file-button").hide();
+
     FS.Utility.eachFile(event, function(file) {
       var currentPostId = template.data.post._id;
       var blogId = Posts.findOne({_id: currentPostId}).blogId;
 
-      var newFile = new FS.File(file);
+      //myCanvasFunction(file, function (image) {
+      myResizeFunction(file, function (image) {
+        var newFile = image;
+        //console.log("newFile1 "+ newFile);
+
+      var newFile = new FS.File(newFile);
       newFile.metadata = {blogId: blogId, postId: currentPostId, unvalid: true};
 
       var imageId = Images.insert(newFile, function (err, fileObj) {
+        if (err) console.log("ERREUR "+err);
         Session.set('imageId', imageId._id);
         Session.set('imageToAdd', imageId._id);
+
       });
+      //console.log("newFile "+ newFile);
 
-
+      });
     });
   }
 });
@@ -133,13 +143,14 @@ Template.postEdit.helpers({
     var blogId = Blogs.findOne(currentPost.blogId);
     return blogId
   },
-    categories: function() {
+  categories: function() {
+    // TODO resolve error log while changing picture
     var currentPostId = this.post._id;
     var currentPost = Posts.findOne(currentPostId);
     var blogId = Blogs.findOne(currentPost.blogId);
-    return Categories.find({blogId: blogId._id});  
+    return Categories.find({blogId: blogId._id}); 
   },
-    selectedCategory: function(){
+  selectedCategory: function(){
     var category = this.name;
     var categoryItem = Template.parentData().post.category;
     return category === categoryItem;
@@ -204,3 +215,32 @@ Template.postEdit.helpers({
   
 
 });
+
+
+
+var myResizeFunction = function(file, callback){
+
+var canvas = document.createElement("canvas");
+ // Create an image
+    var img = document.createElement("img");
+    // Create a file reader
+
+    var reader = new FileReader();
+    reader.onloadend = (function(theFile)
+    {
+        return function(e)
+        {
+            MinifyJpegAsync.minify(e.target.result, 1000, function(minified) {
+              var enc = "data:image/jpeg;base64," + btoa(minified);
+              
+              $('.post-edit--spinner').hide();
+
+              callback(enc);
+            });
+
+        }
+    })(file);
+    reader.readAsDataURL(file);
+    $('.post-edit--spinner').show();
+
+}
