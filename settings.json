@@ -1,4 +1,5 @@
 {
   "isBox": "true",
-  "prefix": "W1"
+  "prefix": "W1",
+  "adminPassword": "admin"
 }
