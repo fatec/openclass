@@ -30,4 +30,4 @@ Meteor.publish("postImage", function(postId){ return Images.find({'metadata.post
 Meteor.publish("tags", function(blogId){ return Tags.find({blogId: blogId}); });
 Meteor.publish("authors", function(blogId){ return Authors.find({blogId: blogId}); });
 Meteor.publish("categories", function(blogId){ return Categories.find({blogId: blogId}); });
-Meteor.publish("accessCodes", function(){ return AccessCodes.find()});
+Meteor.publish("codes", function(){ return Codes.find()});
