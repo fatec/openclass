@@ -11,7 +11,7 @@
 						<a href="{{pathFor 'postSubmit' _id=this.blog._id}}">
 							<button class="button button-secondary posts-header--button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header--button-text"> Publier</span></button>
 						</a>
-					{{#if currentUser}}
+					{{#if ownBlog}}
 						<a class="header--button-setings" href="{{pathFor 'blogEdit' _id=this.blog._id}}"><i class="fa fa-lg fa-cog" ></i></a>
 <!-- 		 				<a class="header-2-button-login" href="{{pathFor 'logout'}}"><i class="fa fa-lg fa-sign-out"></i></a>	
  -->		 			{{else}}
