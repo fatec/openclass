@@ -1,4 +1,4 @@
-# beekee (ex-openclass.ch)
+# beekee (ex-[openclass.ch](http://www.openclass.ch))
 
 beekee let you create private social networks specially designed for schools, where students can share photos and messages.
 
