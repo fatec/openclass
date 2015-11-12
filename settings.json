@@ -1,5 +1,6 @@
 {
   "isBox": "true",
   "prefix": "W1",
+  "syncServerIP": "",
   "adminPassword": "admin"
 }
