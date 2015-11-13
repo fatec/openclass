@@ -72,6 +72,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .header--select-author {
 	width:100px;
+		font-family: inherit;
+    border-color:#999; /* Font styling trick for webkit browsers */
+	font-size: 0.8em;
 }
 
 .header--button-login {

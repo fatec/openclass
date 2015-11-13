@@ -321,6 +321,7 @@ border-radius: 4px;
 	margin-bottom:20px;
 		
 	font-family: inherit;
+    border-color:#999; /* Font styling trick for webkit browsers */
 	font-size: 1em;
 }
 
