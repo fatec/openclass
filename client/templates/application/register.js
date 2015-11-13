@@ -39,4 +39,16 @@ Template.register.rendered = function(){
             'Email already exists.': 'Un compte lié à cet e-mail existe déjà.'
         });
     }
+
+        //$('.register--form').validate();
+
+//         $('.register--form').validate({
+//     messages: {
+//         email: "Fuck!"
+//     }
+// });
+        $.validator.messages.email = "Merci d'entrer une adresse e-mail valide.";
+        $(".register--form").validate();
+
+
 }
