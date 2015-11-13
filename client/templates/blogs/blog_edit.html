@@ -3,11 +3,13 @@
 	    <div class="blog-page--wrapper">
 		<div class="page-title">Paramètres du journal</div>
 		<div class="chapter-title" id="blog-edit--authors-settings">Code d'accès rapide</div>
-		<div class="blog-edit--chapter-wrapper">
+		<div style="margin-left:5px;color:grey;font-size:0.9em;">Transmettez le code d'accès à vos élèves pour qu'ils puissent rejoindre ce journal.</div>
+		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
 			<span>Code d'accès : <b>{{blog.blogCode}}</b></span>
 		</div>
-		<div class="chapter-title" id="blog-edit--authors-settings">Gérer les auteurs ({{authorsCount}})</div>
-		<div class="blog-edit--chapter-wrapper">
+		<div class="chapter-title" id="blog-edit--authors-settings">Gérer les auteurs invités ({{authorsCount}})</div>
+		<div style="margin-left:5px;color:grey;font-size:0.9em;">Ajoutez des auteurs invités si vous souhaitez que vos élèves puissent publier sans créer de compte.</div>
+		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
 		<ul>
 			{{#each authors}}
 				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-user"></i>
@@ -21,7 +23,8 @@
 		</form>
 		</div>
 		<div class="chapter-title" id="blog-edit--categories-settings">Gérer les catégories ({{categoriesCount}})</div>
-		<div class="blog-edit--chapter-wrapper">
+		<div style="margin-left:5px;color:grey;font-size:0.9em;">Les catégories fonctionnent comme des tags, mais sont définies par l'enseignant.</div>
+		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
 		<ul>
 			{{#each categories}}
 				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-list"></i>
@@ -34,14 +37,16 @@
 
 		</form>
 		</div>	
-				<div class="chapter-title">Syncroniser le journal</div>
-		<div class="blog-edit--chapter-wrapper">
+		<div class="chapter-title">Syncroniser le journal</div>
+		<div style="margin-left:5px;color:grey;font-size:0.9em;">La syncronisation permet de rendre accessible votre journal sur internet. Elle nécessite une connexion à internet via un cable réseau.</div>
+		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
 		<p>Syncroniser le journal avec le cloud.</p><br />
 		      <button class="button button-primary button-send-to-api" href="#"><i class="fa fa-refresh"></i> <span>Syncroniser le journal</span></button><br /><br />
+		      <p>IP du serveur de syncronisation : {{ipSyncServer}}</p>
 		      <p>Dernière syncronisation : jamais (c'est normal, ça marche pas encore hein)</p>
 		 </div>
 		<div class="chapter-title">Renommer le journal</div>
-		<div class="blog-edit--chapter-wrapper">
+		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
 
     	<form id="blog-edit--form" class="blog-edit--form">		
     		    <label>Nom du journal</label><br />
@@ -55,7 +60,7 @@
 		</form>
 		</div>
 		<div class="chapter-title">Supprimer le journal</div>
-		<div class="blog-edit--chapter-wrapper">
+		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
 		<p>Vous pouvez supprimer ce journal et ses publications.</p><br />
 			<button class="button button-danger blog-edit--button-delete"><i class="fa fa-trash-o"></i> Supprimer le journal</button>
 		</div>
