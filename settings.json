@@ -1,6 +1,8 @@
 {
   "isBox": "true",
   "prefix": "W1",
-  "syncServerIP": "",
-  "adminPassword": "admin"
+  "adminPassword": "admin",
+   "public" : {
+       "syncServerIP":"129.194.31.76"
+   }
 }

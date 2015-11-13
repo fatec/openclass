@@ -108,5 +108,8 @@ Template.blogEdit.helpers({
   },  
   categoriesCount: function() {
     return Categories.find({blogId: this.blog._id}).count();  
-  }  
+  },
+  syncServerIP: function() {
+    return Meteor.settings.public.syncServerIP;;
+  } 
 });
