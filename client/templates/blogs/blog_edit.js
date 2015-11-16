@@ -25,7 +25,7 @@ Template.blogEdit.events({
     var currentBlogId = this.blog._id;
     var authorName = $('#authorName').val().trim();
 
-    Meteor.call('authorInsert', authorName, this.blog._id );
+    Meteor.call('authorInsert', authorName, "", false, this.blog._id );
 
     $('#authorName').val('');
 

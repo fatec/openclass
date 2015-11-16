@@ -3,7 +3,7 @@
 		//console.log(Template.parentData(1).blog._id);
 
 		
-				return Authors.find({blogId: Template.parentData(2).blog._id});  
+				return Authors.find({blogId: Template.parentData(2).blog._id, isUser: {$not: true}});  
 
 		//return Authors.find({blogId: Template.parentData(2).blog._id});  
 	},
