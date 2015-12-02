@@ -1,5 +1,7 @@
 {
-  "isBox": "true",
   "prefix": "W1",
-  "adminPassword": "admin"
+  "adminPassword": "admin",
+   "public" : {
+  		"isBox": "false"
+   }
 }
