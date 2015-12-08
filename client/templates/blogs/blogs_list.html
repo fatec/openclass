@@ -22,11 +22,11 @@
 	<div class="blogs-list--wrapper">
 		{{#if currentUser}}
 			<a href="{{pathFor 'blogSubmit'}}">
-				<button class="button button-secondary blogs-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouveau journal</button>
+				<button class="button button-secondary blogs-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouvel espace</button>
 			</a>
 		{{else}}
-			<div style="line-height:1.2em"><span style="color:#1a6c98">bee</span><span style="color:#38a6e0">kee</span> vous permet de créer un mini réseau social privé<br />pour que vos élèves partagent des photos et des messages entre eux.</div>
-			<div class="blogs-list--message-connect">Vous êtes enseignant ? <a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouveau journal.</div>
+			<div style="line-height:1.2em"><span style="color:#1a6c98">bee</span><span style="color:#38a6e0">kee</span> vous permet de créer un espace privé<br />pour que vos élèves partagent des photos et des messages entre eux.</div>
+			<div class="blogs-list--message-connect">Vous êtes enseignant ? <a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouvel espace.</div>
 			<div style="margin-top:30px;font-size:0.8em;line-height:1.2em">La plateforme est encore à l'état de prototype. <a href="http://infos.beekee.ch">Plus d'informations sur le projet</a>.</div>
 
 		{{/if}}
