@@ -3,6 +3,10 @@
   "adminPassword": "admin",
    "public" : {
   		"isBox": "false",
+<<<<<<< HEAD
   		 "prefix": "W1",
+=======
+  		 "prefix": "W1"
+>>>>>>> dev
    }
 }
