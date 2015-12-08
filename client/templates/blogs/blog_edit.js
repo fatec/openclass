@@ -108,5 +108,9 @@ Template.blogEdit.helpers({
   },  
   categoriesCount: function() {
     return Categories.find({blogId: this.blog._id}).count();  
-  }  
+  },
+  isBox: function() {
+    // console.log(Meteor.settings.public.isBox);
+    return (Meteor.settings.public.isBox === "true")
+  }
 });
