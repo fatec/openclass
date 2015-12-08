@@ -1,12 +1,8 @@
 {
-  "prefix": "W1",
-<<<<<<< HEAD
   "syncServerIP": "",
-  "adminPassword": "admin"
-=======
   "adminPassword": "admin",
    "public" : {
-  		"isBox": "false"
+  		"isBox": "false",
+  		 "prefix": "W1",
    }
->>>>>>> master
 }
