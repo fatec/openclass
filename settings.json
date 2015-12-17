@@ -1,8 +1,16 @@
 {
+<<<<<<< HEAD
   "isBox": "true",
   "prefix": "W1",
   "adminPassword": "admin",
    "public" : {
        "syncServerIP":"129.194.31.76"
+=======
+  "syncServerIP": "",
+  "adminPassword": "admin",
+   "public" : {
+  		"isBox": "false",
+  		 "prefix": "W1"
+>>>>>>> master
    }
 }
