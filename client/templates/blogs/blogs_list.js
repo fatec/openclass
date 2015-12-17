@@ -19,22 +19,8 @@ Template.blogsList.events({
         	Router.go('blogPage', {_id: blogId});
         	if (Meteor.user())
         	{
-        		console.log(Meteor.user().emails[0].address);
-      			Meteor.call('authorInsert', Meteor.user().username, Meteor.user().emails[0].address, true, blogId );
+        		Blogs.update({_id:blogId},{$push:{memberUserEmail: Meteor.user().emails[0].address}});
         	}
-
-    // var currentBlogId = this.blog._id;
-    // var authorName = $('#authorName').val().trim();
-
-    // Meteor.call('authorInsert', authorName, this.blog._id );
-
-    // $('#authorName').val('');
-
-
-    //     	if (Meteor.user())
-    //     	{
-    //     		Blogs.update({_id:blogId},{$push:{memberUserEmail: Meteor.user().emails[0].address}});
-    //     	}
         }
 		else
 			alert("Ce journal n'existe pas.");
