@@ -110,20 +110,6 @@ service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
 smallhacks:bootstrap-tagsinput-custom@0.7.0
-<<<<<<< HEAD
-softwarerero:accounts-t9n@1.1.4
-spacebars@1.0.6
-spacebars-compiler@1.0.6
-srp@1.0.3
-templating@1.1.1
-themeteorchef:jquery-validation@1.14.0
-tracker@1.0.7
-ui@1.0.6
-underscore@1.0.3
-url@1.0.4
-webapp@1.2.0
-webapp-hashing@1.0.3
-=======
 softwarerero:accounts-t9n@1.1.6
 spacebars@1.0.7
 spacebars-compiler@1.0.7
@@ -137,4 +123,3 @@ underscore@1.0.4
 url@1.0.5
 webapp@1.2.3
 webapp-hashing@1.0.5
->>>>>>> master

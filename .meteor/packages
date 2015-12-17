@@ -29,9 +29,6 @@ froatsnook:request
 matb33:collection-hooks
 ryanswapp:fabricjs
 softwarerero:accounts-t9n
-<<<<<<< HEAD
-themeteorchef:jquery-validation
-=======
 standard-minifiers
 meteor-base
 mobile-experience
@@ -45,4 +42,3 @@ random
 ejson
 spacebars
 check
->>>>>>> master
