@@ -25,7 +25,7 @@ Template.blogEdit.events({
     var currentBlogId = this.blog._id;
     var authorName = $('#authorName').val().trim();
 
-    Meteor.call('authorInsert', authorName, this.blog._id );
+    Meteor.call('authorInsert', authorName, "", false, this.blog._id );
 
     $('#authorName').val('');
 
@@ -109,8 +109,14 @@ Template.blogEdit.helpers({
   categoriesCount: function() {
     return Categories.find({blogId: this.blog._id}).count();  
   },
+<<<<<<< HEAD
+  syncServerIP: function() {
+    return Meteor.settings.public.syncServerIP;;
+  } 
+=======
   isBox: function() {
     // console.log(Meteor.settings.public.isBox);
     return (Meteor.settings.public.isBox === "true")
   }
+>>>>>>> master
 });

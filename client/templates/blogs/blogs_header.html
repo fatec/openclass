@@ -9,7 +9,8 @@
  					{{#if currentUser}}
 						<a class="header--button-login" href="{{pathFor 'logout'}}">{{currentUser.emails.[0].address}} <i class="fa fa-sign-out"></i></a>
 		 			{{else}}
-		 				<a class="header--button-login" href="{{pathFor 'login'}}"><i class="fa fa-sign-in"></i> Accès enseignant</a>
+		 				<a class="header--button-login" href="{{pathFor 'login'}}"><i class="fa fa-sign-in"></i> S'identifier</a>
+		 				<a class="header--button-login" href="{{pathFor 'register'}}"><i class="fa fa-plus"></i> Créer un compte</a>
 		 			{{/if}}
 			</div>
 		</div>

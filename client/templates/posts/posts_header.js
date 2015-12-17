@@ -3,7 +3,7 @@
 		if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)    		return true;
   	},
 	authors: function() {
-		return Authors.find({blogId: this.blog._id});  
+		return Authors.find({blogId: this.blog._id, isUser: {$not: true}});  
 	},  
 	optionIsSelected: function(authorName) {
 		return authorName === Session.get(Template.parentData().blog._id).author;
