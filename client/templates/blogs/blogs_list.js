@@ -1,6 +1,12 @@
 Template.blogsList.helpers({
 	blogs: function() {
 		return Blogs.find();
+	},
+	userHasBlogs: function() {
+		if (Blogs.find().count() != 0)
+			return true;
+		else
+			return false;
 	}
 });
 

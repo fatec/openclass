@@ -8,14 +8,21 @@
  Aller</button>
 		</div>
 				</form>
-
-{{#if currentUser}}
+				{{#if currentUser}}
 <div class="list-group">
   		<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
-  		<span style="font-size:1.3em;font-weight:400;">Espaces de <i>{{currentUser.emails.[0].address}}</i></span></div>
+  		<span style="font-size:1.3em;font-weight:400;">Vos espaces :</span></div>
+  		{{#if userHasBlogs}}
+
+
     		{{#each blogs}}
       			{{> blogItem}}
     		{{/each}}
+    	{{else}}
+    	<div style="text-align:center"><i>Vous n'avez pas encore d'espace</i></div>
+
+    		    	{{/if}}
+
     	</div>
     	{{/if}}
   	</div>
