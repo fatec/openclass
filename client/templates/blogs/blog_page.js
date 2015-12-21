@@ -32,7 +32,10 @@ Template.blogPage.events({
       e.preventDefault();
       //console.log("On clique sur le bouton "+template.data._id)
       Meteor.call('sendBlog', {blogId: template.data.blog._id} );
-    }
+    },
+  'click .hideCodePanel': function(e) {
+    $( "#codePanel" ).hide();
+  }
 });
 
   Template.blogPage.onRendered(function () {
