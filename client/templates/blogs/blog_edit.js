@@ -10,7 +10,7 @@ Template.blogEdit.events({
 
     Blogs.update(currentBlogId, {$set: blogProperties}, function(error) {
       if(!error) {
-        alert("Cet espace s'appelle désormais : "+blogProperties.title)
+        alert("Le journal s'appelle désormais : "+blogProperties.title)
       }
       else
       {
@@ -25,7 +25,7 @@ Template.blogEdit.events({
     var currentBlogId = this.blog._id;
     var authorName = $('#authorName').val().trim();
 
-    Meteor.call('authorInsert', authorName, "", false, this.blog._id );
+    Meteor.call('authorInsert', authorName, this.blog._id );
 
     $('#authorName').val('');
 
@@ -76,7 +76,7 @@ Template.blogEdit.events({
   'click .blog-edit--button-delete': function(e) {
     e.preventDefault();
 
-    if (confirm("Effacer cet espace ?")) {
+    if (confirm("Effacer ce journal?")) {
       var currentBlogId = this.blog._id;
       Blogs.remove(currentBlogId);
       // Effacer les posts qui correspondent a ce blogId
@@ -108,9 +108,6 @@ Template.blogEdit.helpers({
   },  
   categoriesCount: function() {
     return Categories.find({blogId: this.blog._id}).count();  
-  },
-  syncServerIP: function() {
-    return Meteor.settings.public.syncServerIP;;
   },
   isBox: function() {
     // console.log(Meteor.settings.public.isBox);

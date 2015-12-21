@@ -3,27 +3,25 @@
 	    <div class="blog-page--wrapper">
 		<div class="page-title">Paramètres de l'espace</div>
 		<div class="chapter-title" id="blog-edit--authors-settings">Code d'accès</div>
-		<div style="margin-left:5px;color:grey;font-size:0.9em;">Transmettez le code d'accès à vos élèves pour qu'ils puissent rejoindre cet espace.</div>
-		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
+		<div class="blog-edit--chapter-wrapper">
 			<span>Code d'accès : <b>{{blog.blogCode}}</b></span>
 		</div>
 		<div class="chapter-title" id="blog-edit--authors-settings">Gérer les auteurs ({{authorsCount}})</div>
-		<div style="margin-left:5px;color:grey;font-size:0.9em;">Ajoutez des invités si vous souhaitez que vos élèves puissent publier sans créer de compte.</div>
-		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
+		<div class="blog-edit--chapter-wrapper">
 		<ul>
 			{{#each authors}}
 				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-user"></i>
- {{#if name}}{{name}} (invité){{else}}<b>{{email}}</b>{{/if}} {{#unless guest}}<a href="#" class="blog-edit--delete-author"><i style="color:red;font-size:0.8em;" data-name="{{name}}" class="fa fa-trash-o"></i></a>{{/unless}}</li>
+ {{name}} {{#unless guest}}<a href="#" class="blog-edit--delete-author"><i style="color:red;font-size:0.8em;" data-name="{{name}}" class="fa fa-trash-o"></i></a>{{/unless}}</li>
 			{{/each}}
 		</ul><br />
 		<form id="blog-edit--form-add-author" class="blog-edit--form-add-author">
 			<input id="authorName" class="blog-edit--input-add-author" style="font-size:1.1em" />
-			<button type="submit" class="button button-primary blog-edit--button-submit-add-author"><i class="fa fa-user-plus"></i> Ajouter un invité</button>
+			<button type="submit" class="button button-primary blog-edit--button-submit-add-author"><i class="fa fa-user-plus"></i> Ajouter</button>
+
 		</form>
-		</div>	
+		</div>
 		<div class="chapter-title" id="blog-edit--categories-settings">Gérer les catégories ({{categoriesCount}})</div>
-		<div style="margin-left:5px;color:grey;font-size:0.9em;">Les catégories fonctionnent comme des tags, mais sont définies par l'enseignant.</div>
-		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
+		<div class="blog-edit--chapter-wrapper">
 		<ul>
 			{{#each categories}}
 				<li style="margin-top:5px;margin-left:5px;"><i class="fa fa-list"></i>
@@ -37,17 +35,15 @@
 		</form>
 		</div>	
 		{{#if isBox}}
-		<div class="chapter-title">Syncroniser</div>
-		<div style="margin-left:5px;color:grey;font-size:0.9em;">La syncronisation permet de rendre accessible votre journal sur internet. Elle nécessite une connexion à internet via un cable réseau.</div>
-		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
+				<div class="chapter-title">Syncroniser</div>
+		<div class="blog-edit--chapter-wrapper">
 		<p>Syncroniser cet espace avec le cloud.</p><br />
-		      <button class="button button-primary button-send-to-api" href="#"><i class="fa fa-refresh"></i> <span>Syncroniser le journal</span></button><br /><br />
-		      <p>IP du serveur de syncronisation : {{syncServerIP}}</p>
-		      <p>Dernière syncronisation :</p>
+		      <button class="button button-primary button-send-to-api" href="#"><i class="fa fa-refresh"></i> <span>Syncroniser cet espace</span></button><br /><br />
+		      <p>Dernière syncronisation : </p>
 		 </div>
 		 {{/if}}
 		<div class="chapter-title">Renommer cet espace</div>
-		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
+		<div class="blog-edit--chapter-wrapper">
 
     	<form id="blog-edit--form" class="blog-edit--form">		
     		    <label>Nom de l'espace</label><br />
@@ -57,14 +53,13 @@
                         <br /><span style="color:red;">{{errorMessage}}</span><br />
                     </div> 
                 {{/if}}  
-				<button type="submit" class="button button-primary blog-edit--button-submit"><i class="fa fa-pencil"></i> Modifier le nom de cet espace</button>
+				<button type="submit" class="button button-primary blog-edit--button-submit"><i class="fa fa-pencil"></i> Modifier</button>
 		</form>
 		</div>
 		<div class="chapter-title">Supprimer cet espace</div>
-		<div style="margin-left:5px;color:grey;font-size:0.9em;">La suppression de cet espace supprimera toutes les publications.</div>
-
-		<div class="blog-edit--chapter-wrapper2" style="display:inline-block;padding:10px;border:solid 1px #bcbcbc;width:auto;margin:15px 25px 15px 5px">
-			<button class="button button-danger blog-edit--button-delete"><i class="fa fa-trash-o"></i> Supprimer cet espace</button>
+		<div class="blog-edit--chapter-wrapper">
+		<p>Vous pouvez supprimer cet espace et ses publications.</p><br />
+			<button class="button button-danger blog-edit--button-delete"><i class="fa fa-trash-o"></i> Supprimer</button>
 		</div>
 	</div>
 	</div>

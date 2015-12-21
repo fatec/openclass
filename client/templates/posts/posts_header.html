@@ -17,9 +17,7 @@
  -->		 			{{else}}
 <!-- 		 				<a class="header-2-button-login" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i></a> -->
 					{{/if}}
-					{{#if currentUser}}
-						<a class="header--button-login" href="{{pathFor 'logout'}}">{{currentUser.emails.[0].address}} <i class="fa fa-sign-out"></i></a>
-					{{else}}
+<!-- 					{{#unless currentUser}} -->
 						<div class="header--select-author-wrapper">
 						<select class="header--select-author">
 							{{#each authors}}
@@ -27,7 +25,7 @@
 							{{/each}}
 						</select>
 						</div>
-					{{/if}}
+					<!-- {{/unless}} -->
 			</div>
 		</div>
 	</div>

@@ -14,14 +14,7 @@ Template.blogsList.events({
 		var blogTitle = code.substr(code.indexOf('/')+1); // "tocirah sneab"
 
 		if (Blogs.findOne({blogCode:code}))
-		{
-			var blogId = Blogs.findOne({blogCode:code})._id;
-        	Router.go('blogPage', {_id: blogId});
-        	if (Meteor.user())
-        	{
-        		Blogs.update({_id:blogId},{$push:{memberUserEmail: Meteor.user().emails[0].address}});
-        	}
-        }
+        	Router.go('blogPage', {_id: Blogs.findOne({blogCode:code})._id});
 		else
 			alert("Ce journal n'existe pas.");
 },

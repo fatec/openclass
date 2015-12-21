@@ -3,7 +3,6 @@
   "adminPassword": "admin",
    "public" : {
   		"isBox": "false",
-  		 "prefix": "W1",
-  		"syncServerIP":"129.194.31.76"
+  		 "prefix": "W1"
    }
 }

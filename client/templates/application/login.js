@@ -46,5 +46,4 @@ Template.login.rendered = function(){
         'Incorrect password': 'Le mot de passe n\'est pas correct.'
         });
     }
-
 }
