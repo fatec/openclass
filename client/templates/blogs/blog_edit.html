@@ -1,8 +1,8 @@
 <template name="blogEdit">
 	<div class="blog-edit">
 	    <div class="blog-page--wrapper">
-		<div class="page-title">Paramètres du journal</div>
-		<div class="chapter-title" id="blog-edit--authors-settings">Code d'accès rapide</div>
+		<div class="page-title">Paramètres de l'espace</div>
+		<div class="chapter-title" id="blog-edit--authors-settings">Code d'accès</div>
 		<div class="blog-edit--chapter-wrapper">
 			<span>Code d'accès : <b>{{blog.blogCode}}</b></span>
 		</div>
@@ -35,31 +35,31 @@
 		</form>
 		</div>	
 		{{#if isBox}}
-				<div class="chapter-title">Syncroniser le journal</div>
+				<div class="chapter-title">Syncroniser</div>
 		<div class="blog-edit--chapter-wrapper">
-		<p>Syncroniser le journal avec le cloud.</p><br />
-		      <button class="button button-primary button-send-to-api" href="#"><i class="fa fa-refresh"></i> <span>Syncroniser le journal</span></button><br /><br />
+		<p>Syncroniser cet espace avec le cloud.</p><br />
+		      <button class="button button-primary button-send-to-api" href="#"><i class="fa fa-refresh"></i> <span>Syncroniser cet espace</span></button><br /><br />
 		      <p>Dernière syncronisation : </p>
 		 </div>
 		 {{/if}}
-		<div class="chapter-title">Renommer le journal</div>
+		<div class="chapter-title">Renommer cet espace</div>
 		<div class="blog-edit--chapter-wrapper">
 
     	<form id="blog-edit--form" class="blog-edit--form">		
-    		    <label>Nom du journal</label><br />
+    		    <label>Nom de l'espace</label><br />
 				<input name="title" id="title" type="text" value="{{blog.title}}" class="blog-edit--input form-control"/><br /><br />
                 {{#if errorMessage}}
                     <div class="blog-edit--error">
                         <br /><span style="color:red;">{{errorMessage}}</span><br />
                     </div> 
                 {{/if}}  
-				<button type="submit" class="button button-primary blog-edit--button-submit"><i class="fa fa-pencil"></i> Modifier le nom du journal</button>
+				<button type="submit" class="button button-primary blog-edit--button-submit"><i class="fa fa-pencil"></i> Modifier</button>
 		</form>
 		</div>
-		<div class="chapter-title">Supprimer le journal</div>
+		<div class="chapter-title">Supprimer cet espace</div>
 		<div class="blog-edit--chapter-wrapper">
-		<p>Vous pouvez supprimer ce journal et ses publications.</p><br />
-			<button class="button button-danger blog-edit--button-delete"><i class="fa fa-trash-o"></i> Supprimer le journal</button>
+		<p>Vous pouvez supprimer cet espace et ses publications.</p><br />
+			<button class="button button-danger blog-edit--button-delete"><i class="fa fa-trash-o"></i> Supprimer</button>
 		</div>
 	</div>
 	</div>
