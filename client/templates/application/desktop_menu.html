@@ -1,31 +1,31 @@
 <template name="desktopMenu">
 	<div class="menu">
-		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="{{pathFor 'blogPage' _id=this.blog._id}}">Toutes les publications ({{postCount}})</a>
+		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="{{pathFor 'blogPage' _id=this.blog._id}}"><i class="menu--caret fa fa-caret-right"></i> Tout afficher ({{postCount}})</a>
 <!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
  -->		<div class="menu--title menu--title-authors">
-			<i class="fa fa-lg fa-users"></i>
-			<span style="">AUTEURS</span>
+			<i class="menu--icon fa fa-lg fa-users"></i>
+			<span class="menu--title-span">AUTEURS</span>
 			<ul>
 				{{#each authors}}
-					<a class="menu--authors {{selectedAuthorClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=authorQuery}}">{{name}} ({{nRefs}})</a><br />
+					<a class="menu--authors {{selectedAuthorClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=authorQuery}}"><i class="menu--caret fa fa-caret-right"></i> {{name}} ({{nRefs}})</a><br />
 				{{/each}}
 			</ul>
 		</div>
 		<div class="menu--title menu--title-categories">
-			<i class="fa fa-lg fa-list"></i>
-			<span>CATEGORIES</span>
+			<i class="menu--icon fa fa-lg fa-list"></i>
+			<span class="menu--title-span">CATEGORIES</span>
 			<ul>
 				{{#each categories}}
-					<a class="menu--categories {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=categoryQuery}}">{{name}} ({{nRefs}})</a><br />
+					<a class="menu--categories {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=categoryQuery}}"><i class="menu--caret fa fa-caret-right"></i> {{name}} ({{nRefs}})</a><br />
 				{{/each}}
 			</ul>
 		</div>
 		<div class="menu--title menu--title-tags">
-			<i class="fa fa-lg fa-tags"></i>
-			<span>TAGS</span><br /><br />
+			<i class="menu--icon fa fa-lg fa-tags"></i>
+			<span class="menu--title-span">TAGS</span><br /><br />
 			<ul>
 				{{#each tags}}
-					<a class="menu--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=tagQuery}}">{{name}} ({{nRefs}})</a><br />
+					<a class="menu--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=tagQuery}}"><i class="menu--caret fa fa-caret-right"></i> <span class="menu--tags-box">{{name}}</span> ({{nRefs}})</a><br />
 				{{/each}}
 			</ul>
 		</div>
