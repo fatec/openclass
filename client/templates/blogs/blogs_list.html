@@ -1,29 +1,37 @@
 <template name="blogsList">
 	<div class="blogs-list">
-<!-- 		<div class="blogs-list-2-title">com<span style="color:#2a90c6">bee</span>n</div>
- -->				<form class="blogs-list--code-link-form">
-	 
-		<div class="blogs-list--code-wrapper" style="margin-top:30px">
-			<span>Entrez le code d'accès : </span><br /><br /><input style="font-size:1.2em;" id="code" type="text" /><br /><br /><button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%"><i class="fa fa-play-circle"></i>
+		<form class="blogs-list--code-link-form">
+			<div class="blogs-list--code-wrapper" style="margin-top:30px">
+				<span>Accéder à un espace :</span><br /><br />
+				<input style="font-size:1.1em;" id="code" type="text" placeholder="Entrez un code d'accès"/><br /><br />
+				<button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%"><i class="fa fa-play-circle"></i>
  Aller</button>
-		</div>
-				</form>
-				{{#if currentUser}}
-<div class="list-group">
-  		<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
-  		<span style="font-size:1.3em;font-weight:400;">Vos espaces :</span></div>
-  		{{#if userHasBlogs}}
-
-
-    		{{#each blogs}}
-      			{{> blogItem}}
-    		{{/each}}
+			</div>
+		</form>
+		{{#if currentUser}}
+			<div class="list-group">
+  				<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
+  					<span style="font-size:1.3em;font-weight:400;">Vos espaces :</span>
+  				</div>
+    			{{#each blogs}}
+    				{{#if ownBlog}}
+      					{{> blogItem}}
+    				{{/if}}
+    			{{/each}}
+    		</div>
     	{{else}}
-    	<div style="text-align:center;margin-bottom:20px;"><i>Vous n'avez pas encore d'espace</i></div>
-
-    		    	{{/if}}
-
-    	</div>
+    		{{#if blogsVisitedCount}}
+ 				<div class="list-group">
+  					<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
+  						<span style="font-size:1.3em;font-weight:400;">Récemment visité :</span>
+  					</div> 
+  	    			{{#each blogsVisited}}
+      					{{> blogItem}}
+           			{{/each}}
+<br /><br />
+  	</div>
+  	    		{{/if}}
+  	
     	{{/if}}
   	</div>
 	<div class="blogs-list--wrapper">
