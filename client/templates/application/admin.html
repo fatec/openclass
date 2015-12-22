@@ -2,30 +2,12 @@
     <div class="admin">
         <div class="page-title">Administration</div>
         <div style="text-align:center;padding-top:20px;">
-        <h1 style="font-size:1.3em;">Utilisateurs existants :</h1>
-        <ul>
+        <h1 style="font-size:1.3em;">Utilisateurs existants :</h1><br />
+        <ul style="line-height:1.5em">
          {{#each user}}
-            <li>{{username}}</li>
+            <li>{{emails.[0].address}} <span style="font-size:0.8em">(créé {{livestamp createdAt}})</span></li>
         {{/each}}
         </ul>
-        <br /><br />
-        <h1 style="font-size:1.3em;">Ajouter un utilisateur :</h1><br />
-        <form id="register--form" class="register--form">
-            <div style="width:400px;text-align:center;margin-left:auto;margin-right:auto">
-                <label>Nom d'utilisateur</label><br />
-                <input type="text"  class="register--input register--input-username form-control" id="username" value="" autofocus><br />
-                <label>Mot de passe</label><br />
-                <input type="password" name="" class="register--input form-control" id="password" value=""><br />
-                {{#if errorMessage}}
-                    <div class="login-error">
-                        <br /><span style="color:red;">{{errorMessage}}</span><br />
-                    </div> 
-                {{/if}}  
-            </div>
-            <div>
-                <button type="submit" class="button button-primary register--button-submit">Ajouter l'utilisateur</button>
-            </div>    
-        </form>
 </div>
     </div>
 </template>

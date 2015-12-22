@@ -22,7 +22,7 @@ Meteor.publish('postsEdit', function(postId) {
 });	
 
 Meteor.publish('allUsers', function() {
-   return Meteor.users.find({}, {fields:{username:1}})
+  return Meteor.users.find();
  })
 
 Meteor.publish("images", function(blogId){ return Images.find({'metadata.blogId': blogId, 'metadata.last': true}); });
