@@ -26,6 +26,12 @@ Template.register.events({
 Template.register.helpers({
   errorMessage: function() {
     return Session.get('errorMessage');
+  },
+  isBox: function() {
+    if (Meteor.settings.public.isBox === "true")
+        return true;
+    else
+        return false;
   }
 });
 
@@ -39,4 +45,7 @@ Template.register.rendered = function(){
             'Email already exists.': 'Un compte lié à cet e-mail existe déjà.'
         });
     }
+
+    $.validator.messages.email = "Merci d'entrer une adresse e-mail valide.";
+         $(".register--form").validate();
 }

@@ -52,7 +52,7 @@ ejson@1.0.7
 email@1.0.8
 fastclick@1.0.7
 fortawesome:fontawesome@4.5.0
-froatsnook:request@2.64.0
+froatsnook:request@2.67.0
 gabrielengel:konecty-magnific-popup@0.9.9
 geojson-utils@1.0.4
 hot-code-push@1.0.0
@@ -110,13 +110,14 @@ service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
 smallhacks:bootstrap-tagsinput-custom@0.7.0
-softwarerero:accounts-t9n@1.1.6
+softwarerero:accounts-t9n@1.1.7
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4
 standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
+themeteorchef:jquery-validation@1.14.0
 tracker@1.0.9
 ui@1.0.8
 underscore@1.0.4

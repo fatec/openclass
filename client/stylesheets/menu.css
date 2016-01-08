@@ -4,11 +4,12 @@ Authors : Vincent Widmer & Stéphane Morand;
 */
 
 
-.menu {
+.menu2 {
 	width:225px;
 	display: table-cell;
 	vertical-align: top;
 	padding: 9px 0 0 0;
+	border-left: solid 1px black;
 
 	font-size: 1em;
 }
@@ -26,7 +27,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu--link-last-posts {
 	display: block;
-	margin: 0px 0 20px 0;
+	margin: 0px 0 0px 0;
 
 	font-size: 0.9em;
 	color:#2A90C6;
@@ -40,10 +41,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 .menu--title {
 	margin:28px 0 -2px 0;
 
-	color:grey;
+	color:#a0a0a0;
 	font-size: 0.8em;
-	font-weight: 500;
-/*	border:solid 1px red;
+/*	font-weight: 500;
+*//*	border:solid 1px red;
 */}
 
 .menu--categories {
@@ -59,7 +60,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu--authors {
 	display: inline-block;
-		margin: 5px 0 0px 22px;
+		margin: 5px 0 0px 17px;
 
 	color: #2A90C6;
 }
@@ -80,9 +81,12 @@ Authors : Vincent Widmer & Stéphane Morand;
 .menu--tags {
 	display: inline-block;
 	width:auto;
-	margin: 5px 0 0px 22px;
-	padding:6px;
+	margin: 5px 0 0px 17px;
+}
 
+.menu--tags-box {
+	display: inline-block;
+	padding:6px;
 	background-color: #2A90C6;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -100,5 +104,40 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--tag-selected {
+	color: #28527c;
+	font-weight: 600;
+}
+
+a.menu--tag-selected span.menu--tags-box {
 	background-color: #28527c;
 }
+
+.menu--caret {
+	display: none;
+}
+
+a.menu--link-sort-selected i.menu--caret {
+	display:inline;
+}
+
+a.menu--tag-selected i.menu--caret {
+	display:inline;
+}
+
+a.menu--author-selected i.menu--caret {
+	display:inline;
+}
+
+a.menu--category-selected i.menu--caret {
+	display:inline;
+}
+
+.menu--icon {
+	vertical-align:middle;
+	font-size:1em;
+}
+
+.menu--title-span {
+	vertical-align:middle
+}
+

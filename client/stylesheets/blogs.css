@@ -70,6 +70,16 @@ Authors : Vincent Widmer & Stéphane Morand;
 	width: 100%;
 }
 
+.blog-page--menu-wrapper {
+	width:225px;
+	display: table-cell;
+	vertical-align: top;
+	padding: 8px 0 0 0;
+	/*border-left: solid 1px #e8e8e8;*/
+
+	font-size: 1em;
+}
+
 .blog-page-2-main {
 	width:450px;
 	display: table-cell;

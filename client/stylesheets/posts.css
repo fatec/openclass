@@ -103,7 +103,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 /* ----- post-item template ----- */
 
 .post-item {
-	margin:10px 0 20px 0;
+	margin:0px 0 20px 0;
 	padding: 4px 7px 10px 7px;
 	width: 488px;
 	margin-left:auto;

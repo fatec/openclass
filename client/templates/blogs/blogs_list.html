@@ -1,22 +1,37 @@
 <template name="blogsList">
 	<div class="blogs-list">
-<!-- 		<div class="blogs-list-2-title">com<span style="color:#2a90c6">bee</span>n</div>
- -->				<form class="blogs-list--code-link-form">
-	 
-		<div class="blogs-list--code-wrapper" style="margin-top:30px">
-			<span>Entrez le code d'accès : </span><br /><br /><input style="font-size:1.2em;" id="code" type="text" /><br /><br /><button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%"><i class="fa fa-play-circle"></i>
+		<form class="blogs-list--code-link-form">
+			<div class="blogs-list--code-wrapper" style="margin-top:30px;padding-top:15px;">
+				<span style="font-size:1.1em;">Accéder à un espace :</span><br /><br />
+				<input style="font-size:1.1em;" id="code" type="text" placeholder="Entrez un code d'accès"/><br /><br />
+				<button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%"><i class="fa fa-play-circle"></i>
  Aller</button>
-		</div>
-				</form>
-
-{{#if currentUser}}
-<div class="list-group">
-  		<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
-  		<span style="font-size:1.3em;font-weight:400;">Espaces de <i>{{currentUser.emails.[0].address}}</i></span></div>
-    		{{#each blogs}}
-      			{{> blogItem}}
-    		{{/each}}
-    	</div>
+			</div>
+		</form>
+		{{#if currentUser}}
+			<div class="list-group">
+  				<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
+  					<span style="font-size:1.3em;font-weight:400;">Vos espaces :</span>
+  				</div>
+    			{{#each blogs}}
+    				{{#if ownBlog}}
+      					{{> blogItem}}
+    				{{/if}}
+    			{{/each}}
+    		</div>
+    	{{else}}
+    		{{#if blogsVisitedCount}}
+ 				<div class="list-group">
+  					<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
+  						<span style="font-size:1.3em;font-weight:400;">Récemment visité :</span>
+  					</div> 
+  	    			{{#each blogsVisited}}
+      					{{> blogItem}}
+           			{{/each}}
+<br /><br />
+  	</div>
+  	    		{{/if}}
+  	
     	{{/if}}
   	</div>
 	<div class="blogs-list--wrapper">
@@ -26,8 +41,8 @@
 			</a>
 		{{else}}
 			<div style="line-height:1.2em"><span style="color:#1a6c98">bee</span><span style="color:#38a6e0">kee</span> vous permet de créer des espaces privés<br />pour que vos élèves partagent des photos et des messages.</div>
-			<div class="blogs-list--message-connect">Vous êtes enseignant ? <a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouvel espace.</div>
-			<div style="margin-top:90px;font-size:0.7em;line-height:1.2em">La plateforme est encore à l'état de prototype. <a href="http://infos.beekee.ch">Plus d'informations sur le projet</a></div>
+<!-- 			<div class="blogs-list-2-message-connect">Vous êtes enseignant ? <a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouvel espace.</div>
+ -->			<div style="margin-top:40px;font-size:0.7em;line-height:1.2em">La plateforme est encore à l'état de prototype (<a href="http://infos.beekee.ch">plus d'informations sur le projet</a>).</div>
 
 		{{/if}}
 	</div>
