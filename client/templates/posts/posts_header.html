@@ -6,10 +6,13 @@
 	    			<i class="fa fa-2x fa-bars" style=" vertical-align: middle;"></i>
 	    		</a>
 		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i></a>
-		      	<div style="height:29px;display:inline-block;border-left:solid 1px #cfcfcf;margin-top:9px;margin-left:8px;"></div>
-		      	<span class="header--button-back-text truncate-text">{{blog.title}} ({{blog.blogCode}})</span>
-						<a href="{{pathFor 'postSubmit' _id=this.blog._id}}">
-							<button class="button button-secondary posts-header--button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header--button-text"> Publier</span></button>
+<!-- 		      	<div style="height:29px;display:inline-block;border-left:solid 1px #cfcfcf;margin-top:9px;margin-left:8px;"></div>
+ -->		      	<!-- <span class="header-2-button-back-text truncate-text"></span> -->
+ <div class="truncate-text" style="text-align:center;width:75%;display:inline-block;margin-left:auto;margin-right:auto;">
+{{blog.title}} ({{blog.blogCode}})</div>
+
+						<a class="posts-header--button-submit" href="{{pathFor 'postSubmit' _id=this.blog._id}}"><i style="vertical-align:middle" class="fa fa-2x fa-plus"></i>
+<!-- 							<button class="button button-secondary posts-header-2-button-submit"><span><i class="fa fa-plus"></i></span><span class="posts-header-2-button-text"> Publier</span></button> -->
 						</a>
 					{{#if ownBlog}}
 						<a class="header--button-setings" href="{{pathFor 'blogEdit' _id=this.blog._id}}"><i class="fa fa-lg fa-cog" ></i></a>
@@ -18,13 +21,13 @@
 <!-- 		 				<a class="header-2-button-login" href="{{pathFor 'login'}}">S'identifier <i class="fa fa-sign-in"></i></a> -->
 					{{/if}}
 <!-- 					{{#unless currentUser}} -->
-						<div class="header--select-author-wrapper">
-						<select class="header--select-author">
+<!-- 						<div class="header-2-select-author-wrapper">
+						<select class="header-2-select-author">
 							{{#each authors}}
 								<option selected="{{optionIsSelected name}}">{{name}}</option>
 							{{/each}}
 						</select>
-						</div>
+						</div> -->
 					<!-- {{/unless}} -->
 			</div>
 		</div>
