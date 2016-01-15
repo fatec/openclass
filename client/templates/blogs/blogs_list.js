@@ -41,7 +41,7 @@ Template.blogsList.events({
 				if (JSON.parse(Cookie.get('blogsVisited')).indexOf(blogId) == -1)
 					blogsVisited.push(blogId);
 			}
-			Cookie.set('blogsVisited', JSON.stringify(blogsVisited));			
+			Cookie.set('blogsVisited', JSON.stringify(blogsVisited), {expires: 30});			
 			// if (typeof Cookie.get('blogsVisited') == "undefined")
 			// 	blogsVisited.push(blogId);
 			// else
