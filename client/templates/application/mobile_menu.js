@@ -2,18 +2,18 @@ Template.mobileMenu.helpers({
 	postCount: function() { // return the number of posts
 		return Posts.find().count();
 	},
-	tags: function() {
+	tags: function(){
 		return Tags.find({}, {sort: {nRefs: -1}});
 	},
-	categories: function() {
+	categories: function(){
 		//return Categories.find({}, nRefs: { $gt: 0 }, {sort: {nRefs: -1}});
 				return Categories.find({ nRefs: { $gt: 0 } }, {sort: {nRefs: -1}});
 
 	},	
-	tagQuery: function() {
+	tagQuery: function(){
 		return "tags="+this.name;
 	},
-	categoryQuery: function() {
+	categoryQuery: function(){
 		return "category="+this.name;
 	},	
 	'selectedTagClass': function(){
@@ -49,19 +49,23 @@ Template.mobileMenu.helpers({
 	        return "menu--author-selected"
 	    }
 	},	
-	authors: function() {
+	authors: function(){
 		return Authors.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});
 	},
-	authorQuery: function() {
+	authorQuery: function(){
 		return "author="+this.name;
 	},	
 });
 
-  Template.mobileMenu.events({
-  'click .menu--link-last-posts': function(e) {
-    Session.set("sortPosts", "last");    
-  },
-  'click .menu--link-all-posts': function(e) {
-    Session.set("sortPosts", "all");    
-  }  
+Template.mobileMenu.events({
+	'click .menu--link-last-posts': function(e){
+		Session.set("sortPosts", "last");    
+	},
+	'click .menu--link-all-posts': function(e){
+		Session.set("sortPosts", "all");    
+	},
+	'click .header--button-close-wrapper-mobile': function(e){
+		e.preventDefault();
+		slideout.close();   
+	}   
 });

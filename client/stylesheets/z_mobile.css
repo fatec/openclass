@@ -3,6 +3,7 @@ z_mobile.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
 
+
 @media (max-width: 750px) {
 .blog-page--menu-wrapper {
 	display:none;

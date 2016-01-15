@@ -1,6 +1,7 @@
 <template name="mobileMenu">
 	<div class="mobileMenu">
-			      	<a class="header--button-back-wrapper-mobile" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i> Retour</a>
+		<a class="header--button-close-wrapper-mobile" href="#"><i class="fa fa-2x fa-times" style=" vertical-align: middle;"></i> Fermer</a><br /><br />		
+		<a class="header--button-back-wrapper-mobile" href="{{pathFor 'blogsList'}}"><i class="fa fa-chevron-left" style=" vertical-align: middle;"></i> Retour à l'accueil</a>
 
 		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="{{pathFor 'blogPage' _id=this.blog._id}}">Toutes les publications ({{postCount}})</a>
 <!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
