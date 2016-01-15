@@ -35,6 +35,7 @@ cfs:upload-http@0.0.20
 cfs:worker@0.1.4
 check@1.1.0
 chriswessels:slideout@0.1.9_2
+chuangbo:cookie@1.1.0
 coffeescript@1.0.11
 copleykj:jquery-autosize@1.17.8
 copleykj:livestamp@1.1.7
