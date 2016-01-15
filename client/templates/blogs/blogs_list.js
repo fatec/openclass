@@ -7,12 +7,11 @@ Template.blogsList.helpers({
     		return true;
   	},
   	blogsVisitedCount: function() {
-  		if (typeof Session.get("blogsVisited") != "undefined")
+  		if (typeof Cookie.get('blogsVisited') != "undefined")
   			return true;
   	},
 	blogsVisited: function() {
-		var blogs = Session.get("blogsVisited");
-		console.log(blogs);
+		var blogs = JSON.parse(Cookie.get('blogsVisited'));
 		return Blogs.find({'_id':{$in:blogs}});
 	}
 });
@@ -30,12 +29,34 @@ Template.blogsList.events({
 		{
 			var blogId = Blogs.findOne({blogCode:code})._id;
 
-			// Save recent blogs
-			if (typeof blogsVisited == "undefined")
-				blogsVisited = [];
-			if ($.inArray( blogId, blogsVisited ) == '-1')
+			var blogsVisited = [];
+			var cookie = Cookie.get('blogsVisited');
+			console.log(typeof cookie);
+			if (typeof cookie == "undefined")
 				blogsVisited.push(blogId);
-        	Session.set("blogsVisited",blogsVisited);
+			else
+			{
+				blogsVisited = JSON.parse(Cookie.get('blogsVisited'));
+				console.log(typeof blogsVisited)
+				if (JSON.parse(Cookie.get('blogsVisited')).indexOf(blogId) == -1)
+					blogsVisited.push(blogId);
+			}
+			Cookie.set('blogsVisited', JSON.stringify(blogsVisited));			
+			// if (typeof Cookie.get('blogsVisited') == "undefined")
+			// 	blogsVisited.push(blogId);
+			// else
+			// blogsVisited = Cookie.get('blogsVisited');
+			console.log(Cookie.get('blogsVisited'));
+			//blogsVisited.push(blogId);
+			//Cookie.set('blogsVisited', blogsVisited);
+
+			// Save recent blogs
+			// if (typeof blogsVisited == "undefined")
+			// 	blogsVisited = [];
+			// if ($.inArray( blogId, blogsVisited ) == '-1')
+			// 	blogsVisited.push(blogId);
+			// Cookie.set('foo', 3);
+   //      	Session.set("blogsVisited",blogsVisited);
 
             Router.go('blogPage', {_id: blogId});
 		}
