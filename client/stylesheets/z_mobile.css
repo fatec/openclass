@@ -11,12 +11,24 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .mobileMenu {
 	padding-top:10px;
-	padding-left:20px;
-	color:white;
+/*	padding-left:20px;
+*/	color:white;
 }
 
 .mobileMenu a {
 	color:white;
+	padding-top:10px;
+	padding-left:20px;
+	padding-bottom:10px;
+	margin-left:0px;
+	width: 100%;
+	border-top:solid 1px grey;
+	border-bottom:solid 1px grey;
+
+}
+
+.menu--title {
+	padding-left:8px;
 }
 
 .layout--main {
@@ -109,8 +121,8 @@ font-size:1.3em;
 }
 
 .posts-header--button-submit{
-	margin:5px 0 0 10px;
-}
+/*	margin:5px 0 0 10px;
+*/}
 
 .header--wrapper {
 	width:96%;
@@ -159,6 +171,10 @@ margin:5px 5px 0 0;
 margin-bottom:20px;
 }
 
+.header--page-name {
+		margin-left:0px;
+	}
+
 .logout--wrapper{
 	width:100%;
 }
@@ -196,6 +212,7 @@ margin-bottom:20px;
 	}
 }
 
+
 /* iPhone 4, 4S, 5, 5S */
 /*@media only screen 
 and (min-device-width : 320px) 
@@ -211,4 +228,5 @@ and (max-device-width : 568px) {*/
     overflow: hidden;
     vertical-align: top;
 }
+
 }
