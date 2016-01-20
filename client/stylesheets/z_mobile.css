@@ -33,7 +33,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .layout--main {
 	width:93%;
-	padding-top:50px;
+	padding-top:60px;
 }
 
 .post-item {
@@ -138,7 +138,7 @@ font-size:1.3em;
 .truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 38%;
+    width: 65%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
@@ -223,7 +223,7 @@ and (max-device-width : 568px) {*/
 */	.truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 30%;
+    width: 60%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
