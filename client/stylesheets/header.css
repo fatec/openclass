@@ -6,7 +6,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .header {
 	position: fixed;
-	height:46px;
+	height:54px;
 	width:100%;
 
 	border-bottom: solid 1px #e3e3e3;
@@ -15,8 +15,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 	background-color: white;
 
 	opacity: 0.9;
-	box-shadow:0 0 2px 0 #cfcfcf;
-	line-height: 47px;
+/*	box-shadow:0 0 2px 0 #cfcfcf;
+*/	line-height: 54px;
 }
 
 .header--wrapper {
@@ -37,8 +37,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 	vertical-align:middle;
 	margin-right:6px;
 
-	line-height:44px;
-
+/*	line-height:44px;
+*/
 	cursor: pointer;
 }
 
@@ -46,8 +46,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 	float:left;
 	vertical-align:middle;
 
-	line-height:46px;
-	width:40px;
+/*	line-height:46px;
+*/	width:40px;
 }
 
 .header--button-back-text {
@@ -83,16 +83,16 @@ Authors : Vincent Widmer & Stéphane Morand;
 	vertical-align:middle;
 	margin-left:10px;
 
-	line-height:46px;
-}
+/*	line-height:46px;
+*/}
 
 .header--button-setings {
 	float:right;
 	vertical-align:middle;
 	margin-left:10px;
 
-	line-height:46px;
-	color: #b00e0e;
+/*	line-height:46px;
+*/	color: #b00e0e;
 
 /*	border: solid 1px yellow;
 */}
