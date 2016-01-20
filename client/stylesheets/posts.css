@@ -343,6 +343,7 @@ border-radius: 4px;
 	margin:0 2px 0 20px;
 
 	vertical-align:middle;
+	-webkit-font-smoothing: antialiased;
 /*		line-height: 46px;
 *//*			border: solid 1px green;
 */
