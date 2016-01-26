@@ -7,15 +7,15 @@ Template.blogPage.helpers({
     else
       sort = 1;
     if (Router.current().params.query.tags)
-      return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {'_id':1}});
+      return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}});
     else if (Router.current().params.query.author)
-      return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {'_id':1}});
+      return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {nb: -1}});
     else if (Router.current().params.query.category)
-      return Posts.find({category: {$in: [Router.current().params.query.category]}}, {sort: {'_id':1}});    
+      return Posts.find({category: {$in: [Router.current().params.query.category]}}, {sort: {nb: -1}});    
     else {
       // check to avoid an exception on changing template
       if (this.blog !== undefined) {
-        return Posts.find();
+        return Posts.find({},{sort: {nb: -1}});
       } else {
         return null;
       }
@@ -23,6 +23,9 @@ Template.blogPage.helpers({
   },
   postCount: function() { // return the number of posts
     return Posts.find().count();
+  },
+  codePanelState: function() {
+    return (this.blog.codePanel)
   }
 });
 
@@ -35,11 +38,13 @@ Template.blogPage.events({
     },
   'click .hideCodePanel': function(e) {
     $( "#codePanel" ).hide();
+
+    Blogs.update(this.blog._id, {$set : {codePanel : 0}});         
+
   }
 });
 
 Template.blogPage.rendered = function(){
   // Set default author
- $('.post-item--button-open-menu').contextMenu('#menu2');
 
 }
