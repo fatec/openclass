@@ -5,6 +5,10 @@ html, body {
   height: 100%;
 }
 
+html {
+  overflow-y:scroll; /* Trick to fix page jump /*
+}
+
 #content {
   width: 100%;
   height: 100%;
