@@ -116,22 +116,23 @@ Authors : Vincent Widmer & Stéphane Morand;
 	background-color: white;
 }
 
-.post-item--button {
-	float:right;
-/*	margin-top:2px;
-*/	margin-right:5px;
-	padding:5px 8px 5px 8px;
 
-/*	border-top:solid 1px #c5c5c5;
-	border-bottom:solid 1px #c5c5c5;*/	
+.post-item--button {	
+
+float:right;
+	padding:3px 8px 5px 8px;
+
+	border-top:solid 1px #c5c5c5;
+	border-bottom:solid 1px #c5c5c5;	
 
 	text-decoration:none;
-	font-size:1.3em;
+	font-size:.8em;
 	color:grey;
-/*	text-shadow:0 -1px 0 rgba(255,255,255,.3);
-*/
+	text-shadow:0 -1px 0 rgba(255,255,255,.3);
+
 	cursor:pointer;
 }
+
 
 .post-item--button:hover {
 	background-color:#dedede;
@@ -143,9 +144,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .post-item--button-edit {
-/*	border-right:solid 1px #c5c5c5;
+	border-right:solid 1px #c5c5c5;
 	border-top-right-radius:3px;
-	border-bottom-right-radius:3px;*/
+	border-bottom-right-radius:3px;
 }
 
 .post-item--button-delete {
@@ -210,7 +211,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .post-item--tags {
 	display: inline-block;
-	margin: 10px 0 0px 0;
+	margin: 0px 0 8px 5px;
 	padding:6px;
 
 	background-color: #2A90C6;
@@ -224,7 +225,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .post-item--category {
 	display: inline-block;
-	margin: 10px 0 0px 0;
+	margin: 10px 0 8px 5px;
 
 	font-size: 0.8em;
 	color: #5996b8;

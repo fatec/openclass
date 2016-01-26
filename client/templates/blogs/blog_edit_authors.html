@@ -4,10 +4,12 @@
 		{{#each authors}}
 			<a class="list-group-item">
 				<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
-      			<a class="blog-edit-authors--button-delete-author"  href="#" style="float:right">
-      			<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-name="{{name}}"></i>
-      		</a>
-    	</a>
+				{{#unless guest}}
+      				<a class="blog-edit-authors--button-delete-author"  href="#" style="float:right">
+      					<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-name="{{name}}"></i>
+      				</a>
+      		    {{/unless}}
+    		</a>
     	{{/each}}
     	<div class="blog-edit-authors--form-wrapper">
     			<form id="blog-edit--form-add-author" class="blog-edit--form-add-author">

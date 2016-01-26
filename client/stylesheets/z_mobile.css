@@ -53,8 +53,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .header--select-author {
-	width:80px;
-}
+/*	width:80px;
+*/}
 
 .post-edit--wrapper{
 	margin-top: 0px;

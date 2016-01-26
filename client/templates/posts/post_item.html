@@ -16,17 +16,18 @@
 
 
     {{/if}}
-        {{#if ownPost}}
+    {{#if ownPost}}
       <a href="{{pathFor 'postEdit'}}">
-        <div class="post-item--button post-item--button-edit"><i class="fa fa-ellipsis-v"></i>
-        
+        <div class="post-item--button post-item--button-edit">
+        <i class="fa fa-lg fa-pencil"></i>
          <!--  <img class="post-item-2-icon-button-edit" src="/img/icon-button-editpost.png" /> -->
         </div>
       </a>  
-<!--         <div class="post-item-2-button post-item-2-button-delete">
+        <div class="post-item--button post-item--button-delete">
         <i class="fa fa-lg fa-times-circle"></i>
 
-      </div> -->
+<!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->
+      </div>
     {{/if}}   
     <a class="post-item--author" href="{{pathFor 'blogPage' _id=blogId query=authorQuery}}">{{author}}</a>
     <div class="post-item--date">• {{livestamp submitted}}</div>
@@ -38,4 +39,5 @@
         <a class="post-item--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=../blogId query=tagQuery}}">{{this}}</a>
       {{/each}}
   </div>
+
 </template>
