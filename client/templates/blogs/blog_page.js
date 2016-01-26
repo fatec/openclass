@@ -7,15 +7,15 @@ Template.blogPage.helpers({
     else
       sort = 1;
     if (Router.current().params.query.tags)
-      return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {submitted: sort}});
+      return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {'_id':1}});
     else if (Router.current().params.query.author)
-      return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {submitted: sort}});
+      return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {'_id':1}});
     else if (Router.current().params.query.category)
-      return Posts.find({category: {$in: [Router.current().params.query.category]}}, {sort: {submitted: sort}});    
+      return Posts.find({category: {$in: [Router.current().params.query.category]}}, {sort: {'_id':1}});    
     else {
       // check to avoid an exception on changing template
       if (this.blog !== undefined) {
-        return Posts.find({blogId: this.blog._id}, {sort: {submitted: sort}});
+        return Posts.find({blogId: this.blog._id}, {sort: {'_id':1}});
       } else {
         return null;
       }
@@ -38,7 +38,8 @@ Template.blogPage.events({
   }
 });
 
-  Template.blogPage.onRendered(function () {
+Template.blogPage.rendered = function(){
   // Set default author
+ $('.post-item--button-open-menu').contextMenu('#menu2');
 
-});
+}

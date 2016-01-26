@@ -8,7 +8,8 @@ Meteor.publish('blogsVersions', function() {
 
 Meteor.publish('posts', function(blogId) {
   check(blogId, String);
-  return Posts.find({blogId: blogId}, {sort: {submitted: 1}});
+    return Posts.find({blogId: blogId}, {sort: {'_id':1}});
+  // return Posts.find({blogId: blogId}, {sort: {submitted: 1}});
 });
 
 Meteor.publish('postsVersions', function(blogId) {
