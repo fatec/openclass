@@ -15,7 +15,7 @@ Template.blogPage.helpers({
     else {
       // check to avoid an exception on changing template
       if (this.blog !== undefined) {
-        return Posts.find({blogId: this.blog._id}, {sort: {'_id':1}});
+        return Posts.find();
       } else {
         return null;
       }
