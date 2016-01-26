@@ -113,6 +113,14 @@ font-size:1.3em;
 	width: 100%;
 }
 
+.blog-edit--list-item {
+width: 80%;
+}
+
+.blog-edit--list-wrapper-left {
+width:10%;
+}
+
 .blog-submit--wrapper {
 	width: 100%;
 }
@@ -148,7 +156,7 @@ font-size:1.3em;
 .truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 65%;
+    width: 55%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
