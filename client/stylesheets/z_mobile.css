@@ -22,13 +22,22 @@ Authors : Vincent Widmer & Stéphane Morand;
 	padding-bottom:10px;
 	margin-left:0px;
 	width: 100%;
-	border-top:solid 1px grey;
 	border-bottom:solid 1px grey;
+
+}
+
+.mobileMenu a:first-of-type {
+		border-top:solid 1px grey;
 
 }
 
 .menu--title {
 	padding-left:8px;
+}
+
+.menu--authors {
+	margin: 0px 0 0px 17px;
+
 }
 
 .layout--main {
@@ -53,8 +62,9 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .header--select-author {
-/*	width:80px;
-*/}
+text-indent: 0px;
+width: 35px;
+}
 
 .post-edit--wrapper{
 	margin-top: 0px;
@@ -121,8 +131,8 @@ font-size:1.3em;
 }
 
 .posts-header--button-submit{
-/*	margin:5px 0 0 10px;
-*/}
+	margin-left:15px;
+}
 
 .header--wrapper {
 	width:96%;

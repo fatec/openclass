@@ -13,6 +13,13 @@
 					{{#if ownBlog}}
 						<a class="header--button-setings" href="{{pathFor 'blogEdit' _id=this.blog._id}}"><i class="fa fa-lg fa-cog" ></i></a>
 					{{/if}}
+
+					<div class="header--select-author-wrapper">
+						<select class="header--select-author">							{{#each authors}}
+								<option selected="{{optionIsSelected name}}">{{name}}</option>
+							{{/each}}
+						</select>
+						</div>
 <!-- 					{{#unless currentUser}} -->
 <!-- 						<div class="header-2-select-author-wrapper">
 						<select class="header-2-select-author">

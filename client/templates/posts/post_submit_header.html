@@ -6,17 +6,16 @@
 	    			<i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i>
 <!-- 	    			<span class="header-2-button-back-text">Retour</span>
  -->		        </a>
-				{{#unless currentUser}}
-
+<!-- 				{{#unless currentUser}}
+ -->
 					<div class="header--select-author-wrapper">
-					<select class="header--select-author">
-						{{#each authors}}
-							<option selected="{{optionIsSelected name}}">{{name}}</option>
-						{{/each}}
-					</select>
-					</div>
-				{{/unless}}
-			</div>
+						<select class="header--select-author">							{{#each authors}}
+								<option selected="{{optionIsSelected name}}">{{name}}</option>
+							{{/each}}
+						</select>
+						</div>
+<!-- 				{{/unless}}
+ -->			</div>
 		</div>
 	</div>
 </template>
