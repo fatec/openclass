@@ -1,7 +1,10 @@
 Template.blogEditAuthors.helpers({
-  authors: function(){
-    return Authors.find({blogId: this.blog._id});  
+	authors: function(){
+		return Authors.find({blogId: this.blog._id});  
   },
+	guest: function(){
+		return this.name === 'Invité';
+  }
 });
 Template.blogEditAuthors.events({
   'click .blog-edit-authors--button-delete-author': function(event, template) {
