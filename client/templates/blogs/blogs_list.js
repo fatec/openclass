@@ -2,7 +2,7 @@ Template.blogsList.helpers({
 	blogs: function() {
 		return Blogs.find({}, {sort: {submitted: -1}});
 	},
-		ownBlog: function() {
+	ownBlog: function() {
 		if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
     		return true;
   	},
@@ -13,7 +13,10 @@ Template.blogsList.helpers({
 	blogsVisited: function() {
 		var blogs = JSON.parse(Cookie.get('blogsVisited'));
 		return Blogs.find({'_id':{$in:blogs}});
-	}
+	},
+	  isBox: function() {
+    return (Meteor.settings.public.isBox === "true")
+  }
 });
 
 
