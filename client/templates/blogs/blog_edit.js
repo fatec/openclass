@@ -66,7 +66,7 @@ Template.blogEdit.events({
   'click .blog-edit--delete-button': function(e) {
     e.preventDefault();
 
-    if (confirm("Effacer ce journal?")) {
+    if (confirm("Effacer cet espace ?")) {
       var currentBlogId = this.blog._id;
       Blogs.remove(currentBlogId);
       // Effacer les posts qui correspondent a ce blogId
@@ -119,7 +119,7 @@ Template.blogEdit.events({
       Router.go('blogsList');
     }
   },
-  'click .button-send-to-api': function(e, template) {
+  'click .blog-edit--sync-button': function(e, template) {
       e.preventDefault();
       console.log("On clique sur le bouton "+this.blog._id)
       Meteor.call('sendBlog', {blogId: this.blog._id} );
