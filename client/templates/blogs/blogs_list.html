@@ -10,7 +10,7 @@
 		</form>
 		{{#if currentUser}}
 			<div class="list-group">
-  				<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
+  				<div style="text-align:center;margin-top:40px;margin-bottom:20px;">
   					<span style="font-size:1.3em;font-weight:400;">Vos espaces :</span>
   				</div>
     			{{#each blogs}}
@@ -21,9 +21,9 @@
     		</div>
     	{{else}}
     		{{#if blogsVisitedCount}}
- 				<div class="list-group">
-  					<div style="text-align:center;margin-top:50px;margin-bottom:20px;">
-  						<span style="font-size:1.3em;font-weight:400;">Récemment visité :</span>
+ 				<div class="list-group blogs-list--visited-blogs">
+  					<div style="text-align:center;margin-top:40px;margin-bottom:20px;">
+  						<span style="font-size:1.3em;font-weight:400;">Récemment visité :</span><br /><a class="blogs-list--delete-recent" style="font-size:0.8em;" href="#">(effacer)</a>
   					</div> 
   	    			{{#each blogsVisited}}
       					{{> blogItem}}
@@ -40,7 +40,7 @@
 				<button class="button button-secondary blogs-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouvel espace</button>
 			</a>
 		{{else}}
-			<div style="line-height:1.2em"><span style="color:#1a6c98">bee</span><span style="color:#38a6e0">kee</span> vous permet de créer des espaces privés<br />pour que vos élèves partagent des photos et des messages.</div>
+			<div style="line-height:1.2em"><span style="color:#1a6c98">bee</span><span style="color:#38a6e0">kee</span> permet de partager facilement des photos et des messages.</div>
 <!-- 			<div class="blogs-list-2-message-connect">Vous êtes enseignant ? <a href="{{pathFor 'login'}}">Connectez-vous</a> pour créer un nouvel espace.</div>
  -->			
 {{#unless isBox}}

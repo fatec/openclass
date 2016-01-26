@@ -35,7 +35,7 @@ Template.blogsList.events({
 			var blogsVisited = [];
 			var cookie = Cookie.get('blogsVisited');
 			console.log(typeof cookie);
-			if (typeof cookie == "undefined")
+			if (typeof cookie == "undefined" || cookie == "")
 				blogsVisited.push(blogId);
 			else
 			{
@@ -70,7 +70,11 @@ Template.blogsList.events({
     e.preventDefault();
     $('.blogs-list--code-link-form').submit();
   },
-
+      'click .blogs-list--delete-recent': function(e) {
+	e.preventDefault();
+	Cookie.remove('blogsVisited');
+	$('.blogs-list--visited-blogs').hide();
+	}
 });
 
 
