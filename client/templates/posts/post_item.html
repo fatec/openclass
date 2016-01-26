@@ -30,7 +30,7 @@
       </div>
     {{/if}}   
     <a class="post-item--author" href="{{pathFor 'blogPage' _id=blogId query=authorQuery}}">{{author}}</a>
-    <div class="post-item--date">• {{livestamp submitted}}</div>
+    <div class="post-item--date"><!-- • {{livestamp submitted}} --></div>
 	    <div class="post-item--text">{{body}}</div>
       {{#if category}}
         <a class="post-item--category {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=blogId query=categoryQuery}}">Catégorie : {{category}}</a><br />
