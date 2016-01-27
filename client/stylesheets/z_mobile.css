@@ -241,7 +241,7 @@ and (max-device-width : 568px) {*/
 */	.truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 60%;
+    width: 40%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
