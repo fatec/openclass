@@ -8,20 +8,26 @@
             {{> postItem}}
           {{/each}}
         {{else}}
+          {{#if ownBlog}}
+            {{#if codePanelState}}
+              <div id="codePanel" class="blog-page--no-post-message">
+                <div style="background-color:white;margin-bottom:10px;border:solid 1px #ddd;border-radius:4px;padding:15px;">
+                  <div class="hideCodePanel" style="float:right;margin-top:-10px;margin-right:-9px;cursor:pointer;">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
+                  <span style="font-size:1.1em;">Code d'accès de l'espace : <div style="border-radius:20px;display:inline-block;padding:10px;background-color:#2A8BBF;color:white;letter-spacing:0.1em;"><b>{{blog.blogCode}}</b></div> <br /><br />
+                    <span style="font-size:0.8em;">Transmettez ce code à vos élèves pour qu'ils rejoignent cet espace.</span>
+                  </span>
+                  </div>
+                </div>
+                {{/if}}
+                <div class="blog-page--no-post-message">
+              <div style="background-color:white;border:solid 1px #ddd;border-radius:4px;padding:15px;">
+                <span>Il n'y pas encore de publication à afficher...</span><br />
+                </div>
 
-          <div id="codePanel" class="blog-page--no-post-message">
-                    <div style="background-color:white;margin-bottom:10px;border:solid 1px #ddd;border-radius:4px;padding:15px;"><div class="hideCodePanel" style="float:right;margin-top:-10px;margin-right:-9px;"><i class="fa fa-times-circle"></i></div>
-
-            <span style="font-size:1.1em;">Code d'accès de l'espace : <div style="border:solid 1px #BDBDBD;display:inline-block;padding:10px;background-color:#E3E3E3;"><b>{{blog.blogCode}}</b></div><br /><br /><span style="font-size:0.8em;">Transmettez ce code à vos élèves pour qu'ils rejoignent cet espace.</span></span>
-            </div>
-            </div>
-                      <div class="blog-page--no-post-message">
-
-          <div style="background-color:white;border:solid 1px #ddd;border-radius:4px;padding:15px;">
-            <span>Il n'y pas encore de publication à afficher...</span><br />
-            </div>
-
-          </div>
+              </div>
+            {{/if}}
         {{/if}}
       </div>
     </div>

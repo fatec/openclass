@@ -20,6 +20,61 @@ Authors : Vincent Widmer & Stéphane Morand;
 	text-align:left;
 }*/
 
+.blog-edit--list-item {
+height:60px;
+padding:14px 20px 10px 10px;
+background-color:white;
+border-right:solid 1px #ddd;
+border-left:solid 1px #ddd;	
+border-bottom:solid 1px #ddd;	
+
+table-layout: fixed;display: 
+table;width: 100%;
+cursor: pointer;
+}
+
+a.blog-edit--list-item {
+	color:black;
+}
+
+a.blog-edit--list-item:hover {
+	text-decoration: none;
+}
+
+.blog-edit--list-item:hover {
+background-color:#ddd;
+}
+
+.blog-edit--list-wrapper-left {
+	vertical-align:top;	
+	display: table-cell;
+	width:7%;
+	font-size: 1.6em;
+}
+
+.blog-edit--list-wrapper-center {
+	vertical-align:top;	
+	display: table-cell;
+	width:50%;
+}
+
+.blog-edit--list-wrapper-right {
+display: table-cell;
+
+}
+
+.blog-edit--list-item:first-of-type {
+	border-top:solid 1px #ddd;
+
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.blog-edit--list-item:last-of-type {
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
 .blog-edit--input {
 	width: 98%;
 
@@ -53,6 +108,14 @@ Authors : Vincent Widmer & Stéphane Morand;
 /*.blog-edit--button-delete {
 	margin-bottom: 20px;
 }*/
+
+
+/* ----- blog-edit-authors template ----- */
+
+.blog-edit-authors--form-wrapper {
+	margin-top:30px;
+	text-align:center;
+}
 
 
 /* ----- blog-item template ----- */

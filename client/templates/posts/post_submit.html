@@ -3,10 +3,9 @@
         <div class="page-title">Ajouter une publication</div>
         <div class="post-submit--wrapper">
             <div class="images post-submit--image-wrapper">
-                                    <div class="post-edit--spinner" style="display:none;"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
-
+                <div class="post-edit--spinner" style="display:none;"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
                 {{#with image}}
-                            <img src="{{url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail"/>
+                    <img src="{{url store='thumbs' uploading='/img/upload-spinner.gif' storing='/img/upload-spinner.gif'}}" alt="" class="post-submit--image thumbnail"/>
                 {{/with}}
             </div>        
             <form name="post-submit--form" id="post-submit--form">

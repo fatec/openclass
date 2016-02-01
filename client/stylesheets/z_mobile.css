@@ -11,22 +11,45 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .mobileMenu {
 	padding-top:10px;
-	padding-left:20px;
-	color:white;
+/*	padding-left:20px;
+*/	color:white;
 }
 
 .mobileMenu a {
 	color:white;
+	padding-top:10px;
+	padding-left:20px;
+	padding-bottom:10px;
+	margin-left:0px;
+	width: 100%;
+	border-bottom:solid 1px grey;
+
+}
+
+.mobileMenu a:first-of-type {
+		border-top:solid 1px grey;
+
+}
+
+.menu--title {
+	padding-left:8px;
+}
+
+.menu--authors {
+	margin: 0px 0 0px 17px;
+
 }
 
 .layout--main {
 	width:93%;
-	padding-top:50px;
+	padding-top:60px;
 }
 
 .post-item {
-	width:95%;
-	margin-bottom:10px;
+	width:100%;
+	margin-top:10px;
+		margin-bottom :12px;
+
 }
 
 .blogs-list--code-wrapper {
@@ -39,7 +62,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .header--select-author {
-	width:80px;
+text-indent: 0px;
+width: 35px;
 }
 
 .post-edit--wrapper{
@@ -89,6 +113,14 @@ font-size:1.3em;
 	width: 100%;
 }
 
+.blog-edit--list-item {
+width: 80%;
+}
+
+.blog-edit--list-wrapper-left {
+width:10%;
+}
+
 .blog-submit--wrapper {
 	width: 100%;
 }
@@ -107,7 +139,7 @@ font-size:1.3em;
 }
 
 .posts-header--button-submit{
-	margin:5px 0 0 10px;
+	margin-left:15px;
 }
 
 .header--wrapper {
@@ -124,7 +156,7 @@ font-size:1.3em;
 .truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 38%;
+    width: 55%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
@@ -156,6 +188,10 @@ margin:5px 5px 0 0;
 	display:inline-block;
 margin-bottom:20px;
 }
+
+.header--page-name {
+		margin-left:0px;
+	}
 
 .logout--wrapper{
 	width:100%;
@@ -194,6 +230,7 @@ margin-bottom:20px;
 	}
 }
 
+
 /* iPhone 4, 4S, 5, 5S */
 /*@media only screen 
 and (min-device-width : 320px) 
@@ -204,9 +241,10 @@ and (max-device-width : 568px) {*/
 */	.truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 30%;
+    width: 40%;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
 }
+
 }

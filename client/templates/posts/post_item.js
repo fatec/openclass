@@ -75,7 +75,7 @@ Template.postItem.events({
       // Images.remove({'metadata.postId': "Mik2bg7nvT7yHEpR2"});
       Router.go('blogPage', {_id: currentPost.blogId});
     }
-  }
+  }   
 });
 
 // Show image in a lightbox with magnificPopup plugin
@@ -94,6 +94,8 @@ Template.postItem.rendered = function(){
       closeOnContentClick:'true',
     });
   });
+
+
 }
 
 

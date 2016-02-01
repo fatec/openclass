@@ -1,5 +1,5 @@
 {
-  "syncServerIP": "",
+  "syncServerIP": "http://129.194.31.76",
   "adminPassword": "admin",
    "public" : {
   		"isBox": "false",

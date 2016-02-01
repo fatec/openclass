@@ -1,20 +1,5 @@
 <template name="postItem">
   <div class="post-item">
-    {{#if ownPost}}
-      <a href="{{pathFor 'postEdit'}}">
-        <div class="post-item--button post-item--button-edit">
-        <i class="fa fa-lg fa-pencil"></i>
-         <!--  <img class="post-item-2-icon-button-edit" src="/img/icon-button-editpost.png" /> -->
-        </div>
-      </a>	
-	      <div class="post-item--button post-item--button-delete">
-        <i class="fa fa-lg fa-times-circle"></i>
-
-<!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->
-     	</div>
-    {{/if}}   
-    <a class="post-item--author" href="{{pathFor 'blogPage' _id=blogId query=authorQuery}}">{{author}}</a>
-    <div class="post-item--date">• {{livestamp submitted}}</div>
     {{#with image}}
       {{#unless isUploaded}}
         <br /><td class="post-item--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></td>
@@ -31,6 +16,21 @@
 
 
     {{/if}}
+    {{#if ownPost}}
+      <a href="{{pathFor 'postEdit'}}">
+        <div class="post-item--button post-item--button-edit">
+        <i class="fa fa-lg fa-pencil"></i>
+         <!--  <img class="post-item-2-icon-button-edit" src="/img/icon-button-editpost.png" /> -->
+        </div>
+      </a>  
+        <div class="post-item--button post-item--button-delete">
+        <i class="fa fa-lg fa-times-circle"></i>
+
+<!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->
+      </div>
+    {{/if}}   
+    <a class="post-item--author" href="{{pathFor 'blogPage' _id=blogId query=authorQuery}}">{{author}}</a>
+    <div class="post-item--date"><!-- • {{livestamp submitted}} --></div>
 	    <div class="post-item--text">{{body}}</div>
       {{#if category}}
         <a class="post-item--category {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=blogId query=categoryQuery}}">Catégorie : {{category}}</a><br />
@@ -39,4 +39,5 @@
         <a class="post-item--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=../blogId query=tagQuery}}">{{this}}</a>
       {{/each}}
   </div>
+
 </template>

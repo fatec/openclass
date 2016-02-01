@@ -2,7 +2,7 @@ Template.blogsList.helpers({
 	blogs: function() {
 		return Blogs.find({}, {sort: {submitted: -1}});
 	},
-		ownBlog: function() {
+	ownBlog: function() {
 		if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
     		return true;
   	},
@@ -13,7 +13,10 @@ Template.blogsList.helpers({
 	blogsVisited: function() {
 		var blogs = JSON.parse(Cookie.get('blogsVisited'));
 		return Blogs.find({'_id':{$in:blogs}});
-	}
+	},
+	  isBox: function() {
+    return (Meteor.settings.public.isBox === "true")
+  }
 });
 
 
@@ -32,7 +35,7 @@ Template.blogsList.events({
 			var blogsVisited = [];
 			var cookie = Cookie.get('blogsVisited');
 			console.log(typeof cookie);
-			if (typeof cookie == "undefined")
+			if (typeof cookie == "undefined" || cookie == "")
 				blogsVisited.push(blogId);
 			else
 			{
@@ -67,7 +70,11 @@ Template.blogsList.events({
     e.preventDefault();
     $('.blogs-list--code-link-form').submit();
   },
-
+      'click .blogs-list--delete-recent': function(e) {
+	e.preventDefault();
+	Cookie.remove('blogsVisited');
+	$('.blogs-list--visited-blogs').hide();
+	}
 });
 
 

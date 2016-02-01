@@ -1,0 +1,19 @@
+<template name="blogEditCategories">
+	<div class="blog-edit-categories">
+		<div class="page-title">Gérer les catégories</div>
+		{{#each categories}}
+			<a class="list-group-item">
+				<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
+      			<a class="blog-edit-authors--button-delete-category"  href="#" style="float:right">
+      			<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-name="{{name}}"></i>
+      		</a>
+    	</a>
+    	{{/each}}
+    	<div class="blog-edit-authors--form-wrapper">
+    			<form id="blog-edit--form-add-category" class="blog-edit--form-add-category">
+			<input id="categoryName" class="blog-edit--input-add-category" style="font-size:1.1em" placeholder="Ajouter une catégorie..." />
+			<button type="submit" class="button button-primary blog-edit--button-submit-add-category"><i class="fa fa-plus"></i> Ajouter</button>
+		</form>
+		</div>
+	</div>
+</template>

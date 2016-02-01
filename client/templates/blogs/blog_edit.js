@@ -41,6 +41,40 @@ Template.blogEdit.events({
     $('#categoryName').val('');
 
   },  
+  'click .blog-edit--rename-button': function(e) {
+
+    e.preventDefault();
+
+    var currentBlogId = this.blog._id;
+
+    var answer = prompt("Renommer cet espace :", this.blog.title);
+
+    if (answer) {
+      var blogProperties = {
+        title: answer
+      }
+
+      Blogs.update(currentBlogId, {$set: blogProperties}, function(error) {
+        if (error)
+        {
+          console.log("BlogEdit submit-form event "+error.message);
+          Session.set('errorMessage', error.message);
+        } 
+      });
+  }
+},
+  'click .blog-edit--delete-button': function(e) {
+    e.preventDefault();
+
+    if (confirm("Effacer cet espace ?")) {
+      var currentBlogId = this.blog._id;
+      Blogs.remove(currentBlogId);
+      // Effacer les posts qui correspondent a ce blogId
+      // TODO
+      //Posts.remove();
+      Router.go('blogsList');
+    }
+  },
   'click .blog-edit--delete-author': function(event, template) {
 
     var currentBlogId = template.data.blog._id;
@@ -85,7 +119,7 @@ Template.blogEdit.events({
       Router.go('blogsList');
     }
   },
-  'click .button-send-to-api': function(e, template) {
+  'click .blog-edit--sync-button': function(e, template) {
       e.preventDefault();
       console.log("On clique sur le bouton "+this.blog._id)
       Meteor.call('sendBlog', {blogId: this.blog._id} );
@@ -94,9 +128,6 @@ Template.blogEdit.events({
 
 
 Template.blogEdit.helpers({
-  authors: function(){
-    return Authors.find({blogId: this.blog._id});  
-  },
   guest: function(){
     return this.name === 'Invité';
   },

@@ -4,19 +4,18 @@
 	    	<div class="header--wrapper">
 	    		<a class="header--button-back-wrapper" href="{{pathFor 'blogPage' _id=blog._id}}">
 	    			<i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i>
-	    			<span class="header--button-back-text">Retour</span>
-		        </a>
-				{{#unless currentUser}}
-
+<!-- 	    			<span class="header-2-button-back-text">Retour</span>
+ -->		        </a>
+<!-- 				{{#unless currentUser}}
+ -->
 					<div class="header--select-author-wrapper">
-					<select class="header--select-author">
-						{{#each authors}}
-							<option selected="{{optionIsSelected name}}">{{name}}</option>
-						{{/each}}
-					</select>
-					</div>
-				{{/unless}}
-			</div>
+						<select class="header--select-author">							{{#each authors}}
+								<option selected="{{optionIsSelected name}}">{{name}}</option>
+							{{/each}}
+						</select>
+						</div>
+<!-- 				{{/unless}}
+ -->			</div>
 		</div>
 	</div>
 </template>
