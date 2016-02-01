@@ -26,7 +26,11 @@ Template.blogPage.helpers({
   },
   codePanelState: function() {
     return (this.blog.codePanel)
-  }
+  },
+    ownBlog: function() {
+    if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+        return true;
+    },
 });
 
 
