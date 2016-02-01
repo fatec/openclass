@@ -201,7 +201,13 @@ var myResizeFunction = function(file, callback){
 var canvas = document.createElement("canvas");
  // Create an image
     var img = document.createElement("img");
+
+
+    //var img2 = $('.post-submit--image');
+
+    //$(".post-submit--image").on('load', function(){ alert("chargé!")});
     // Create a file reader
+
 
     var reader = new FileReader();
     reader.onloadend = (function(theFile)
@@ -212,6 +218,7 @@ var canvas = document.createElement("canvas");
               var enc = "data:image/jpeg;base64," + btoa(minified);
               
               $('.post-edit--spinner').hide();
+
 
               callback(enc);
             });
