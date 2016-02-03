@@ -1,7 +1,11 @@
 Template.postItem.helpers({
+    image: function() {
+    return Images.findOne(this.imageId);
+  },
   image: function() {
     //return Images.findOne({'metadata.blogId': this.blogId, 'metadata.postId': this._id});
-    return Images.findOne(this.imageId);
+    //return Images.findOne(this.imageId);
+    
   },
   tags: function(){
     if (this.tags.length > 1 || this.tags[0] != "")

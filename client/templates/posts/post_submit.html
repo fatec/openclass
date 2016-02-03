@@ -1,12 +1,16 @@
 <template name="postSubmit">
     <div class="post-submit">
         <div class="page-title">Ajouter une publication</div>
-        <div class="post-submit--wrapper">
+        <div class="post-submit--wrapper">{{> upload_bootstrap callbacks=myCallbacks}}
             <div class="images post-submit--image-wrapper">
                 <div class="post-edit--spinner" style="display:none;"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
-                {{#with image}}
-                    <img src="{{url store='thumbs' uploading='/img/upload-spinner.gif' storing='/img/upload-spinner.gif'}}" alt="" class="post-submit--image thumbnail"/>
-                {{/with}}
+
+                               {{#if image}}
+     <img src="../../upload/originals/{{image.imageId}}" alt="" class="post-submit--image thumbnail"/>
+{{/if}}
+<!--                     <img src="../../upload///thumbnails/{{this.imageId}}" alt="" class="post-submit-2-image thumbnail"/>
+ -->
+<!--                     <img src="{{this.imageId}}" alt="" class="post-submit-2-image thumbnail"/> -->
             </div>        
             <form name="post-submit--form" id="post-submit--form">
                 {{#if image}}

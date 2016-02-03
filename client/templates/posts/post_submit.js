@@ -1,3 +1,12 @@
+// file: client/init.js
+// Meteor.startup(function() {
+//   Uploader.finished = function(index, fileInfo, templateContext) {
+//     Images.insert({postId:post._id,imageId:fileInfo.name});
+//     //console.log("je rajoute l'image"+fileInfo.name);
+
+//   }
+// })
+
 Template.postSubmit.events({
   // TODO: on cancel.. effacer toutes les images de imagesToDelete et aussi celle de imagetoAdd 
   'submit form': function(e, template) {
@@ -20,9 +29,9 @@ Template.postSubmit.events({
         console.log("Il y a une erreur dans postSumbit metor.call postinsert");
         console.log(error.reason);
       } else {
-        if (imageId) {
-          Images.update(imageId, {$unset: {'metadata.unvalid': ''},$set: {'metadata.postId': postId, 'metadata.blogId': blogId, 'metadata.last': true}});
-        }
+        // if (imageId) {
+        //   Images.update(imageId, {$unset: {'metadata.unvalid': ''},$set: {'metadata.postId': postId, 'metadata.blogId': blogId, 'metadata.last': true}});
+        // }
         if (tags) {
           //console.log("On ajout les tags coté client ou serveur?");
           Meteor.call('tagsInsert', {blogId: blogId, tags: tags} );
@@ -37,67 +46,67 @@ Template.postSubmit.events({
 
   },
   'change .post-submit--input-file': function(event, template) {
-    $(".post-submit--input-file-button").hide();
+    $(".post-submit--input-file-wrapper").hide();
 
 
 
 
-    FS.Utility.eachFile(event, function(file) {
-      var blogId = template.data.blog._id;   
+    // FS.Utility.eachFile(event, function(file) {
+    //   var blogId = template.data.blog._id;   
 
-      var extension = file.name.substr(file.name.lastIndexOf('.')+1).toLowerCase();
+    //   var extension = file.name.substr(file.name.lastIndexOf('.')+1).toLowerCase();
 
-      if (extension == "jpg" || extension == "jpeg") {
-      //myCanvasFunction(file, function (image) {
-          myResizeFunction(file, function (image) {
-            var newFile = image;
-            //console.log("newFile1 "+ newFile);
-
-
-
-          var newFile = new FS.File(newFile);
-
-          newFile.name(file.name);
-
-          newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
-
-          var imageId = Images.insert(newFile, function (err, fileObj) {
-            if (err) console.log("ERREUR "+err);
-            Session.set('imageId', imageId._id);
-            Session.set('imageToAdd', imageId._id);
-
-          });
-          //console.log("newFile "+ newFile);
-
-
-          });
-      } else if (extension == "gif" || extension == "png") {
-        myCanvasFunction(file, function (image) {
-            var newFile = image;
-            //console.log("newFile1 "+ newFile);
+    //   if (extension == "jpg" || extension == "jpeg") {
+    //   //myCanvasFunction(file, function (image) {
+    //       myResizeFunction(file, function (image) {
+    //         var newFile = image;
+    //         //console.log("newFile1 "+ newFile);
 
 
 
-          var newFile = new FS.File(newFile);
+    //       var newFile = new FS.File(newFile);
 
-          newFile.name(file.name);
+    //       newFile.name(file.name);
 
-          newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
+    //       newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
 
-          var imageId = Images.insert(newFile, function (err, fileObj) {
-            if (err) console.log("ERREUR "+err);
-            Session.set('imageId', imageId._id);
-            Session.set('imageToAdd', imageId._id);
+    //       var imageId = Images.insert(newFile, function (err, fileObj) {
+    //         if (err) console.log("ERREUR "+err);
+    //         Session.set('imageId', imageId._id);
+    //         Session.set('imageToAdd', imageId._id);
 
-          });
-          //console.log("newFile "+ newFile);
-
-
-          });
-      }
+    //       });
+    //       //console.log("newFile "+ newFile);
 
 
-    });
+    //       });
+    //   } else if (extension == "gif" || extension == "png") {
+    //     myCanvasFunction(file, function (image) {
+    //         var newFile = image;
+    //         //console.log("newFile1 "+ newFile);
+
+
+
+    //       var newFile = new FS.File(newFile);
+
+    //       newFile.name(file.name);
+
+    //       newFile.metadata = {blogId: blogId, postId: "unknown yet", unvalid: true, last: true};
+
+    //       var imageId = Images.insert(newFile, function (err, fileObj) {
+    //         if (err) console.log("ERREUR "+err);
+    //         Session.set('imageId', imageId._id);
+    //         Session.set('imageToAdd', imageId._id);
+
+    //       });
+    //       //console.log("newFile "+ newFile);
+
+
+    //       });
+    //   }
+
+
+    // });
   },
     'click .post-submit--button-submit': function(e) {
     e.preventDefault();
@@ -117,18 +126,26 @@ Template.postSubmit.events({
 });
 
 Template.postSubmit.helpers({
- image: function() {
-    var imageId = Session.get("imageId");
-
-    if (imageId) {
-      return Images.findOne(imageId);
-    } else {
-      return false
+  image: function() {
+    if (Session.get("imageId"))
+    {
+      var imageId = Session.get("imageId");
+      return Images.findOne({imageId:imageId});
     }
-
+    else
+      return false;
   },
   categories: function() {
     return Categories.find({blogId: this.blog._id});  
+  },
+    myCallbacks: function() {
+    return {
+        validate: function(file) {
+        // TODO : client-side image resize 
+          return file;
+
+      }
+    }
   }  
 });
 
@@ -137,6 +154,24 @@ Template.postSubmit.helpers({
 
 
 Template.postSubmit.rendered = function(){
+
+if (Session.get("imageId"))
+  delete Session.keys["imageId"];
+
+    Uploader.finished = function(index, fileInfo, templateContext) {
+    //Images.insert({imageId:fileInfo.name});
+    Session.set("imageId",fileInfo.name);
+    console.log(fileInfo.url);
+
+    //console.log("je rajoute l'image"+fileInfo.name);
+
+  }
+
+  //   Uploader.getFileName = function(fileInfo, formData) { 
+  //     var extension = fileInfo.name.substr(fileInfo.name.lastIndexOf('.')+1).toLowerCase();
+  //     var newName = Random.id() + '.' + extension;
+  //     return newName;
+  // };
 
     // Set default author
   if (!Session.get(Template.parentData(2).blog._id))

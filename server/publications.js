@@ -26,7 +26,10 @@ Meteor.publish('allUsers', function() {
   return Meteor.users.find();
  })
 
-Meteor.publish("images", function(blogId){ return Images.find({'metadata.blogId': blogId, 'metadata.last': true}); });
+//Meteor.publish("images", function(blogId){ return Images.find({'metadata.blogId': blogId, 'metadata.last': true}); });
+Meteor.publish("images", function(blogId){ return Images.find({blogId: blogId}); });
+Meteor.publish("images2", function(blogId){ return Images.find();});
+
 Meteor.publish("postImage", function(postId){ return Images.find({'metadata.postId': postId}); });
 Meteor.publish("tags", function(blogId){ return Tags.find({blogId: blogId}); });
 Meteor.publish("authors", function(blogId){ return Authors.find({blogId: blogId}); });

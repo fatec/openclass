@@ -5,18 +5,18 @@
         <br /><td class="post-item--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></td>
       {{/unless}}
     {{/with}}
-    {{#if image}}  
-      <div class="post-item--image-wrapper ">
-        <a class="post-item--image-link" href="{{image.url store='images'}}" target="_blank">
-          <img id="img-{{this.imageId}}" src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-item--image" />
+<!--     {{#if this.imageId}}  
+ -->      <div class="post-item--image-wrapper ">
+        <a class="post-item--image-link" href="../../upload///originals/{{this.imageId}}" target="_blank">
+          <img id="img-{{this.imageId}}" src="../../upload///originals/{{this.imageId}}" alt="" class="post-item--image" />
         </a>
       </div>
 
 
 
 
-    {{/if}}
-    {{#if ownPost}}
+<!--     {{/if}}
+ -->    {{#if ownPost}}
       <a href="{{pathFor 'postEdit'}}">
         <div class="post-item--button post-item--button-edit">
         <i class="fa fa-lg fa-pencil"></i>
