@@ -45,7 +45,7 @@ Template.postSubmit.events({
 
 
   },
-  'change .post-submit--input-file': function(event, template) {
+  'change .post-submit--input-file2': function(event, template) {
     $(".post-submit--input-file-wrapper").hide();
 
 

@@ -1,0 +1,23 @@
+
+<template name="uploadForm">
+
+    <form method="POST" enctype="multipart/form-data">
+
+
+                        <label class="post-submit--input-file-wrapper">
+
+        <input type="file" class="post-submit--input-file jqUploadclass" data-form-data='{{ submitData }}'>
+        <span class="post-submit--input-file-icon"><i class="fa fa-camera"></i>
+</span><span class="post-submit--input-file-text"> Ajouter une photo...</span>
+        {{#with infoLabel}}
+            {{ infoLabel}} <button class="start">StartUpload</button>
+            <div style="width: 200px; height: 30px; border: 1px solid black">
+                <div style="background: red; height: 30px; width: {{ progress }}">
+                    {{ progress }}
+                </div>
+            </div>
+        {{/with}}
+        </label>
+
+    </form>
+</template>

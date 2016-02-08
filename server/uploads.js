@@ -24,7 +24,7 @@ Meteor.startup(function () {
 		//imageVersions: {originals: {width: 600, height: 800}, thumbnails: {width: 300, height: 400}},
 
 	finished: function(fileInfo, formFields) {
-        gm('/Users/Vince/Desktop/Dropbox/meteor/openclass/.uploads/'+fileInfo.name).autoOrient().resize('1200','1200').write('/Users/Vince/Desktop/Dropbox/meteor/openclass/.uploads/originals/'+fileInfo.name,Meteor.bindEnvironment(function (err, res) {if(err){console.log("Error when resizing :"+err)}else {Images.insert({imageId:fileInfo.name});}}));
+        gm('/Users/Vince/Dropbox/meteor/openclass/.uploads/'+fileInfo.name).autoOrient().resize('1200','1200').write('/Users/Vince/Dropbox/meteor/openclass/.uploads/originals/'+fileInfo.name,Meteor.bindEnvironment(function (err, res) {if(err){console.log("Error when resizing :"+err)}else {Images.insert({imageId:fileInfo.name});}}));
 
         //gm('/Users/Vince/Desktop/Dropbox/meteor/openclass/.uploads/'+fileInfo.name).autoOrient().resize('1500','1500').write('/Users/Vince/Desktop/Dropbox/meteor/openclass/.uploads/originals/'+fileInfo.name,Meteor.bindEnvironment(function (err, res) {if(err){console.log("Error when resizing :"+err)}else {Images.insert({imageId:fileInfo.name});}}));
         //gm('/Users/Vince/Desktop/Dropbox/meteor/openclass/.uploads/'+fileInfo.name).autoOrient().resize('500','500').write('/Users/Vince/Desktop/Dropbox/meteor/openclass/.uploads/thumbnails/'+fileInfo.name,function (err, res) {console.log("Error 2 when resizing :"+err)}});
