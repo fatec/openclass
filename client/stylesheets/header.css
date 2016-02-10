@@ -71,28 +71,26 @@ Authors : Vincent Widmer & Stéphane Morand;
 	vertical-align: middle;
 }
 
-.header--select-author-wrapper2 {
-	float:right;
-
-margin-top:12px;
-}
-
 .header--select-author {
 	width:100px;
-		font-family: inherit;
+	font-family: inherit;
     border-color:#999; /* Font styling trick for webkit browsers */
 	font-size: 0.8em;
-background-color: green;
-border-radius: 35px;
-border:none;
-height: 35px;
-width:60px;
-color:white;
+/*	background-color: green;
+*/
+border-radius: 12px;
+border:solid 1px #2a8bbf;
+height: 30px;
+width:80px;
+color:black;
 text-indent: 0.2em;
  -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     text-overflow: '';
+   background: url('img/icon-carret-down.png') no-repeat right;
+
+padding:0 10px 0 1px;
     }
 
 .header--select-author::-ms-expand {
