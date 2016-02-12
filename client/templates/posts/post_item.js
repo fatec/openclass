@@ -79,7 +79,28 @@ Template.postItem.events({
       // Images.remove({'metadata.postId': "Mik2bg7nvT7yHEpR2"});
       Router.go('blogPage', {_id: currentPost.blogId});
     }
-  }   
+  },
+        'click .filter-tag': function(e) {
+    e.preventDefault();
+    Session.set('filter','tag');
+    var tag = $(e.target).data('tag');
+    Session.set('tag',tag);
+    Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
+  },
+  'click .filter-author': function(e) {
+    e.preventDefault();
+    Session.set('filter','author');
+    var author = $(e.target).data('author');
+    Session.set('author',author);
+    Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
+  },
+  'click .filter-category': function(e) {
+    e.preventDefault();
+    Session.set('filter','category');
+    var category = $(e.target).data('category');
+    Session.set('category',category);
+    Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
+  }     
 });
 
 // Show image in a lightbox with magnificPopup plugin
