@@ -1,3 +1,5 @@
+var posts;
+
 Template.blogPage.helpers({
   posts: function() {
     var sortPosts = Session.get('sortPosts');
@@ -15,14 +17,100 @@ Template.blogPage.helpers({
     else {
       // check to avoid an exception on changing template
       if (this.blog !== undefined) {
-        return Posts.find({},{sort: {nb: -1}});
+          return Posts.find({},{sort: {nb: -1}});
+//return Posts.find({}, {  reactive: false} ).fetch();
+        //return Posts.find({},{sort: {nb: -1},reactive:false}).fetch();
       } else {
         return null;
       }
     }
   },
+  posts3: function() {
+
+
+
+    if (Session.get('isReactive'))
+    {
+
+      switch (Session.get('filter'))
+      {
+        case '':
+          Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
+          break;
+        case 'tag':
+          var tag = Session.get('tag');
+          Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch());
+          break;
+        case 'category':
+          var category = Session.get('category');
+          Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch());
+          break;
+        case 'author':
+          var author = Session.get('author');
+          Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch());
+          break;          
+      }
+
+              //Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
+
+
+      // if (Session.get('filter') === 'tag')
+      //   Session.set('posts',Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}}));
+      // else
+      //   Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
+      
+
+
+     //  else if (Router.current().params.query.author));
+
+     //  if (Router.current().params.query.tags)
+     //    return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}});
+     //  else if (Router.current().params.query.author)
+     //    return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {nb: -1}});
+     // else if (Router.current().params.query.category)
+     //    return Posts.find({category: {$in: [Router.current().params.query.category]}}, {sort: {nb: -1}});      
+     //  else
+     //    return Posts.find({},{sort: {nb: -1}});
+
+
+
+      //posts = Posts.find({},{sort: {nb: -1}}).fetch();
+      //Session.set('posts',posts);
+      //posts = Posts.find({},{sort: {nb: -1}}).fetch();
+      //posts2 = Posts.find({},{sort: {nb: -1}}).fetch();
+      //posts = posts2;
+    }
+    
+    
+      //if (Router.current().params.query.tags)
+          //Session.set('posts',Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}}).fetch()); 
+          //return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}}).fetch();
+      
+
+      return Session.get('posts');
+      //   return true;
+      //   //return Session.get('posts').find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}});
+      // else        
+      // return Session.get('posts');
+    
+
+
+    //Session.set('postsCount',posts.length); // Set posts.length in Session to make it reactive
+
+
+      if (this.blog !== undefined) {
+          //return Session.get('posts');
+//return Posts.find({}, {  reactive: false} ).fetch();
+        //return Posts.find({},{sort: {nb: -1},reactive:false}).fetch();
+      } else {
+        return null;
+      }
+
+
+
+  },
   postCount: function() { // return the number of posts
-    return Posts.find().count();
+    //return Posts.find().count();
   },
   codePanelState: function() {
     return (this.blog.codePanel)
@@ -31,6 +119,48 @@ Template.blogPage.helpers({
     if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
         return true;
     },
+    newMessages: function() {
+    if (!Session.get('isReactive'))
+    {
+      var postsCount = Session.get('posts').length;
+      var postsReactiveCount;
+
+      switch (Session.get('filter'))
+      {
+        case '':
+          postsReactiveCount = Posts.find().fetch().length;
+          break;
+        case 'tag':
+          var tag = Session.get('tag');
+          postsReactiveCount = Posts.find({tags: tag}, {sort: {nb: -1}}).fetch().length;
+          break;
+        case 'category':
+          var category = Session.get('category');
+          postsReactiveCount = Posts.find({category: category}, {sort: {nb: -1}}).fetch().length;
+          break;
+        case 'author':
+          var author = Session.get('author');
+          postsReactiveCount = Posts.find({author: author}, {sort: {nb: -1}}).fetch().length;
+          break;          
+      }
+      if (postsCount != postsReactiveCount)
+        return (postsReactiveCount - postsCount);
+      else
+        return false;
+    }
+  },
+    selectedTagClass: function(){
+      console.log("j'ysui");
+
+    var tagId = this.toString();
+    if (Session.get('filter') === 'tag')
+    {
+      var selectedTag = Session.get('tag');
+      if(tagId == selectedTag){
+        return "post-item--tag-selected"
+      }
+    }
+  },
 });
 
 
@@ -41,14 +171,78 @@ Template.blogPage.events({
       Meteor.call('sendBlog', {blogId: template.data.blog._id} );
     },
   'click .hideCodePanel': function(e) {
+          e.preventDefault();
+
     $( "#codePanel" ).hide();
 
     Blogs.update(this.blog._id, {$set : {codePanel : 0}});         
+  },
+  'click .blog-page--button-reactive': function(e) {
+          e.preventDefault();
 
-  }
+    Session.set('isReactive', true)        
+  },
+  'click .blog-page--button-stop-reactive': function(e) {
+            e.preventDefault();
+
+    Session.set('isReactive', false)        
+  },
+  'click .blog-page--refresh': function(e) {
+    e.preventDefault();
+
+    switch (Session.get('filter'))
+    {
+      case '':
+        Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
+        break;
+      case 'tag':
+        var tag = Session.get('tag');
+        Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch());
+        break;    
+      case 'category':
+        var category = Session.get('category');
+        Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch());
+        break; 
+      case 'author':
+        var author = Session.get('author');
+        Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch());
+        break;   
+    }        
+    //Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch())   
+  },
+  'click .filter-tag': function(e) {
+    e.preventDefault();
+    Session.set('filter','tag');
+    var tag = $(e.target).data('tag');
+    Session.set('tag',tag);
+    Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
+  },
+  'click .filter-author': function(e) {
+    e.preventDefault();
+    Session.set('filter','author');
+    var author = $(e.target).data('author');
+    Session.set('author',author);
+    Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
+  },
+  'click .filter-category': function(e) {
+    e.preventDefault();
+    Session.set('filter','category');
+    var category = $(e.target).data('category');
+    Session.set('category',category);
+    Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
+  }     
+
+
+  
 });
 
-Template.blogPage.rendered = function(){
-  // Set default author
+Template.blogPage.created = function(){
 
+    Session.set('filter','');
+
+  //test = new Meteor.Collection('testCollect');
+  Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
+  //posts2 = Posts.find({},{sort: {nb: -1}}).fetch();
+  //posts = posts2;
+  // Set default author
 }

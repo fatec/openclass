@@ -32,10 +32,14 @@ Template.postItem.helpers({
     return "category="+this.category.toString();
   },     
   selectedTagClass: function(){
+
     var tagId = this.toString();
-    var selectedTag = Session.get('selectedTag');
-    if(tagId == selectedTag){
-      return "post-item--tag-selected"
+    if (Session.get('filter') === 'tag')
+    {
+      var selectedTag = Session.get('tag');
+      if(tagId == selectedTag){
+        return "post-item--tag-selected"
+      }
     }
   },
   selectedCategoryClass: function(){
