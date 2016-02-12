@@ -3,7 +3,7 @@
 		<div class="header--button-close-wrapper-mobile" href="#"><i class="fa fa-2x fa-times" style="vertical-align: middle;"></i><span style="vertical-align:middle"> Fermer</span></div>		
 		<a class="header--button-back-wrapper-mobile" href="{{pathFor 'blogsList'}}"><i class="fa fa-chevron-left" style=" vertical-align: middle;"></i> Retour à l'accueil</a>
 
-		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="{{pathFor 'blogPage' _id=this.blog._id}}">Tout afficher ({{postCount}})</a>
+		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="#">Tout afficher ({{postCount}})</a>
 <!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
  -->		<div class="menu--title menu--title-authors">
 				<i class="fa fa-lg fa-users"></i>
@@ -11,7 +11,7 @@
 			</div>
 			<ul>
 				{{#each authors}}
-					<a class="menu--authors {{selectedAuthorClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=authorQuery}}">{{name}} ({{nRefs}})</a><br />
+					<a class="menu--authors filter-author {{selectedAuthorClass}}" data-author="{{name}}" href="#">{{name}} ({{nRefs}})</a><br />
 				{{/each}}
 			</ul>
 		<div class="menu--title menu--title-categories">
@@ -20,7 +20,7 @@
 		</div>
 			<ul>
 				{{#each categories}}
-					<a class="menu--categories {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=categoryQuery}}">{{name}} ({{nRefs}})</a><br />
+					<a class="menu--categories filter-category {{selectedCategoryClass}}" data-category="{{name}}" href="#">{{name}} ({{nRefs}})</a><br />
 				{{/each}}
 			</ul>
 		<div class="menu--title menu--title-tags">
@@ -29,7 +29,7 @@
 		</div>
 			<ul>
 				{{#each tags}}
-					<a class="menu--tags {{selectedTagClass}}" href="{{pathFor 'blogPage' _id=this.blogId query=tagQuery}}">{{name}} ({{nRefs}})</a><br />
+					<a class="menu--tags filter-tag {{selectedTagClass}}" data-tag="{{name}}" href="">{{name}} ({{nRefs}})</a><br />
 				{{/each}}
 			</ul>
 	</div>

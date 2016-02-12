@@ -2,9 +2,12 @@
 	<div class="menu">
 		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> Tout afficher ({{postCount}})</a><br />
 		          {{#if isReactive}}
-            <i class="fa fa-refresh fa-spin"></i><a href="#" class="blog-page--button-stop-reactive"> Rendre statique</a>
+		          <span style="font-size:0.8em">
+            <i class="fa fa-refresh fa-spin"></i><a href="#" class="blog-page--button-stop-reactive"><b> Flux en direct</b></a></span>
           {{else}}
-              <i class="fa fa-refresh"></i><a href="#" class="blog-page--button-reactive"> Rendre réactif</a>
+          		          <span style="font-size:0.8em">
+
+              <i class="fa fa-refresh"></i><a href="#" class="blog-page--button-reactive"> Flux en direct</a></span>
               {{/if}}
 <!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
  -->		<div class="menu--title menu--title-authors">

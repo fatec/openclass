@@ -1,7 +1,7 @@
 var posts;
 
 Template.blogPage.helpers({
-  posts: function() {
+  posts_old: function() {
     var sortPosts = Session.get('sortPosts');
     var sort;
     if(sortPosts == "last")
@@ -25,9 +25,10 @@ Template.blogPage.helpers({
       }
     }
   },
-  posts3: function() {
+  posts: function() {
 
 
+      if (this.blog !== undefined) {
 
     if (Session.get('isReactive'))
     {
@@ -50,58 +51,9 @@ Template.blogPage.helpers({
           Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch());
           break;          
       }
-
-              //Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
-
-
-      // if (Session.get('filter') === 'tag')
-      //   Session.set('posts',Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}}));
-      // else
-      //   Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
-      
-
-
-     //  else if (Router.current().params.query.author));
-
-     //  if (Router.current().params.query.tags)
-     //    return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}});
-     //  else if (Router.current().params.query.author)
-     //    return Posts.find({author: {$in: [Router.current().params.query.author]}}, {sort: {nb: -1}});
-     // else if (Router.current().params.query.category)
-     //    return Posts.find({category: {$in: [Router.current().params.query.category]}}, {sort: {nb: -1}});      
-     //  else
-     //    return Posts.find({},{sort: {nb: -1}});
-
-
-
-      //posts = Posts.find({},{sort: {nb: -1}}).fetch();
-      //Session.set('posts',posts);
-      //posts = Posts.find({},{sort: {nb: -1}}).fetch();
-      //posts2 = Posts.find({},{sort: {nb: -1}}).fetch();
-      //posts = posts2;
     }
-    
-    
-      //if (Router.current().params.query.tags)
-          //Session.set('posts',Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}}).fetch()); 
-          //return Posts.find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}}).fetch();
-      
+    return Session.get('posts');
 
-      return Session.get('posts');
-      //   return true;
-      //   //return Session.get('posts').find({tags: {$in: [Router.current().params.query.tags]}}, {sort: {nb: -1}});
-      // else        
-      // return Session.get('posts');
-    
-
-
-    //Session.set('postsCount',posts.length); // Set posts.length in Session to make it reactive
-
-
-      if (this.blog !== undefined) {
-          //return Session.get('posts');
-//return Posts.find({}, {  reactive: false} ).fetch();
-        //return Posts.find({},{sort: {nb: -1},reactive:false}).fetch();
       } else {
         return null;
       }
@@ -208,29 +160,7 @@ Template.blogPage.events({
         Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch());
         break;   
     }        
-    //Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch())   
-  },
-  'click .filter-tag': function(e) {
-    e.preventDefault();
-    Session.set('filter','tag');
-    var tag = $(e.target).data('tag');
-    Session.set('tag',tag);
-    Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
-  },
-  'click .filter-author': function(e) {
-    e.preventDefault();
-    Session.set('filter','author');
-    var author = $(e.target).data('author');
-    Session.set('author',author);
-    Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
-  },
-  'click .filter-category': function(e) {
-    e.preventDefault();
-    Session.set('filter','category');
-    var category = $(e.target).data('category');
-    Session.set('category',category);
-    Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
-  }     
+  }  
 
 
   
