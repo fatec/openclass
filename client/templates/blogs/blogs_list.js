@@ -14,6 +14,10 @@ Template.blogsList.helpers({
 		var blogs = JSON.parse(Cookie.get('blogsVisited'));
 		return Blogs.find({'_id':{$in:blogs}});
 	},
+	ownBlogsCount: function() {
+		if (Blogs.find({'userId':Meteor.userId()}).count() > 0)
+			return true;
+	},
 	  isBox: function() {
     return (Meteor.settings.public.isBox === "true")
   }
@@ -74,15 +78,7 @@ Template.blogsList.events({
 	e.preventDefault();
 	Cookie.remove('blogsVisited');
 	$('.blogs-list--visited-blogs').hide();
-	},
-     'click .send-mail-forgot-password': function(e) {
-	e.preventDefault();
-	Meteor.call('sendEmail',
-			Meteor.user().emails[0].address,
-            'vincent.widmer@beekee.ch',
-            'Votre inscription sur beekee.ch',
-            'Bonjour, \n\n Bienvenue sur beekee.ch ! \n\n Cette plateforme est en développement, n\'hésitez pas à nous contacter pour nous faire part de vos questions ou remarques. \n\n L\'équipe beekee.ch');
-}
+	}
 });
 
 

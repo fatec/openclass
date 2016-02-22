@@ -1,13 +1,5 @@
 <template name="blogsList">
 	<div class="blogs-list">
-		<form class="blogs-list--code-link-form">
-			<div class="blogs-list--code-wrapper" style="margin-top:30px;padding-top:15px;">
-				<span style="font-size:1.1em;">Accéder à un espace :</span><br /><br />
-				<input style="font-size:1.1em;height:1.4em;border:solid 1px #dedede;border-radius:3px;padding:3px;" id="code" type="text" placeholder="Entrez un code d'accès"/><br /><br />
-				<button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%">
- Valider</button>
-			</div>
-		</form>
 		{{#if currentUser}}
 			<div class="list-group">
   				<div style="text-align:center;margin-top:40px;margin-bottom:20px;">
@@ -19,7 +11,18 @@
     				{{/if}}
     			{{/each}}
     		</div>
+        {{#unless ownBlogsCount}}
+        <div style="text-align:center;margin-top:15px;"><span style="font-size:0.9em">Vous n'avez pas encore créé d'espace.</span></div>
+        {{/unless}}
     	{{else}}
+    <form class="blogs-list--code-link-form">
+      <div class="blogs-list--code-wrapper" style="margin-top:30px;padding-top:15px;">
+        <span style="font-size:1.1em;">Accéder à un espace :</span><br /><br />
+        <input style="font-size:1.1em;height:1.4em;border:solid 1px #dedede;border-radius:3px;padding:3px;" id="code" type="text" placeholder="Entrez un code d'accès"/><br /><br />
+        <button type="submit" class="button button-primary blogs-list--button-code-link" style="width:100%">
+ Valider</button>
+      </div>
+    </form>      
     		{{#if blogsVisitedCount}}
  				<div class="list-group blogs-list--visited-blogs">
   					<div style="text-align:center;margin-top:40px;margin-bottom:20px;">

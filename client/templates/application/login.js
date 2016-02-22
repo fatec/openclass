@@ -13,7 +13,7 @@ Template.login.events({
 
         
         // Meteor.loginWithPassword(username.toLowerCase().trim(),password,function(err){
-        Meteor.loginWithPassword(email.toLowerCase().trim(),password,function(err){
+        Meteor.loginWithPassword(email.trim(),password,function(err){
             if(!err) {
                 Router.go('blogsList');
             }
@@ -26,12 +26,22 @@ Template.login.events({
     'click .login--button-submit': function(e) {
         e.preventDefault();
         $('#login--form').submit();
+    },
+     'click .send-mail-forgot-password': function(e) {
+    e.preventDefault();
+    Accounts.forgotPassword({email:'eodecorp@hotmail.com'});
+    alert("Votre mot de passe vous a été envoyé par e-mail !")    
+
     }
 });
 
 Template.login.helpers({
   errorMessage: function() {
     return Session.get('errorMessage');
+  },
+  passwordRecovery: function() {
+    if (Session.get('errorMessage') === 'Incorrect password')
+        return true;
   }
 });
 

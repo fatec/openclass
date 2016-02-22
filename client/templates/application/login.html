@@ -10,6 +10,9 @@
                 {{#if errorMessage}}
                     <div class="login--error">
                         <br /><span style="color:red;">{{t9n errorMessage}}</span><br />
+                        {{#if passwordRecovery}}
+                        <a href="#" class="send-mail-forgot-password">Renvoyez-moi mon mot de passe par e-mail</a>
+                        {{/if}}
                     </div> 
                 {{/if}}                 
             </div> 
