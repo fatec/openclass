@@ -12,6 +12,7 @@ Template.blogSubmit.events({
     Meteor.call('blogInsert', blog, function(error, result) {
       if(!error) {
         Router.go('blogPage', {_id: result._id});
+        
       }
       else
       {      
