@@ -74,7 +74,15 @@ Template.blogsList.events({
 	e.preventDefault();
 	Cookie.remove('blogsVisited');
 	$('.blogs-list--visited-blogs').hide();
-	}
+	},
+     'click .send-mail': function(e) {
+	e.preventDefault();
+	Meteor.call('sendEmail',
+            'eodecorp@hotmail.com',
+            'vincent.widmer@beekee.ch',
+            'Hello from Meteor!',
+            'This is a test of Email.send.');
+}
 });
 
 
