@@ -80,8 +80,8 @@ Template.blogsList.events({
 	Meteor.call('sendEmail',
             'eodecorp@hotmail.com',
             'vincent.widmer@beekee.ch',
-            'Hello from Meteor!',
-            'This is a test of Email.send.');
+            'Votre inscription sur beekee.ch',
+            'Bonjour, \n Bienvenue.');
 }
 });
 

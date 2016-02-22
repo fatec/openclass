@@ -1,6 +1,6 @@
 Meteor.startup(function() {
 
-    process.env.MAIL_URL = 'smtp://vincent.widmer@beekee.ch:yEupsGE7@mail.infomaniak.com:587/';          
+    process.env.MAIL_URL = 'smtp://vincent.widmer@beekee.ch:1234512345@mail.infomaniak.com:587/';          
 
 
 
