@@ -4,8 +4,8 @@ Meteor.startup(function() {
 
 
         Accounts.emailTemplates.from = "beekee.ch <vincent.widmer@beekee.ch>";
-        Accounts.emailTemplates.subject = "Réinitialisation de votre mot de passe";
-        Accounts.emailTemplates.text = "Bonjour, \n\n Vous avez demandé à réinitialiser votre mot de passe beekee.ch. \n\n Cliquez sur ce lien :";
+        Accounts.emailTemplates.resetPassword.subject = "Réinitialisation de votre mot de passe";
+        Accounts.emailTemplates.resetPassword.text = "Bonjour, \n\n Vous avez demandé à réinitialiser votre mot de passe beekee.ch. \n\n Cliquez sur ce lien :";
 
 
         Accounts.urls.resetPassword = function(token) {
