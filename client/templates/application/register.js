@@ -10,6 +10,11 @@ Template.register.events({
         Accounts.createUser({email:email.toLowerCase().trim(),password:password},function(err){
             if(!err) {
                 Router.go('blogsList');
+                Meteor.call('sendEmail',
+                Meteor.user().emails[0].address,
+                'vincent.widmer@beekee.ch',
+                'Votre inscription sur beekee.ch',
+                'Bonjour, \n\n Bienvenue sur beekee.ch ! \n\n Cette plateforme est en développement, n\'hésitez pas à nous contacter pour nous faire part de vos questions ou remarques. \n\n L\'équipe beekee.ch');
             }
             else {
                 Session.set('errorMessage', err.reason);
