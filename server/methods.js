@@ -3,7 +3,7 @@ Meteor.startup(function() {
     process.env.MAIL_URL = 'smtp://vincent.widmer@beekee.ch:1234512345@mail.infomaniak.com:587/';          
 
 
-        Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
+        Accounts.emailTemplates.from = "AwesomeSite Admin <vincent.widmer@beekee.ch>";
 
 /*
 var net = Npm.require('net');
