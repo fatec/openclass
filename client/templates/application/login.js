@@ -29,13 +29,18 @@ Template.login.events({
     },
      'click .send-mail-forgot-password': function(e) {
     e.preventDefault();
-    
-    Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
+
+    //Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
 
     Accounts.forgotPassword({email:'eodecorp@hotmail.com'});
     alert("Votre mot de passe vous a été envoyé par e-mail !")    
 
     }
+});
+
+Meteor.startup(function() {
+        Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
+
 });
 
 Template.login.helpers({
