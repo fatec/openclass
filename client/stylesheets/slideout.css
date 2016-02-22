@@ -6,7 +6,7 @@ html, body {
 }
 
 html {
-  overflow-y:scroll; /* Trick to fix page jump /*
+  overflow-y:scroll; /* Trick to fix page jump */
 }
 
 #content {
@@ -21,6 +21,7 @@ html {
 }
 
 #slideout-menu {
+
   background-color: #272822;
 }
 

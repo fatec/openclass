@@ -150,7 +150,7 @@ display: table-cell;
 	height:15px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:-35px;
+	margin-top:-25px;
 	margin-bottom: 8px;
 	background-color: white;
 	text-align: center;
@@ -158,7 +158,7 @@ display: table-cell;
 }
 
 .blog-page--main {
-margin-top:30px;
+margin-top:20px;
 }
 
 .blog-page-2-main {
