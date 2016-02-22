@@ -77,8 +77,29 @@ Template.postItem.events({
       Authors.update(author._id, {$inc: {nRefs: -1}});
       
       // Images.remove({'metadata.postId': "Mik2bg7nvT7yHEpR2"});
-      Router.go('blogPage', {_id: currentPost.blogId});
+      //Router.go('blogPage', {_id: currentPost.blogId});
+      if (Session.get('isReactive') != true)
+{
+          switch (Session.get('filter'))
+    {
+      case '':
+        Session.set('posts',Posts.find({},{sort: {nb: -1}}).fetch());
+        break;
+      case 'tag':
+        var tag = Session.get('tag');
+        Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch());
+        break;    
+      case 'category':
+        var category = Session.get('category');
+        Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch());
+        break; 
+      case 'author':
+        var author = Session.get('author');
+        Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch());
+        break;   
     }
+    }
+  }
   },
         'click .filter-tag': function(e) {
     e.preventDefault();

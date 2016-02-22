@@ -95,7 +95,7 @@ Template.blogPage.helpers({
           postsReactiveCount = Posts.find({author: author}, {sort: {nb: -1}}).fetch().length;
           break;          
       }
-      if (postsCount != postsReactiveCount)
+      if (postsCount < postsReactiveCount)
         return (postsReactiveCount - postsCount);
       else
         return false;
