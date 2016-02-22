@@ -38,10 +38,6 @@ Template.login.events({
     }
 });
 
-Meteor.startup(function() {
-        Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
-
-});
 
 Template.login.helpers({
   errorMessage: function() {
