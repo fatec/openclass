@@ -33,7 +33,7 @@ Template.login.events({
     //Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
 
     Accounts.forgotPassword({email:'eodecorp@hotmail.com'});
-    alert("Votre mot de passe vous a été envoyé par e-mail !")    
+    alert("Un e-mail vous a été envoyé comprenant un lien pour réinitialiser votre mot de passe.")    
 
     }
 });

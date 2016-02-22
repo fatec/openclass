@@ -4,11 +4,12 @@ Template.resetPassword.events({
         e.preventDefault();
 
         var password = e.target.password.value;
+        console.log(password);
 
          Accounts.resetPassword(this.token, password);
        
     },
-    'click .login--button-submit': function(e) {
+    'click .reset-password--button-submit': function(e) {
         e.preventDefault();
         $('#login--form').submit();
     }
