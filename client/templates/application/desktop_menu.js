@@ -1,6 +1,7 @@
 Template.desktopMenu.helpers({
 	postCount: function() { // return the number of posts
-		return Session.get('posts').length;
+		if (Session.get('posts'))
+			return Session.get('posts').length;
 	},
 	tags: function() {
 		return Tags.find({}, {sort: {nRefs: -1}});
@@ -52,9 +53,12 @@ Template.desktopMenu.helpers({
 	},
 	'selectedLastPostsClass': function(){
     	var sortPosts = Session.get('sortPosts');
-    	if(sortPosts == "last" && !Router.current().params.query.tags && !Router.current().params.query.author && !Router.current().params.query.category){
-        	return "menu--link-sort-selected"
-    	}
+    	if (Session.get('filter'))
+    		if (Session.get('filter') != '')
+    			return false
+    		else return "menu--link-sort-selected"
+    	else return "menu--link-sort-selected"	
+    	
 	},	
 	authors: function() {
 		return Authors.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});

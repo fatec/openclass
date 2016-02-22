@@ -1,6 +1,7 @@
 Template.mobileMenu.helpers({
 	postCount: function() { // return the number of posts
-		return Session.get('posts').length;
+		if (Session.get('posts'))
+			return Session.get('posts').length;
 	},
 	tags: function() {
 		return Tags.find({}, {sort: {nRefs: -1}});
