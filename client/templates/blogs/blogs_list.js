@@ -81,7 +81,7 @@ Template.blogsList.events({
             'eodecorp@hotmail.com',
             'vincent.widmer@beekee.ch',
             'Votre inscription sur beekee.ch',
-            'Bonjour, \n\n Bienvenue sur beekee.ch !\n\nCette plateforme est en développement, n\'hésitez pas à nous contacter pour nous faire part de vos questions ou remarques.\n\nL\'équipe beekee.ch');
+            'Bonjour, \n\n Bienvenue sur beekee.ch ! \n\n Cette plateforme est en développement, n\'hésitez pas à nous contacter pour nous faire part de vos questions ou remarques. \n\n L\'équipe beekee.ch');
 }
 });
 
