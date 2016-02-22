@@ -75,13 +75,13 @@ Template.blogsList.events({
 	Cookie.remove('blogsVisited');
 	$('.blogs-list--visited-blogs').hide();
 	},
-     'click .send-mail': function(e) {
+     'click .send-mail-forgot-password': function(e) {
 	e.preventDefault();
 	Meteor.call('sendEmail',
             'eodecorp@hotmail.com',
             'vincent.widmer@beekee.ch',
             'Votre inscription sur beekee.ch',
-            'Bonjour, \n\n Bienvenue sur <a href="http://www.beekee.ch">beekee.ch</a> !\n\n');
+            'Bonjour, \n\n Bienvenue sur beekee.ch !\n\nCette plateforme est en développement, n\'hésitez pas à nous contacter pour nous faire part de vos questions ou remarques.\n\nL\'équipe beekee.ch');
 }
 });
 
