@@ -1,5 +1,6 @@
 Meteor.startup(function() {
 
+    process.env.MAIL_URL = 'smtp://vincent.widmer@beekee.ch:yEupsGE7@mail.infomaniak.com:587/';          
 
 
 
@@ -69,7 +70,4 @@ Meteor.methods({
   }
 });
 
-  Meteor.startup(function () {    
-    process.env.MAIL_URL = 'smtp://vincent.widmer@beekee.ch:yEupsGE7@mail.infomaniak.com:587/';          
- });
-}
+
