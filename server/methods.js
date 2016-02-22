@@ -5,8 +5,12 @@ Meteor.startup(function() {
 
         Accounts.emailTemplates.from = "beekee.ch <vincent.widmer@beekee.ch>";
         Accounts.emailTemplates.resetPassword.subject = "Réinitialisation de votre mot de passe";
-        Accounts.emailTemplates.resetPassword.text = "Bonjour, \n\n Vous avez demandé à réinitialiser votre mot de passe beekee.ch. \n\n Cliquez sur ce lien :";
+        //Accounts.emailTemplates.resetPassword.text = "Bonjour, \n\n Vous avez demandé à réinitialiser votre mot de passe beekee.ch. \n\n Cliquez sur ce lien :";
 
+Accounts.emailTemplates.resetPassword.text = function (user, url) {
+   return "Bonjour, \n\n Vous avez demandé à réinitialiser votre mot de passe beekee.ch. \n\n Cliquez sur ce lien :"
+     + url;
+};
 
         Accounts.urls.resetPassword = function(token) {
     return 'http://beekee.ch/reset-password/' + token;
