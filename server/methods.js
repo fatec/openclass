@@ -15,7 +15,7 @@ Accounts.emailTemplates.resetPassword.subject = function () {
 };
 
         Accounts.urls.resetPassword = function(token) {
-    return 'http://beekee.ch/#/reset-password/' + token;
+    return 'http://beekee.ch/reset-password/' + token;
   };
 
 /*
