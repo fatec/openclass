@@ -4,9 +4,9 @@ Template.resetPassword.events({
         e.preventDefault();
 
         var password = e.target.password.value;
-        console.log(this.token);
+        console.log(Accounts._resetPasswordToken);
 
-         Accounts.resetPassword(this.token, password,function(err){console.log(error.message)});
+         //Accounts.resetPassword(this.token, password,function(err){if(err){console.log(error.message)}else{alert("c'est bon")});
        
     },
     'click .reset-password--button-submit': function(e) {
