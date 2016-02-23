@@ -30,10 +30,12 @@ Template.login.events({
      'click .send-mail-forgot-password': function(e) {
     e.preventDefault();
 
+         var email = e.target.email.value;
+
     //Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
 
-    Accounts.forgotPassword({email:'eodecorp@hotmail.com'});
-    alert("Un e-mail vous a été envoyé comprenant un lien pour réinitialiser votre mot de passe.")    
+    Accounts.forgotPassword({email:email});
+    alert("Un e-mail a été envoyé à l'adresse "+email+" comprenant un lien pour réinitialiser votre mot de passe.")    
 
     }
 });
