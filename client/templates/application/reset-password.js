@@ -4,7 +4,7 @@ Template.resetPassword.events({
         e.preventDefault();
 
         var password = e.target.password.value;
-        console.log(this.token);
+        console.log(this);
 
          Accounts.resetPassword(this.token.toString(), password,function(err){console.log(error.message)});
        
