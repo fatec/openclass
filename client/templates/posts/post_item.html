@@ -1,4 +1,4 @@
-<template name="postItem">
+  <template name="postItem">
   <div class="post-item">
     {{#if this.imageId}}  
       <div class="post-item--image-wrapper ">
@@ -25,7 +25,7 @@
       </div>
     {{/if}}   
     <a class="post-item--author filter-author" data-author="{{author}}" href="#">{{author}}</a>
-    <div class="post-item--date"><!-- • {{livestamp submitted}} --></div>
+    <div class="post-item--date">• {{livestamp submitted}}</div>
 	    <div class="post-item--text">{{body}}</div>
       {{#if category}}
         <a class="post-item--category filter-category {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=blogId query=categoryQuery}}">Catégorie : {{category}}</a><br />
