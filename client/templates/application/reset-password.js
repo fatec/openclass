@@ -6,7 +6,7 @@ Template.resetPassword.events({
         var password = e.target.password.value;
         console.log(Accounts._resetPasswordToken);
 
-         //Accounts.resetPassword(this.token, password,function(err){if(err){console.log(error.message)}else{alert("c'est bon")});
+         Accounts.resetPassword(Accounts._resetPasswordToken, password,function(err){if(err){console.log(error.message)}else{alert("c'est bon")});
        
     },
     'click .reset-password--button-submit': function(e) {
