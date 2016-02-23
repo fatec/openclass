@@ -1,7 +1,6 @@
 Template.postItem.helpers({
     image: function() {
-      console.log(Images.findOne(this.imageId));
-    return Images.findOne(this.imageId);
+      return Images.findOne(this.imageId);
   },
   tags: function(){
     if (this.tags.length > 1 || this.tags[0] != "")

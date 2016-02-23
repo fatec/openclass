@@ -85,16 +85,18 @@ Template.postEdit.events({
   'click .post-edit--button-delete-image': function(e) {
     e.preventDefault();
     if (confirm("Effacer l'image?")) {
-      var currentPostId = this.post._id;
 
+       Posts.update(this.post._id, {$unset: {'imageId': ''}});
+     
+      //var currentPostId = this.post._id;
       
-      var toDeleteImages = Session.get('imagesToDelete');
-      var nextImageId = Session.get('imageId');
-      toDeleteImages.push(nextImageId);
-      console.log("On voudra effacer l'image "+nextImageId);
-      Session.set('imagesToDelete', toDeleteImages);
-      Session.set('imageToAdd', false);
-      Session.set('imageId', false);
+      // var toDeleteImages = Session.get('imagesToDelete');
+      // var nextImageId = Session.get('imageId');
+      // toDeleteImages.push(nextImageId);
+      // console.log("On voudra effacer l'image "+nextImageId);
+      // Session.set('imagesToDelete', toDeleteImages);
+      // Session.set('imageToAdd', false);
+      //Session.set('imageId', false);
 
     }
   },
@@ -160,13 +162,9 @@ Template.postEdit.events({
 
 Template.postEdit.helpers({
   image: function() {
-    var imageId = Session.get("imageId");
-
-    if (imageId) {
-      return Images.findOne(imageId);
-    } else {
-      return false
-    }
+    //console.log(Images.findOne(this.post.imageId));
+    //return Images.findOne(this.post.imageId);
+        return this.post.imageId;
 
   },
   blog: function() {
@@ -186,13 +184,34 @@ Template.postEdit.helpers({
     var category = this.name;
     var categoryItem = Template.parentData().post.category;
     return category === categoryItem;
-  },  
+  }, 
+      myCallbacks: function() {
+    return {
+        validate: function(file) {
+        // TODO : client-side image resize 
+          return file;
+
+      }
+    }
+  }  
 });
 
 //Template.postEdit.onRendered = function(){
-  Template.postEdit.onRendered(function () {
+  Template.postEdit.rendered = function () {
 
+if (Session.get("imageId"))
+  delete Session.keys["imageId"];
 
+    Uploader.finished = function(index, fileInfo, templateContext) {
+    //Images.insert({imageId:fileInfo.name});
+    Session.set("imageId",fileInfo.name);
+    console.log(fileInfo.name);
+    
+    //Posts.update(templateContext.post._id, {$set: {'imageId': fileInfo.name}});
+
+    //console.log("je rajoute l'image"+fileInfo.name);
+
+  }
     // Set default author
   // if (!Session.get(Template.parentData(2).blog._id))
   // {
@@ -200,7 +219,7 @@ Template.postEdit.helpers({
   // }
 
     // Textarea autosize
-  $('.post-edit--textarea').autosize();
+  //$('.post-edit--textarea').autosize();
 
 
 
@@ -246,7 +265,7 @@ Template.postEdit.helpers({
     //});
   
 
-});
+}
 
 
 

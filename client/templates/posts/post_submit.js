@@ -115,12 +115,15 @@ Template.postSubmit.events({
   'click .post-submit--button-delete-image': function(e) {
     e.preventDefault();
     if (confirm("Effacer l'image?")) {
-      var toDeleteImages = Session.get('imagesToDelete');
-      var nextImageId = Session.get('imageId');
-      toDeleteImages.push(nextImageId);
-      Session.set('imagesToDelete', toDeleteImages);
-      Session.set('imageToAdd', false);
       Session.set('imageId', false);
+      //Images.update(imageId, {$unset: {'metadata.unvalid': ''},$set: {'metadata.postId': postId, 'metadata.blogId': blogId, 'metadata.last': true}});
+
+      // var toDeleteImages = Session.get('imagesToDelete');
+      // var nextImageId = Session.get('imageId');
+      // toDeleteImages.push(nextImageId);
+      // Session.set('imagesToDelete', toDeleteImages);
+      // Session.set('imageToAdd', false);
+      // Session.set('imageId', false);
     }  
   }
 });
@@ -162,6 +165,7 @@ if (Session.get("imageId"))
     //Images.insert({imageId:fileInfo.name});
     Session.set("imageId",fileInfo.name);
     console.log(fileInfo.url);
+    
 
     //console.log("je rajoute l'image"+fileInfo.name);
 

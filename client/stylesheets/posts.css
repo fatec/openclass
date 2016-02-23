@@ -6,6 +6,12 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 /* ----- post-edit template ----- */
 
+.post-edit {
+	width:500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .post-edit--image {
 	max-width:100%;
 	margin-top:3px;
@@ -184,7 +190,7 @@ float:right;
 
 .post-item--image {
 	max-width:100%;	
-	max-height:300px;
+	max-height:350px;
 
 	display: block;
 	padding: 0px;
@@ -244,6 +250,12 @@ float:right;
 
 
 /* ----- post-submit template ----- */
+
+.post-submit {
+	width:500px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 .post-submit--image {
 	max-width:100%;
