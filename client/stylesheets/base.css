@@ -42,6 +42,10 @@ a:hover, a:active {
 	text-decoration: underline;
 }
 
+a:active {
+	color: #145679;
+	}
+
 .fixed_to_absolute{
   position:absolute !important;
   background-color: blue;
@@ -179,7 +183,7 @@ a:hover, a:active {
 
 /* Page title header */
 .page-title {
-	margin:20px 0 30px 0;
+	margin:15px 0 30px 0;
 	padding-left:10px;
 	padding-right:10px;
 
