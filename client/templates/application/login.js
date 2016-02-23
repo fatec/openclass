@@ -30,7 +30,7 @@ Template.login.events({
      'click .send-mail-forgot-password': function(e) {
     e.preventDefault();
 
-         var email = $('#password').val();
+         var email = $('#email').val();
          console.log(email);
 
     //Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
