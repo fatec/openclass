@@ -83,7 +83,13 @@ Template.blogsList.events({
 
 
 Template.blogsList.rendered = function(){
-     $('#reset-password-new-password-label').text('Connexion ▾');
+
+// Localization for password reset	
+     $('#reset-password-new-password-label').text('Réinitialiser votre mot de passe :');
+     $('#login-buttons-reset-password-button').text('Enregister');
+
+
+
 	//blogsVisited = [];
 
   //this.$('#code').focus();
