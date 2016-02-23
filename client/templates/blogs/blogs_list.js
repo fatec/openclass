@@ -83,7 +83,7 @@ Template.blogsList.events({
 
 
 Template.blogsList.rendered = function(){
-
+     $('#reset-password-new-password-label').text('Connexion ▾');
 	//blogsVisited = [];
 
   //this.$('#code').focus();
