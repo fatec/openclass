@@ -15,8 +15,8 @@
     {{/if}} 
       <a class="post-item--author filter-author" data-author="{{author}}" href="#">{{author}}</a>
     <div class="post-item--date">• {{livestamp submitted}}</div>
-    <div class="post-item--test-separator" style="margin-top:3px;margin-bottom:3px;;border-top:solid 0.5px grey;width:97%;margin-left:auto;margin-right:auto"></div>
-
+<!--     <div class="post-item-2-test-separator" style="margin-top:3px;margin-bottom:3px;;border-top:solid 0.5px grey;width:97%;margin-left:auto;margin-right:auto"></div>
+ -->
     {{#if this.imageId}}  
       <div class="post-item--image-wrapper">
         <a class="post-item--image-link" href="../../upload///originals/{{this.imageId}}" target="_blank">
@@ -28,8 +28,9 @@
 
 
     {{/if}}
-  
+    {{#if body}}
       <div class="post-item--text">{{body}}</div>
+      {{/if}}
       {{#if category}}
         <a class="post-item--category filter-category {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=blogId query=categoryQuery}}">Catégorie : {{category}}</a><br />
       {{/if}}
