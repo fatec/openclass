@@ -30,8 +30,10 @@ border-bottom:solid 1px #ddd;
 
 table-layout: fixed;
 display: table;
-width: 100%;
+width: 75%;
 cursor: pointer;
+margin-left:auto;
+margin-right:auto;
 }
 
 a.blog-edit--list-item {
@@ -50,7 +52,7 @@ background-color:#ddd;
 	vertical-align:top;	
 	display: table-cell;
 	width:7%;
-	font-size: 1.6em;
+	font-size: 1.4em;
 }
 
 .blog-edit--list-wrapper-center {

@@ -91,6 +91,16 @@ width: 60px;
 	max-height:100%;
 }
 
+.post-edit--image{
+	width:100%;
+	max-height:100%;
+}
+
+.post-submit--image{
+	width:100%;
+	max-height:100%;
+}
+
 .post-submit--wrapper-image {
 	width:100%;
 	text-align:center;
@@ -123,7 +133,7 @@ font-size:1.3em;
 }
 
 .blog-edit--list-item {
-width: 80%;
+width: 95%;
 }
 
 .blog-edit--list-wrapper-left {
