@@ -16,6 +16,18 @@ Authors : Vincent Widmer & Stéphane Morand;
 	max-width:100%;
 	max-height:350px;
 	margin-top:3px;
+		padding:2px;
+	border: 1px solid #ddd;
+border-radius: 4px;
+
+
+	-webkit-transition: border .2s ease-in-out;
+	-o-transition: border .2s ease-in-out;
+	transition: border .2s ease-in-out;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .post-edit--image-wrapper {
@@ -114,7 +126,8 @@ resize: none;
 /* ----- post-item template ----- */
 
 .post-item {
-	margin:0px 0 20px 0;
+	margin:0px 0 10px 0;
+	padding: 6px;
 /*	padding: 4px 7px 10px 7px;
 */	
 /*width: 488px;
@@ -131,17 +144,14 @@ resize: none;
 .post-item--button {	
 
 float:right;
-	padding:3px 8px 5px 8px;
-
-	border-top:solid 1px #c5c5c5;
-	border-bottom:solid 1px #c5c5c5;	
-
-	text-decoration:none;
-	font-size:.8em;
-	color:grey;
-	text-shadow:0 -1px 0 rgba(255,255,255,.3);
-
-	cursor:pointer;
+padding: 3px 8px 5px 8px;
+border-top: solid 1px #c5c5c5;
+border-bottom: solid 1px #c5c5c5;
+text-decoration: none;
+font-size: .7em;
+color: grey;
+text-shadow: 0 -1px 0 rgba(255, 255, 255, .3);
+cursor: pointer;
 }
 
 
@@ -169,7 +179,7 @@ float:right;
 
 .post-item--author {
 	display: inline-block;
-	margin: 6px 0 3px 6px;
+	margin: 0px 0 3px 0px;
 
 	color: #5996b8;
 	font-weight: 600;
@@ -182,15 +192,16 @@ float:right;
 
 .post-item--date {
 	display:inline-block;
-	margin: 5px 0 0 0;
-
+/*	margin: 5px 0 0 0;
+*/
 	color: grey;
-	font-size: 0.8em;	
+	font-size: 0.7em;	
 }
 
 .post-item--image-wrapper {
-	padding: 2px;
 	text-align:center;
+		margin-top:6px;
+
 }
 
 .post-item--image {
@@ -198,13 +209,20 @@ float:right;
 	max-height:350px;
 
 	display: block;
-	padding: 0px;
+	padding: 2px;
 /*	margin-bottom: 10px;
 */	line-height: 1.42857143;
 	background-color: #fff;
+/*	margin-top:5px;
+	margin-left:5px;*/
 /*	border: 1px solid #ddd;
 */	
 /*border-radius: 4px;*/
+
+border: 1px solid #ddd;
+border-radius: 4px;
+
+
 	-webkit-transition: border .2s ease-in-out;
 	-o-transition: border .2s ease-in-out;
 	transition: border .2s ease-in-out;
@@ -215,16 +233,19 @@ float:right;
 }
 
 .post-item--text {
-	margin: 8px 0 8px 5px;
+	margin: 8px 0 8px 0px;
 
 	font-size: 0.9em;
-	white-space: pre; /* render line breaks */
-	word-break:break-word;	
-}
+/*	white-space: pre;  render line breaks 
+*/-webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;}
 
 .post-item--tags {
 	display: inline-block;
-	margin: 0px 0 8px 5px;
+	margin: 0px 0 0px 0px;
 	padding:6px;
 
 	background-color: #2A90C6;
@@ -238,7 +259,7 @@ float:right;
 
 .post-item--category {
 	display: inline-block;
-	margin: 10px 0 8px 5px;
+	margin: 10px 0 8px 0px;
 
 	font-size: 0.8em;
 	color: #5996b8;
@@ -266,6 +287,18 @@ float:right;
 	max-width:100%;
 	max-height:350px;
 	margin-top:3px;
+	padding:2px;
+	border: 1px solid #ddd;
+border-radius: 4px;
+
+
+	-webkit-transition: border .2s ease-in-out;
+	-o-transition: border .2s ease-in-out;
+	transition: border .2s ease-in-out;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .post-submit--image-wrapper {

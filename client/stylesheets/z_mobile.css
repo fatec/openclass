@@ -56,6 +56,10 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 }
 
+.post-item--button {	
+font-size:0.8em;
+}
+
 .blogs-list--code-wrapper {
 	width: 95%;
 }
