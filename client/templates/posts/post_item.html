@@ -1,17 +1,6 @@
   <template name="postItem">
   <div class="post-item">
-    {{#if this.imageId}}  
-      <div class="post-item--image-wrapper ">
-        <a class="post-item--image-link" href="../../upload///originals/{{this.imageId}}" target="_blank">
-          <img id="img-{{this.imageId}}" src="../../upload///originals/{{this.imageId}}" alt="" class="post-item--image" />
-        </a>
-      </div>
-
-
-
-
-    {{/if}}
-    {{#if ownPost}}
+      {{#if ownPost}}
       <a href="{{pathFor 'postEdit'}}">
         <div class="post-item--button post-item--button-edit">
         <i class="fa fa-lg fa-pencil"></i>
@@ -23,10 +12,24 @@
 
 <!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->
       </div>
-    {{/if}}   
-    <a class="post-item--author filter-author" data-author="{{author}}" href="#">{{author}}</a>
+    {{/if}} 
+      <a class="post-item--author filter-author" data-author="{{author}}" href="#">{{author}}</a>
     <div class="post-item--date">• {{livestamp submitted}}</div>
-	    <div class="post-item--text">{{body}}</div>
+    <div class="post-item--test-separator" style="margin-top:3px;margin-bottom:3px;;border-top:solid 0.5px grey;width:97%;margin-left:auto;margin-right:auto"></div>
+
+    {{#if this.imageId}}  
+      <div class="post-item--image-wrapper">
+        <a class="post-item--image-link" href="../../upload///originals/{{this.imageId}}" target="_blank">
+          <img id="img-{{this.imageId}}" src="../../upload///originals/{{this.imageId}}" alt="" class="post-item--image" />
+        </a>
+      </div>
+
+
+
+
+    {{/if}}
+  
+      <div class="post-item--text">{{body}}</div>
       {{#if category}}
         <a class="post-item--category filter-category {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=blogId query=categoryQuery}}">Catégorie : {{category}}</a><br />
       {{/if}}
