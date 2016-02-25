@@ -48,6 +48,20 @@ a.blog-edit--list-item:hover {
 background-color:#ddd;
 }
 
+.blog-edit--list-title {
+	font-size:1.1em;
+}
+
+.blog-edit--list-subtitle {
+	font-size:1.1em;
+}
+
+.blog-edit--list-subtitle {
+	margin-top:5px;
+	color:grey;
+	font-size:0.8em;
+}
+
 .blog-edit--list-wrapper-left {
 	vertical-align:top;	
 	display: table-cell;

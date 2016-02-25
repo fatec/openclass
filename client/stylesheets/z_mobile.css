@@ -144,6 +144,10 @@ width: 95%;
 width:10%;
 }
 
+.blog-edit--list-title {
+	font-size:1.2em;
+}
+
 .blog-submit--wrapper {
 	width: 100%;
 }
