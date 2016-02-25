@@ -4,7 +4,7 @@
             <div class="post-edit--wrapper">
                 <div class="images post-edit--image-wrapper">
                     {{#if image}}
-                        <img src="../../upload/originals/{{image}}" alt="" class="post-submit--image thumbnail"/>
+                        <img src="../../upload/originals/{{image.imageId}}" alt="" class="post-submit--image thumbnail"/>
                     {{/if}}
                 </div>
             <form name="post-edit--form" id="post-edit--form">        
@@ -30,7 +30,9 @@
             </div>
         <a href="{{pathFor 'postSubmit'}}">
             <button class="button button-primary post-edit--button-submit">
-                <i class="fa fa-paper-plane"></i> Modifier
+                <i class="post-edit--button-spinner fa fa-spinner fa-pulse" style="display:none;"></i>
+                <i class="post-edit--button-icon fa fa-paper-plane"></i>
+                    <span class="post-edit--button-text"> Modifier</span>
             </button>
         </a>         
     </div>

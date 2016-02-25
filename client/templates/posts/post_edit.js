@@ -2,6 +2,12 @@ Template.postEdit.events({
   // TODO : On cancel.. remove all images de imagesToDelete sauf la [0] et aussi celle de imagesToAdd (ou alors effacer toutes les unvalid qui correspondent a ce postId)
   'submit form': function(e) {
     e.preventDefault();
+
+  // Show a spiner while sending
+    $(".post-edit--button-spinner").show();
+    $(".post-edit--button-icon").hide();
+    $(".post-edit--button-text").hide();
+
     
     var currentPostId = this.post._id;
     var body = $(e.target).find('[name=body]').val();
@@ -49,6 +55,8 @@ Template.postEdit.events({
     } else if (!imageToAdd && !imagesToDelete) { // Nothings happens with images..
     } 
 
+    var imageId = Session.get("imageId");
+    _.extend(set, {imageId: imageId});
 
       Posts.update(currentPostId, {$unset: unset, $set: set}, function(error) {
       if (error) {
@@ -162,10 +170,13 @@ Template.postEdit.events({
 
 Template.postEdit.helpers({
   image: function() {
-    //console.log(Images.findOne(this.post.imageId));
-    //return Images.findOne(this.post.imageId);
-        return this.post.imageId;
-
+    if (Session.get("imageId"))
+    {
+      var imageId = Session.get("imageId");
+      return Images.findOne({imageId:imageId});
+    }
+    else
+      return false;
   },
   blog: function() {
     var currentPostId = this.post._id;

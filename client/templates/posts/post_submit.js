@@ -11,6 +11,12 @@ Template.postSubmit.events({
   // TODO: on cancel.. effacer toutes les images de imagesToDelete et aussi celle de imagetoAdd 
   'submit form': function(e, template) {
    e.preventDefault();
+
+  // Show a spiner while sending
+    $(".post-submit--button-spinner").show();
+    $(".post-submit--button-icon").hide();
+    $(".post-submit--button-text").hide();
+
     
     var author = Session.get(this.blog._id).author;  
     var body = $(e.target).find('[name=body]').val();
@@ -28,7 +34,9 @@ Template.postSubmit.events({
       if (error){
         console.log("Il y a une erreur dans postSumbit metor.call postinsert");
         console.log(error.reason);
+        alert("Une erreur a été rencontrée. Vérifiez votre connexion et réessayez.")
       } else {
+          //$( ".post-submit--button-submit" ).removeClass( "fa-cog" );
         // if (imageId) {
         //   Images.update(imageId, {$unset: {'metadata.unvalid': ''},$set: {'metadata.postId': postId, 'metadata.blogId': blogId, 'metadata.last': true}});
         // }
