@@ -57,12 +57,12 @@ Template.postItem.events({
 
       // TODO : faire le nettoyage de l'image et des tags dans un hook before remove...
 
-      Meteor.call('tagsEdit', {blogId: this.blogId, newTags: [], oldTags: currentPost.tags}, function(error) {
-        if (error) {
-          console.log("#### Zut une erreur dans le delete post button ####");
-          throwError(error.reason);
-        }
-     });
+     //  Meteor.call('tagsEdit', {blogId: this.blogId, newTags: [], oldTags: currentPost.tags}, function(error) {
+     //    if (error) {
+     //      console.log("#### Zut une erreur dans le delete post button ####");
+     //      throwError(error.reason);
+     //    }
+     // });
 
 
       Posts.remove(currentPostId);
