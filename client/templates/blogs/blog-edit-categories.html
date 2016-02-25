@@ -2,10 +2,10 @@
 	<div class="blog-edit-categories">
 		<div class="page-title">Gérer les catégories</div>
 		{{#each categories}}
-			<a class="list-group-item">
+			<a class="list-group-item" data-category="{{name}}">
 				<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
       			<a class="blog-edit-authors--button-delete-category"  href="#" style="float:right">
-      			<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-name="{{name}}"></i>
+      			<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-delete-name="{{name}}"></i>
       		</a>
     	</a>
     	{{/each}}

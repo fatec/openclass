@@ -2,11 +2,11 @@
 	<div class="blog-edit-authors">
 		<div class="page-title">Gérer les auteurs</div>
 		{{#each authors}}
-			<a class="list-group-item">
+			<a class="list-group-item" data-author="{{name}}">
 				<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
 				{{#unless guest}}
       				<a class="blog-edit-authors--button-delete-author"  href="#" style="float:right">
-      					<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-name="{{name}}"></i>
+      					<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-delete-author="{{name}}"></i>
       				</a>
       		    {{/unless}}
     		</a>

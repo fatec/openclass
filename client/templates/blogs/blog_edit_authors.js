@@ -1,6 +1,6 @@
 Template.blogEditAuthors.helpers({
 	authors: function(){
-		return Authors.find({blogId: this.blog._id});  
+		return Authors.find({blogId: this.blog._id},{sort: { name: 1 }});  
   },
 	guest: function(){
 		return this.name === 'Invité';
@@ -9,7 +9,7 @@ Template.blogEditAuthors.helpers({
 Template.blogEditAuthors.events({
   'click .blog-edit-authors--button-delete-author': function(event, template) {
     var currentBlogId = template.data.blog._id;
-    var authorName = $(event.target).data("name");
+    var authorName = $(event.target).data("delete-author");
     var author = Authors.findOne({name: authorName, blogId: currentBlogId});
     if(confirm("Supprimer l'auteur "+authorName+" ?"))
       Authors.remove(author._id);
@@ -18,10 +18,24 @@ Template.blogEditAuthors.events({
     e.preventDefault();
 
     var currentBlogId = this.blog._id;
+
     var authorName = $('#authorName').val().trim();
 
-    Meteor.call('authorInsert', authorName, this.blog._id );
+    if (authorName != "")
+    {
 
-    $('#authorName').val('');
+      Meteor.call('authorInsert', authorName, this.blog._id );
+
+      $('#authorName').val('');
+
+  //$('*[data-author="'+authorName+'"]').css("background-color","black");
+
+//$('*[data-author="'+authorName+'"]').animate({backgroundColor: '#FF0000'}, 'slow')
+
+// Effect when add an author
+  $('*[data-author="'+authorName+'"]').css("background-color", "#77b3d4");
+ setTimeout(function(){  $('*[data-author="'+authorName+'"]').css("background-color", "");}, 1000);
+  }
+
   }
 });
