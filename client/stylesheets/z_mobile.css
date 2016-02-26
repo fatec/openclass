@@ -266,6 +266,17 @@ margin-bottom:20px;
 
 	width:50%;
 }
+
+.truncate-text {
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 35%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+    font-size:0.8em;
+}
 }
 
 
@@ -279,10 +290,12 @@ and (max-device-width : 568px) {*/
 */	.truncate-text {
     text-overflow: ellipsis;
     display: inline-block;
-    width: 40%;
+    max-width: 25%;
+    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
+    font-size:0.8em;
 }
 .post-item {
 	width:95%;
