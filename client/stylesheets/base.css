@@ -221,6 +221,10 @@ a:active {
 	color:black;
 }
 
+.list-group-item {
+	font-size:0.9em;
+}
+
 .list-group-item:hover {
 	background-color: #3270ae;
 	

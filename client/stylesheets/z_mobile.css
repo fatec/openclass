@@ -278,5 +278,7 @@ and (max-device-width : 568px) {*/
     overflow: hidden;
     vertical-align: top;
 }
-
+.post-item {
+	width:95%;
+}
 }
