@@ -259,7 +259,7 @@ if (Session.get("imageId"))
 
     $('.suggest').tagsinput('input').blur(function() {
       console.log("ok");
-        $('.suggest').tagsinput('add', $(this).val());
+        $('.suggest').tagsinput('add', $(this).val().toLowerCase());
         $(this).val('');
     })
 

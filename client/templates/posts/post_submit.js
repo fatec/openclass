@@ -216,7 +216,7 @@ if (Session.get("imageId"))
     });
 
     $('.suggest').tagsinput('input').blur(function() {
-        $('.suggest').tagsinput('add', $(this).val());
+        $('.suggest').tagsinput('add', $(this).val().toLowerCase());
         $(this).val('');
     })
 /*
