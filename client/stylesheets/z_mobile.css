@@ -223,6 +223,7 @@ margin-bottom:20px;
 
 .header--page-name {
 		margin-left:0px;
+		 width: auto; 
 	}
 
 .logout--wrapper{

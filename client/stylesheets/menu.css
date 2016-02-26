@@ -34,8 +34,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--link-sort-selected {
-	color:#28527c;
-	font-weight: 600;
+	font-family: "Montserrat-Regular";
+	color: #2c5267;
 }
 
 .menu--title {
@@ -74,7 +74,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--author-selected {
-	font-weight: 600;
+	font-family: "Montserrat-Regular";
 	color: #2c5267;
 }
 
@@ -104,8 +104,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--tag-selected {
-	color: #28527c;
-	font-weight: 600;
+	color: #2c5267;
 }
 
 a.menu--tag-selected span.menu--tags-box {
