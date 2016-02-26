@@ -229,8 +229,8 @@ if (Session.get("imageId"))
   //   Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
   // }
 
-    // Textarea autosize
-  //$('.post-edit--textarea').autosize();
+  // Textarea autosize
+  $('.post-edit--textarea').autosize();
 
 
 

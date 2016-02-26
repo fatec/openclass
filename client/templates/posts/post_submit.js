@@ -192,7 +192,7 @@ if (Session.get("imageId"))
   }
 
   // Textarea autosize
-  $('.post-submit--textarea').autosize()
+  $('.post-submit--textarea').autosize();
 
 
     var tags = new Bloodhound({
