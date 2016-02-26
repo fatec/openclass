@@ -1,14 +1,7 @@
 <template name="desktopMenu">
 	<div class="menu">
-		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> Tout afficher ({{postCount}})</a><br />
-		          {{#if isReactive}}
-		          <span style="font-size:0.8em">
-            <i class="fa fa-refresh fa-spin"></i><a href="#" class="blog-page--button-stop-reactive"><b> Flux en direct</b></a></span>
-          {{else}}
-          		          <span style="font-size:0.8em">
+              <a class="menu--link-last-posts {{selectedLastPostsClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> Tout afficher ({{postCount}})</a>
 
-              <i class="fa fa-refresh"></i><a href="#" class="blog-page--button-reactive"> Flux en direct</a></span>
-              {{/if}}
 <!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
  -->		<div class="menu--title menu--title-authors">
 			<i class="menu--icon fa fa-lg fa-users"></i>

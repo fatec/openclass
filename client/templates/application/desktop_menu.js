@@ -65,10 +65,7 @@ Template.desktopMenu.helpers({
 	},
 	authorQuery: function() {
 		return "author="+this.name;
-	},	
-	isReactive: function() {
-		return Session.get('isReactive');
-    }
+	}
 });
 
   Template.desktopMenu.events({

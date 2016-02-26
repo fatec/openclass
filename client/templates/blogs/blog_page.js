@@ -113,6 +113,9 @@ Template.blogPage.helpers({
       }
     }
   },
+    isReactive: function() {
+    return Session.get('isReactive');
+    }
 });
 
 
