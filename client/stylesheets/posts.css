@@ -234,14 +234,21 @@ border-radius: 4px;
 
 .post-item--text {
 	margin: 8px 0 8px 0px;
-
+width:300px;
 	font-size: 0.9em;
 	white-space: pre;  /*render line breaks */
-	-webkit-hyphens: auto;
+/*	-webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -o-hyphens: auto;
-  hyphens: auto;}
+  hyphens: auto;*/
+white-space: pre-wrap; /* css-3 */
+white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+white-space: -pre-wrap; /* Opera 4-6 */
+white-space: -o-pre-wrap; /* Opera 7 */
+word-wrap: break-word; /* Internet Explorer 5.5+ */
+width:100%;
+}
 
 .post-item--tags {
 	display: inline-block;
