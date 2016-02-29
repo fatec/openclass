@@ -146,12 +146,19 @@ padding:0 10px 0 1px;
 }
 
 .header--page-name {
-display:inline-block;
-text-align:center;
-width: 400px;
-margin-left:75px;
-font-size:0.9em;
+display: inline-block;
+text-align: left;
+max-width: 50%;
+margin-left: 15px;
+font-size: 0.9em;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
 
+.header--button-back-icon {
+	padding-right:15px;
+	border-right:solid 1px #e3e3e3;
 }
 
 .header--button-back-wrapper-mobile {
