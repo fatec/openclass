@@ -132,6 +132,11 @@ font-size:1.3em;
 /*display:none;
 */}
 
+.page-description {
+
+	width:80%;
+}
+
 .blog-edit--wrapper {
 	width: 100%;
 }
@@ -173,6 +178,11 @@ width:10%;
 .posts-header--button-submit{
 	margin-left:15px;
 }
+
+.header--button-setings {
+
+	margin-left:10px;
+	}
 
 .header--wrapper {
 	width:96%;

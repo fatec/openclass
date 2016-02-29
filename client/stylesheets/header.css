@@ -83,8 +83,8 @@ border: solid 1px blue;
 /*	background-color: green;
 */
 border-radius: 12px;
-border:solid 1px #2a8bbf;
-height: 30px;
+border:solid 1px #5dabd4;
+height: 26px;
 width:80px;
 color:black;
 text-indent: 0.2em;
@@ -112,7 +112,7 @@ padding:0 10px 0 1px;
 .header--button-setings {
 	float:right;
 	vertical-align:middle;
-	margin-left:10px;
+	margin-left:25px;
 
 /*	line-height:46px;
 */	color: grey;
@@ -154,6 +154,7 @@ font-size: 0.9em;
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
+vertical-align: top;
 }
 
 .header--button-back-icon {

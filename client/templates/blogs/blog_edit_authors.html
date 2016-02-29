@@ -1,16 +1,19 @@
 <template name="blogEditAuthors">
 	<div class="blog-edit-authors">
 		<div class="page-title">Gérer les auteurs</div>
-		{{#each authors}}
-			<a class="list-group-item" data-author="{{name}}">
-				<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
-				{{#unless guest}}
-      				<a class="blog-edit-authors--button-delete-author"  href="#" style="float:right">
-      					<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-delete-author="{{name}}"></i>
-      				</a>
-      		    {{/unless}}
-    		</a>
-    	{{/each}}
+		<div class="page-description">Les auteurs servent à identifier les publications.<br />Ajoutez par exemple le nom de vos élèves, le nom d'un groupe, etc.</div>
+		<div class="list-group">
+			{{#each authors}}
+				<a class="list-group-item" data-author="{{name}}">
+					<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
+					{{#unless guest}}
+      					<a class="blog-edit-authors--button-delete-author"  href="#" style="float:right">
+      						<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-delete-author="{{name}}"></i>
+      					</a>
+      		    	{{/unless}}
+    			</a>
+    		{{/each}}
+    	</div>
     	<div class="blog-edit-authors--form-wrapper">
     			<form id="blog-edit--form-add-author" class="blog-edit--form-add-author">
 			<input id="authorName" class="blog-edit--input-add-author" style="font-size:1.1em" placeholder="Ajouter un auteur..." />
