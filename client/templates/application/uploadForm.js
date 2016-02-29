@@ -13,7 +13,12 @@ Template.uploadForm.rendered = function () {
 Template.uploadForm.events({
   'click .start': function (e) {
     //Uploader.startUpload.call(Template.instance(), e);
-  }
+  },
+  'change .post-submit--input-file': function(e) {
+            //console.log("hop");
+
+
+}
 });
 
 Template.uploadForm.helpers({
