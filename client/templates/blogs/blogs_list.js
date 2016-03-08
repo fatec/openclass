@@ -18,7 +18,7 @@ Template.blogsList.helpers({
 		if (Blogs.find({'userId':Meteor.userId()}).count() > 0)
 			return true;
 	},
-	  isBox: function() {
+	isBox: function() {
     return (Meteor.settings.public.isBox === "true")
   }
 });

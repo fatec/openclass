@@ -155,6 +155,7 @@ overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
 vertical-align: top;
+margin-right: 5px;
 }
 
 .header--button-back-icon {

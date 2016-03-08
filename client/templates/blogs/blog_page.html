@@ -5,7 +5,7 @@
       <div class="blog-page--main">  
         {{#if newMessages}}
           <div class="blog-page--notification-panel blog-page--refresh">
-            <a href="#">{{newMessages}} nouveaux messages</a>
+            <a href="#">{{newMessages}} nouveau(x) message(s)</a>
           </div>
         {{/if}}
             {{#if isReactive}}
@@ -20,8 +20,8 @@
             {{> postItem}}
           {{/each}}
         {{else}}
-          {{#if ownBlog}}
-            {{#if codePanelState}}
+          {{#if codePanelState}}
+            {{#if ownBlog}}
               <div id="codePanel" class="blog-page--no-post-message">
                 <div style="background-color:white;margin-bottom:10px;border:solid 1px #ddd;border-radius:4px;padding:15px;">
                   <div class="hideCodePanel" style="float:right;margin-top:-10px;margin-right:-9px;cursor:pointer;">
