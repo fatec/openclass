@@ -11,4 +11,5 @@ Installation
 1. Install git, if not already done.
 2. Install [Meteor](https://www.meteor.com/install).
 3. Clone the repository where you want ('git clone https://github.com/fatec/openclass.git').
-4. Launch the Meteor project with command 'meteor'. Now the server is on yourIP:3000
+4. Setup configuration in "settings.json".
+5. Launch the Meteor project with command 'meteor --settings settings.json --port 80'.
