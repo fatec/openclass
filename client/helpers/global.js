@@ -1,8 +1,8 @@
 // Global helpers
 
 // Check in settings.json if the server is a box or a web server
-UI.registerHelper( 'isBox', () => {
-	return (Meteor.settings.public.isBox === "true")
+Template.registerHelper("isBox", function () {
+    return (Meteor.settings.public.isBox === "true");
 });
 
 Meteor.startup(function () {
