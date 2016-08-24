@@ -189,7 +189,7 @@ Template.postEdit.helpers({
     var currentPostId = this.post._id;
     var currentPost = Posts.findOne(currentPostId);
     var blogId = Blogs.findOne(currentPost.blogId);
-    return Categories.find({blogId: blogId._id}); 
+    return Categories.find({blogId: blogId._id},{sort: { name: 1 }}); 
   },
   selectedCategory: function(){
     var category = this.name;

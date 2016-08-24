@@ -147,7 +147,7 @@ Template.postSubmit.helpers({
       return false;
   },
   categories: function() {
-    return Categories.find({blogId: this.blog._id});  
+    return Categories.find({blogId: this.blog._id},{sort: { name: 1 }});  
   },
     myCallbacks: function() {
     return {
