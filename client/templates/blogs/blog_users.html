@@ -1,0 +1,20 @@
+<template name="blogUsers">
+	<div class="blog-users">
+	    <div class="blog-page--wrapper">
+			<div class="page-title">S'identifier</div>
+
+		<div class="list-group">
+			{{#each authors}}
+				<a class="list-group-item blog-users--button-select-author" data-author="{{name}}">
+					<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
+					{{#if optionIsSelected name}}
+      					<a class="blog-users--button-delete-author"  href="#" style="float:right">
+      						<i class="fa fa-lg fa-check" style="color:green;vertical-align:middle" data-delete-author="{{name}}"></i>
+      					</a>
+      		    	{{/if}}
+    			</a>
+    		{{/each}}
+    	</div>
+		</div>
+	</div>
+</template>
