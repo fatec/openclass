@@ -23,6 +23,16 @@ Template.blogEditAuthors.events({
 
     if (authorName != "")
     {
+      
+      if (Authors.findOne({blogId: this.blog._id, name:authorName}))
+      {
+        alert("Cet auteur existe déjà.");
+        return;
+      }
+
+
+      //var authors = Authors.find({blogId: this.blog._id});
+      //console.log(authors);
 
       Meteor.call('authorInsert', authorName, this.blog._id );
 
