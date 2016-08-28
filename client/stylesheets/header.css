@@ -158,6 +158,18 @@ vertical-align: top;
 margin-right: 5px;
 }
 
+.header--blog-code {
+border-radius: 5px;
+border:solid 1px #afc9d6;
+display: inline-block;
+height:10px;
+line-height:1em;
+padding: 5px 5px 8px 5px;
+letter-spacing: 0.1em;
+font-size:0.8em;
+vertical-align:middle;
+}
+
 .header--button-back-icon {
 	padding-right:15px;
 	border-right:solid 1px #e3e3e3;
