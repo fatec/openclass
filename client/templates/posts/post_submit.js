@@ -137,11 +137,22 @@ Template.postSubmit.events({
 });
 
 Template.postSubmit.helpers({
+    'imageUploaded':  function() {
+    return Session.get('imageUploaded');
+  },
   image: function() {
     if (Session.get("imageId"))
     {
       var imageId = Session.get("imageId");
-      return Images.findOne({imageId:imageId});
+
+      var imageInCollection = Images.findOne({imageId:imageId});
+
+      if (imageInCollection)
+        $(".post-submit--button-submit").show();
+      return imageInCollection;
+
+      //return Images.findOne({imageId:imageId});
+
     }
     else
       return false;

@@ -173,7 +173,14 @@ Template.postEdit.helpers({
     if (Session.get("imageId"))
     {
       var imageId = Session.get("imageId");
-      return Images.findOne({imageId:imageId});
+
+
+      var imageInCollection = Images.findOne({imageId:imageId});
+
+      if (imageInCollection)
+            $(".post-edit--button-submit").show();
+      return imageInCollection;
+
     }
     else
       return false;

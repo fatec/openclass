@@ -10,7 +10,9 @@ Meteor.startup(function () {
 	},
 	finished: function(fileInfo, formFields) {
 	// Resize and auto-orient uploaded images with GraphicMagicks
-    gm(process.env.PWD+'/.uploads/'+fileInfo.name).autoOrient().resize('1200','1200').write(process.env.PWD+'/.uploads/'+fileInfo.name,Meteor.bindEnvironment(function (err, res) {if(err){console.log("Error when resizing :"+err)}else {Images.insert({imageId:fileInfo.name});}}));
+    gm(process.env.PWD+'/.uploads/'+fileInfo.name).autoOrient().resize('1200','1200').write(process.env.PWD+'/.uploads/'+fileInfo.name,Meteor.bindEnvironment(function (err, res) {if(err){console.log("Error when resizing :"+err)}else {Images.insert({imageId:fileInfo.name});
+}}));
+
 	},
     getFileName: function(fileInfo, formData) { 
     // Set a new random image name

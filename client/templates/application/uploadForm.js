@@ -8,6 +8,8 @@ Template.uploadForm.created = function() {
 
 Template.uploadForm.rendered = function () {
   Uploader.render.call(this);
+
+
 };
 
 Template.uploadForm.events({
@@ -26,7 +28,17 @@ Template.uploadForm.helpers({
       return;
     }
 
+
     var progress = instance.globalInfo.get();
+
+    if (progress.progress != 100) {
+      $(".post-submit--button-submit").hide();
+      $(".post-edit--button-submit").hide();
+
+    }
+    // else
+    //     $(".post-submit--button-submit").hide();
+
 
     // we display different result when running or not
     return progress.running ?
