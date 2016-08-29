@@ -1,5 +1,47 @@
 var posts;
 
+
+    //var authorName = Session.get(template.data.blog._id).author; 
+
+  //var testId = Authors.findOne({blogId: template.data.blog._id, name: authorName});
+
+    //Authors.update(testId._id, {$set : {scroll : 50}})
+
+
+
+
+Template.blogPage.onCreated(function() {
+
+
+  var blogId = this.data.blog._id;
+  Session.set("scroll", 0);
+
+  function updateScroll(Template) {
+    var scroll = Session.get("scroll");
+      var authorName = Session.get(blogId).author; 
+      var testId = Authors.findOne({blogId: blogId, name: authorName});
+      Authors.update(testId._id, {$inc : {scroll : scroll}})
+      Session.set("scroll", 0);
+  };
+
+      scrollUpdate = Meteor.setInterval(updateScroll, 1000);
+
+
+
+    $(window).scroll(function() {
+
+      var scroll = Session.get("scroll");
+      scroll++;
+
+      Session.set("scroll", scroll);
+
+
+    });
+
+
+});
+
+
 Template.blogPage.helpers({
   posts_old: function() {
     var sortPosts = Session.get('sortPosts');
