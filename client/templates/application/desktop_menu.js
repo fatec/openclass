@@ -72,6 +72,7 @@ Template.desktopMenu.helpers({
   'click .menu--link-last-posts': function(e) {
     Session.set("filter", ""); 
     Session.set('posts',Posts.find({}, {sort: {nb: -1}}).fetch()); 
+    Session.set("click", Session.get("click")+1);
   },
   	  'click .filter-tag': function(e) {
     e.preventDefault();
@@ -79,6 +80,7 @@ Template.desktopMenu.helpers({
     var tag = $(e.target).data('tag');
     Session.set('tag',tag);
     Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
+    Session.set("click", Session.get("click")+1);
   },
   'click .filter-author': function(e) {
     e.preventDefault();
@@ -86,6 +88,7 @@ Template.desktopMenu.helpers({
     var author = $(e.target).data('author');
     Session.set('author',author);
     Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
+    Session.set("click", Session.get("click")+1);
   },
   'click .filter-category': function(e) {
     e.preventDefault();
@@ -93,5 +96,6 @@ Template.desktopMenu.helpers({
     var category = $(e.target).data('category');
     Session.set('category',category);
     Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
+    Session.set("click", Session.get("click")+1);
   }  
 });

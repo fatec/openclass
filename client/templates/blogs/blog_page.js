@@ -15,6 +15,8 @@ Template.blogPage.onCreated(function() {
 
   var blogId = this.data.blog._id;
   Session.set("scroll", 0);
+  Session.set("click", 0);
+
 
   function updateScroll(Template) {
     var scroll = Session.get("scroll");
@@ -24,16 +26,27 @@ Template.blogPage.onCreated(function() {
       Session.set("scroll", 0);
   };
 
+    function updateClick(Template) {
+    var click = Session.get("click");
+      var authorName = Session.get(blogId).author; 
+      var testId = Authors.findOne({blogId: blogId, name: authorName});
+      Authors.update(testId._id, {$inc : {click : click}})
+      Session.set("click", 0);
+  };
+
       scrollUpdate = Meteor.setInterval(updateScroll, 1000);
+      clickUpdate = Meteor.setInterval(updateClick, 1000);
 
 
 
     $(window).scroll(function() {
 
-      var scroll = Session.get("scroll");
-      scroll++;
+      Session.set("scroll", Session.get("scroll")+1);
 
-      Session.set("scroll", scroll);
+      // var scroll = Session.get("scroll");
+      // scroll++;
+
+      // Session.set("scroll", scroll);
 
 
     });
