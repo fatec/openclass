@@ -11,11 +11,11 @@
 </span><span class="post-submit--input-file-text"> Ajouter une photo...</span>
 </label>
 {{/unless}}
-         {{#with infoLabel}}            
-            <div style="margin-bottom:30px;margin-left:auto;margin-right:auto;width: 200px; height: 11px; border: 1px solid #e8e8e8;background-color:white;font-size:0.7em;color:white;">
-                <div style="background: #2a8bbf; height: 11px; width: {{ progress }}">
+         {{#with infoLabel}} 
+            <div class="progress-bar blue stripes" style="margin-bottom:30px;margin-left:auto;margin-right:auto;width: 200px; height: 11px; border: 1px solid #e8e8e8;background-color:white;font-size:0.7em;color:white;">
+                <span  style="width: {{ progress }}">
                     <!-- {{ progress }} -->
-                </div>
+                </span>
             </div>
         {{/with}}
         
