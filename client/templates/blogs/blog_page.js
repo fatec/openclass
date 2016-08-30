@@ -12,6 +12,9 @@ var posts;
 
 Template.blogPage.onCreated(function() {
 
+  viewport = document.querySelector("meta[name=viewport]");
+viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=4');
+
 
   var blogId = this.data.blog._id;
   Session.set("scroll", 0);
