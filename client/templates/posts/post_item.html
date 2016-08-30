@@ -7,11 +7,14 @@
          <!--  <img class="post-item-2-icon-button-edit" src="/img/icon-button-editpost.png" /> -->
         </div>
       </a>  
+
+      {{#if ownBlog}}
         <div class="post-item--button post-item--button-delete">
         <i class="fa fa-lg fa-trash-o"></i>
-
 <!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->
       </div>
+            {{/if}}
+
     {{/if}} 
       <a class="post-item--author filter-author" data-author="{{author}}" href="#">{{author}}</a>
     <div class="post-item--date">• {{livestamp submitted}}</div>

@@ -37,6 +37,10 @@ Template.postItem.helpers({
       }
     }
   },
+  ownBlog: function() {
+    if (Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)        
+      return true;
+    },
   selectedCategoryClass: function(){
     var categoryId = this.category.toString();
     var selectedCategory = Session.get('selectedCategory');
