@@ -19,7 +19,6 @@ alanning:roles
 msavin:mongol
 fortawesome:fontawesome
 sergeyt:typeahead
-smallhacks:bootstrap-tagsinput-custom
 chriswessels:slideout
 copleykj:jquery-autosize
 froatsnook:request
@@ -45,3 +44,4 @@ tomi:upload-server
 tomi:upload-jquery
 email
 meteorhacks:fast-render
+smallhacks:bootstrap-tagsinput-custom
