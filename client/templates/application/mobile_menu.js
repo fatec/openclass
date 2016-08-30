@@ -4,10 +4,10 @@ Template.mobileMenu.helpers({
 			return Session.get('posts').length;
 	},
 	tags: function() {
-		return Tags.find({}, {sort: {nRefs: -1}});
+		return Tags.find({}, {sort: {name: 1}});
 	},
 	categories: function() {
-		return Categories.find({ nRefs: { $gt: 0 } }, {sort: {nRefs: -1}});
+		return Categories.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});
 	},	
 	tagQuery: function() {
 		return "tags="+this.name;
