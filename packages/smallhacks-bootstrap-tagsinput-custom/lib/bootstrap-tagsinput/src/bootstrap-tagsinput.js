@@ -463,12 +463,6 @@
 
          var text = $input.val(),
          maxLengthReached = self.options.maxChars && text.length >= self.options.maxChars;
-
-          // Temporary fix to issue android bug
-          var character = text.slice(-1);
-          var code = character.charCodeAt(0);
-          event.which = code;
-
          if (self.options.freeInput && (keyCombinationInList(event, self.options.confirmKeys) || maxLengthReached)) {
             // Only attempt to add a tag if there is data in the field
             if (text.length !== 0) {
@@ -651,18 +645,18 @@
     * @param object lookupList: expected key combinations, as in:
     *     [13, {which: 188, shiftKey: true}]
     */
-  function keyCombinationInList(keyUpEvent, lookupList) {
+  function keyCombinationInList(keyPressEvent, lookupList) {
       var found = false;
       $.each(lookupList, function (index, keyCombination) {
-          if (typeof (keyCombination) === 'number' && keyUpEvent.which === keyCombination) {
+          if (typeof (keyCombination) === 'number' && keyPressEvent.which === keyCombination) {
               found = true;
               return false;
           }
 
-          if (keyUpEvent.which === keyCombination.which) {
-              var alt = !keyCombination.hasOwnProperty('altKey') || keyUpEvent.altKey === keyCombination.altKey,
-                  shift = !keyCombination.hasOwnProperty('shiftKey') || keyUpEvent.shiftKey === keyCombination.shiftKey,
-                  ctrl = !keyCombination.hasOwnProperty('ctrlKey') || keyUpEvent.ctrlKey === keyCombination.ctrlKey;
+          if (keyPressEvent.which === keyCombination.which) {
+              var alt = !keyCombination.hasOwnProperty('altKey') || keyPressEvent.altKey === keyCombination.altKey,
+                  shift = !keyCombination.hasOwnProperty('shiftKey') || keyPressEvent.shiftKey === keyCombination.shiftKey,
+                  ctrl = !keyCombination.hasOwnProperty('ctrlKey') || keyPressEvent.ctrlKey === keyCombination.ctrlKey;
               if (alt && shift && ctrl) {
                   found = true;
                   return false;
