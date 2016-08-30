@@ -223,7 +223,7 @@ if (Session.get("imageId"))
         valueKey: 'name',
         source: tags.ttAdapter(),
       }, 
-      confirmKeys: [32, 9, 13, 44]
+      confirmKeys: [32, 9, 13, 44, 188]
     });
 
     $('.suggest').tagsinput('input').blur(function() {
