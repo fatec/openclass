@@ -16,7 +16,7 @@ Template.postEdit.events({
     var oldTags = this.post.tags;
     console.log("anciens tags "+oldTags);
     // tags est le tableau contenant les tags 
-    var newTags = $(e.target).find('[name=tags]').val().split(',');
+    var newTags = $(e.target).find('[name=tags]').val().toLowerCase().replace(/ /g,'').split(',');
     console.log("nouveaux tags "+newTags);
     // il faudrait enlever les espaces avant et après pour chacun des tags
 

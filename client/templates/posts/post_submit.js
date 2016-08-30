@@ -22,7 +22,7 @@ Template.postSubmit.events({
     var body = $(e.target).find('[name=body]').val();
     var blogId = template.data.blog._id;
     var imageId = Session.get("imageId");
-    var tags = $(e.target).find('[name=tags]').val().split(',');
+    var tags = $(e.target).find('[name=tags]').val().toLowerCase().replace(/ /g,'').split(',');
     var category = $(e.target).find('[name=category]').val();
 
     var imagesToDelete = Session.get('imagesToDelete');
