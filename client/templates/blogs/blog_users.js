@@ -4,10 +4,14 @@ Template.blogUsers.helpers({
     return Authors.find({blogId: this.blog._id},{sort: { name: 1 }});  
   },
   optionIsSelected: function(authorName) {
+    if (Session.get(Template.parentData().blog._id))
+    {
     //console.log(Session.get("5AutbBDeRpPLWn4tp"));
     //return Session.get("5AutbBDeRpPLWn4tp");
     return authorName === Session.get(Template.parentData().blog._id).author;
-
+}
+else
+return null;
   }  
 });
 
