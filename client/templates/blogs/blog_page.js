@@ -96,6 +96,9 @@ Template.blogPage.helpers({
         case '':
           Session.set('posts',Posts.find({},{sort: {submitted: 1}}).fetch());
           break;
+        case 'favorites':
+          Session.set('posts',Posts.find({favorites:true},{sort: {submitted: 1}}).fetch());
+          break;
         case 'tag':
           var tag = Session.get('tag');
           Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: 1}}).fetch());

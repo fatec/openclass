@@ -7,7 +7,12 @@ Template.postItem.helpers({
     return this.tags;
   else
     return 0;
-  },     
+  }, 
+  favorites: function(){
+    console.log(this.favorites);
+    return Session.get("favorites");
+    //return this.favorites;
+  },    
   ownPost: function() {
     //console.log((this.blog._id).author);
         //console.log(Session.get(Template.parentData(1).blog._id).author);
@@ -124,7 +129,20 @@ Template.postItem.events({
     var category = $(e.target).data('category');
     Session.set('category',category);
     Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
-  }     
+  },
+    'click .post-item--button-add-favorite': function(e) {
+      e.preventDefault();
+      var currentPostId = this._id;
+      //Session.set("favorites",true);
+      //Meteor.call('add',{postId:currentPostId});
+      Posts.update(currentPostId, {$set: {favorites: true}});
+  },
+      'click .post-item--button-remove-favorite': function(e) {
+      e.preventDefault();
+      var currentPostId = this._id;
+
+      Posts.update(currentPostId, {$set: {favorites: false}});
+  },     
 });
 
 // Show image in a lightbox with magnificPopup plugin

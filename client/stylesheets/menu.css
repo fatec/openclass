@@ -33,6 +33,19 @@ Authors : Vincent Widmer & Stéphane Morand;
 	color:#2A90C6;
 }
 
+.menu--link-favorites {
+	display: block;
+	margin: 10px 0 0px 0;
+
+	font-size: 0.9em;
+	color:#2A90C6;
+}
+
+.menu--link-favorites-selected {
+	font-family: "Montserrat-Regular";
+	color: #2c5267;
+}
+
 .menu--link-sort-selected {
 	font-family: "Montserrat-Regular";
 	color: #2c5267;
@@ -116,6 +129,10 @@ a.menu--tag-selected span.menu--tags-box {
 }
 
 a.menu--link-sort-selected i.menu--caret {
+	display:inline;
+}
+
+a.menu--link-favorites-selected i.menu--caret {
 	display:inline;
 }
 

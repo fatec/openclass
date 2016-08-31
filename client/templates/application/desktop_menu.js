@@ -59,6 +59,12 @@ Template.desktopMenu.helpers({
     		else return "menu--link-sort-selected"
     	else return "menu--link-sort-selected"	
     	
+	},
+	'selectedFavoritesClass': function(){
+    	if (Session.get('filter') === 'favorites')
+    		return "menu--link-favorites-selected"
+    	else return false;
+    	
 	},	
 	authors: function() {
 		return Authors.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});
@@ -71,7 +77,15 @@ Template.desktopMenu.helpers({
   Template.desktopMenu.events({
   'click .menu--link-last-posts': function(e) {
     Session.set("filter", ""); 
-    Session.set('posts',Posts.find({}, {sort: {nb: -1}}).fetch()); 
+    Session.set('posts',Posts.find({}, {sort: {nb: 1}}).fetch()); 
+    Session.set("click", Session.get("click")+1);
+  },
+    'click .menu--link-favorites': function(e) {
+   	console.log("ici");
+    Session.set("filter", "favorites"); 
+    Session.set('posts',Posts.find({favorites: true}, {sort: {nb: 1}}).fetch()); 
+
+    //Session.set('posts',Posts.find({favorites:1}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
   },
   	  'click .filter-tag': function(e) {
@@ -79,7 +93,7 @@ Template.desktopMenu.helpers({
     Session.set('filter','tag');
     var tag = $(e.target).data('tag');
     Session.set('tag',tag);
-    Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
+    Session.set('posts',Posts.find({tags: tag}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
   },
   'click .filter-author': function(e) {
@@ -87,7 +101,7 @@ Template.desktopMenu.helpers({
     Session.set('filter','author');
     var author = $(e.target).data('author');
     Session.set('author',author);
-    Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
+    Session.set('posts',Posts.find({author: author}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
   },
   'click .filter-category': function(e) {
@@ -95,7 +109,7 @@ Template.desktopMenu.helpers({
     Session.set('filter','category');
     var category = $(e.target).data('category');
     Session.set('category',category);
-    Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
+    Session.set('posts',Posts.find({category: category}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
   }  
 });

@@ -57,6 +57,12 @@ Template.mobileMenu.helpers({
         	return "menu--link-sort-selected"
     	}
 	},	
+		'selectedFavoritesClass': function(){
+    	if (Session.get('filter') === 'favorites')
+    		return "menu--link-favorites-selected"
+    	else return false;
+    	
+	},
 	authors: function() {
 		return Authors.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});
 	},
@@ -72,6 +78,14 @@ Template.mobileMenu.events({
   'click .menu--link-last-posts': function(e) {
     Session.set("filter", ""); 
     Session.set('posts',Posts.find({}, {sort: {nb: -1}}).fetch()); 
+    Session.set("click", Session.get("click")+1);
+  },
+      'click .menu--link-favorites': function(e) {
+    	console.log("ici");
+    Session.set("filter", "favorites"); 
+        Session.set('posts',Posts.find({favorites: true}, {sort: {nb: 1}}).fetch()); 
+
+    //Session.set('posts',Posts.find({favorites:1}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
   },
 	'click .header--button-close-wrapper-mobile': function(e){

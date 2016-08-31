@@ -171,6 +171,18 @@ cursor: pointer;
 	border-bottom-right-radius:3px;
 }
 
+.post-item--button-add-favorite {
+	border-left: solid 1px #c5c5c5;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
+.post-item--button-remove-favorite {
+	border-left: solid 1px #c5c5c5;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
 .post-item--button-delete {
 	border-left:solid 1px #c5c5c5;
 /*	border-right:solid 1px #c5c5c5;

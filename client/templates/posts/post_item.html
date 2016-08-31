@@ -7,7 +7,18 @@
          <!--  <img class="post-item-2-icon-button-edit" src="/img/icon-button-editpost.png" /> -->
         </div>
       </a>  
-
+    {{/if}}
+          {{#if this.favorites}}
+        <div class="post-item--button post-item--button-remove-favorite">
+        <i class="fa fa-lg fa-star" style="color:#ffd700;"></i>
+<!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->
+      </div>
+            {{else}}
+        <div class="post-item--button post-item--button-add-favorite">
+        <i class="fa fa-lg fa-star-o"></i>
+<!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->
+      </div>
+            {{/if}} 
       {{#if ownBlog}}
         <div class="post-item--button post-item--button-delete">
         <i class="fa fa-lg fa-trash-o"></i>
@@ -15,7 +26,6 @@
       </div>
             {{/if}}
 
-    {{/if}} 
       <a class="post-item--author filter-author" data-author="{{author}}" href="#">{{author}}</a>
     <div class="post-item--date">• {{livestamp submitted}}</div>
 <!--     <div class="post-item-2-test-separator" style="margin-top:3px;margin-bottom:3px;;border-top:solid 0.5px grey;width:97%;margin-left:auto;margin-right:auto"></div>
