@@ -7,9 +7,18 @@ var posts;
 
     //Authors.update(testId._id, {$set : {scroll : 50}})
 
+Template.blogPage.onRendered(function() {
 
+  if (Session.get('newPost'))
+  {
+    $('html, body').scrollTop( $(document).height() - $(window).height() );
+    Session.set('newPost',false);
+  }
+});
 
 Template.blogPage.onCreated(function() {
+
+
 
   viewport = document.querySelector("meta[name=viewport]");
 viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=4');
