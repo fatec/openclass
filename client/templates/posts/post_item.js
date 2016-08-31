@@ -1,3 +1,10 @@
+  function addClick(blogId,content) {
+
+   var authorId = Authors.findOne({name: Session.get(blogId).author});
+   console.log(authorId);
+    Authors.update({ _id: authorId._id },{ $push: { clicks: content }})
+  }
+
 Template.postItem.helpers({
     image: function() {
       return Images.findOne(this.imageId);
@@ -115,6 +122,8 @@ Template.postItem.events({
     var tag = $(e.target).data('tag');
     Session.set('tag',tag);
     Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
+    addClick(Template.parentData().blog._id,"tag: "+tag);
+
   },
   'click .filter-author': function(e) {
     e.preventDefault();
@@ -122,6 +131,8 @@ Template.postItem.events({
     var author = $(e.target).data('author');
     Session.set('author',author);
     Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
+      addClick(Template.parentData().blog._id,"author: "+author);
+
   },
   'click .filter-category': function(e) {
     e.preventDefault();
@@ -129,6 +140,8 @@ Template.postItem.events({
     var category = $(e.target).data('category');
     Session.set('category',category);
     Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
+        addClick(Template.parentData().blog._id,"category: "+category);
+
   },
     'click .post-item--button-add-favorite': function(e) {
       e.preventDefault();

@@ -1,4 +1,13 @@
+  function addClick(blogId,content) {
+
+   var authorId = Authors.findOne({name: Session.get(blogId).author});
+   console.log(authorId);
+    Authors.update({ _id: authorId._id },{ $push: { clicks: content }})
+  }
+
+  
 Template.desktopMenu.helpers({
+
 	postCount: function() { // return the number of posts
 		return this.posts.count();
 	},
@@ -74,40 +83,45 @@ Template.desktopMenu.helpers({
 });
 
   Template.desktopMenu.events({
-  'click .menu--link-last-posts': function(e) {
+  'click .menu--link-last-posts': function(e,template) {
     Session.set("filter", ""); 
     Session.set('posts',Posts.find({}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
+    addClick(template.data.blog._id,"view all");
   },
-    'click .menu--link-favorites': function(e) {
+    'click .menu--link-favorites': function(e,template) {
     Session.set("filter", "favorites"); 
     Session.set('posts',Posts.find({favorites: true}, {sort: {nb: 1}}).fetch()); 
 
     //Session.set('posts',Posts.find({favorites:1}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
+    addClick(template.data.blog._id,"view favorites");
   },
-  	  'click .filter-tag': function(e) {
+  	  'click .filter-tag': function(e,template) {
     e.preventDefault();
     Session.set('filter','tag');
     var tag = $(e.target).data('tag');
     Session.set('tag',tag);
     Session.set('posts',Posts.find({tags: tag}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
+    addClick(template.data.blog._id,"tag: "+tag);
   },
-  'click .filter-author': function(e) {
+  'click .filter-author': function(e,template) {
     e.preventDefault();
     Session.set('filter','author');
     var author = $(e.target).data('author');
     Session.set('author',author);
     Session.set('posts',Posts.find({author: author}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
+    addClick(template.data.blog._id,"author: "+author);
   },
-  'click .filter-category': function(e) {
+  'click .filter-category': function(e,template) {
     e.preventDefault();
     Session.set('filter','category');
     var category = $(e.target).data('category');
     Session.set('category',category);
     Session.set('posts',Posts.find({category: category}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
+    addClick(template.data.blog._id,"category: "+category);
   }  
 });

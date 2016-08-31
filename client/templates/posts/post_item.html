@@ -45,7 +45,7 @@
       <div class="post-item--text">{{body}}</div>
       {{/if}}
       {{#if category}}
-        <a class="post-item--category filter-category {{selectedCategoryClass}}" href="{{pathFor 'blogPage' _id=blogId query=categoryQuery}}">Catégorie : {{category}}</a><br />
+        <a class="post-item--category filter-category {{selectedCategoryClass}}" data-category="{{this.category}}" href="{{pathFor 'blogPage' _id=blogId query=categoryQuery}}">Catégorie : {{category}}</a><br />
       {{/if}}
       {{#each tags}}
         <a class="post-item--tags filter-tag {{selectedTagClass}}" data-tag="{{this}}" href="#">{{this}}</a>

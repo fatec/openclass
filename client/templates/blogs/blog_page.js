@@ -9,7 +9,6 @@ var posts;
 
 
 
-
 Template.blogPage.onCreated(function() {
 
   viewport = document.querySelector("meta[name=viewport]");
