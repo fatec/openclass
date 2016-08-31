@@ -30,12 +30,11 @@ Authors : Vincent Widmer & Stéphane Morand;
 	padding-bottom:10px;
 	margin-left:0px;
 	width: 100%;
-	border-bottom:solid 1px grey;
-
+	border-bottom:solid 1px #333333;
 }
 
 .mobileMenu a:first-of-type {
-		border-top:solid 1px grey;
+		border-top:solid 1px #333333;
 
 }
 
@@ -45,6 +44,24 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu--authors {
 	margin: 0px 0 0px 17px;
+}
+
+.menu--link-sort-selected {
+background-color: grey;
+}
+
+.menu--author-selected {
+background-color: grey;
+
+}
+
+.menu--tag-selected {
+background-color: grey;
+
+}
+
+.menu--link-favorites-selected {
+background-color: grey;
 
 }
 

@@ -166,8 +166,8 @@ cursor: pointer;
 
 .post-item--button-edit {
 	border-right:solid 1px #c5c5c5;
-	border-left: solid 1px #c5c5c5;
-	border-top-right-radius:3px;
+/*	border-left: solid 1px #c5c5c5;
+*/	border-top-right-radius:3px;
 	border-bottom-right-radius:3px;
 }
 

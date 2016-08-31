@@ -1,7 +1,6 @@
 Template.desktopMenu.helpers({
 	postCount: function() { // return the number of posts
-		if (Session.get('posts'))
-			return Session.get('posts').length;
+		return this.posts.count();
 	},
 	tags: function() {
 		return Tags.find({}, {sort: {name: 1}});
@@ -81,7 +80,6 @@ Template.desktopMenu.helpers({
     Session.set("click", Session.get("click")+1);
   },
     'click .menu--link-favorites': function(e) {
-   	console.log("ici");
     Session.set("filter", "favorites"); 
     Session.set('posts',Posts.find({favorites: true}, {sort: {nb: 1}}).fetch()); 
 

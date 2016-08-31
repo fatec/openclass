@@ -1,7 +1,6 @@
 Template.mobileMenu.helpers({
 	postCount: function() { // return the number of posts
-		if (Session.get('posts'))
-			return Session.get('posts').length;
+		return this.posts.count();
 	},
 	tags: function() {
 		return Tags.find({}, {sort: {name: 1}});
@@ -53,9 +52,12 @@ Template.mobileMenu.helpers({
 	},
 	'selectedLastPostsClass': function(){
     	var sortPosts = Session.get('sortPosts');
-    	if(sortPosts == "last" && !Router.current().params.query.tags && !Router.current().params.query.author && !Router.current().params.query.category){
-        	return "menu--link-sort-selected"
-    	}
+    	if (Session.get('filter'))
+    		if (Session.get('filter') != '')
+    			return false
+    		else return "menu--link-sort-selected"
+    	else return "menu--link-sort-selected"	
+    	
 	},	
 		'selectedFavoritesClass': function(){
     	if (Session.get('filter') === 'favorites')
@@ -81,7 +83,6 @@ Template.mobileMenu.events({
     Session.set("click", Session.get("click")+1);
   },
       'click .menu--link-favorites': function(e) {
-    	console.log("ici");
     Session.set("filter", "favorites"); 
         Session.set('posts',Posts.find({favorites: true}, {sort: {nb: 1}}).fetch()); 
 

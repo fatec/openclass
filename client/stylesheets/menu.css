@@ -47,8 +47,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--link-sort-selected {
-	font-family: "Montserrat-Regular";
-	color: #2c5267;
+font-family: "Montserrat-Regular";
+color: #2c5267;
 }
 
 .menu--title {
@@ -62,7 +62,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu--categories {
 	display: inline-block;
-		margin: 5px 0 0px 17px;
+		margin: 5px 0 0px 10px;
 
 	color: #2A90C6;
 }
@@ -73,7 +73,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .menu--authors {
 	display: inline-block;
-	margin: 5px 0 0px 17px;
+	margin: 5px 0 0px 10px;
 
 	color: #2A90C6;
 }
@@ -87,14 +87,13 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--author-selected {
-	font-family: "Montserrat-Regular";
-	color: #2c5267;
+font-family: "Montserrat-Regular";
 }
 
 .menu--tags {
 	display: inline-block;
 	width:auto;
-	margin: 5px 0 0px 17px;
+	margin: 5px 0 0px 10px;
 }
 
 .menu--tags-box {
@@ -154,6 +153,7 @@ a.menu--category-selected i.menu--caret {
 }
 
 .menu--title-span {
+	font-size: 0.9em;
 	vertical-align:middle
 }
 
