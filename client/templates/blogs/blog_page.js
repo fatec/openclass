@@ -94,19 +94,19 @@ Template.blogPage.helpers({
       switch (Session.get('filter'))
       {
         case '':
-          Session.set('posts',Posts.find({},{sort: {submitted: -1}}).fetch());
+          Session.set('posts',Posts.find({},{sort: {submitted: 1}}).fetch());
           break;
         case 'tag':
           var tag = Session.get('tag');
-          Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: -1}}).fetch());
+          Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: 1}}).fetch());
           break;
         case 'category':
           var category = Session.get('category');
-          Session.set('posts',Posts.find({category: category}, {sort: {submitted: -1}}).fetch());
+          Session.set('posts',Posts.find({category: category}, {sort: {submitted: 1}}).fetch());
           break;
         case 'author':
           var author = Session.get('author');
-          Session.set('posts',Posts.find({author: author}, {sort: {submitted: -1}}).fetch());
+          Session.set('posts',Posts.find({author: author}, {sort: {submitted: 1}}).fetch());
           break;          
       }
     }
@@ -230,6 +230,7 @@ Template.blogPage.events({
 Template.blogPage.created = function(){
 
     Session.set('filter','');
+    Session.set('isReactive',true);
 
   //test = new Meteor.Collection('testCollect');
   Session.set('posts',Posts.find({},{sort: {submitted: -1}}).fetch());
