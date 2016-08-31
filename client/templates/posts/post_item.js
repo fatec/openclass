@@ -20,6 +20,12 @@ Template.postItem.helpers({
     return Session.get("favorites");
     //return this.favorites;
   },    
+  imgHeight: function() {
+    if (this.imgHeight > 350)
+      return 350
+    else
+      return this.imgHeight;
+  },
   ownPost: function() {
     //console.log((this.blog._id).author);
         //console.log(Session.get(Template.parentData(1).blog._id).author);

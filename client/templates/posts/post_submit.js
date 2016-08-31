@@ -25,12 +25,20 @@ Template.postSubmit.events({
     var tags = $(e.target).find('[name=tags]').val().toLowerCase().replace(/ /g,'').split(',');
     var category = $(e.target).find('[name=category]').val();
 
+//var imgHeight = $('#img').height;
+var imgHeight = document.getElementById('img').naturalHeight;
+
+//var img = document.getElementsByClassName("post-submit--image");
+//var imgHeight = $('.post-submit--image').height;
+//console.log(imgHeight);
+
+
     var imagesToDelete = Session.get('imagesToDelete');
     imagesToDelete.forEach(function(imageId) {
         Images.remove(imageId);
     });
    
-    Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId, tags: tags, category: category}, function(error, postId) {
+    Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId, imgHeight: imgHeight,tags: tags, category: category}, function(error, postId) {
       if (error){
         console.log("Il y a une erreur dans postSumbit metor.call postinsert");
         console.log(error.reason);
@@ -184,8 +192,9 @@ if (Session.get("imageId"))
     Uploader.finished = function(index, fileInfo, templateContext) {
     //Images.insert({imageId:fileInfo.name});
     Session.set("imageId",fileInfo.name);
+
     console.log(fileInfo.url);
-    
+
 
     //console.log("je rajoute l'image"+fileInfo.name);
 
