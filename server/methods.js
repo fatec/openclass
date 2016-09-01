@@ -88,9 +88,9 @@ Meteor.methods({
   },
   'hup': function(name) {
       var res;
-            res = cmd("ifconfig eth0");
+            //res = cmd("ifconfig eth0");
 
-      //res = cmd("echo `ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'`");
+      res = cmd("ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'");
       console.log(res);
       return res;
     }
