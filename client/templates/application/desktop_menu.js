@@ -11,6 +11,9 @@ Template.desktopMenu.helpers({
 	postCount: function() { // return the number of posts
 		return this.posts.count();
 	},
+	favoritesCount: function() {
+		return Posts.find({favorites: true}).fetch().length;
+	},
 	tags: function() {
 		return Tags.find({}, {sort: {name: 1}});
 	},
