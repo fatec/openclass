@@ -26,7 +26,8 @@ Template.postSubmit.events({
     var category = $(e.target).find('[name=category]').val();
 
 //var imgHeight = $('#img').height;
-var imgHeight = document.getElementById('img').naturalHeight;
+//if (imageId)
+//var imgHeight = document.getElementById('img').naturalHeight;
 
 //var img = document.getElementsByClassName("post-submit--image");
 //var imgHeight = $('.post-submit--image').height;
@@ -38,7 +39,7 @@ var imgHeight = document.getElementById('img').naturalHeight;
         Images.remove(imageId);
     });
    
-    Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId, imgHeight: imgHeight,tags: tags, category: category}, function(error, postId) {
+    Meteor.call('postInsert', {author: author, body: body, blogId: blogId, imageId: imageId,tags: tags, category: category}, function(error, postId) {
       if (error){
         console.log("Il y a une erreur dans postSumbit metor.call postinsert");
         console.log(error.reason);
