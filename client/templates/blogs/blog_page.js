@@ -102,22 +102,22 @@ Template.blogPage.helpers({
       switch (Session.get('filter'))
       {
         case '':
-          Session.set('posts',Posts.find({},{sort: {submitted: 1}}).fetch());
+          Session.set('posts',Posts.find({},{sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
           break;
         case 'favorites':
-          Session.set('posts',Posts.find({favorites:true},{sort: {submitted: 1}}).fetch());
+          Session.set('posts',Posts.find({favorites:true},{sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
           break;
         case 'tag':
           var tag = Session.get('tag');
-          Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: 1}}).fetch());
+          Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
           break;
         case 'category':
           var category = Session.get('category');
-          Session.set('posts',Posts.find({category: category}, {sort: {submitted: 1}}).fetch());
+          Session.set('posts',Posts.find({category: category}, {sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
           break;
         case 'author':
           var author = Session.get('author');
-          Session.set('posts',Posts.find({author: author}, {sort: {submitted: 1}}).fetch());
+          Session.set('posts',Posts.find({author: author}, {sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
           break;          
       }
     }
@@ -140,6 +140,39 @@ Template.blogPage.helpers({
     if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
         return true;
     },
+        newMessages2: function() {
+    if (Session.get('isReactive'))
+    {
+      var nbPosts = Session.get('nbPosts');
+      var postsReactiveCount;
+
+      switch (Session.get('filter'))
+      {
+        case '':
+          postsReactiveCount = Posts.find().fetch().length;
+          break;
+        case 'favorites':
+          postsReactiveCount = Posts.find({favorites:true}).fetch().length;
+          break;
+        case 'tag':
+          var tag = Session.get('tag');
+          postsReactiveCount = Posts.find({tags: tag}, {sort: {submitted: -1}}).fetch().length;
+          break;
+        case 'category':
+          var category = Session.get('category');
+          postsReactiveCount = Posts.find({category: category}, {sort: {submitted: -1}}).fetch().length;
+          break;
+        case 'author':
+          var author = Session.get('author');
+          postsReactiveCount = Posts.find({author: author}, {sort: {submitted: -1}}).fetch().length;
+          break;          
+      }
+      if (nbPosts < postsReactiveCount)
+        return (postsReactiveCount - nbPosts);
+      else
+        return false;
+    }
+  },
     newMessages: function() {
     if (!Session.get('isReactive'))
     {
@@ -214,24 +247,32 @@ Template.blogPage.events({
   'click .blog-page--refresh': function(e) {
     e.preventDefault();
 
-    switch (Session.get('filter'))
-    {
-      case '':
-        Session.set('posts',Posts.find({},{sort: {submitted: -1}}).fetch());
-        break;
-      case 'tag':
-        var tag = Session.get('tag');
-        Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: -1}}).fetch());
-        break;    
-      case 'category':
-        var category = Session.get('category');
-        Session.set('posts',Posts.find({category: category}, {sort: {submitted: -1}}).fetch());
-        break; 
-      case 'author':
-        var author = Session.get('author');
-        Session.set('posts',Posts.find({author: author}, {sort: {submitted: -1}}).fetch());
-        break;   
-    }        
+      switch (Session.get('filter'))
+      {
+        case '':
+          Session.set('nbPosts',Posts.find({}).fetch().length); 
+          Session.set('posts',Posts.find({},{sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
+          break;
+        case 'favorites':
+          Session.set('nbPosts',Posts.find({favorites: true}).fetch().length); 
+          Session.set('posts',Posts.find({favorites:true},{sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
+          break;
+        case 'tag':
+          var tag = Session.get('tag');
+          Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
+          Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
+          break;
+        case 'category':
+          var category = Session.get('category');
+          Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
+          Session.set('posts',Posts.find({category: category}, {sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
+          break;
+        case 'author':
+          var author = Session.get('author');
+          Session.set('nbPosts',Posts.find({author: author}).fetch().length); 
+          Session.set('posts',Posts.find({author: author}, {sort: {submitted: 1},limit:Session.get("nbPosts")}).fetch().reverse());
+          break;          
+      }       
   }  
 
 
@@ -242,9 +283,13 @@ Template.blogPage.created = function(){
 
     Session.set('filter','');
     Session.set('isReactive',true);
+    Session.set('nbPosts', Posts.find({}).fetch().length);
+    console.log(Session.get('nbPosts'));
 
   //test = new Meteor.Collection('testCollect');
   Session.set('posts',Posts.find({},{sort: {submitted: -1}}).fetch());
+
+
   //posts2 = Posts.find({},{sort: {nb: -1}}).fetch();
   //posts = posts2;
   // Set default author

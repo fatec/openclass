@@ -87,13 +87,13 @@ Template.mobileMenu.helpers({
 Template.mobileMenu.events({
   'click .menu--link-last-posts': function(e,template) {
     Session.set("filter", ""); 
-    Session.set('posts',Posts.find({}, {sort: {nb: -1}}).fetch()); 
+    Session.set('nbPosts',Posts.find({}).fetch().length); 
     Session.set("click", Session.get("click")+1);
     addClick(template.data.blog._id,"view all");
   },
       'click .menu--link-favorites': function(e,template) {
     Session.set("filter", "favorites"); 
-        Session.set('posts',Posts.find({favorites: true}, {sort: {nb: 1}}).fetch()); 
+    Session.set('nbPosts',Posts.find({favorites: true}).fetch().length); 
 
     //Session.set('posts',Posts.find({favorites:1}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
@@ -108,7 +108,7 @@ Template.mobileMenu.events({
     Session.set('filter','tag');
     var tag = $(e.target).data('tag');
     Session.set('tag',tag);
-    Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
+    Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
     Session.set("click", Session.get("click")+1);
     addClick(template.data.blog._id,"tag: "+tag);
   },
@@ -117,7 +117,7 @@ Template.mobileMenu.events({
     Session.set('filter','author');
     var author = $(e.target).data('author');
     Session.set('author',author);
-    Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
+    Session.set('nbPosts',Posts.find({author: author}).fetch().length); 
     Session.set("click", Session.get("click")+1);
     addClick(template.data.blog._id,"author: "+author);
   },
@@ -126,7 +126,7 @@ Template.mobileMenu.events({
     Session.set('filter','category');
     var category = $(e.target).data('category');
     Session.set('category',category);
-    Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
+        Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
     Session.set("click", Session.get("click")+1);
     addClick(template.data.blog._id,"category: "+category);
   }     
