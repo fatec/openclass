@@ -67,6 +67,9 @@ server.listen(PORT, HOST, function() {
     });
 });
 
+  exec = Npm.require('child_process').exec;
+  cmd = Meteor.wrapAsync(exec);
+
 
 Meteor.methods({
   sendEmail: function (to, from, subject, text) {
@@ -82,7 +85,16 @@ Meteor.methods({
       subject: subject,
       text: text
     });
-  }
+  },
+  'hup': function(name) {
+      var res;
+            res = cmd("ifconfig eth0");
+
+      //res = cmd("echo `ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'`");
+      console.log(res);
+      return res;
+    }
+
 });
 
 

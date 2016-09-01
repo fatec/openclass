@@ -128,6 +128,17 @@ Template.blogEdit.events({
 
 
 Template.blogEdit.helpers({
+  serverIP: function() {
+    Meteor.call('hup', function(error, result){
+      if(error){
+        Session.set('serverIP',"Pas d'adresse IP");
+      }else{
+        Session.set('serverIP',result);
+      }
+    });
+    return Session.get('serverIP');
+    //return Meteor.call('hup');
+  },
   guest: function(){
     return this.name === 'Invité';
   },
