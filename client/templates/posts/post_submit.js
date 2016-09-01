@@ -54,7 +54,6 @@ Template.postSubmit.events({
           Meteor.call('tagsInsert', {blogId: blogId, tags: tags} );
         }
         Router.go('blogPage', {_id: post.blogId});
-        Session.set('newPost',true);
       };
     });
 
