@@ -96,6 +96,11 @@ font-family: "Montserrat-Regular";
 	margin: 5px 0 0px 10px;
 }
 
+.menu--tag-disabled span {
+	background-color: #ababab !important;
+
+}
+
 .menu--tags-box {
 	display: inline-block;
 	padding:6px;

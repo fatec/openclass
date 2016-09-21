@@ -24,7 +24,7 @@
 			<span class="menu--title-span">MOTS-CLÉS</span><br /><br />
 			<ul>
 				{{#each tags}}
-					<a class="menu--tags filter-tag {{selectedTagClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> <span class="menu--tags-box" data-tag="{{name}}">{{name}}</span> ({{nRefs}})</a><br />
+					<a class="menu--tags filter-tag {{selectedTagClass}} {{isDisabledClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> <span class="menu--tags-box" data-tag="{{name}}">{{name}}</span> ({{nRefs}})</a><br />
 				{{/each}}
 			</ul>
 		</div>
