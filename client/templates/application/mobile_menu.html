@@ -27,7 +27,7 @@
 		</div>
 			<ul>
 				{{#each tags}}
-					<a class="menu--tags filter-tag {{selectedTagClass}}" data-tag="{{name}}" href="">{{name}} ({{nRefs}})</a><br />
+					<a class="menu--tags filter-tag {{selectedTagClass}} {{isDisabledClass}}" data-tag="{{name}}" href=""><span>{{name}} ({{nRefs}})</span></a><br />
 				{{/each}}
 			</ul>
 	</div>

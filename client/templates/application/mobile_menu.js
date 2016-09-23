@@ -76,6 +76,11 @@ Template.mobileMenu.helpers({
     	else return false;
     	
 	},
+	'isDisabledClass': function() {
+    if (this.nRefs == 0)
+      return "menu--tag-disabled"
+    else return null
+  },
 	authors: function() {
 		return Authors.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});
 	},
