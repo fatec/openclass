@@ -57,11 +57,13 @@ background-color: grey;
 }
 
 .menu--tag-selected {
-background-color: grey;
+color: grey;
 }
 
 .menu--tag-disabled span {
 	color:grey;
+	background-color: #272822;
+
 }
 
 .menu--link-favorites-selected {

@@ -97,7 +97,7 @@ font-family: "Montserrat-Regular";
 }
 
 .menu--tag-disabled span {
-	color:grey;
+	background-color:grey;
 
 }
 
