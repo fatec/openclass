@@ -10,7 +10,13 @@
 	},    
 	optionIsSelected: function(authorName) {
 		return authorName === Session.get(Template.parentData().blog._id).author;
-	}  
+	},
+	guest: function() {
+		if (Session.get(this.blog._id).author == "Invité")
+			return true
+		else
+			return null
+	} 
 });
 
   Template.postsHeader.events({

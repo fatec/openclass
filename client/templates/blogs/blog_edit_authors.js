@@ -4,6 +4,12 @@ Template.blogEditAuthors.helpers({
   },
 	guest: function(){
 		return this.name === 'Invité';
+  },
+  guestWrite: function(){
+    if (this.blog.guestWrite)
+      return "checked"
+    else
+      return null;
   }
 });
 Template.blogEditAuthors.events({
@@ -13,6 +19,14 @@ Template.blogEditAuthors.events({
     var author = Authors.findOne({name: authorName, blogId: currentBlogId});
     if(confirm("Supprimer l'auteur "+authorName+" ?"))
       Authors.remove(author._id);
+  },
+      'click .blog-edit-authors--guest-write-permission-checkbox': function(event, template) {
+        var guestWrite = $(event.target).is(":checked");
+
+    Blogs.update(template.data.blog._id, {$set: {guestWrite:guestWrite}});
+
+
+        //Session.set(template.data.blog._id, {guestWrite: guestWrite});
   },
     'submit form.blog-edit--form-add-author': function(e) {
     e.preventDefault();

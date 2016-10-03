@@ -7,9 +7,15 @@
 	    		</a>
 		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left header--button-back-icon" style=" vertical-align: middle;"></i></a>
  <span class="header--page-name truncate-text">{{blog.title}}</span> <div class="header--blog-code"><b>{{blog.blogCode}}</b></div>
-
-						<a class="posts-header--button-submit" href="{{pathFor 'postSubmit' _id=this.blog._id}}"><i style="vertical-align:middle" class="fa fa-2x fa-plus"></i>
+ 			{{#if guest}}
+ 				{{#if blog.guestWrite}}
+				<a class="posts-header--button-submit" href="{{pathFor 'postSubmit' _id=this.blog._id}}"><i style="vertical-align:middle" class="fa fa-2x fa-plus"></i>
 						</a>
+				{{/if}}
+			{{else}}
+				<a class="posts-header--button-submit" href="{{pathFor 'postSubmit' _id=this.blog._id}}"><i style="vertical-align:middle" class="fa fa-2x fa-plus"></i>
+						</a>
+			{{/if}}
 					{{#if ownBlog}}
 						<a class="header--button-setings" href="{{pathFor 'blogEdit' _id=this.blog._id}}"><i class="fa fa-lg fa-cog" ></i></a>
 					{{/if}}
