@@ -20,6 +20,13 @@ Template.blogEditAuthors.events({
     if(confirm("Supprimer l'auteur "+authorName+" ?"))
       Authors.remove(author._id);
   },
+    'click .blog-edit-authors--button-edit-author': function(event, template) {
+    var currentBlogId = template.data.blog._id;
+    var authorName = $(event.target).data("edit-author");
+    var author = Authors.findOne({name: authorName, blogId: currentBlogId});
+    var authorName = prompt("Modifier l'auteur :",authorName);
+    Authors.update(author._id, {$set: {name:authorName}}, function(error) {console.log(error)});
+  },
       'click .blog-edit-authors--guest-write-permission-checkbox': function(event, template) {
         var guestWrite = $(event.target).is(":checked");
 
