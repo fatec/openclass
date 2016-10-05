@@ -4,7 +4,7 @@ Template.blogEditCategories.helpers({
   }
 });
 Template.blogEditCategories.events({
-  'click .blog-edit-authors--button-delete-category': function(event, template) {
+  'click .blog-edit-categories--button-delete-category': function(event, template) {
 
     var currentBlogId = template.data.blog._id;
     var categoryName = $(event.target).data("delete-name");
@@ -12,6 +12,13 @@ Template.blogEditCategories.events({
     if(confirm("Supprimer la catégorie "+categoryName+" ?"))
       Categories.remove(category._id);
   }, 
+  'click .blog-edit-categories--button-edit-category': function(event, template) {
+    var currentBlogId = template.data.blog._id;
+    var categoryName = $(event.target).data("edit-category");
+    var category = Categories.findOne({name: categoryName, blogId: currentBlogId});
+    var categoryName = prompt("Modifier la catégorie :",categoryName);
+    Categories.update(category._id, {$set: {name:categoryName}}, function(error) {console.log(error)});
+  },
   'submit form.blog-edit--form-add-category': function(e) {
     e.preventDefault();
 
