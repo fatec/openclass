@@ -26,8 +26,11 @@ Template.postItem.helpers({
 
 
     //if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-    if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-      return true;
+    //if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+      if (Session.get(Template.parentData().blog._id).author === this.author && Session.get(Template.parentData().blog._id).author != "Invité")
+        return true;
+      if (Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+        return true;
     },
   tagQuery: function() {
     return "tags="+this.toString();
