@@ -94,7 +94,6 @@ Meteor.methods({
       console.log(res);
       return res;
     }
-
 });
 
 

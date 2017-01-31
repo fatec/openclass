@@ -88,7 +88,7 @@ Template.blogPage.helpers({
 
       if (this.blog !== undefined) {
 
-    if (Session.get('isReactive'))
+    if (!Session.get('isReactive'))
     {
 
       switch (Session.get('filter'))
@@ -113,6 +113,29 @@ Template.blogPage.helpers({
           break;          
       }
     }
+    else {
+          switch (Session.get('filter'))
+      {
+        case '':
+          Session.set('posts',Posts.find({},{sort: {submitted: 1}}).fetch().reverse());
+          break;
+        case 'favorites':
+          Session.set('posts',Posts.find({favorites:true},{sort: {submitted: 1}}).fetch().reverse());
+          break;
+        case 'tag':
+          var tag = Session.get('tag');
+          Session.set('posts',Posts.find({tags: tag}, {sort: {submitted: 1}}).fetch().reverse());
+          break;
+        case 'category':
+          var category = Session.get('category');
+          Session.set('posts',Posts.find({category: category}, {sort: {submitted: 1}}).fetch().reverse());
+          break;
+        case 'author':
+          var author = Session.get('author');
+          Session.set('posts',Posts.find({author: author}, {sort: {submitted: 1}}).fetch().reverse());
+          break;          
+      }  
+    }
     return Session.get('posts');
 
       } else {
@@ -133,7 +156,8 @@ Template.blogPage.helpers({
         return true;
     },
         newMessages2: function() {
-    if (Session.get('isReactive'))
+          console.log(Session.get('isReactive'));
+    if (!Session.get('isReactive'))
     {
       var nbPosts = Session.get('nbPosts');
       var postsReactiveCount;
@@ -274,7 +298,7 @@ Template.blogPage.events({
 Template.blogPage.created = function(){
 
     Session.set('filter','');
-    Session.set('isReactive',true);
+    //Session.set('isReactive',false);
     Session.set('nbPosts', Posts.find({}).fetch().length);
     console.log(Session.get('nbPosts'));
 

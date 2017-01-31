@@ -75,6 +75,21 @@ Template.blogEdit.events({
       Router.go('blogsList');
     }
   },
+    'click .blog-edit--activate-reactiveness': function(e) {
+    e.preventDefault();
+
+    if (Session.get('isReactive'))
+          Session.set('isReactive',false);
+    else
+          Session.set('isReactive',true);
+  },
+      'click .blog-edit--change-password': function(e) {
+    e.preventDefault();
+
+        var oldPassword = prompt("Mot de passe actuel :");
+        var newPassword = prompt("Nouveau mot de passe :");
+      Accounts.changePassword(oldPassword, newPassword, function(error){if(error){alert("Impossible de changer de mot de passe.")}else{alert("Votre mot de passe a été changé.")}});
+  },
   'click .blog-edit--delete-author': function(event, template) {
 
     var currentBlogId = template.data.blog._id;
@@ -154,5 +169,11 @@ Template.blogEdit.helpers({
   isBox: function() {
     // console.log(Meteor.settings.public.isBox);
     return (Meteor.settings.public.isBox === "true")
+  },
+  isReactive: function() {
+    if (Session.get('isReactive'))
+      return "Activé";
+    else
+      return "Désactivé";
   }
 });
