@@ -20,7 +20,7 @@
 				</a>
 				<a class="blog-edit--list-item blog-edit--activate-reactiveness">
 					<div class="blog-edit--list-wrapper-left">
-						<i class="fa fa-key"></i>
+						<i class="fa fa-feed"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Flux continu</div>
@@ -43,6 +43,20 @@
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="font-size:1.1em;text-align:right;">
 							<span class="blog-edit--list-right-title">{{blog.title}}</span>
+						</div>
+					</div>
+				</a>
+				<a class="blog-edit--list-item blog-edit--activate-create-user">
+					<div class="blog-edit--list-wrapper-left">
+						<i class="fa fa-feed"></i>
+					</div>
+					<div class="blog-edit--list-wrapper-center">
+						<div class="blog-edit--list-title">Auteurs libres</div>
+						<div class="blog-edit--list-subtitle">Activez cette fonction pour permettre aux utilisateurs de choisir leur nom d'utilisateur librement.</div>
+					</div>
+					<div class="blog-edit--list-wrapper-right">
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
+							<span class="blog-edit--list-right-title">{{createUserIsAllowed}}</span>
 						</div>
 					</div>
 				</a>
@@ -71,6 +85,20 @@
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;line-height:60px;">
 							<span></span>
+						</div>
+					</div>
+				</a>
+				<a class="blog-edit--list-item blog-edit--activate-comments">
+					<div class="blog-edit--list-wrapper-left">
+						<i class="fa fa-feed"></i>
+					</div>
+					<div class="blog-edit--list-wrapper-center">
+						<div class="blog-edit--list-title">Commentaires</div>
+						<div class="blog-edit--list-subtitle">Activez les commentaires pour permettre aux utilisateurs de commenter les publications.</div>
+					</div>
+					<div class="blog-edit--list-wrapper-right">
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
+							<span class="blog-edit--list-right-title">{{commentsAreAllowed}}</span>
 						</div>
 					</div>
 				</a>

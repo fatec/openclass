@@ -39,6 +39,42 @@
       {{#each tags}}
         <a class="post-item--tags filter-tag {{selectedTagClass}}" data-tag="{{this}}" href="#">{{this}}</a>
       {{/each}}
+      <span style="font-size:0.7em;color:grey;">
+        {{#if likeAlready}}
+          <i style="font-size:1.3em;vertical-align: middle;" class="post-item--already-like fa fa-lg fa-thumbs-up"></i>
+          {{#if othersLikes}}
+          <span style="vertical-align: middle;"> Vous et {{likes-1}} personnes(s)</span>
+          {{else}}
+          <span style="vertical-align: middle;" >Vous aimez</span>
+          {{/if}}
+        {{else}}
+          <i style="font-size:1.3em;vertical-align: middle;" class="post-item--add-like fa fa-lg fa-thumbs-o-up"></i>
+          {{#if likes}}
+            <span style="vertical-align: middle;">{{likes}} personne(s)</span>
+          {{/if}}
+        {{/if}}
+        </span>
   </div>
-
+  {{#if commentsAllowed}}
+  <div class="post-item--comments">
+    {{#each comments}}
+    <div class="post-item--comment"><span class="post-item--comment-author">{{this.author}}</span><span style="font-size:0.7em;color:grey"> ({{livestamp this.submitted}}) </span><span> {{this.text}}</span>
+    <div class="post-item--comment-delete" data-postid="{{../_id}}" data-id="{{this.id}}">x</div>
+    <div style="margin-top:4px;font-size:0.9em;">
+      {{#if likeAlreadyComment}}
+      <i style="font-size:1.3em;vertical-align: middle;color:black" class="post-item--comment-already-like fa fa-lg fa-thumbs-up" data-postid="{{../_id}}" data-id="{{this.id}}"></i>
+      {{else}}
+          <i style="font-size:1.3em;vertical-align: middle;" class="post-item--comment-add-like fa fa-lg fa-thumbs-o-up" data-postid="{{../_id}}" data-id="{{this.id}}"></i>
+      {{/if}}
+      {{#if likesComment}}
+        <span style="vertical-align: middle;">{{likesComment}}</span>
+        {{/if}}
+    </div>
+    </div>
+    {{/each}}
+    <div class="post-item--add-comment">
+      <textarea style="vertical-align:middle" id="comment" class="post-item--add-comment-textarea" name="comment" type="text" data-role="commentinput" placeholder="Ajoutez un commentaire..."></textarea><!-- <span class="post-item-2-add-comment-button">Envoyer</span> -->
+    </div>
+  </div>
+  {{/if}}
 </template>

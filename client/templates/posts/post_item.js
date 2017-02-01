@@ -6,6 +6,10 @@
   }
 
 Template.postItem.helpers({
+  commentsAllowed: function() {
+    if (Template.parentData().blog.commentsAllowed)
+      return true;
+  },
     image: function() {
       return Images.findOne(this.imageId);
   },
@@ -14,7 +18,29 @@ Template.postItem.helpers({
     return this.tags;
   else
     return 0;
-  }, 
+  },
+  likes: function() {
+    return this.likes.length;
+  },
+  likeAlready: function() {
+    var author = Session.get(Template.parentData(1).blog._id).author; 
+    if ($.inArray(author,this.likes) != -1)
+      return true
+  },
+
+  othersLikes: function() {
+    if (this.likes.length > 1)
+      return true;
+  },
+    likesComment: function() {
+    return this.likes.length;
+  },
+    likeAlreadyComment: function() {
+
+    var author = Session.get(Template.parentData(2).blog._id).author; 
+    if ($.inArray(author,this.likes) != -1)
+      return true;
+  },
   favorites: function(){
     console.log(this.favorites);
     return Session.get("favorites");
@@ -40,7 +66,7 @@ Template.postItem.helpers({
   },   
   categoryQuery: function() {
     return "category="+this.category.toString();
-  },     
+  },    
   selectedTagClass: function(){
 
     var tagId = this.toString();
@@ -158,12 +184,93 @@ Template.postItem.events({
       var currentPostId = this._id;
 
       Posts.update(currentPostId, {$set: {favorites: false}});
-  },     
+  },  
+  //     'click .post-item--add-comment-button': function(e) {
+  //     e.preventDefault();
+
+  //     var currentPostId = this._id;
+  //     //var comment = $(e.target).data('category');
+
+  //     var comment = $('#comment').val();
+  //     var author = Session.get(Template.parentData(1).blog._id).author; 
+
+  //     if (comment != "") {
+  //     Posts.update(currentPostId, {$push: {comments: {id:Random.id(),author: author, submitted:Date.now(),text:comment}}});
+  //     $('#comment').val('');
+  //   }
+  // }, 
+      'click .post-item--add-like': function(e) {
+      e.preventDefault();
+
+      var currentPostId = this._id;
+      var author = Session.get(Template.parentData(1).blog._id).author; 
+     
+      Posts.update(currentPostId, {$push: {likes: author}});
+  }, 
+    'click .post-item--comment-add-like': function(e) {
+      e.preventDefault();
+
+
+
+      var currentPostId = $(e.target).data('postid');
+
+      var currentCommentId = $(e.target).data('id');
+      var author = Session.get(Template.parentData(1).blog._id).author; 
+      console.log(currentCommentId);
+            console.log(author);
+
+      Meteor.call('addLikeComment',{currentPostId:currentPostId,currentCommentId:currentCommentId,author,author});
+      //       console.log(currentPostId);
+
+
+      //console.log(Posts.update({_id:currentPostId,"comments.id":currentCommentId}, {$push: {"comments.likes": author}}));
+  }, 
+      'click .post-item--comment-delete': function(e) {
+      e.preventDefault();
+
+      //var currentPostId = $(e.target).data('postId');
+
+      //var currentPostId = $(e.currentTarget).parent()._id;
+
+      var currentPostId = $(e.target).data('postid');
+
+
+      var currentCommentId = $(e.target).data('id');
+
+    if (confirm("Effacer le commentaire ?")) {
+
+      Posts.update(currentPostId, {$pull: {comments: {id:currentCommentId}}}, {multi:true});
+
+}
+  },
+    'keypress .post-item--add-comment-textarea': function (e, template) {
+
+    if (e.which === 13) {
+      e.preventDefault();
+      var currentPostId = this._id;
+
+
+      //var currentPostId = this._id;
+      //var comment = $(e.target).data('category');
+
+      var comment = $(e.target).val();
+      var author = Session.get(Template.parentData(1).blog._id).author; 
+
+      if (comment != "") {
+      console.log(Posts.update(currentPostId, {$push: {comments: {id:Random.id(),author: author, submitted:Date.now(),text:comment}}}));
+      $(e.target).val('');
+    }
+
+
+    }
+  }   
 });
 
 // Show image in a lightbox with magnificPopup plugin
 Template.postItem.rendered = function(){
 
+  // Textarea autosize
+  $('.post-item--add-comment-textarea').autosize();
 
     // Set default author
   if (!Session.get(Template.parentData(1).blog._id))

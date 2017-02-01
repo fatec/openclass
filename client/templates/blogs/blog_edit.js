@@ -83,6 +83,22 @@ Template.blogEdit.events({
     else
           Session.set('isReactive',true);
   },
+    'click .blog-edit--activate-comments': function(e) {
+      e.preventDefault();
+    
+      if (this.blog.commentsAllowed)
+        Blogs.update(this.blog._id, {$set: {commentsAllowed:false}});
+      else
+        Blogs.update(this.blog._id, {$set: {commentsAllowed:true}});
+  },
+      'click .blog-edit--activate-create-user': function(e) {
+      e.preventDefault();
+    
+      if (this.blog.createUserAllowed)
+        Blogs.update(this.blog._id, {$set: {createUserAllowed:false}});
+      else
+        Blogs.update(this.blog._id, {$set: {createUserAllowed:true}});
+  },
       'click .blog-edit--change-password': function(e) {
     e.preventDefault();
 
@@ -175,5 +191,18 @@ Template.blogEdit.helpers({
       return "Activé";
     else
       return "Désactivé";
-  }
+  },
+  commentsAreAllowed: function() {
+    if (this.blog.commentsAllowed)
+      return "Activés";
+    else
+      return "Désactivés";
+  },
+    createUserIsAllowed: function() {
+      if (this.blog.createUserAllowed)
+        return "Activé";
+      else
+        return "Désactivé";
+    }
+
 });

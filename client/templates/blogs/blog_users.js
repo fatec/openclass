@@ -3,6 +3,9 @@ Template.blogUsers.helpers({
   authors: function(){
     return Authors.find({blogId: this.blog._id},{sort: { name: 1 }});  
   },
+  createUserAllowed: function() {
+      return this.blog.createUserAllowed;
+  },
   optionIsSelected: function(authorName) {
     if (Session.get(Template.parentData().blog._id))
     {
@@ -16,6 +19,39 @@ return null;
 });
 
   Template.blogUsers.events({
+  'click .blog-users--button-submit-author': function(event, template) {
+    event.preventDefault();
+    var authorName = $('#authorName').val().trim();
+    //console.log(template.data.blog._id);
+
+    //Session.set(template.data.blog._id, {author: authorName});
+
+    if (authorName != "")
+    {
+      
+      if (Authors.findOne({blogId: template.data.blog._id, name:authorName}))
+      {
+        if(confirm("L'utilisateur "+authorName+" existe déjà. Se connecter avec ce nom ?")){
+          Session.set(template.data.blog._id, {author: authorName});
+  }
+        else
+          return;
+      }
+      else {
+      Meteor.call('authorInsert', authorName, template.data.blog._id );
+    Session.set(template.data.blog._id, {author: authorName});
+
+      }
+
+
+      //var authors = Authors.find({blogId: this.blog._id});
+      //console.log(authors);
+
+
+  }
+
+
+    },
   'click .blog-users--button-select-author': function(event) {
     event.preventDefault();
     // var password = prompt("Entrez le mot de passe pour l'utilisateur "+$(event.target).val());

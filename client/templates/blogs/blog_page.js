@@ -37,8 +37,8 @@ viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum
       Session.set("click", 0);
   };
 
-      scrollUpdate = Meteor.setInterval(updateScroll, 1000);
-      clickUpdate = Meteor.setInterval(updateClick, 1000);
+      //scrollUpdate = Meteor.setInterval(updateScroll, 1000);
+      //clickUpdate = Meteor.setInterval(updateClick, 1000);
 
 
 
