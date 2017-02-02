@@ -351,7 +351,9 @@ cursor: pointer;
 	border:solid 1px #ececec;
 	resize: none;
 	vertical-align:middle;
-	margin-top:5px;}
+	margin-top:5px;
+	font-family: 'Montserrat-Light', sans-serif;
+}
 
 .post-item--add-comment-button {
 color:#265a9f;
