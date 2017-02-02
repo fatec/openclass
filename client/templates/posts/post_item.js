@@ -248,7 +248,7 @@ Template.postItem.events({
       //       console.log(currentPostId);
 
 
-      //console.log(Posts.update({_id:currentPostId,"comments.id":currentCommentId}, {$push: {"comments.likes": author}}));
+      Posts.update({_id:currentPostId,"comments.id":currentCommentId}, {$push: {"comments.likes": author}});
   }, 
       'click .post-item--comment-delete': function(e) {
       e.preventDefault();
@@ -282,7 +282,7 @@ Template.postItem.events({
       var author = Session.get(Template.parentData(1).blog._id).author; 
 
       if (comment != "") {
-      //console.log(Posts.update(currentPostId, {$push: {comments: {id:Random.id(),author: author, submitted:Date.now(),text:comment}}}));
+      Posts.update(currentPostId, {$push: {comments: {id:Random.id(),author: author, submitted:Date.now(),text:comment}}});
       $(e.target).val('');
     }
 
