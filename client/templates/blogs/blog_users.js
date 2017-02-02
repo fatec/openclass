@@ -33,6 +33,8 @@ return null;
       {
         if(confirm("L'utilisateur "+authorName+" existe déjà. Se connecter avec ce nom ?")){
           Session.setPersistent(template.data.blog._id, {author: authorName});
+                    Router.go('blogPage', {_id: template.data.blog._id});
+
   }
         else
           return;
@@ -40,6 +42,7 @@ return null;
       else {
       Meteor.call('authorInsert', authorName, template.data.blog._id );
     Session.setPersistent(template.data.blog._id, {author: authorName});
+          Router.go('blogPage', {_id: template.data.blog._id});
 
       }
 
@@ -52,7 +55,7 @@ return null;
 
 
     },
-  'click .blog-users--button-select-author': function(event) {
+  'click .blog-users--button-select-author': function(event, template) {
     event.preventDefault();
     // var password = prompt("Entrez le mot de passe pour l'utilisateur "+$(event.target).val());
     // if (password == "admin")
@@ -60,6 +63,8 @@ return null;
 
     //console.log(event.currentTarget.dataset.author);
       Session.setPersistent(this.blogId, {author: event.currentTarget.dataset.author});
+                Router.go('blogPage', {_id: template.data.blog._id});
+
     // else
     // {
       //Session.set(this.blog._id, {author: "Invité"}); 
@@ -83,6 +88,8 @@ return null;
       {
         if(confirm("L'utilisateur "+authorName+" existe déjà. Se connecter avec ce nom ?")){
           Session.setPersistent(template.data.blog._id, {author: authorName});
+          Router.go('blogPage', {_id: template.data.blog._id});
+
   }
         else
           return;
@@ -90,6 +97,7 @@ return null;
       else {
       Meteor.call('authorInsert', authorName, template.data.blog._id );
     Session.setPersistent(template.data.blog._id, {author: authorName});
+          Router.go('blogPage', {_id: template.data.blog._id});
 
       }
 
