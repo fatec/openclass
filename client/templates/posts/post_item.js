@@ -1,7 +1,7 @@
   function addClick(blogId,content) {
 
    var authorId = Authors.findOne({name: Session.get(blogId).author});
-   console.log(authorId);
+   //console.log(authorId);
     Authors.update({ _id: authorId._id },{ $push: { clicks: content }})
   }
 
@@ -20,10 +20,14 @@ Template.postItem.helpers({
     return 0;
   },
   likes: function() {
+        if (this.likes) {
     return this.likes.length;
+  }
   },
   likesWithoutMe: function() {
+    if (this.likes) {
     return this.likes.length-1;
+  }
   },
   likeAlready: function() {
     var author = Session.get(Template.parentData(1).blog._id).author; 
@@ -32,11 +36,16 @@ Template.postItem.helpers({
   },
 
   othersLikes: function() {
+        if (this.likes) {
     if (this.likes.length > 1)
       return true;
+  }
   },
     likesComment: function() {
+          if (this.likes) {
+
     return this.likes.length;
+  }
   },
     likeAlreadyComment: function() {
 
@@ -45,7 +54,7 @@ Template.postItem.helpers({
       return true;
   },
   favorites: function(){
-    console.log(this.favorites);
+    //console.log(this.favorites);
     return Session.get("favorites");
     //return this.favorites;
   },    
@@ -232,8 +241,8 @@ Template.postItem.events({
 
       var currentCommentId = $(e.target).data('id');
       var author = Session.get(Template.parentData(1).blog._id).author; 
-      console.log(currentCommentId);
-            console.log(author);
+      //console.log(currentCommentId);
+            //console.log(author);
 
       Meteor.call('addLikeComment',{currentPostId:currentPostId,currentCommentId:currentCommentId,author,author});
       //       console.log(currentPostId);
@@ -273,7 +282,7 @@ Template.postItem.events({
       var author = Session.get(Template.parentData(1).blog._id).author; 
 
       if (comment != "") {
-      console.log(Posts.update(currentPostId, {$push: {comments: {id:Random.id(),author: author, submitted:Date.now(),text:comment}}}));
+      //console.log(Posts.update(currentPostId, {$push: {comments: {id:Random.id(),author: author, submitted:Date.now(),text:comment}}}));
       $(e.target).val('');
     }
 

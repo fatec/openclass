@@ -156,7 +156,7 @@ Template.blogPage.helpers({
         return true;
     },
         newMessages2: function() {
-          console.log(Session.get('isReactive'));
+          //console.log(Session.get('isReactive'));
     if (!Session.get('isReactive'))
     {
       var nbPosts = Session.get('nbPosts');
@@ -220,7 +220,7 @@ Template.blogPage.helpers({
     }
   },
     selectedTagClass: function(){
-      console.log("j'ysui");
+      //console.log("j'ysui");
 
     var tagId = this.toString();
     if (Session.get('filter') === 'tag')
@@ -300,7 +300,7 @@ Template.blogPage.created = function(){
     Session.set('filter','');
     //Session.set('isReactive',false);
     Session.set('nbPosts', Posts.find({}).fetch().length);
-    console.log(Session.get('nbPosts'));
+    //console.log(Session.get('nbPosts'));
 
   //test = new Meteor.Collection('testCollect');
   Session.set('posts',Posts.find({},{sort: {submitted: -1}}).fetch());
