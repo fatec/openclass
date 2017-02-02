@@ -146,9 +146,10 @@ resize: none;
 
 float:right;
 padding: 3px 8px 5px 8px;
-border-top: solid 1px #c5c5c5;
-border-bottom: solid 1px #c5c5c5;
-text-decoration: none;
+/*border-top: solid 1px #c5c5c5;
+*/
+/*border-bottom: solid 1px #c5c5c5;
+*/text-decoration: none;
 font-size: .7em;
 color: grey;
 text-shadow: 0 -1px 0 rgba(255, 255, 255, .3);
@@ -157,27 +158,28 @@ cursor: pointer;
 
 
 .post-item--button:hover {
-	background-color:#dedede;
+	color:black;
 }
 
 .post-item--button:active {
-	border-color:grey;
-	background-color:grey;
-}
+	border-color:black;
+/*	background-color:grey;
+*/}
 
 .post-item--button-edit {
-	border-right:solid 1px #c5c5c5;
-/*	border-left: solid 1px #c5c5c5;
-*/	border-top-right-radius:3px;
-	border-bottom-right-radius:3px;
+/*border-right:solid 1px #c5c5c5;
+border-left: solid 1px #c5c5c5;
+border-top-right-radius:3px;
+	
+border-bottom-right-radius:3px;*/
 }
 
 .post-item--button-add-favorite {
-	border-left: solid 1px #c5c5c5;
+/*	border-left: solid 1px #c5c5c5;
 		border-right: solid 1px #c5c5c5;
 
 	border-top-left-radius:3px;
-	border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;*/
 }
 
 .post-item--button-remove-favorite {
@@ -189,10 +191,9 @@ cursor: pointer;
 }
 
 .post-item--button-delete {
-	border-left:solid 1px #c5c5c5;
-/*	border-right:solid 1px #c5c5c5;
-*/	border-top-left-radius:3px;
-	border-bottom-left-radius:3px;
+/*	border-left:solid 1px #c5c5c5;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;*/
 }
 
 .post-item--author {
@@ -350,7 +351,7 @@ cursor: pointer;
 	border:solid 1px #ececec;
 	resize: none;
 	vertical-align:middle;
-}
+	margin-top:5px;}
 
 .post-item--add-comment-button {
 color:#265a9f;
