@@ -39,16 +39,16 @@
       {{#each tags}}
         <a class="post-item--tags filter-tag {{selectedTagClass}}" data-tag="{{this}}" href="#">{{this}}</a>
       {{/each}}
-      <span style="font-size:0.7em;color:grey;">
+      <span style="display:block;font-size:0.8em;color:grey;margin-top:10px;margin-bottom:8px;">
         {{#if likeAlready}}
-          <i style="font-size:1.3em;vertical-align: middle;" class="post-item--already-like fa fa-lg fa-thumbs-up"></i>
+          <i style="font-size:1.4em;vertical-align: middle;" class="post-item--already-like fa fa-lg fa-thumbs-up"></i>
           {{#if othersLikes}}
-          <span style="vertical-align: middle;"> Vous et {{likes-1}} personnes(s)</span>
+          <span style="vertical-align: middle;"> Vous et {{likesWithoutMe}} personnes(s)</span>
           {{else}}
           <span style="vertical-align: middle;" >Vous aimez</span>
           {{/if}}
         {{else}}
-          <i style="font-size:1.3em;vertical-align: middle;" class="post-item--add-like fa fa-lg fa-thumbs-o-up"></i>
+          <i style="font-size:1.4em;vertical-align: middle;" class="post-item--add-like fa fa-lg fa-thumbs-o-up"></i>
           {{#if likes}}
             <span style="vertical-align: middle;">{{likes}} personne(s)</span>
           {{/if}}
@@ -58,21 +58,22 @@
   {{#if commentsAllowed}}
   <div class="post-item--comments">
     {{#each comments}}
-    <div class="post-item--comment"><span class="post-item--comment-author">{{this.author}}</span><span style="font-size:0.7em;color:grey"> ({{livestamp this.submitted}}) </span><span> {{this.text}}</span>
-    <div class="post-item--comment-delete" data-postid="{{../_id}}" data-id="{{this.id}}">x</div>
+    <div class="post-item--comment"><span class="post-item--comment-author">{{this.author}} </span><span style="font-size:0.7em;color:grey">• {{livestamp this.submitted}} </span>    <div class="post-item--comment-delete" data-postid="{{../_id}}" data-id="{{this.id}}">x</div>
+<p> {{this.text}}</p>
     <div style="margin-top:4px;font-size:0.9em;">
       {{#if likeAlreadyComment}}
-      <i style="font-size:1.3em;vertical-align: middle;color:black" class="post-item--comment-already-like fa fa-lg fa-thumbs-up" data-postid="{{../_id}}" data-id="{{this.id}}"></i>
+      <i style="font-size:1.3em;vertical-align: middle;color:#5996b8" class="post-item--comment-already-like fa fa-lg fa-thumbs-up" data-postid="{{../_id}}" data-id="{{this.id}}"></i>
       {{else}}
           <i style="font-size:1.3em;vertical-align: middle;" class="post-item--comment-add-like fa fa-lg fa-thumbs-o-up" data-postid="{{../_id}}" data-id="{{this.id}}"></i>
       {{/if}}
       {{#if likesComment}}
-        <span style="vertical-align: middle;">{{likesComment}}</span>
+        <span style="vertical-align: middle;color:grey">{{likesComment}}</span>
         {{/if}}
     </div>
     </div>
     {{/each}}
     <div class="post-item--add-comment">
+      <span class="post-item--show-comment-input">Ajouter un commentaire...</span>
       <textarea style="vertical-align:middle" id="comment" class="post-item--add-comment-textarea" name="comment" type="text" data-role="commentinput" placeholder="Ajoutez un commentaire..."></textarea><!-- <span class="post-item-2-add-comment-button">Envoyer</span> -->
     </div>
   </div>

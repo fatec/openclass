@@ -22,6 +22,9 @@ Template.postItem.helpers({
   likes: function() {
     return this.likes.length;
   },
+  likesWithoutMe: function() {
+    return this.likes.length-1;
+  },
   likeAlready: function() {
     var author = Session.get(Template.parentData(1).blog._id).author; 
     if ($.inArray(author,this.likes) != -1)
@@ -207,6 +210,15 @@ Template.postItem.events({
      
       Posts.update(currentPostId, {$push: {likes: author}});
   }, 
+  'click .post-item--show-comment-input': function(e) {
+      e.preventDefault();
+
+      $(e.target).parent().find('textarea').show();
+      $(e.target).hide();
+// $(event.target).closest('element-row').find('.title')
+//       data('postid');
+
+  },
     'click .post-item--comment-add-like': function(e) {
       e.preventDefault();
 

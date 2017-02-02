@@ -138,8 +138,8 @@ resize: none;
 	border-radius: 1px 1px 0px 0px;	
 
 	background-color: white;
-	width:100%;
-}
+/*	width:100%;
+*/}
 
 
 .post-item--button {	
@@ -309,10 +309,11 @@ width:100%;
 	border-left: solid 1px #ececec;
 	border-bottom: solid 1px #ececec;
 
-	font-size:0.7em;
+	font-size:0.8em;
+	line-height: 1.2em;
 		background-color: #f6f7f9;
-width:100%;
-padding:6px;
+/*width:100%;
+*/padding:6px;
 }
 
 .post-item--comment {
@@ -327,8 +328,21 @@ padding:6px;
 
 
 .post-item--add-comment {
-padding:3px;
+padding:4px;
+border-top:solid 1px #dbdbdd;
 }
+
+.post-item--show-comment-input {
+display:none;
+color:#5996b8;
+cursor: pointer;
+
+}
+
+.post-item--show-comment-input:hover {
+	color:#3e6880;
+}
+
 .post-item--add-comment-textarea {
 	height:15px;
 	width:90%;

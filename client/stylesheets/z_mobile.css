@@ -81,8 +81,8 @@ background-color: grey;
 }
 
 .post-item {
-	width:100%;
-	margin-top:10px;
+/*	width:100%;
+*/	margin-top:10px;
 		margin-bottom :12px;
 
 }
@@ -124,6 +124,14 @@ width: 60px;
 .post-item--image{
 	width:100%;
 	max-height:100%;
+}
+
+.post-item--show-comment-input {
+	display:block;
+}
+
+.post-item--add-comment-textarea {
+	display:none;
 }
 
 .post-edit--image{
