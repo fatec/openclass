@@ -66,5 +66,41 @@ return null;
       //console.log($('.header--select-author option[value="Invité"]'));
       //$('.header--select-author option[value="Invité"]').prop('selected', true);
     //}
-  } 
+  },
+      'keypress .blog-users--input-choose-author': function (e, template) {
+
+    if (e.which === 13) {
+      e.preventDefault();
+    var authorName = $('#authorName').val().trim();
+    //console.log(template.data.blog._id);
+
+    //Session.set(template.data.blog._id, {author: authorName});
+
+    if (authorName != "")
+    {
+      
+      if (Authors.findOne({blogId: template.data.blog._id, name:authorName}))
+      {
+        if(confirm("L'utilisateur "+authorName+" existe déjà. Se connecter avec ce nom ?")){
+          Session.set(template.data.blog._id, {author: authorName});
+  }
+        else
+          return;
+      }
+      else {
+      Meteor.call('authorInsert', authorName, template.data.blog._id );
+    Session.set(template.data.blog._id, {author: authorName});
+
+      }
+
+
+      //var authors = Authors.find({blogId: this.blog._id});
+      //console.log(authors);
+
+
+  }
+
+
+    }
+  }   
 });
