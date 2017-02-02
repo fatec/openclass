@@ -353,6 +353,7 @@ cursor: pointer;
 	vertical-align:middle;
 	margin-top:5px;
 	font-family: 'Montserrat-Light', sans-serif;
+	font-size:1em;
 }
 
 .post-item--add-comment-button {
