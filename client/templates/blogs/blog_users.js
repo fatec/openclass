@@ -32,14 +32,14 @@ return null;
       if (Authors.findOne({blogId: template.data.blog._id, name:authorName}))
       {
         if(confirm("L'utilisateur "+authorName+" existe déjà. Se connecter avec ce nom ?")){
-          Session.set(template.data.blog._id, {author: authorName});
+          Session.setPersistent(template.data.blog._id, {author: authorName});
   }
         else
           return;
       }
       else {
       Meteor.call('authorInsert', authorName, template.data.blog._id );
-    Session.set(template.data.blog._id, {author: authorName});
+    Session.setPersistent(template.data.blog._id, {author: authorName});
 
       }
 
@@ -59,7 +59,7 @@ return null;
     //console.log(this.blogId);
 
     //console.log(event.currentTarget.dataset.author);
-      Session.set(this.blogId, {author: event.currentTarget.dataset.author});
+      Session.setPersistent(this.blogId, {author: event.currentTarget.dataset.author});
     // else
     // {
       //Session.set(this.blog._id, {author: "Invité"}); 
@@ -82,14 +82,14 @@ return null;
       if (Authors.findOne({blogId: template.data.blog._id, name:authorName}))
       {
         if(confirm("L'utilisateur "+authorName+" existe déjà. Se connecter avec ce nom ?")){
-          Session.set(template.data.blog._id, {author: authorName});
+          Session.setPersistent(template.data.blog._id, {author: authorName});
   }
         else
           return;
       }
       else {
       Meteor.call('authorInsert', authorName, template.data.blog._id );
-    Session.set(template.data.blog._id, {author: authorName});
+    Session.setPersistent(template.data.blog._id, {author: authorName});
 
       }
 
