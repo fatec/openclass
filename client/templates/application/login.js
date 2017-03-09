@@ -35,7 +35,7 @@ Template.login.events({
 
     //Accounts.emailTemplates.from = "AwesomeSite Admin <accounts@example.com>";
 
-    Accounts.forgotPassword({email:email});
+    Accounts.forgotPassword({email:email},function(err){console.log(err)});
     alert("Un e-mail a été envoyé à l'adresse "+email+" comprenant un lien pour réinitialiser votre mot de passe.")    
 
     }
