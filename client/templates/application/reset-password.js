@@ -6,7 +6,7 @@ Template.resetPassword.events({
         var password = e.target.password.value;
         console.log(Accounts._resetPasswordToken);
 
-         Accounts.resetPassword(Accounts._resetPasswordToken, password,function(){Router.go('blogsList');});
+         Accounts.resetPassword(Accounts._resetPasswordToken, password,function(){alert("Le mot de passe a été changé.");Router.go('blogsList');});
        
     },
     'click .reset-password--button-submit': function(e) {
