@@ -310,6 +310,9 @@ Template.postItem.rendered = function(){
     });
   });
 
+    $('.post-item--text').linkify();
+
+
 
 }
 
