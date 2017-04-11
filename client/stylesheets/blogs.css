@@ -19,6 +19,13 @@ Authors : Vincent Widmer & Stéphane Morand;
 	background-color: white;
 	text-align:left;
 }*/
+.blog-edit--list p {
+margin-top: 20px;
+margin-bottom: 10px;
+margin-left:20px;
+color:grey;
+font-size:1.1em;
+}
 
 .blog-edit--list-item {
 height:60px;
@@ -77,6 +84,7 @@ background-color:#ddd;
 
 .blog-edit--list-wrapper-right {
 display: table-cell;
+vertical-align: middle;
 
 }
 

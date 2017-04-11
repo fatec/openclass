@@ -3,7 +3,9 @@
 	    <div class="blog-page--wrapper">
 			<div class="page-title">Paramètres</div>
 
-			<div class="blog-edit--list">
+<!-- 			<div class="blog-edit-2-list">
+ -->			<ul class="blog-edit--list">
+ <p>Général</p>
 				<a class="blog-edit--list-item">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-key"></i>
@@ -14,21 +16,7 @@
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
-							<span class="blog-edit--list-right-title">{{blog.blogCode}}</span>
-						</div>
-					</div>
-				</a>
-				<a class="blog-edit--list-item blog-edit--activate-reactiveness">
-					<div class="blog-edit--list-wrapper-left">
-						<i class="fa fa-feed"></i>
-					</div>
-					<div class="blog-edit--list-wrapper-center">
-						<div class="blog-edit--list-title">Flux continu</div>
-						<div class="blog-edit--list-subtitle">Activez le flux continu pour afficher les nouvelles publications en temps réel.</div>
-					</div>
-					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
-							<span class="blog-edit--list-right-title">{{isReactive}}</span>
+							<span class="blog-edit--list-right-title"><em>{{blog.blogCode}}</em></span>
 						</div>
 					</div>
 				</a>
@@ -46,6 +34,73 @@
 						</div>
 					</div>
 				</a>
+								<a class="blog-edit--list-item blog-edit--delete-button">
+					<div class="blog-edit--list-wrapper-left">
+						<i class="fa fa-trash-o"></i>
+					</div>
+					<div class="blog-edit--list-wrapper-center">
+						<div class="blog-edit--list-title">Supprimer cet espace</div>
+						<div class="blog-edit--list-subtitle">Supprimer définitivement cet espace et toutes ses publications.</div>
+					</div>
+					<div class="blog-edit--list-wrapper-right">
+						<div class="blog-edit--chapter-wrapper2" style="font-size:1.1em;text-align:right;line-height:60px;">
+							<span></span>
+						</div>
+					</div>
+				</a>
+				</ul>
+				<ul class="blog-edit--list">
+				<p>Contenu</p>
+								<a class="blog-edit--list-item blog-edit--activate-reactiveness">
+					<div class="blog-edit--list-wrapper-left">
+						<i class="fa fa-feed"></i>
+					</div>
+					<div class="blog-edit--list-wrapper-center">
+						<div class="blog-edit--list-title">Flux continu</div>
+						<div class="blog-edit--list-subtitle">Activez le flux continu pour afficher les nouvelles publications en temps réel.</div>
+					</div>
+					<div class="blog-edit--list-wrapper-right">
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
+							<span class="blog-edit--list-right-title">{{#if isReactive}}<i class="fa fa-check-square-o" aria-hidden="true"></i>
+{{else}}<i class="fa fa-square-o" aria-hidden="true"></i>{{/if}}</span>
+						</div>
+					</div>
+				</a>
+								<a class="blog-edit--list-item" href="{{pathFor 'blogEditCategories' _id=blog._id}}">
+					<div class="blog-edit--list-wrapper-left">
+						<i class="fa fa-list"></i>
+					</div>
+					<div class="blog-edit--list-wrapper-center">
+						<div class="blog-edit--list-title">Gérer les catégories</div>
+						<div class="blog-edit--list-subtitle">Ajouter et supprimer des catégories.</div>
+					</div>
+					<div class="blog-edit--list-wrapper-right">
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;line-height:60px;">
+							<span></span>
+						</div>
+					</div>
+				</a>
+				</ul>
+				<ul class="blog-edit--list">
+
+				<a class="blog-edit--list-item blog-edit--activate-comments">
+					<div class="blog-edit--list-wrapper-left">
+						<i class="fa fa-commenting-o"></i>
+					</div>
+					<div class="blog-edit--list-wrapper-center">
+						<div class="blog-edit--list-title">Commentaires</div>
+						<div class="blog-edit--list-subtitle">Activez les commentaires pour permettre aux utilisateurs de commenter les publications.</div>
+					</div>
+					<div class="blog-edit--list-wrapper-right">
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
+							<span class="blog-edit--list-right-title">{{#if commentsAreAllowed}}<i class="fa fa-check-square-o" aria-hidden="true"></i>
+{{else}}<i class="fa fa-square-o" aria-hidden="true"></i>{{/if}}</span>
+						</div>
+					</div>
+				</a>
+				</ul>
+				<ul class="blog-edit--list">
+				<p>Utilisateurs</p>
 				<a class="blog-edit--list-item blog-edit--activate-create-user">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-users"></i>
@@ -56,7 +111,8 @@
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
-							<span class="blog-edit--list-right-title">{{createUserIsAllowed}}</span>
+							<span class="blog-edit--list-right-title">{{#if createUserIsAllowed}}<i class="fa fa-check-square-o" aria-hidden="true"></i>
+{{else}}<i class="fa fa-square-o" aria-hidden="true"></i>{{/if}}</span>
 						</div>
 					</div>
 				</a>
@@ -71,34 +127,6 @@
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="font-size:1.1em;text-align:right;">
 							<span></span>
-						</div>
-					</div>
-				</a>
-				<a class="blog-edit--list-item" href="{{pathFor 'blogEditCategories' _id=blog._id}}">
-					<div class="blog-edit--list-wrapper-left">
-						<i class="fa fa-list"></i>
-					</div>
-					<div class="blog-edit--list-wrapper-center">
-						<div class="blog-edit--list-title">Gérer les catégories</div>
-						<div class="blog-edit--list-subtitle">Ajouter et supprimer des catégories.</div>
-					</div>
-					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2" style="text-align:right;line-height:60px;">
-							<span></span>
-						</div>
-					</div>
-				</a>
-				<a class="blog-edit--list-item blog-edit--activate-comments">
-					<div class="blog-edit--list-wrapper-left">
-						<i class="fa fa-commenting-o"></i>
-					</div>
-					<div class="blog-edit--list-wrapper-center">
-						<div class="blog-edit--list-title">Commentaires</div>
-						<div class="blog-edit--list-subtitle">Activez les commentaires pour permettre aux utilisateurs de commenter les publications.</div>
-					</div>
-					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
-							<span class="blog-edit--list-right-title">{{commentsAreAllowed}}</span>
 						</div>
 					</div>
 				</a>
@@ -118,20 +146,10 @@
 					</div>
 				</a>
 				{{/if}} -->
-				<a class="blog-edit--list-item blog-edit--delete-button">
-					<div class="blog-edit--list-wrapper-left">
-						<i class="fa fa-trash-o"></i>
-					</div>
-					<div class="blog-edit--list-wrapper-center">
-						<div class="blog-edit--list-title">Supprimer cet espace</div>
-						<div class="blog-edit--list-subtitle">Supprimer définitivement cet espace et toutes ses publications.</div>
-					</div>
-					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2" style="font-size:1.1em;text-align:right;line-height:60px;">
-							<span></span>
-						</div>
-					</div>
-				</a>	
+				</ul>
+				<ul class="blog-edit--list">
+				<p>Box</p>
+	
 				<a class="blog-edit--list-item">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-plug"></i>
@@ -146,6 +164,10 @@
 						</div>
 					</div>
 				</a>
+				</ul>
+								<ul class="blog-edit--list">
+								<p>Votre compte</p>
+
 				<a class="blog-edit--list-item blog-edit--change-password">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-key"></i>
@@ -159,8 +181,9 @@
 							<span class="blog-edit--list-right-title"></span>
 						</div>
 					</div>
-				</a>										
-			</div>
-		</div>
+				</a>	
+				</ul>									
+<!-- 			</div>
+ -->		</div>
 	</div>
 </template>

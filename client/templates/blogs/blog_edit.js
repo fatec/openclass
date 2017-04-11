@@ -187,22 +187,13 @@ Template.blogEdit.helpers({
     return (Meteor.settings.public.isBox === "true")
   },
   isReactive: function() {
-    if (Session.get('isReactive'))
-      return "Activé";
-    else
-      return "Désactivé";
+    return Session.get('isReactive')
   },
   commentsAreAllowed: function() {
-    if (this.blog.commentsAllowed)
-      return "Activés";
-    else
-      return "Désactivés";
+    return this.blog.commentsAllowed
   },
     createUserIsAllowed: function() {
-      if (this.blog.createUserAllowed)
-        return "Activé";
-      else
-        return "Désactivé";
+      return this.blog.createUserAllowed
     }
 
 });
