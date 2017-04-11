@@ -2,7 +2,7 @@
   <div class="blog-page">
     <div class="blog-page--wrapper">
       <div class="blog-page--menu-wrapper">{{> desktopMenu}}</div>
-      <div class="blog-page--main">  
+      <div class="blog-page--main"> 
         {{#if newMessages2}}
           <div class="blog-page--notification-panel blog-page--refresh">
             <a href="#">{{newMessages2}} nouveau(x) message(s)</a>
@@ -32,6 +32,7 @@
                   </span>
                   </div>
                 </div>
+               {{/if}}
                 {{/if}}
                 <div class="blog-page--no-post-message">
               <div style="background-color:white;border:solid 1px #ddd;border-radius:4px;padding:15px;">
@@ -39,7 +40,6 @@
                 </div>
 
               </div>
-            {{/if}}
         {{/if}}
       </div>
     </div>
