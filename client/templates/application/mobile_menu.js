@@ -8,7 +8,8 @@
 
 Template.mobileMenu.helpers({
 	postCount: function() { // return the number of posts
-		return this.posts.count();
+		if (this.posts)
+			return this.posts.count();
 	},
 	favoritesCount: function() {
 		return Posts.find({favorites: true}).fetch().length;

@@ -207,10 +207,12 @@ if (Session.get("imageId"))
   // };
 
     // Set default author
+    if (Template.parentData(2)) {
   if (!Session.get(Template.parentData(2).blog._id))
   {
     Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
   }
+}
 
   // Textarea autosize
   $('.post-submit--textarea').autosize();
