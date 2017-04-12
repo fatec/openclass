@@ -184,6 +184,14 @@ font-size:1.3em;
 width: 95%;
 }
 
+.blog-edit--subtitle {
+	width:95%;
+}
+
+.blog-edit--description {
+	width:95%;
+}
+
 .blog-edit--list-wrapper-left {
 width:10%;
 }

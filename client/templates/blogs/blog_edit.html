@@ -5,14 +5,13 @@
 
 <!-- 			<div class="blog-edit-2-list">
  -->			<ul class="blog-edit--list">
- <p>Général</p>
+ <p class="blog-edit--subtitle">GENERAL</p>
 				<a class="blog-edit--list-item">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-key"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Code d'accès</div>
-						<div class="blog-edit--list-subtitle">Transmettez le code d'accès à vos élèves pour qu'ils  rejoignent cet espace.</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
@@ -20,17 +19,20 @@
 						</div>
 					</div>
 				</a>
+ <p class="blog-edit--description">Transmettez le code d'accès à vos élèves pour qu'ils  rejoignent cet espace.</p>
+				</ul>
+				 			<ul class="blog-edit--list">
+
 				<a class="blog-edit--list-item blog-edit--rename-button">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-pencil"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Renommer cet espace</div>
-						<div class="blog-edit--list-subtitle"></div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="font-size:1.1em;text-align:right;">
-							<span class="blog-edit--list-right-title">{{blog.title}}</span>
+							<span class="blog-edit--list-right-title"><em>{{blog.title}}</em></span>
 						</div>
 					</div>
 				</a>
@@ -40,7 +42,6 @@
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Supprimer cet espace</div>
-						<div class="blog-edit--list-subtitle">Supprimer définitivement cet espace et toutes ses publications.</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="font-size:1.1em;text-align:right;line-height:60px;">
@@ -50,86 +51,88 @@
 				</a>
 				</ul>
 				<ul class="blog-edit--list">
-				<p>Contenu</p>
+				<p class="blog-edit--subtitle">CONTENU</p>
 								<a class="blog-edit--list-item blog-edit--activate-reactiveness">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-feed"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Flux continu</div>
-						<div class="blog-edit--list-subtitle">Activez le flux continu pour afficher les nouvelles publications en temps réel.</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
-							<span class="blog-edit--list-right-title">{{#if isReactive}}<i class="fa fa-check-square-o" aria-hidden="true"></i>
-{{else}}<i class="fa fa-square-o" aria-hidden="true"></i>{{/if}}</span>
+							<span class="blog-edit--list-right-title">{{#if isReactive}}<i class="fa fa-toggle-on" style="font-size:1.5em;color:green;" aria-hidden="true"></i>
+{{else}}<i class="fa fa-toggle-off" style="font-size:1.5em;" aria-hidden="true"></i>
+{{/if}}</span>
 						</div>
 					</div>
 				</a>
+				 <p class="blog-edit--description">En activant le flux continu, les nouvelles publications s'affichent en temps réel.</p>
+				 </ul>
+				 				<ul class="blog-edit--list">
+
+
 								<a class="blog-edit--list-item" href="{{pathFor 'blogEditCategories' _id=blog._id}}">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-list"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Gérer les catégories</div>
-						<div class="blog-edit--list-subtitle">Ajouter et supprimer des catégories.</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2" style="text-align:right;line-height:60px;">
-							<span></span>
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
+							<span class="blog-edit--list-right-title"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 						</div>
 					</div>
 				</a>
-				</ul>
-				<ul class="blog-edit--list">
 
 				<a class="blog-edit--list-item blog-edit--activate-comments">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-commenting-o"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
-						<div class="blog-edit--list-title">Commentaires</div>
-						<div class="blog-edit--list-subtitle">Activez les commentaires pour permettre aux utilisateurs de commenter les publications.</div>
+						<div class="blog-edit--list-title">Autoriser les commentaires</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
-							<span class="blog-edit--list-right-title">{{#if commentsAreAllowed}}<i class="fa fa-check-square-o" aria-hidden="true"></i>
-{{else}}<i class="fa fa-square-o" aria-hidden="true"></i>{{/if}}</span>
+							<span class="blog-edit--list-right-title">{{#if commentsAreAllowed}}<i class="fa fa-toggle-on" style="font-size:1.5em;color:green;" aria-hidden="true"></i>
+{{else}}<i class="fa fa-toggle-off" style="font-size:1.5em;" aria-hidden="true"></i>{{/if}}</span>
 						</div>
 					</div>
 				</a>
 				</ul>
 				<ul class="blog-edit--list">
-				<p>Utilisateurs</p>
-				<a class="blog-edit--list-item blog-edit--activate-create-user">
-					<div class="blog-edit--list-wrapper-left">
-						<i class="fa fa-users"></i>
-					</div>
-					<div class="blog-edit--list-wrapper-center">
-						<div class="blog-edit--list-title">Auteurs libres</div>
-						<div class="blog-edit--list-subtitle">Activez cette fonction pour permettre aux utilisateurs de choisir leur nom d'utilisateur librement.</div>
-					</div>
-					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
-							<span class="blog-edit--list-right-title">{{#if createUserIsAllowed}}<i class="fa fa-check-square-o" aria-hidden="true"></i>
-{{else}}<i class="fa fa-square-o" aria-hidden="true"></i>{{/if}}</span>
-						</div>
-					</div>
-				</a>
+				<p class="blog-edit--subtitle">UTILISATEURS</p>
+
 				<a class="blog-edit--list-item" href="{{pathFor 'blogEditAuthors' _id=blog._id}}">
 					<div class="blog-edit--list-wrapper-left">
 						<i class="fa fa-users"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Gérer les auteurs</div>
-						<div class="blog-edit--list-subtitle">Ajouter et supprimer des auteurs.</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2" style="font-size:1.1em;text-align:right;">
-							<span></span>
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
+							<span class="blog-edit--list-right-title"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+						</div>
+					</div>
+				</a>				
+				<a class="blog-edit--list-item blog-edit--activate-create-user">
+					<div class="blog-edit--list-wrapper-left">
+						<i class="fa fa-users"></i>
+					</div>
+					<div class="blog-edit--list-wrapper-center">
+						<div class="blog-edit--list-title">Auteurs libres</div>
+					</div>
+					<div class="blog-edit--list-wrapper-right">
+						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
+							<span class="blog-edit--list-right-title">{{#if createUserIsAllowed}}<i class="fa fa-toggle-on" style="font-size:1.5em;color:green;" aria-hidden="true"></i>
+{{else}}<i class="fa fa-toggle-off" style="font-size:1.5em;" aria-hidden="true"></i>{{/if}}</span>
 						</div>
 					</div>
 				</a>
+				<p class="blog-edit--description">En activant "Auteurs libres", les utilisateurs entrent eux-même leur nom d'utilisateur à la première connexion.</p>
+
 <!-- 				{{#if isBox}}	
 				<a class="blog-edit-2-list-item blog-edit-2-sync-button">
 					<div class="blog-edit-2-list-wrapper-left">
@@ -147,8 +150,9 @@
 				</a>
 				{{/if}} -->
 				</ul>
+				{{#if isBox}}
 				<ul class="blog-edit--list">
-				<p>Box</p>
+				<p class="blog-edit--subtitle">BOX</p>
 	
 				<a class="blog-edit--list-item">
 					<div class="blog-edit--list-wrapper-left">
@@ -156,7 +160,6 @@
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Adresse IP :</div>
-						<div class="blog-edit--list-subtitle">Branchez la beekee box à l'aide d'un cable ethernet pour y accéder sans utiliser le WiFi.</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
@@ -164,9 +167,12 @@
 						</div>
 					</div>
 				</a>
+								<p class="blog-edit--description">Branchez la beekee box à l'aide d'un cable ethernet pour y accéder sans utiliser le WiFi.</p>
+
 				</ul>
+				{{/if}}
 								<ul class="blog-edit--list">
-								<p>Votre compte</p>
+				<p class="blog-edit--subtitle">VOTRE COMPTE</p>
 
 				<a class="blog-edit--list-item blog-edit--change-password">
 					<div class="blog-edit--list-wrapper-left">
@@ -174,7 +180,6 @@
 					</div>
 					<div class="blog-edit--list-wrapper-center">
 						<div class="blog-edit--list-title">Changer mot de passe</div>
-						<div class="blog-edit--list-subtitle">Changez le mot de passe de votre compte.</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
 						<div class="blog-edit--chapter-wrapper2" style="text-align:right;">
@@ -182,6 +187,8 @@
 						</div>
 					</div>
 				</a>	
+				<p class="blog-edit--description">Modifier le mot de passe de votre compte.</p>
+
 				</ul>									
 <!-- 			</div>
  -->		</div>

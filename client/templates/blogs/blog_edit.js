@@ -66,7 +66,7 @@ Template.blogEdit.events({
   'click .blog-edit--delete-button': function(e) {
     e.preventDefault();
 
-    if (confirm("Effacer cet espace ?")) {
+    if (confirm("Effacer définitivement cet espace ?")) {
       var currentBlogId = this.blog._id;
       Blogs.remove(currentBlogId);
       // Effacer les posts qui correspondent a ce blogId
