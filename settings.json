@@ -3,6 +3,9 @@
   "adminPassword": "admin",
    "public" : {
   		"isBox": "false",
-  		 "prefix": "W1"
+  		 "prefix": "W1",
+  		 "ga": {
+            "id": "UA-XXXX-Y"
+        }
    }
 }
