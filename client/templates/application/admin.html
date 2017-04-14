@@ -13,7 +13,7 @@
     {{#each user}}
     <tr>
     <td>{{emails.[0].address}}</td>
-        <td>{{createdAt}}</td>
+        <td>{{userCreatedAt}}</td>
     <td>{{#if this.status.lastLogin.date}}{{livestamp this.status.lastLogin.date}}{{/if}}</td>
 
     <td>{{#if isOnline}}<span style="color:green">Connecté</span>{{else}}<span style="color:grey;">Déconnecté</span>{{/if}}</td>

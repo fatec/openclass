@@ -32,6 +32,9 @@ Template.admin.helpers({
   isOnline: function() {
   if (this.status.online)
     return true
+  },
+  userCreatedAt: function() {
+    return moment(this.createdAt).format("DD-MM-YYYY HH:mm");
   }
 });
 
