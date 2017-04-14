@@ -34,7 +34,7 @@ Template.admin.helpers({
     return true
   },
   userCreatedAt: function() {
-    return moment(this.createdAt).format("DD-MM-YYYY HH:mm");
+    return moment(this.createdAt).format("DD/MM/YYYY HH:mm");
   }
 });
 
