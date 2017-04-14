@@ -35,3 +35,7 @@ Meteor.publish("tags", function(blogId){ return Tags.find({blogId: blogId}); });
 Meteor.publish("authors", function(blogId){ return Authors.find({blogId: blogId}); });
 Meteor.publish("categories", function(blogId){ return Categories.find({blogId: blogId}); });
 Meteor.publish("codes", function(){ return Codes.find()});
+
+// Meteor.publish("userStatus", function() {
+//   return Meteor.users.find({ "status.online": true });
+// });

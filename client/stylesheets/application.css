@@ -3,6 +3,36 @@ application.css
 Authors : Vincent Widmer & Stéphane Morand;
 */
 
+/* ----- admin template ----- */
+
+.admin table {
+width:100%;
+margin-bottom:15px;
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    font-size:0.9em;
+}
+.admin caption {
+    font-size:16px;
+color:#252525;
+}
+    .admin td, .admin th {
+        border:solid 1px #46AECB;
+        padding:5px;
+        text-align: center;
+    }
+    .admin th {
+        background-color: #46AECB;
+        color:white;
+font-size:12px;
+    }
+    .admin td {
+/*      background-color: #D5EBF2;
+*/  }
+.admin tr:nth-child(odd) {
+    background-color: #D5EBF2;
+}
+
+
 /* ----- login template ----- */
 
 .login--wrapper {

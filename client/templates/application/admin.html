@@ -2,12 +2,26 @@
     <div class="admin">
         <div class="page-title">Administration</div>
         <div style="text-align:center;padding-top:20px;">
-        <h1 style="font-size:1.3em;">Utilisateurs existants :</h1><br />
-        <ul style="line-height:1.5em">
-         {{#each user}}
-            <li>{{emails.[0].address}} <span style="font-size:0.8em">(créé {{livestamp createdAt}})</span></li>
-        {{/each}}
-        </ul>
+        <h1 style="font-size:1.3em;">Utilisateurs</h1><br />
+<table style="width:100%">
+<tr>
+<th>Identifiant</th>
+<th>Date de création</th>
+<th>Dernière connexion</th>
+<th>État</th>
+</tr>
+    {{#each user}}
+    <tr>
+    <td>{{emails.[0].address}}</td>
+        <td>{{createdAt}}</td>
+    <td>{{livestamp this.status.lastLogin.date}}</td>
+
+    <td>{{#if isOnline}}<span style="color:green">Connecté</span>{{else}}<span style="color:grey;">Déconnecté</span>{{/if}}</td>
+
+    </tr>
+    {{/each}}
+
+</table>
 </div>
     </div>
 </template>
