@@ -68,7 +68,7 @@ Template.blogsList.events({
             Router.go('blogPage', {_id: blogId});
 		}
 		else
-			alert("Cet espace n'existe pas.");
+			alert("Cet espace n'existe pas.\nAssurez-vous de respecter les majuscules et les minuscules.");
 },
     'click .blogs-list--button-code-link': function(e) {
     e.preventDefault();
