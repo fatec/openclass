@@ -92,7 +92,7 @@ background-color:#ddd;
 .blog-edit--list-wrapper-center {
 	vertical-align:middle;	
 	display: table-cell;
-	width:70%;
+	width:50%;
 }
 
 .blog-edit--list-wrapper-right {
@@ -136,7 +136,13 @@ vertical-align: middle;
 	border-radius: 3px;	
 }
 
-
+.blog-edit--chapter-wrapper2 {
+font-size: 0.9em;
+text-align: right;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+}
 
 /*.blog-edit--button-cancel {
 	float:right;
