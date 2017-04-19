@@ -1,14 +1,12 @@
   <template name="postItem">
   <div class="post-item">
-      {{#if ownPost}}
+      {{#if editAllowed}}
       <a href="{{pathFor 'postEdit'}}">
         <div class="post-item--button post-item--button-edit">
         <i class="fa fa-lg fa-pencil"></i>
          <!--  <img class="post-item-2-icon-button-edit" src="/img/icon-button-editpost.png" /> -->
         </div>
       </a>  
-    {{/if}}
-      {{#if ownBlog}}
         <div class="post-item--button post-item--button-delete">
         <i class="fa fa-lg fa-trash-o"></i>
 <!--         <img class="post-item-2-icon-button-delete" src="/img/icon-button-deletepost.png" /> -->

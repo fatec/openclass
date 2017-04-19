@@ -57,19 +57,37 @@ Template.postItem.helpers({
     //console.log(this.favorites);
     return Session.get("favorites");
     //return this.favorites;
-  },    
-  ownPost: function() {
-    //console.log((this.blog._id).author);
-        //console.log(Session.get(Template.parentData(1).blog._id).author);
+  },
+  editAllowed: function() {
+    if (Template.parentData().blog.postEditPermissions !== undefined) {
+            console.log(Template.parentData().blog.postEditPermissions);
+
+    if (Template.parentData().blog.postEditPermissions === "all" || (Template.parentData().blog.postEditPermissions === "own" && Session.get(Template.parentData().blog._id).author === this.author) || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+      return true
+    else
+      return false
+  }
+  else 
+    {
+      if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+    return true
+  else
+    return false
+}
+  },
+
+  // ownPost: function() {
+  //   //console.log((this.blog._id).author);
+  //       //console.log(Session.get(Template.parentData(1).blog._id).author);
 
 
-    //if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-    //if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-      if (Session.get(Template.parentData().blog._id).author === this.author && Session.get(Template.parentData().blog._id).author != "Invité")
-        return true;
-      if (Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-        return true;
-    },
+  //   //if (this.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+  //   //if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+  //     if (Session.get(Template.parentData().blog._id).author === this.author && Session.get(Template.parentData().blog._id).author != "Invité")
+  //       return true;
+  //     if (Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+  //       return true;
+  //   },
   tagQuery: function() {
     return "tags="+this.toString();
   },   

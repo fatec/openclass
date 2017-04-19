@@ -133,6 +133,15 @@
 					</div>
 				</a>
 				<p class="blog-edit--description">En activant "Auteurs libres", les utilisateurs entrent eux-même leur nom d'utilisateur à la première connexion. Autrement, ils choisiront parmis une liste modifiable sous "Gérer les auteurs".</p>
+								<p class="blog-edit--subtitle">PERMISSIONS</p>
+
+<div style="margin-left:auto;margin-right:auto;text-align:center;">
+				     <select class="blog-edit--select-permissions" name="permissions">
+                        <option value="own" selected="{{permissionIsSelected "own"}}">Les auteurs peuvent modifier leurs propres publications</option>
+                        <option value="all" selected="{{permissionIsSelected "all"}}">Les auteurs peuvent modifier toutes les publications</option>
+                        <option value="none" selected="{{permissionIsSelected "none"}}">Personne ne peut ajouter ou modifier des publications</option>
+                    </select>
+                    </div>
 
 <!-- 				{{#if isBox}}	
 				<a class="blog-edit-2-list-item blog-edit-2-sync-button">

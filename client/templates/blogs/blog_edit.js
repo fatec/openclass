@@ -99,6 +99,10 @@ Template.blogEdit.events({
       else
         Blogs.update(this.blog._id, {$set: {createUserAllowed:true}});
   },
+    'change .blog-edit--select-permissions': function(event) {
+    event.preventDefault();
+    console.log(Blogs.update(this.blog._id, {$set: {postEditPermissions:event.target.value}}));
+  }, 
       'click .blog-edit--change-password': function(e) {
     e.preventDefault();
 
@@ -194,6 +198,8 @@ Template.blogEdit.helpers({
   },
     createUserIsAllowed: function() {
       return this.blog.createUserAllowed
-    }
-
+    },
+      permissionIsSelected: function(value) {
+        return (this.blog.postEditPermissions === value)
+      }
 });

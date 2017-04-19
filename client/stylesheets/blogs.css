@@ -123,6 +123,28 @@ vertical-align: middle;
 	font-size: 1em;
 }
 
+.blog-edit--select-permissions {
+	height: 43px;
+	padding: 10px 14px;
+	border-top: none;
+	border: solid 1px #ddd;
+	border-radius: 2px;
+	width: 79%;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance:none;
+	font-size: 0.9em;
+	   background: url(img/arrow.png) no-repeat right white;
+}
+
+.blog-edit--select-permissions:hover {
+	background-color:#ddd;
+}
+
 /*.blog-edit--button-wrapper {
 	width: 60%;
 	margin-left:auto;
