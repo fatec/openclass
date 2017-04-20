@@ -50,9 +50,10 @@ font-size:12px;
 }
 
 .login--input {
-	width: 98%;
-
+	width: 100%;
 	font-size: 1em;
+	padding: 8px;
+	box-sizing: border-box;
 }
 
 .login--button-wrapper {
@@ -111,9 +112,10 @@ text-align: center;
 }
 
 .register--input {
-	width: 98%;
-
+	width: 100%;
 	font-size: 1em;
+	padding: 8px;
+	box-sizing: border-box;
 }
 
 .register--button-wrapper {
