@@ -123,6 +123,21 @@ vertical-align: middle;
 	font-size: 1em;
 }
 
+.blog-edit--input-add-category {
+	font-size: 1em;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+
+
+
+.blog-edit--input-add-author {
+	font-size: 1em;
+	padding: 8px;
+	box-sizing: border-box;	
+}
+
 .blog-edit--select-permissions {
 	height: 43px;
 	padding: 10px 14px;
@@ -179,6 +194,35 @@ overflow: hidden;
 	margin-bottom: 20px;
 }*/
 
+
+/* ----- blog-edit-categories template ----- */
+
+/*.blog-edit-categories table {
+width:100%;
+margin-bottom:15px;
+    border-collapse: collapse;
+    font-size:0.9em;
+}
+.blog-edit-categories caption {
+    font-size:16px;
+color:#252525;
+}
+    .blog-edit-categories td, .blog-edit-categories th {
+        border:solid 1px #46AECB;
+        padding:5px;
+        text-align: center;
+    }
+    .blog-edit-categories th {
+        background-color: #46AECB;
+        color:white;
+font-size:12px;
+    }
+    .blog-edit-categories td {
+
+  }
+.blog-edit-categories tr:nth-child(odd) {
+    background-color: #D5EBF2;
+}*/
 
 /* ----- blog-edit-authors template ----- */
 
