@@ -312,6 +312,9 @@ Template.postItem.events({
 // Show image in a lightbox with magnificPopup plugin
 Template.postItem.rendered = function(){
 
+    $("img").unveil();
+
+
   // Textarea autosize
   $('.post-item--add-comment-textarea').autosize();
 
