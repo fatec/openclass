@@ -17,26 +17,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 	display: none;
 }
 
-.mobileMenu {
-	padding-top:10px;
-/*	padding-left:20px;
-*/	color:white;
-}
-
-.mobileMenu a {
-	color:white;
-	padding-top:10px;
-	padding-left:20px;
-	padding-bottom:10px;
-	margin-left:0px;
-	width: 92%;
-	border-bottom:solid 1px #333333;
-	font-size: 0.9em;
-}
-
-.mobileMenu a:first-of-type {
-		border-top:solid 1px #333333;
-
+.mobile-menu--menu {
+	display:block;
 }
 
 .menu--title {

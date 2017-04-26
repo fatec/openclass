@@ -248,10 +248,10 @@ font-size:12px;
 }
 
 .blog-page--menu-wrapper {
-	width:225px;
-	display: table-cell;
-	vertical-align: top;
-	padding: 8px 0 0 0;
+width: 150px;
+display: table-cell;
+vertical-align: top;
+padding: 8px 60px 0px 0px;
 	/*border-left: solid 1px #e8e8e8;*/
 
 	font-size: 1em;
@@ -315,9 +315,10 @@ margin-top:10px;
 }
 
 .blog-submit--input {
-	width: 98%;
-
 	font-size: 1em;
+	padding: 8px;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .blog-submit--button-wrapper {
@@ -398,9 +399,14 @@ background-color: #fff6e0;
 
 
 .blog-users--input-choose-author {
-	font-size: 1.1em;
-height: 1.4em;
+/*	font-size: 1.1em;
+height: 1.4em;*/
 border: solid 1px #dedede;
-border-radius: 3px;
-padding: 3px;
+/*border-radius: 3px;
+padding: 3px;*/
+
+	font-size: 1em;
+	padding: 8px;
+/*	width: 100%;
+*/	box-sizing: border-box;
 }

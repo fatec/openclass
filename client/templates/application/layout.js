@@ -9,6 +9,29 @@
     });
         T9n.setLanguage("fr");
 
+
+
+
+  function close(event) {
+  event.preventDefault();
+  slideout.close();
+  event.stopPropagation(); // Prevent click propagation to menu wrapper button
+}
+
+slideout
+  .on('beforeopen', function() {
+    this.panel.classList.add('panel-open');
+  })
+  .on('open', function() {
+    this.panel.addEventListener('click', close);
+  })
+  .on('beforeclose', function() {
+    this.panel.classList.remove('panel-open');
+    this.panel.removeEventListener('click', close);
+  });
+
+  
+
   });
 
   Template.layout.events({

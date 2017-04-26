@@ -1,33 +1,44 @@
 <template name="mobileMenu">
-	<div class="mobileMenu">
-		<div class="header--button-close-wrapper-mobile" href="#"><i class="fa fa-2x fa-times" style="vertical-align: middle;"></i><span style="vertical-align:middle"> Fermer</span></div>		
-		<a class="header--button-back-wrapper-mobile" href="{{pathFor 'blogsList'}}"><i class="fa fa-chevron-left" style=" vertical-align: middle;"></i> Retour à l'accueil</a>
+	<div class="mobile-menu">			
 
-		<a class="menu--link-last-posts {{selectedLastPostsClass}}" href="#">Tout afficher ({{postCount}})</a>
-<!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
- -->		<div class="menu--title menu--title-authors">
-				<span>AUTEURS</span>
-			</div>
-			<ul>
-				{{#each authors}}
-					<a class="menu--authors filter-author {{selectedAuthorClass}}" data-author="{{name}}" href="#">{{name}} ({{nRefs}})</a><br />
-				{{/each}}
-			</ul>
-		<div class="menu--title menu--title-categories">
-			<span>CATEGORIES</span>
+
+	<li style="font-size:0.9em;list-style-type:none;background-color:#2a8bbf;color:white;padding:40px 10px 15px 15px;">
+			<span style="display: table-cell;width:80%">Code d'accès</span><span style="display: table-cell;width:10%;  font-family: Helvetica, Arial, Sans-Serif;
+" >{{blog.blogCode}}</span></li>
+		
+				<ul class="mobile-menu--list-settings">
+<!-- <li class="mobile-menu-2-button-change-user mobile-menu-2-list-element" style="display:table;width:100%"><span style="display: table-cell;width:80%;"> <i class="fa fa-lg fa-user" style="margin-right:5px;" aria-hidden="true"></i>{{authorName}}</span><span style="display: table-cell;width:10%;"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li> -->
+			<li class="mobile-menu--button-settings mobile-menu--list-element"><i class="fa fa-cog" aria-hidden="true"></i><span style="margin-left:10px">Paramètres</span></li>
+			<li class="mobile-menu--button-back-wrapper mobile-menu--list-element"><i class="fa fa-times-circle" aria-hidden="true"></i><span style="margin-left:10px">Quitter cet espace</span></li>
+		</ul>
+		<div class="mobile-menu--menu">
+		<ul class="mobile-menu--list" style="padding-top:20px;border-top:solid 1px #e6e6e6">
+		<li class="menu--link-last-posts mobile-menu--list-element {{selectedLastPostsClass}}" href="#">Tout afficher <span style="color:grey;font-size:0.8em;">{{postCount}}</span></li>
+		</ul>
+		<div class="mobile-menu--list-title">Auteurs</div>
+		<ul class="mobile-menu--list">
+			{{#each authors}}
+				<li class="filter-author {{selectedAuthorClass}}" data-author="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-author="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+			{{/each}}
+		</ul>
+		<div class="mobile-menu--list-title">Catégories</div>
+		<ul class="mobile-menu--list">
+			{{#each categories}}
+				<li class="filter-category {{selectedCategoryClass}}" data-category="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-category="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+			{{/each}}
+		</ul>
+		<div class="mobile-menu--list-title">Mots-clés</div>
+		<ul class="mobile-menu--list">
+			{{#each tags}}
+				<li class="filter-tag {{selectedTagClass}}" data-tag="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-tag="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+			{{/each}}
+		</ul>
+
 		</div>
-			<ul>
-				{{#each categories}}
-					<a class="menu--categories filter-category {{selectedCategoryClass}}" data-category="{{name}}" href="#">{{name}} ({{nRefs}})</a><br />
-				{{/each}}
-			</ul>
-		<div class="menu--title menu--title-tags">
-			<span>MOTS-CLÉS</span><br /><br />
-		</div>
-			<ul>
-				{{#each tags}}
-					<a class="menu--tags filter-tag {{selectedTagClass}} {{isDisabledClass}}" data-tag="{{name}}" href=""><span>{{name}} ({{nRefs}})</span></a><br />
-				{{/each}}
-			</ul>
+
+
+
+
+
 	</div>
 </template>

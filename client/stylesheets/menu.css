@@ -26,11 +26,11 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .menu--link-last-posts {
-	display: block;
+/*	display: block;
 	margin: 0px 0 0px 0;
 
 	font-size: 0.9em;
-	color:#2A90C6;
+	color:#2A90C6;*/
 }
 
 .menu--link-favorites {
@@ -71,11 +71,42 @@ color: #2c5267;
 	margin-top: 8px;
 }
 
-.menu--authors {
+/*.menu--authors {
 	display: inline-block;
 	margin: 5px 0 0px 10px;
 
 	color: #2A90C6;
+}*/
+
+.menu--list-element {
+	font-size:0.75em;
+	padding:6px;
+	color: #2A90C6;	
+	cursor: pointer;
+	border: 1px solid #eef0f3;
+}
+
+.menu--list-element:hover {
+	border:solid 1px #e8e8e8;
+	background-color: white;
+}
+
+.menu--list-element-selected {
+	border:solid 1px #e8e8e8;
+	background-color: white;
+	font-weight: bold;
+}
+
+.menu--authors {
+	font-size:0.8em;
+	padding:6px;
+	color: #2A90C6;
+}
+
+.menu--author-selected {
+	border:solid 1px #e8e8e8;
+	background-color: white;
+	font-weight: bold;
 }
 
 .menu--authors:first-of-type {
@@ -86,9 +117,9 @@ color: #2c5267;
 	color:white;
 }
 
-.menu--author-selected {
+/*.menu--author-selected {
 font-family: "Montserrat-Regular";
-}
+}*/
 
 .menu--tags {
 	display: inline-block;
@@ -157,8 +188,108 @@ a.menu--category-selected i.menu--caret {
 	font-size:1em;
 }
 
+.menu--list-title {
+		font-size: 0.7em;
+		color:grey;
+		text-transform: uppercase;
+		margin-top:18px;
+		margin-bottom: 5px;
+}
+
 .menu--title-span {
 	font-size: 0.9em;
 	vertical-align:middle
 }
+
+/* mobile-menu */
+
+.mobile-menu--menu {
+	display:none;
+}
+
+.mobile-menu--button-back-wrapper {
+/*	padding-top:5px;
+	padding-left:20px;
+	padding-bottom:5px;
+	margin-left:0px;
+	width: 100%;
+	border-top:solid 1px white;
+	border-bottom:solid 1px white;*/
+}
+
+.mobile-menu--button-close-wrapper {
+/*	padding-top:5px;
+	padding-left:10px;
+	margin-bottom:12px;
+	cursor: pointer;*/
+}
+
+.mobile-menu {
+/*	padding-top:10px;
+	padding-left:20px;
+	color:white;*/
+}
+
+.mobile-menu--list-title {
+	color: grey;
+	text-transform: uppercase;
+	font-size:0.8em;
+	padding:20px 0 10px 10px
+}
+
+.mobile-menu a {
+/*	color:white;
+	padding-top:10px;
+	padding-left:20px;
+	padding-bottom:10px;
+	margin-left:0px;
+	width: 92%;
+	border-bottom:solid 1px #333333;
+	font-size: 0.9em;*/
+}
+
+.mobile-menu--list-settings li {
+	padding:10px;
+	font-size: 0.9em;
+	cursor: pointer;
+
+/*	border-bottom:solid 1px #333333;
+*/}
+
+.mobile-menu--list-settings li:first-of-type {
+/*	border-bottom:solid 1px #e6e6e6;
+*/}
+
+.mobile-menu--list-settings li:last-of-type {
+	margin-bottom:16px;
+}
+
+.mobile-menu--list-settings li:hover {
+	background-color:#eef0f3;
+}
+
+.mobile-menu--list li {
+	padding:8px;
+	font-size: 0.9em;
+		cursor: pointer;
+
+/*	border-bottom:solid 1px #333333;
+*/}
+
+.mobile-menu--list li:hover {
+	background-color:#eef0f3;
+}
+
+.mobile-menu--list-element-selected {
+	background-color:#eef0f3;
+}
+
+.mobile-menu--list li:first-of-type {
+/*	border-top:solid 1px #333333;
+*/}
+
+.mobile-menu--list-element i,span {
+	vertical-align: middle;
+}
+
 

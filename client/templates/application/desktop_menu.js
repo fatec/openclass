@@ -32,7 +32,7 @@ Template.desktopMenu.helpers({
 	    {
 	      var selectedTag = Session.get('tag');
 	      if(tagId == selectedTag){
-	        return "menu--tag-selected"
+	        return "menu--list-element-selected"
 	      }
     	}
 	},
@@ -42,7 +42,7 @@ Template.desktopMenu.helpers({
 	    {
 	      var selectedCategory = Session.get('category');
 	      if(categoryId == selectedCategory){
-	        return "menu--author-selected"
+	        return "menu--list-element-selected"
 	      }
     	}
 	},	
@@ -52,14 +52,14 @@ Template.desktopMenu.helpers({
 	    {
 	      var selectedAuthor = Session.get('author');
 	      if(authorId == selectedAuthor){
-	        return "menu--author-selected"
+	        return "menu--list-element-selected"
 	      }
     	}
 	},		
 	'selectedAllPostsClass': function(){
 	    var sortPosts = Session.get('sortPosts');
 	    if(sortPosts == "all"){
-	        return "menu--link-sort-selected"
+	        return "menu--list-element-selected"
 	    }
 	},
 	'selectedLastPostsClass': function(){
@@ -67,13 +67,13 @@ Template.desktopMenu.helpers({
     	if (Session.get('filter'))
     		if (Session.get('filter') != '')
     			return false
-    		else return "menu--link-sort-selected"
-    	else return "menu--link-sort-selected"	
+    		else return "menu--list-element-selected"
+    	else return "menu--list-element-selected"	
     	
 	},
 	'selectedFavoritesClass': function(){
     	if (Session.get('filter') === 'favorites')
-    		return "menu--link-favorites-selected"
+    		return "menu--list-element-selected"
     	else return false;
     	
 	},	

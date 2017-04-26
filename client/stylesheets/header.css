@@ -36,8 +36,8 @@ border: solid 1px blue;
 }*/
 
 .header--button-menu-wrapper {
-	display:none;
-	float:left;
+/*	display:none;
+*/	float:left;
 	vertical-align:middle;
 	margin-right:6px;
 
@@ -176,19 +176,3 @@ vertical-align:middle;
 	padding-right:15px;
 	border-right:solid 1px #e3e3e3;
 }
-
-.header--button-back-wrapper-mobile {
-	padding-top:5px;
-	padding-left:20px;
-	padding-bottom:5px;
-	margin-left:0px;
-	width: 100%;
-	border-top:solid 1px white;
-	border-bottom:solid 1px white;
-}
-
-.header--button-close-wrapper-mobile {
-	padding-top:5px;
-	padding-left:10px;
-margin-bottom:12px;
-cursor: pointer;}

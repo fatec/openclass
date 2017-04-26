@@ -32,7 +32,7 @@ Template.mobileMenu.helpers({
 	    {
 	      var selectedTag = Session.get('tag');
 	      if(tagId == selectedTag){
-	        return "menu--tag-selected"
+	        return "mobile-menu--list-element-selected"
 	      }
     	}
 	},
@@ -42,7 +42,7 @@ Template.mobileMenu.helpers({
 	    {
 	      var selectedCategory = Session.get('category');
 	      if(categoryId == selectedCategory){
-	        return "menu--author-selected"
+	        return "mobile-menu--list-element-selected"
 	      }
     	}
 	},	
@@ -52,14 +52,14 @@ Template.mobileMenu.helpers({
 	    {
 	      var selectedAuthor = Session.get('author');
 	      if(authorId == selectedAuthor){
-	        return "menu--author-selected"
+	        return "mobile-menu--list-element-selected"
 	      }
     	}
 	},		
 	'selectedAllPostsClass': function(){
 	    var sortPosts = Session.get('sortPosts');
 	    if(sortPosts == "all"){
-	        return "menu--link-sort-selected"
+	        return "mobile-menu--list-element-selected"
 	    }
 	},
 	'selectedLastPostsClass': function(){
@@ -67,13 +67,13 @@ Template.mobileMenu.helpers({
     	if (Session.get('filter'))
     		if (Session.get('filter') != '')
     			return false
-    		else return "menu--link-sort-selected"
-    	else return "menu--link-sort-selected"	
+    		else return "mobile-menu--list-element-selected"
+    	else return "mobile-menu--list-element-selected"	
     	
 	},	
 		'selectedFavoritesClass': function(){
     	if (Session.get('filter') === 'favorites')
-    		return "menu--link-favorites-selected"
+    		return "mobile-menu--list-element-selected"
     	else return false;
     	
 	},
@@ -85,6 +85,9 @@ Template.mobileMenu.helpers({
 	authors: function() {
 		return Authors.find({ nRefs: { $gt: 0 } }, {sort: {name: 1}});
 	},
+		authorName: function() {
+		return Session.get(this.blog._id).author; 
+	},    
 	authorQuery: function() {
 		return "author="+this.name;
 	},	
@@ -98,7 +101,7 @@ Template.mobileMenu.events({
     Session.set("filter", ""); 
     Session.set('nbPosts',Posts.find({}).fetch().length); 
     Session.set("click", Session.get("click")+1);
-    addClick(template.data.blog._id,"view all");
+    // addClick(template.data.blog._id,"view all");
   },
       'click .menu--link-favorites': function(e,template) {
     Session.set("filter", "favorites"); 
@@ -106,20 +109,32 @@ Template.mobileMenu.events({
 
     //Session.set('posts',Posts.find({favorites:1}, {sort: {nb: 1}}).fetch()); 
     Session.set("click", Session.get("click")+1);
-        addClick(template.data.blog._id,"view favorites");
+        // addClick(template.data.blog._id,"view favorites");
   },
-	'click .header--button-close-wrapper-mobile': function(e){
+	'click .mobile-menu--button-close-wrapper': function(e){
 		e.preventDefault();
 		slideout.close();   
 	},
-	  'click .filter-tag': function(e,template) {
+	'click .mobile-menu--button-back-wrapper': function(e){
+	e.preventDefault();
+      Router.go('blogsList');
+	},
+	'click .mobile-menu--button-change-user': function(e,template){
+	e.preventDefault();
+      Router.go('blogUsers',{_id: template.data.blog._id});
+  },
+  	'click .mobile-menu--button-settings': function(e,template){
+	e.preventDefault();
+      Router.go('blogEdit',{_id: template.data.blog._id});
+  },
+   'click .filter-tag': function(e,template) {
     e.preventDefault();
     Session.set('filter','tag');
     var tag = $(e.target).data('tag');
     Session.set('tag',tag);
     Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
-    Session.set("click", Session.get("click")+1);
-    addClick(template.data.blog._id,"tag: "+tag);
+    // Session.set("click", Session.get("click")+1);
+    // addClick(template.data.blog._id,"tag: "+tag);
   },
   'click .filter-author': function(e,template) {
     e.preventDefault();
@@ -127,8 +142,8 @@ Template.mobileMenu.events({
     var author = $(e.target).data('author');
     Session.set('author',author);
     Session.set('nbPosts',Posts.find({author: author}).fetch().length); 
-    Session.set("click", Session.get("click")+1);
-    addClick(template.data.blog._id,"author: "+author);
+    // Session.set("click", Session.get("click")+1);
+    // addClick(template.data.blog._id,"author: "+author);
   },
   'click .filter-category': function(e,template) {
     e.preventDefault();
@@ -136,7 +151,7 @@ Template.mobileMenu.events({
     var category = $(e.target).data('category');
     Session.set('category',category);
         Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
-    Session.set("click", Session.get("click")+1);
-    addClick(template.data.blog._id,"category: "+category);
+    // Session.set("click", Session.get("click")+1);
+    // addClick(template.data.blog._id,"category: "+category);
   }     
 });

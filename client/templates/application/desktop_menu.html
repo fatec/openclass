@@ -1,31 +1,25 @@
 <template name="desktopMenu">
 	<div class="menu">
-              <a class="menu--link-last-posts {{selectedLastPostsClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> Tout afficher ({{postCount}})</a>
-<!-- 		<a class="menu-2-link-last-posts {{selectedLastPostsClass}}" href="#">Les dernières publications</a>
- -->		<div class="menu--title menu--title-authors">
-			<span class="menu--title-span">AUTEURS</span>
-			<ul>
-				{{#each authors}}
-					<a class="menu--authors filter-author {{selectedAuthorClass}}" data-author="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} ({{nRefs}})</a><br />
-				{{/each}}
-			</ul>
-		</div>
-		<div class="menu--title menu--title-categories">
-			
-			<span class="menu--title-span">CATEGORIES</span>
-			<ul>
-				{{#each categories}}
-					<a class="menu--categories filter-category {{selectedCategoryClass}}" data-category="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} ({{nRefs}})</a><br />
-				{{/each}}
-			</ul>
-		</div>
-		<div class="menu--title menu--title-tags">
-			<span class="menu--title-span">MOTS-CLÉS</span><br /><br />
-			<ul>
-				{{#each tags}}
-					<a class="menu--tags filter-tag {{selectedTagClass}} {{isDisabledClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> <span class="menu--tags-box" data-tag="{{name}}">{{name}}</span> ({{nRefs}})</a><br />
-				{{/each}}
-			</ul>
-		</div>
+		<ul>
+			<li class="menu--link-last-posts menu--list-element {{selectedLastPostsClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> Tout afficher <span style="color:grey;font-size:0.8em;">{{postCount}}</span></li>
+		</ul>
+		<div class="menu--list-title">Auteurs</div>
+		<ul>
+			{{#each authors}}
+				<li class="menu--list-element filter-author {{selectedAuthorClass}}" data-author="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-author="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+			{{/each}}
+		</ul>
+		<div class="menu--list-title">Catégories</div>
+		<ul>
+			{{#each categories}}
+				<li class="menu--list-element filter-category {{selectedCategoryClass}}" data-category="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-category="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+			{{/each}}
+		</ul>
+		<div class="menu--list-title">Mots-clés</div>
+		<ul>
+			{{#each tags}}
+				<li class="menu--list-element filter-tag {{selectedTagClass}}" data-tag="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-tag="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+			{{/each}}
+		</ul>
 	</div>
 </template>
