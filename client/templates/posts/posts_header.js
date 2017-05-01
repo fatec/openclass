@@ -16,7 +16,18 @@
 			return true
 		else
 			return null
-	} 
+	},
+	submitAllowed: function() {
+		//console.log("On a le droit : "+this.blog.postEditPermissions);
+    	if (this.blog.postEditPermissions !== undefined) {
+    		if (this.blog.postEditPermissions === "none" && Roles.userIsInRole(Meteor.userId(), ['admin']) != true && this.blog.userId === Meteor.userId())
+      			return false
+    		else
+      			return true
+  		}
+  		else 
+    		return true
+	},
 });
 
   Template.postsHeader.events({
