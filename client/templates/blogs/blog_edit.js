@@ -154,17 +154,25 @@ Template.blogEdit.events({
       Router.go('blogsList');
     }
   },
-  'click .blog-edit--sync-button': function(e, template) {
+  'click .blog-edit--sync': function(e, template) {
       e.preventDefault();
-      console.log("On clique sur le bouton "+this.blog._id)
-      Meteor.call('sendBlog', {blogId: this.blog._id} );
+      Session.set('isSyncing',true);
+      var serverOwnerEmail = prompt("Utilisateur :");
+
+      if (serverOwnerEmail)
+        Meteor.call('sendBlog', {blogId: this.blog._id, serverOwner: serverOwnerEmail}, function(err,result) {if (err) {alert("Un problème est survenu. Vérifiez que la box est bien connectée à internet et recommencez.")} else {console.log("result : "+result)} });
+
+
+
+
+      //Meteor.call('sendBlog', {blogId: this.blog._id, serverOwner: serverOwner}, function(err) {if (err) {alert("Un problème est survenu. Vérifiez que la box est bien connectée à internet et recommencez.")} });
     }  
 }); 
 
 
 Template.blogEdit.helpers({
   serverIP: function() {
-    Meteor.call('hup', function(error, result){
+    Meteor.call('getIP', function(error, result){
       if(error){
         Session.set('serverIP',"Pas d'adresse IP");
       }else{
@@ -173,6 +181,9 @@ Template.blogEdit.helpers({
     });
     return Session.get('serverIP');
     //return Meteor.call('hup');
+  },
+  isSyncing: function() {
+    return Session.get('isSyncing');
   },
   guest: function(){
     return this.name === 'Invité';
