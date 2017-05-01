@@ -4,95 +4,123 @@ Authors : Vincent Widmer & Stéphane Morand;
 */
 
 /* ----- admin template ----- */
+.access-denied {
+	text-align: center;
+}
+
+.access-denied .page-title {
+	margin-bottom: 40px;
+}
+
+/* ----- admin template ----- */
+
+.admin {
+	text-align: center;
+}
+
+.admin .page-title {
+	margin-bottom: 30px;
+}
+
+.admin h1 {
+	font-size: 1.3em;
+	margin-bottom: 15px;
+}
 
 .admin table {
-width:100%;
-margin-bottom:15px;
-    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-    font-size:0.9em;
+	font-size: 0.9em;
+	width: 100%;
+	border-collapse: collapse;
 }
-.admin caption {
-    font-size:16px;
-color:#252525;
+
+.admin td, .admin th {
+	text-align: center;
+	border: solid 1px #46AECB;
+	padding: 5px;
 }
-    .admin td, .admin th {
-        border:solid 1px #46AECB;
-        padding:5px;
-        text-align: center;
-    }
-    .admin th {
-        background-color: #46AECB;
-        color:white;
-font-size:12px;
-    }
-    .admin td {
-/*      background-color: #D5EBF2;
-*/  }
+
+.admin th {
+	color: white;
+	font-size: 12px;
+	background-color: #46AECB;
+}
+
 .admin tr:nth-child(odd) {
-    background-color: #D5EBF2;
+	background-color: #D5EBF2;
+}
+
+.admin--is-connected {
+	color: green;
+}
+
+.admin--is-disconnected {
+	color: grey;
 }
 
 
 /* ----- login template ----- */
 
 .login--wrapper {
-	margin:0 0 20px 0;
+	text-align:left;
+	margin:0 auto 20px auto;
 	padding: 20px 7px 20px 7px;
 	width: 60%;
-	margin-left:auto;
-	margin-right:auto;
-
 	border: 1px solid #e2e3e7;
 	border-radius: 4px;
-
 	background-color: white;
-	text-align:left;
 }
 
 .login--input {
-	width: 100%;
 	font-size: 1em;
+	width: 100%;
 	padding: 8px;
 	box-sizing: border-box;
 }
 
+.login--message {
+	margin-top: 15px;
+	color: red;
+}
+
 .login--button-wrapper {
+	text-align: center;
 	width: 60%;
 	margin-left:auto;
 	margin-right:auto;	
-
-	text-align: center;
 }
 
 .login--register-link-wrapper {
+	text-align: center;
 	margin-top: 30px;
-text-align: center;
 }
 
 
 /* ----- logout template ----- */
 
 .logout--wrapper {
-	margin:0 0 20px 0;
+	text-align:center;
+	margin: 0 auto 20px auto;
 	padding: 20px 7px 20px 7px;
 	width: 60%;
-	margin-left:auto;
-	margin-right:auto;
-
 	border: 1px solid #e2e3e7;
 	border-radius: 4px;	
-
 	background-color: white;
-	text-align:center;
 }
 
 .logout--button-wrapper {
+	text-align: center;
 	width: 60%;
 	margin-left:auto;
 	margin-right:auto;	
-
-	text-align: center;
 }
+
+
+
+
+
+
+
+
 
 
 /* ----- register template ----- */

@@ -6,6 +6,27 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .layout {}
 
+.layout--connection-status {
+	position: fixed;
+	text-align: center;
+	color:white;
+	line-height: 40px;
+	width: 150px;;
+	left: 50%;
+	right: 50%;
+	margin-left: -75px;
+	height: 40px;
+	background-color: #d24848;
+;}
+
+.layout--status-connected {
+	display:none;
+}
+
+.layout--status-disconnected {
+	display:block;
+}
+
 .layout--header {}
 
 .layout--main {

@@ -1,27 +1,22 @@
 <template name="admin">
-    <div class="admin">
-        <div class="page-title">Administration</div>
-        <div style="text-align:center;padding-top:20px;">
-        <h1 style="font-size:1.3em;">Utilisateurs</h1><br />
-<table style="width:100%">
-<tr>
-<th>Identifiant</th>
-<th>Date de création</th>
-<th>Dernière connexion</th>
-<th>État</th>
-</tr>
-    {{#each user}}
-    <tr>
-    <td>{{emails.[0].address}}</td>
-        <td>{{userCreatedAt}}</td>
-    <td>{{#if this.status.lastLogin.date}}{{livestamp this.status.lastLogin.date}}{{/if}}</td>
-
-    <td>{{#if isOnline}}<span style="color:green">Connecté</span>{{else}}<span style="color:grey;">Déconnecté</span>{{/if}}</td>
-
-    </tr>
-    {{/each}}
-
-</table>
-</div>
-    </div>
+	<div class="admin">
+		<div class="page-title">Administration</div>
+		<h1>Utilisateurs</h1>
+		<table>
+			<tr>
+				<th>Identifiant</th>
+				<th>Date de création</th>
+				<th>Dernière connexion</th>
+				<th>État</th>
+			</tr>
+			{{#each user}}
+				<tr>
+					<td>{{emails.[0].address}}</td>
+					<td>{{userCreatedAt}}</td>
+					<td>{{#if this.status.lastLogin.date}}{{livestamp this.status.lastLogin.date}}{{/if}}</td>
+					<td>{{#if isOnline}}<span class="admin--is-connected">Connecté</span>{{else}}<span class="admin--is-disconnected">Déconnecté</span>{{/if}}</td>
+				</tr>
+			{{/each}}
+		</table>
+	</div>
 </template>
