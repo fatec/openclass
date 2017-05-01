@@ -1,12 +1,9 @@
 <template name="loginHeader">
 	<div class="login-header">
-	    <div class="header">
-	    	<div class="header--wrapper">
-		      	<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left" style=" vertical-align: middle;"></i>
-		        </a>   
- 					{{#unless currentUser}}
-						<a class="header--button-login" href="{{pathFor 'register'}}"><i class="fa fa-plus"></i> Créer un compte</a>
-					{{/unless}}
+		<div class="header">
+			<div class="header--wrapper">
+				<a class="header--button-back-wrapper" href="{{pathFor 'blogsList'}}"><i class="fa fa-2x fa-chevron-left"></i></a>   
+				<a class="header--button-login" href="{{pathFor 'register'}}"><i class="fa fa-plus"></i> Créer un compte</a>
 			</div>
 		</div>
 	</div>
