@@ -1,24 +1,24 @@
 <template name="desktopMenu">
-	<div class="menu">
-		<ul>
-			<li class="menu--link-last-posts menu--list-element {{selectedLastPostsClass}}" href="#"><i class="menu--caret fa fa-caret-right"></i> Tout afficher <span style="color:grey;font-size:0.8em;">{{postCount}}</span></li>
+	<div class="desktop-menu">
+		<ul class="desktop-menu--list">
+			<li class="desktop-menu--show-all {{selectedShowAll}}">Tout afficher <span data-author="{{name}}">{{postCount}}</span></li>
 		</ul>
-		<div class="menu--list-title">Auteurs</div>
-		<ul>
+		<div class="desktop-menu--list-title">Auteurs</div>
+		<ul class="desktop-menu--list">
 			{{#each authors}}
-				<li class="menu--list-element filter-author {{selectedAuthorClass}}" data-author="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-author="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+				<li class="filter-author {{selectedAuthorClass}} {{isDisabled authorNRef}}" data-author="{{name}}" href="#">{{name}} <span data-author="{{name}}">{{authorNRef}}</span></li>
 			{{/each}}
 		</ul>
-		<div class="menu--list-title">Catégories</div>
-		<ul>
+		<div class="desktop-menu--list-title">Catégories</div>
+		<ul class="desktop-menu--list">
 			{{#each categories}}
-				<li class="menu--list-element filter-category {{selectedCategoryClass}}" data-category="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-category="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+				<li class="filter-category {{selectedCategoryClass}} {{isDisabled categoriesNRef}}" data-category="{{name}}" href="#">{{name}} <span data-category="{{name}}">{{categoriesNRef}}</span></li>
 			{{/each}}
 		</ul>
-		<div class="menu--list-title">Mots-clés</div>
-		<ul>
+		<div class="desktop-menu--list-title">Mots-clés</div>
+		<ul class="desktop-menu--list">
 			{{#each tags}}
-				<li class="menu--list-element filter-tag {{selectedTagClass}}" data-tag="{{name}}" href="#"><i class="menu--caret fa fa-caret-right"></i> {{name}} <span data-tag="{{name}}" style="color:grey;font-size:0.8em;">{{nRefs}}</span></li>
+				<li class="filter-tag {{selectedTagClass}} {{isDisabled tagsNRef}}" data-tag="{{name}}" href="#">{{name}} <span data-tag="{{name}}">{{tagsNRef}}</span></li>
 			{{/each}}
 		</ul>
 	</div>
