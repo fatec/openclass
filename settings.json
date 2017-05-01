@@ -1,9 +1,9 @@
 {
-  "syncServerIP": "http://129.194.31.76",
+  "syncServerIP": "http://192.168.0.13:3000",
   "adminPassword": "admin",
    "public" : {
-  		"isBox": "false",
-  		 "prefix": "W1",
+  		"isBox": "true",
+  		 "prefix": "BX",
   		 "ga": {
             "id": "UA-72195513-1"
         }

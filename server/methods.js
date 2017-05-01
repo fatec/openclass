@@ -86,7 +86,7 @@ Meteor.methods({
       text: text
     });
   },
-  'hup': function(name) {
+  'getIP': function(name) {
       var res;
             //res = cmd("ifconfig eth0");
 

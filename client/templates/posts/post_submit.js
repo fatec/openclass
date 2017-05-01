@@ -145,6 +145,8 @@ Template.postSubmit.events({
   }
 });
 
+
+
 Template.postSubmit.helpers({
     'imageUploaded':  function() {
     return Session.get('imageUploaded');
@@ -172,19 +174,49 @@ Template.postSubmit.helpers({
     myCallbacks: function() {
     return {
         validate: function(file) {
-        // TODO : client-side image resize 
-          return file;
+          return file
+          //return file;
+
+          //console.log(return Resizer.resize(file[0], {width: 300, height: 300, cropSquare: true}, function(err, file) {return "hop"}));
+
+          //return function(file){return file}
+          //console.log(file);
+          // return file
+
+          //var file = new File([blob], filename, {type: contentType, lastModified: Date.now()});
+
+
+          //return file
+        //TODO : client-side image resize
+            // return Resizer.resize(file[0], {width: 300, height: 300, cropSquare: true}, function(err, file2) {
+            //   if (!err) {
+
+            //     //var file5 = new File([file2], "20140705_154204.jpg", {lastModified: Date.now(),type: "image/jpeg"});
+            //     //console.log(file5);
+            //                     //file[0] = file5;
+            //                                     console.log(file[0]);
+            //                                     return file
+            //                                   }
+            //                                   });
+
 
       }
     }
   }  
 });
 
+  var resize = function() {
+    console.log("test");
+    //callback(Resizer.resize(file[0], {width: 300, height: 300, cropSquare: true}, function(err, file) {return file}));
 
+  }
 
 
 
 Template.postSubmit.rendered = function(){
+
+
+
 
 if (Session.get("imageId"))
   delete Session.keys["imageId"];

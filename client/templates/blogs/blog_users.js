@@ -4,7 +4,7 @@ Template.blogUsers.helpers({
     return Authors.find({blogId: this.blog._id},{sort: { name: 1 }});  
   },
   createUserAllowed: function() {
-      return this.blog.createUserAllowed;
+    return this.blog.createUserAllowed;
   },
   optionIsSelected: function(authorName) {
     if (Session.get(Template.parentData().blog._id))

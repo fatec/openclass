@@ -1,26 +1,27 @@
 <template name="login">
-    <div class="login">
-        <div class="page-title">Vous avez déjà un compte ?</div>
-        <form id="login--form" class="login--form">        
-            <div class="login--wrapper">
-                <label><b>E-mail</b></label><br />
-                <input type="text"  class="login--input login--input-username form-control" id="email" value="" autofocus><br /><br />
-                <label><b>Mot de passe</b></label><br />
-                <input type="password" name="" class="login--input form-control" id="password" value=""><br />
-                {{#if errorMessage}}
-                    <div class="login--error">
-                        <br /><span style="color:red;">{{t9n errorMessage}}</span><br />
-                        {{#if passwordRecovery}}
-                        <br /><a href="#" class="send-mail-forgot-password">Réinitialiser mon mot de passe</a>
-                        {{/if}}
-                    </div> 
-                {{/if}}                 
-            </div> 
-            <div class="login--button-wrapper">
-                <button type="submit" class="button button-primary login--button-submit">S'identifier</button>
-            </div>   
-        </form>
-        <div class="login--register-link-wrapper"><span>Vous n'avez pas encore de compte ? <br /><br /><a href="{{pathFor 'register'}}"> Créez un compte</a> !
-        </span></div>
-    </div>
+	<div class="login">
+		<div class="page-title">Vous avez déjà un compte ?</div>
+		<form id="login--form" class="login--form">        
+			<div class="login--wrapper">
+				<label>E-mail</label>
+				<input type="text" class="login--input login--input-username form-control" id="email" value="" autofocus><br><br>
+				<label>Mot de passe</label>
+				<input type="password" name="" class="login--input form-control" id="password" value=""><br>
+				{{#if errorMessage}}
+					<div class="login--message">
+						<p>{{t9n errorMessage}}</p>
+						{{#if passwordRecovery}}
+							<br><a href="#" class="send-mail-forgot-password">Réinitialiser mon mot de passe</a>
+						{{/if}}
+					</div> 
+				{{/if}}                 
+			</div> 
+			<div class="login--button-wrapper">
+				<button type="submit" class="button button-primary login--button-submit">S'identifier</button>
+			</div>   
+		</form>
+		<div class="login--register-link-wrapper">Vous n'avez pas encore de compte ?<br><br>
+			<a href="{{pathFor 'register'}}">Créez un compte</a> !
+		</div>
+	</div>
 </template>

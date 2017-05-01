@@ -2,6 +2,9 @@ Template.uploadForm.created = function() {
   Uploader.init(this);
 
   if (this.data) {
+    console.log(this.data);
+        //Resizer.resize(files[0], {width: 300, height: 300, cropSquare: true}, function(err, file) {
+
     this.autoStart = this.data.autoStart;
   }
 }
