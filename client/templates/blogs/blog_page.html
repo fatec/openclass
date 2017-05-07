@@ -1,5 +1,11 @@
 <template name="blogPage">
   <div class="blog-page">
+    {{#if updateAlert}}
+      <div class="blog-page--alert" style="text-align:center;background-color: white;margin-bottom: 10px;border: solid 1px #ddd;border-radius: 2px;padding: 15px;">
+        <span style="font-size:0.9em;margin-right:10px;">Les paramètres de l'espace se trouvent maintenant dans le menu en haut à gauche (<i class="fa fa-x fa-bars" style="color:#2a8bbf;vertical-align: middle;"></i>).</span><br>
+        <div style="margin-top:8px;"><button class="button button-primary button-ok-update-alert">OK</button></div>
+      </div>
+    {{/if}}
     <div class="blog-page--wrapper">
       <div class="blog-page--menu-wrapper">{{> desktopMenu}}</div>
       <div class="blog-page--main"> 
@@ -8,6 +14,7 @@
             <a href="#">{{newMessages2}} nouveau(x) message(s)</a>
           </div>
         {{/if}}
+
 <!--             {{#if isReactive}}
       <span style="font-size:1.1em;cursor:pointer;float:right;margin-top:-20px;color:grey;" class="blog-page-2-button-stop-reactive">
               <i style="color:#26b610;" class="fa fa-toggle-on"></i><span style="font-size:0.8em;"> direct</span></span>

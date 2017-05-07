@@ -7,7 +7,7 @@ Template.register.events({
         //var username = event.target.username.value;
         var password = event.target.password.value;
   
-        Accounts.createUser({email:email.toLowerCase().trim(),password:password},function(err){
+        Accounts.createUser({email:email.toLowerCase().trim(),password:password,profile:{lastAlert:0}},function(err){
             if(!err) {
                 Router.go('blogsList');
                 Meteor.call('sendEmail',

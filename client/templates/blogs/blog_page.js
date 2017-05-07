@@ -233,11 +233,23 @@ Template.blogPage.helpers({
   },
     isReactive: function() {
     return Session.get('isReactive');
+    },
+    updateAlert: function() {
+      if (Meteor.user().profile) {
+        if (Meteor.user().profile.lastAlert >= 1)
+          return false
+        else
+          return true
+    }
+      else return true
     }
 });
 
 
 Template.blogPage.events({
+  'click .button-ok-update-alert': function() {
+    Meteor.users.update(Meteor.user()._id, {$set: {"profile.lastAlert": 1}});
+  },
 	'click .button-send-to-api': function(e, template) {
       e.preventDefault();
       //console.log("On clique sur le bouton "+template.data._id)
