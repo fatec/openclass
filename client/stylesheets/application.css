@@ -115,9 +115,15 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 
+/* ----- data protection template ----- */
 
+.data-protection {
+	text-align: justify;
+}
 
-
+.data-protection p {
+	margin-top:15px;
+}
 
 
 

@@ -395,6 +395,20 @@ background-color: #fff6e0;
 	font-size:0.9em;
 }
 
+.blogs-list--footer {
+	font-size: 0.9em;
+}
+
+.blogs-list--footer a {
+	color:#6e6e6e;
+	padding:2px 8px;
+	border-left: solid 1px grey;
+}
+
+.blogs-list--footer a:first-of-type {
+border-left: none
+
+}
 
 
 
