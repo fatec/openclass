@@ -21,7 +21,7 @@ Template.layout.onRendered(function () {
 	.on('beforeopen', function() {
 		this.panel.classList.add('panel-open');
 	})
-	.on('open', function() {
+	.on('open', function(e) {
 		this.panel.addEventListener('click', closeMenu);
 	})
 	.on('beforeclose', function() {

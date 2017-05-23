@@ -9,9 +9,9 @@
     <div class="blog-page--wrapper">
       <div class="blog-page--menu-wrapper">{{> desktopMenu}}</div>
       <div class="blog-page--main"> 
-        {{#if newMessages2}}
+        {{#if newMessages}}
           <div class="blog-page--notification-panel blog-page--refresh">
-            <a href="#">{{newMessages2}} nouveau(x) message(s)</a>
+            <a href="#">{{newMessages}} nouveau(x) message(s)</a>
           </div>
         {{/if}}
 
@@ -22,7 +22,7 @@
             <span style="font-size:1.1em;cursor:pointer;float:right;margin-top:-20px;color:grey;" class="blog-page-2-button-reactive">
               <i style="color:grey;" class="fa fa-toggle-off"></i><span style="font-size:0.8em;"> direct</span></span>
               {{/if}} -->
-        {{#if posts.length}}
+        {{#if posts}}
           {{#each posts}}
             {{> postItem}}
           {{/each}}
