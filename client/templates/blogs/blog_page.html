@@ -26,6 +26,12 @@
           {{#each posts}}
             {{> postItem}}
           {{/each}}
+          {{#if loadMore}}
+                    <div class="blog-page--load-more-wrapper">
+            <a href="#" class="blog-page--load-more"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
+ Charger plus...</a>
+          </div>
+          {{/if}}
         {{else}}
           {{#if codePanelState}}
             {{#if ownBlog}}

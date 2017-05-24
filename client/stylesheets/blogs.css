@@ -281,6 +281,10 @@ padding: 8px 60px 0px 0px;
 	color:white !important;
 }
 
+.blog-page--load-more-wrapper {
+	text-align: center;
+}
+
 .blog-page--main {
 margin-top:10px;
 }

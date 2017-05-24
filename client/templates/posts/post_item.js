@@ -1,9 +1,13 @@
-  function addClick(blogId,content) {
-
-   var authorId = Authors.findOne({name: Session.get(blogId).author});
-   //console.log(authorId);
-    Authors.update({ _id: authorId._id },{ $push: { clicks: content }})
+function resetPostInterval() { // Reset interval of post subscription
+  if (Session.get('postsServerNonReactive') > 10) {
+    Session.set('postsToSkip',Session.get('postsServerNonReactive') - 10);
+    Session.set('postsLimit',10);
   }
+  else {
+    Session.set('postsToSkip',0);
+    Session.set('postsLimit',Session.get('postsServerNonReactive'));
+  }
+}
 
 Template.postItem.helpers({
   commentsAllowed: function() {
@@ -179,32 +183,32 @@ Template.postItem.events({
     }
   }
   },
-        'click .filter-tag': function(e) {
-    e.preventDefault();
-    Session.set('filter','tag');
-    var tag = $(e.target).data('tag');
-    Session.set('tag',tag);
-    Session.set('posts',Posts.find({tags: tag}, {sort: {nb: -1}}).fetch()); 
-    addClick(Template.parentData().blog._id,"tag: "+tag);
-
-  },
   'click .filter-author': function(e) {
     e.preventDefault();
-    Session.set('filter','author');
     var author = $(e.target).data('author');
+    Session.set("tag",''); 
+    Session.set("category",'');
     Session.set('author',author);
-    Session.set('posts',Posts.find({author: author}, {sort: {nb: -1}}).fetch()); 
-      addClick(Template.parentData().blog._id,"author: "+author);
-
-  },
+    Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
+    resetPostInterval();
+    },
   'click .filter-category': function(e) {
     e.preventDefault();
-    Session.set('filter','category');
     var category = $(e.target).data('category');
+    Session.set("author",'');
+    Session.set("tag",''); 
     Session.set('category',category);
-    Session.set('posts',Posts.find({category: category}, {sort: {nb: -1}}).fetch()); 
-        addClick(Template.parentData().blog._id,"category: "+category);
-
+    Session.set('postsServerNonReactive', Category.findOne({name:category}).nRefs);
+    resetPostInterval();
+  },  
+  'click .filter-tag': function(e) {
+    e.preventDefault();
+    var tag = $(e.target).data('tag');
+    Session.set("author",'');
+    Session.set("category",''); 
+    Session.set('tag',tag);
+    Session.set('postsServerNonReactive', Tags.findOne({name:tag}).nRefs);
+    resetPostInterval();
   },
     'click .post-item--button-add-favorite': function(e) {
       e.preventDefault();
@@ -312,7 +316,7 @@ Template.postItem.events({
 // Show image in a lightbox with magnificPopup plugin
 Template.postItem.rendered = function(){
 
-    $("img").unveil();
+    // $("img").unveil();
 
 
   // Textarea autosize

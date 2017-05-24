@@ -1,26 +1,41 @@
+function resetPostInterval() { // Reset interval of post subscription
+	if (Session.get('postsServerNonReactive') > 10) {
+		Session.set('postsToSkip',Session.get('postsServerNonReactive') - 10);
+		Session.set('postsLimit',10);
+	}
+	else {
+		Session.set('postsToSkip',0);
+		Session.set('postsLimit',Session.get('postsServerNonReactive'));
+	}
+}
+
+
 Template.slideoutMenu.helpers({
 
-	postCount: function() { // return the number of posts
-		if (this.posts)
-			return this.posts.count();
+	postCount: function() {
+		return Counts.findOne().count;
+	},
+	authorNRef: function() {
+		return Authors.findOne({name:this.name}).nRefs;
+	},
+	categoriesNRef: function() {
+		return Category.findOne({name:this.name}).nRefs;
+	},
+	tagsNRef: function() {
+		return Tags.findOne({name:this.name}).nRefs;
 	},
 	authors: function() {
 		return Authors.find({}, {sort: {name: 1}});
 	},
-	authorNRef: function() {
-		return Posts.find({author:this.name}).fetch().length;
+	categories: function() {
+		return Categories.find({}, {sort: {name: 1}});
 	},
 	tags: function() {
 		return Tags.find({}, {sort: {name: 1}});
-	},
-	tagsNRef: function() {
-		return Posts.find({tags:{$in : [this.name]}}).fetch().length;
-	},
-	categories: function() {
-		return Categories.find({}, {sort: {name: 1}});
 	},	
-	categoriesNRef: function() {
-		return Posts.find({category:this.name}).fetch().length;
+	'selectedShowAll': function() {
+		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '')
+			return "slideout-menu--list-element-selected"	
 	},
 	'selectedAuthorClass': function(){
 		if (this.name == Session.get('author'))
@@ -33,18 +48,15 @@ Template.slideoutMenu.helpers({
 	'selectedCategoryClass': function(){
 		if (this.name == Session.get('category'))
 			return "slideout-menu--list-element-selected"
-	},	
-	'selectedShowAll': function() {
-		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '')
-			return "slideout-menu--list-element-selected"	
-	},	
+	},
 	'isDisabled': function(nRef) {
 		if (nRef == 0)
 			return "slideout-menu--list-element-disabled"
 		else return null
 	},
 	ownBlog: function() {
-		if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)    		return true;
+		if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true) 
+			return true;
   	},   	
 	// favoritesCount: function() {
 	// 	return Posts.find({favorites: true}).fetch().length;
@@ -58,10 +70,6 @@ Template.slideoutMenu.helpers({
 
 Template.slideoutMenu.events({
 
-	'click .slideout-menu--link-show-all': function(e) {
-	Session.set("filter", ""); 
-	Session.set('nbPosts',Posts.find({}).fetch().length); 
-	},
 	'click .slideout-menu--exit': function(e){
 		e.preventDefault();
 		Router.go('blogsList');
@@ -70,41 +78,41 @@ Template.slideoutMenu.events({
 		e.preventDefault();
 		Router.go('blogEdit',{_id: template.data.blog._id});
 	},
-	'click .desktop-menu--show-all': function(e) {
+	'click .slideout-menu--show-all': function(e) {
 		e.preventDefault();
 		Session.set("author",'');
 		Session.set("tag",''); 
 		Session.set("category",''); 
-		Session.set('nbPosts',Posts.find({}).fetch().length); 
-	},
-	'click .filter-tag': function(e) {
-		e.preventDefault();
-		var tag = $(e.target).data('tag');
-		Session.set("author",'');
-		Session.set("tag",''); 
-		Session.set("category",''); 
-		Session.set('tag',tag);
-		Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
+		Session.set('postsServerNonReactive', Counts.findOne().count);
+		resetPostInterval();
 	},
 	'click .filter-author': function(e) {
 		e.preventDefault();
 		var author = $(e.target).data('author');
-		Session.set("author",'');
 		Session.set("tag",''); 
 		Session.set("category",'');
 		Session.set('author',author);
-		Session.set('nbPosts',Posts.find({author: author}).fetch().length); 
-	},
+		Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
+		resetPostInterval();
+		},
 	'click .filter-category': function(e) {
 		e.preventDefault();
 		var category = $(e.target).data('category');
-		Session.set('category',category);
 		Session.set("author",'');
 		Session.set("tag",''); 
-		Session.set("category",'');
 		Session.set('category',category);
-		Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
-	} 
+		Session.set('postsServerNonReactive', Category.findOne({name:category}).nRefs);
+		resetPostInterval();
+	}, 	
+	'click .filter-tag': function(e) {
+		e.preventDefault();
+		var tag = $(e.target).data('tag');
+		Session.set("author",'');
+		Session.set("category",''); 
+		Session.set('tag',tag);
+		Session.set('postsServerNonReactive', Tags.findOne({name:tag}).nRefs);
+		resetPostInterval();
+	},
 	// 'click .menu--link-favorites': function(e,template) {
 	// Session.set("filter", "favorites"); 
 	// Session.set('nbPosts',Posts.find({favorites: true}).fetch().length); 

@@ -6,10 +6,11 @@ Meteor.publish('blogsVersions', function() {
   return BlogsVersions.find();
 });
 
-Meteor.publish('posts', function(blogId) {
-  check(blogId, String);
+Meteor.publish('posts', function(filters,skip,limit) {
+  // TODO check data
+  //check(blogId, String);
     //return Posts.find({blogId: blogId});
-  return Posts.find({blogId: blogId}, {sort: {submitted: 1}});
+  return Posts.find(filters, {sort: {submitted: 1},skip:skip,limit:limit});
 });
 
 Meteor.publish('postsVersions', function(blogId) {
@@ -39,3 +40,42 @@ Meteor.publish("codes", function(){ return Codes.find()});
 // Meteor.publish("userStatus", function() {
 //   return Meteor.users.find({ "status.online": true });
 // });
+
+// Publish the current size of a collection.
+// server: publish the current size of a collection
+Meteor.publish("count-all-posts", function (blogId) {
+  var self = this;
+  var count = 0;
+  var initializing = true;
+
+  var handle = Posts.find({blogId: blogId}).observeChanges({
+    added: function (doc, idx) {
+      count++;
+      if (!initializing) {
+                console.log("DOC :"+idx._id);
+
+        self.changed("counts", blogId, {count: count});  // "counts" is the published collection name
+      }
+    },
+    removed: function (doc, idx) {
+      count--;
+      self.changed("counts", blogId, {count: count});  // same published collection, "counts"
+    }
+    // don't care about moved or changed
+  });
+
+  initializing = false;
+
+  // publish the initial count. `observeChanges` guaranteed not to return
+  // until the initial set of `added` callbacks have run, so the `count`
+  // variable is up to date.
+  self.added("counts", blogId, {count: count});
+
+  // and signal that the initial document set is now available on the client
+  self.ready();
+
+  // turn off observe when client unsubscribes
+  self.onStop(function () {
+    handle.stop();
+  });
+});

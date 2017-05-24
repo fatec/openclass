@@ -1,25 +1,36 @@
+function resetPostInterval() { // Reset interval of post subscription
+	if (Session.get('postsServerNonReactive') > 10) {
+		Session.set('postsToSkip',Session.get('postsServerNonReactive') - 10);
+		Session.set('postsLimit',10);
+	}
+	else {
+		Session.set('postsToSkip',0);
+		Session.set('postsLimit',Session.get('postsServerNonReactive'));
+	}
+}
+
 Template.desktopMenu.helpers({
 
 	postCount: function() {
-		return this.posts.count();
+		return Counts.findOne().count;
+	},
+	authorNRef: function() {
+		return Authors.findOne({name:this.name}).nRefs;
+	},
+	categoriesNRef: function() {
+		return Category.findOne({name:this.name}).nRefs;
+	},
+	tagsNRef: function() {
+		return Tags.findOne({name:this.name}).nRefs;
 	},
 	authors: function() {
 		return Authors.find({}, {sort: {name: 1}});
 	},
-	authorNRef: function() {
-		return Posts.find({author:this.name}).fetch().length;
-	},
 	categories: function() {
 		return Categories.find({}, {sort: {name: 1}});
 	},
-	categoriesNRef: function() {
-		return Posts.find({category:this.name}).fetch().length;
-	},
 	tags: function() {
 		return Tags.find({}, {sort: {name: 1}});
-	},	
-	tagsNRef: function() {
-		return Posts.find({tags:{$in : [this.name]}}).fetch().length;
 	},	
 	'selectedShowAll': function() {
 		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '')
@@ -59,15 +70,8 @@ Template.desktopMenu.events({
 		Session.set("author",'');
 		Session.set("tag",''); 
 		Session.set("category",''); 
-		Session.set('nbPosts',Posts.find({}).fetch().length); 
-	},
-	'click .filter-tag': function(e) {
-		e.preventDefault();
-		var tag = $(e.target).data('tag');
-		Session.set("author",'');
-		Session.set("category",''); 
-		Session.set('tag',tag);
-		Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
+		Session.set('postsServerNonReactive', Counts.findOne().count);
+		resetPostInterval();
 	},
 	'click .filter-author': function(e) {
 		e.preventDefault();
@@ -75,17 +79,27 @@ Template.desktopMenu.events({
 		Session.set("tag",''); 
 		Session.set("category",'');
 		Session.set('author',author);
-		Session.set('nbPosts',Posts.find({author: author}).fetch().length); 
-	},
+		Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
+		resetPostInterval();
+		},
 	'click .filter-category': function(e) {
 		e.preventDefault();
 		var category = $(e.target).data('category');
-		Session.set('category',category);
 		Session.set("author",'');
 		Session.set("tag",''); 
 		Session.set('category',category);
-		Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
-	} 
+		Session.set('postsServerNonReactive', Category.findOne({name:category}).nRefs);
+		resetPostInterval();
+	}, 	
+	'click .filter-tag': function(e) {
+		e.preventDefault();
+		var tag = $(e.target).data('tag');
+		Session.set("author",'');
+		Session.set("category",''); 
+		Session.set('tag',tag);
+		Session.set('postsServerNonReactive', Tags.findOne({name:tag}).nRefs);
+		resetPostInterval();
+	},
 	// 'click .desktop-menu--link-favorites': function(e,template) {
 	// 	Session.set("filter", "favorites"); 
 	// 	Session.set('nbPosts',Posts.find({favorites: true}).fetch().length); 
