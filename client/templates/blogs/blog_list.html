@@ -1,0 +1,68 @@
+<template name="blogList">
+	<div class="blog-list">
+		{{#if currentUser}}
+			{{#if ownBlogs.count}}
+				<div class="list-group">
+					<div class="blog-list--blogs-title">
+						<span>Vos espaces :</span>
+					</div>
+					{{#each ownBlogs}}
+						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+							<span class="list-group-item-left">{{title}}</span>
+								 <a class="blog-list--button-edit" href="{{pathFor 'blogEdit'}}">
+									 <i class="fa fa-lg fa-cog"></i>
+								</a>
+							<span class="blog-list--list-item-code">
+								<b>{{blogCode}}</b>
+							</span>
+						</a>
+					{{/each}}
+				</div>
+			{{else}}
+				<div class="blog-list--no-blog">Vous n'avez pas encore créé d'espace.</div>
+			{{/if}}
+		{{else}}
+			<form class="blog-list--code-link-form">
+				<div class="blog-list--code-wrapper">
+					<span>Accéder à un espace</span><br /><br />
+					<input class="blog-list--code-input" id="code" type="text" placeholder="Entrez un code d'accès"/><br />
+					<button type="submit" class="button button-primary blog-list--button-code-link">Valider</button>
+				</div>
+			</form>      
+			{{#if blogsVisited.count}}
+				<div class="list-group blog-list--visited-blogs">
+					<div class="blog-list--visited-title">
+						<span>Récemment visité :</span><br />
+						<a class="blog-list--delete-recent" href="#">(effacer)</a>
+					</div> 
+					{{#each blogsVisited}}
+						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+							<span class="list-group-item-left">{{title}}</span>
+							<span class="blog-list--list-item-code">
+								<b>{{blogCode}}</b>
+							</span>
+						</a>
+					{{/each}}
+					<br /><br />
+				</div>
+			{{/if}}
+		{{/if}}
+	</div>
+	<div class="blog-list--wrapper">
+		{{#if currentUser}}
+			<a href="{{pathFor 'blogSubmit'}}">
+				<button class="button button-secondary blog-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouvel espace</button>
+			</a>
+		{{else}}
+			<div class="blog-list--wrapper-text">Créez votre propre <span>mini</span> réseau social pour partager avec vos étudiants, collègues ou amis.</div>
+		{{/if}}
+		{{#unless isBox}}
+			<div class="blog-list--wrapper-beta-warning"><em>Cette plateforme est encore en développement, des bugs peuvent survenir.</em><br></div>
+			<div class="blog-list--footer">
+				<a href="http://infos.beekee.ch">Informations sur le projet</a>
+				<a href="{{pathFor 'dataProtection'}}">Protection des données</a>
+				<a href="mailto:vincent.widmer@beekee.ch">Nous contacter</a>
+			</div>
+		{{/unless}}
+	</div>
+</template>

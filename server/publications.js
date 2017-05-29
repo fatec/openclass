@@ -1,5 +1,14 @@
-Meteor.publish('blogs', function() {
-  return Blogs.find();
+Meteor.publish('blogs', function(userId) {
+  return Blogs.find({userId:userId});
+});
+
+Meteor.publish('blogsVisited', function(blogsId) {
+  console.log("ON a les ID : "+blogsId);
+  return Blogs.find({});
+});
+
+Meteor.publish('blog', function(blogId) {
+  return Blogs.find({_id: blogId});
 });
 
 Meteor.publish('blogsVersions', function() {
@@ -35,7 +44,7 @@ Meteor.publish("postImage", function(postId){ return Images.find({'metadata.post
 Meteor.publish("tags", function(blogId){ return Tags.find({blogId: blogId}); });
 Meteor.publish("authors", function(blogId){ return Authors.find({blogId: blogId}); });
 Meteor.publish("categories", function(blogId){ return Categories.find({blogId: blogId}); });
-Meteor.publish("codes", function(){ return Codes.find()});
+//Meteor.publish("codes", function(){ return Codes.find()});
 
 // Meteor.publish("userStatus", function() {
 //   return Meteor.users.find({ "status.online": true });

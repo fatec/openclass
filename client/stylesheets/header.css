@@ -65,6 +65,8 @@ border: solid 1px blue;
 /*	line-height:44px;
 */
 	cursor: pointer;
+	padding-left:6px;
+padding-right:6px;
 }
 
 

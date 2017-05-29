@@ -105,6 +105,18 @@ vertical-align: middle;
 	color:grey;
 }
 
+.blog-edit--list-right-title i {
+	font-size: 1.5em;
+}
+
+.blog-edit--list-right-title i.fa-toggle-on {
+	color:green;
+}
+
+.blog-edit--list-right-title-code {
+	font-family: Helvetica, Arial, Sans-Serif;
+}
+
 .blog-edit--list-item:first-of-type {
 	border-top:solid 1px #ddd;
 
@@ -115,6 +127,12 @@ vertical-align: middle;
 .blog-edit--list-item:last-of-type {
 	border-bottom-right-radius: 2px;
 	border-bottom-left-radius: 2px;
+}
+
+.blog-edit--select-wrapper {
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
 }
 
 .blog-edit--input {
@@ -197,6 +215,28 @@ overflow: hidden;
 
 /* ----- blog-edit-categories template ----- */
 
+.blog-edit-categories--item-name {
+	margin-left:10px;
+	font-size:0.9em;
+}
+
+.blog-edit-categories--button-delete-category {
+	float:right;
+}
+
+.blog-edit-categories--button-delete-category i {
+	vertical-align:middle;
+}
+
+.blog-edit-categories--button-edit-category {
+	float:right;
+	margin-right:10px;
+}
+
+.blog-edit-categories--button-edit-category i {
+	vertical-align:middle;
+}
+
 /*.blog-edit-categories table {
 width:100%;
 margin-bottom:15px;
@@ -231,11 +271,26 @@ font-size:12px;
 	text-align:center;
 }
 
+.blog-edit-authors--name {
+	margin-left:10px;
+	font-size:0.9em;
+}
 
-/* ----- blog-item template ----- */
+.blog-edit-authors--button-delete-author {
+	float:right;
+}
 
-.blog-item--button-edit {
-	font-size:0.8em;
+.blog-edit-authors--button-delete-author i {
+	vertical-align:middle;
+}
+
+.blog-edit-authors--button-edit-author {
+	float:right;
+	margin-right:10px;
+}
+
+.blog-edit-authors--button-edit-author i {
+	vertical-align:middle;
 }
 
 
@@ -255,6 +310,29 @@ padding: 8px 60px 0px 0px;
 	/*border-left: solid 1px #e8e8e8;*/
 
 	font-size: 1em;
+}
+
+.blog-page--alert {
+	font-size: 0.9em;
+	text-align:center;
+	background-color: white;
+	margin-bottom: 10px;
+	border: solid 1px #ddd;
+	border-radius: 2px;
+	padding: 15px;
+}
+
+.blog-page--alert h3 {
+	margin-bottom:5px;
+}
+
+.blog-page--alert i {
+	color:#2a8bbf;
+	vertical-align: middle;
+}
+
+.blog-page--alert button {
+	margin-top:8px;
 }
 
 .blog-page--notification-panel {
@@ -281,10 +359,6 @@ padding: 8px 60px 0px 0px;
 	color:white !important;
 }
 
-.blog-page--load-more-wrapper {
-	text-align: center;
-}
-
 .blog-page--main {
 margin-top:10px;
 }
@@ -300,8 +374,48 @@ margin-top:10px;
 .blog-page--no-post-message {
 	margin-top:20px;
 	text-align: center;
+	background-color:white;
+	border:solid 1px #ddd;
+	border-radius:2px;
+	padding:15px;
 }
 
+.blog-page--code-panel {
+	text-align: center;
+	background-color:white;
+	margin-bottom:10px;
+	border:solid 1px #ddd;
+	border-radius:2px;
+	padding:15px;
+}
+
+.blog-page--code-panel-own-blog {
+	margin-top:20px;
+	text-align: center;
+	background-color:white;
+	margin-bottom:10px;
+	border:solid 1px #ddd;
+	border-radius:2px;
+	padding:15px;
+}
+
+.blog-page--code-panel-title {
+	font-size:1.1em;
+}
+
+.blog-page--code-panel-code {
+	border-radius:20px;
+	display:inline-block;
+	padding:10px;
+	background-color:#2A8BBF;
+	color:white;
+	letter-spacing:0.1em;
+	font-family: Helvetica, Arial, Sans-Serif;
+}
+
+.blog-page--code-panel-code span {
+	font-size:0.8em;
+}
 
 /* ----- blog-submit template ----- */
 
@@ -343,9 +457,9 @@ margin-top:10px;
 }
 
 
-/* ----- blogs-list template ----- */
+/* ----- blog-list template ----- */
 
-.blogs-list--title {
+.blog-list--title {
 	margin:30px 0 30px 0;
 	padding-left:10px;
 	padding-right:10px;
@@ -359,24 +473,63 @@ margin-top:10px;
     font-family: "Montserrat-UltraLight";
 }
 
-.blogs-list--title:hover {
+.blog-list--title:hover {
 	color:#2a90c6;
 }
 
-.blogs-list--wrapper {
+.blog-list--button-edit {
+	font-size:0.8em;
+}
+
+.blog-list--button-edit i {
+	float:right;
+	vertical-align:middle;
+}
+
+.blog-list--wrapper {
 	text-align: center;
 }
 
-.blogs-list--code-wrapper {
+.blog-list--blogs-title {
+	text-align:center;
+	margin-top:40px;
+	margin-bottom:20px;
+	font-size:1.3em;
+	font-weight:400;
+}
+
+.blog-list--list-item-code {
+	font-size:1em;
+	font-family: Helvetica, Arial, Sans-Serif;
+	float:right;
+	margin-right:8px;
+}
+
+.blog-list--code-wrapper {
 	width: 38%;
 padding: 28px;margin-bottom:30px;margin-left:auto;margin-right:auto;text-align:center;background-color:white;	border-radius: 2px;
 -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 /* -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3); */
 box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
+margin-top:30px;
+padding-top:15px;
 }
 
-.blogs-list--code-input {
+.blog-list--code-wrapper span {
+	font-size:1.1em;
+}
+
+.blog-list--code-wrapper button {
+	width:100%;
+}
+
+.blog-list--no-blog {
+	text-align:center;
+	margin-top:15px;
+	font-size:0.9em
+}
+
+.blog-list--code-input {
 	font-size: 1em;
 	margin-bottom: 8px;
 height: 100%;
@@ -388,33 +541,74 @@ box-sizing: border-box;
 background-color: #fff6e0;
 }
 
-.blogs-list--button-submit-blog {
+.blog-list--button-submit-blog {
 	margin:25px 0 0 0;
 }
 
-.blogs-list--message-connect {
+.blog-list--message-connect {
 	display: block;
 	margin-top: 50px;
 
 	font-size:0.9em;
 }
 
-.blogs-list--footer {
+.blog-list--footer {
 	font-size: 0.9em;
 }
 
-.blogs-list--footer a {
+.blog-list--footer a {
 	color:#6e6e6e;
 	padding:2px 8px;
 	border-left: solid 1px grey;
 }
 
-.blogs-list--footer a:first-of-type {
+.blog-list--footer a:first-of-type {
 border-left: none
 
 }
 
+.blog-list--visited-title {
+	text-align:center;
+	margin-top:40px;
+	margin-bottom:20px;
+}
 
+.blog-list--visited-title span {
+	font-size:1.3em;
+	font-weight:400;
+}
+
+.blog-list--visited-title a {
+	font-size:0.8em;
+}
+
+.blog-list--wrapper-text {
+	line-height:1.2em;
+}
+
+.blog-list--wrapper-text span {
+	font-size:0.6em;
+}
+
+.blog-list--wrapper-beta-warning {
+	margin-top:50px;
+	font-size:0.7em;
+	line-height:1.2em;
+	margin-bottom:10px;
+	color:#959595;
+}
+
+
+/* ----- blog-users template ----- */
+
+.blog-users--wrapper {
+	table-layout: fixed;
+	display: table;
+	width: 100%;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
 
 .blog-users--input-choose-author {
 /*	font-size: 1.1em;
@@ -427,4 +621,18 @@ padding: 3px;*/
 	padding: 8px;
 /*	width: 100%;
 */	box-sizing: border-box;
+}
+
+.blog-users--button-select-author {
+	padding-left:10px;
+	font-size:0.9em;
+}
+
+.blog-users--user-checked {
+	float:right
+}
+
+.blog-users--user-checked i {
+	color:green;
+	vertical-align:middle;
 }

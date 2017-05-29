@@ -5,23 +5,23 @@
 		<div class="list-group">
 			{{#each authors}}
 				<a class="list-group-item" data-author="{{name}}">
-					<span style="margin-left:10px;font-size:0.9em">{{name}}</span>
-					{{#unless guest}}
-      					<a class="blog-edit-authors--button-delete-author"  href="#" style="float:right">
-      						<i class="fa fa-lg fa-trash-o" style="vertical-align:middle" data-delete-author="{{name}}"></i>
-      					</a>
-      					<a class="blog-edit-authors--button-edit-author"  href="#" style="float:right;margin-right:10px;">
-      						<i class="fa fa-lg fa-pencil" style="vertical-align:middle" data-edit-author="{{name}}"></i>
-      					</a>
-      		    	{{/unless}}
-    			</a>
-    		{{/each}}
-    	</div>
-    	<div class="blog-edit-authors--form-wrapper">
-    			<form id="blog-edit--form-add-author" class="blog-edit--form-add-author">
-			<input id="authorName" class="blog-edit--input-add-author" placeholder="Ajouter un auteur..." />
-			<button type="submit" class="button button-primary blog-edit--button-submit-add-author"><i class="fa fa-plus"></i> Ajouter</button>
-		</form>
+						<span class="blog-edit-authors--name">{{name}}</span>
+						{{#unless guest}}
+						<a class="blog-edit-authors--button-delete-author" href="#">
+							<i class="fa fa-lg fa-trash-o" data-delete-author="{{name}}"></i>
+						</a>
+						<a class="blog-edit-authors--button-edit-author"  href="#">
+							<i class="fa fa-lg fa-pencil" data-edit-author="{{name}}"></i>
+						</a>
+					{{/unless}}
+				</a>
+			{{/each}}
+		</div>
+		<div class="blog-edit-authors--form-wrapper">
+			<form id="blog-edit--form-add-author" class="blog-edit--form-add-author">
+				<input id="authorName" class="blog-edit--input-add-author" placeholder="Ajouter un auteur..." />
+				<button type="submit" class="button button-primary blog-edit--button-submit-add-author"><i class="fa fa-plus"></i> Ajouter</button>
+			</form>
 		</div>
 	</div>
 </template>

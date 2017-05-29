@@ -1,6 +1,6 @@
 Template.layout.onRendered(function () {
 
-	// Slideout (lateral menu)
+	// Lateral menu
 	var template = this;
 	slideout = new Slideout({
 		'panel': template.$('#content').get(0),
@@ -21,7 +21,7 @@ Template.layout.onRendered(function () {
 	.on('beforeopen', function() {
 		this.panel.classList.add('panel-open');
 	})
-	.on('open', function(e) {
+	.on('open', function() {
 		this.panel.addEventListener('click', closeMenu);
 	})
 	.on('beforeclose', function() {
@@ -29,22 +29,21 @@ Template.layout.onRendered(function () {
 		this.panel.removeEventListener('click', closeMenu);
 	});
 
-	T9n.setLanguage("fr");
+	T9n.setLanguage("fr"); // Localization
 
-Meteor.autorun(function () {
-    var stat;
-    if (Meteor.status().status === "connected") {
-        stat = 1;
-    }
-    else if (Meteor.status().status === "connecting") {
-        stat = 0;
-    }
-    else {
-        stat = 0;
-    }
-    Session.set('status',stat);
-});
-
+	Meteor.autorun(function () { // Check connection status (used for box)
+	    var stat;
+	    if (Meteor.status().status === "connected") {
+	        stat = 1;
+	    }
+	    else if (Meteor.status().status === "connecting") {
+	        stat = 0;
+	    }
+	    else {
+	        stat = 0;
+	    }
+	    Session.set('status', stat);
+	});
 });
 
 
@@ -62,6 +61,7 @@ Template.layout.events({
 	}
 });
 
+
 Template.layout.helpers({
 	
 	isAdmin: function() {
@@ -69,13 +69,12 @@ Template.layout.helpers({
 			return true;
 	},
 	status: function() {
-		console.log(Session.get('status'));
 		if (!Session.get('status'))
 			return 'layout--status-disconnected'
 		else
 			return 'layout--status-connected'
 	},
-	 isBox: function() { // Check if Meteor is running under a beekee box
-    return (Meteor.settings.public.isBox === "true")
+	isBox: function() { // Check if Meteor is running under a beekee box
+    	return (Meteor.settings.public.isBox === "true")
   },
 });

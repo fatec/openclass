@@ -1,13 +1,48 @@
-function resetPostInterval() { // Reset interval of post subscription
-	if (Session.get('postsServerNonReactive') > 10) {
-		Session.set('postsToSkip',Session.get('postsServerNonReactive') - 10);
-		Session.set('postsLimit',10);
-	}
-	else {
-		Session.set('postsToSkip',0);
-		Session.set('postsLimit',Session.get('postsServerNonReactive'));
-	}
-}
+Template.slideoutMenu.events({
+
+	'click .slideout-menu--exit': function(e){
+		e.preventDefault();
+		Router.go('blogList');
+	},
+	'click .slideout-menu--settings': function(e,template){
+		e.preventDefault();
+		Router.go('blogEdit',{_id: template.data.blog._id});
+	},
+	'click .slideout-menu--show-all': function(e) {
+		e.preventDefault();
+		resetFilters();
+		Session.set('postsServerNonReactive', Counts.findOne().count);
+		resetPostInterval();
+	},
+	'click .filter-author': function(e) {
+		e.preventDefault();
+		var author = $(e.target).data('author');
+		resetFilters();
+		Session.set('author',author);
+		Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
+		resetPostInterval();
+		},
+	'click .filter-category': function(e) {
+		e.preventDefault();
+		var category = $(e.target).data('category');
+		resetFilters();
+		Session.set('category',category);
+		Session.set('postsServerNonReactive', Category.findOne({name:category}).nRefs);
+		resetPostInterval();
+	}, 	
+	'click .filter-tag': function(e) {
+		e.preventDefault();
+		var tag = $(e.target).data('tag');
+		resetFilters();
+		Session.set('tag',tag);
+		Session.set('postsServerNonReactive', Tags.findOne({name:tag}).nRefs);
+		resetPostInterval();
+	},
+	// 'click .menu--link-favorites': function(e,template) {
+	// Session.set("filter", "favorites"); 
+	// Session.set('nbPosts',Posts.find({favorites: true}).fetch().length); 
+	// },
+});
 
 
 Template.slideoutMenu.helpers({
@@ -57,7 +92,7 @@ Template.slideoutMenu.helpers({
 	ownBlog: function() {
 		if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true) 
 			return true;
-  	},   	
+	},   	
 	// favoritesCount: function() {
 	// 	return Posts.find({favorites: true}).fetch().length;
 	// },	
@@ -65,56 +100,5 @@ Template.slideoutMenu.helpers({
 	// 	if (Session.get('filter') === 'favorites')
 	// 		return "mobile-menu--list-element-selected"
 	// 	else return false;
-	// },
-});
-
-Template.slideoutMenu.events({
-
-	'click .slideout-menu--exit': function(e){
-		e.preventDefault();
-		Router.go('blogsList');
-	},
-	'click .slideout-menu--settings': function(e,template){
-		e.preventDefault();
-		Router.go('blogEdit',{_id: template.data.blog._id});
-	},
-	'click .slideout-menu--show-all': function(e) {
-		e.preventDefault();
-		Session.set("author",'');
-		Session.set("tag",''); 
-		Session.set("category",''); 
-		Session.set('postsServerNonReactive', Counts.findOne().count);
-		resetPostInterval();
-	},
-	'click .filter-author': function(e) {
-		e.preventDefault();
-		var author = $(e.target).data('author');
-		Session.set("tag",''); 
-		Session.set("category",'');
-		Session.set('author',author);
-		Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
-		resetPostInterval();
-		},
-	'click .filter-category': function(e) {
-		e.preventDefault();
-		var category = $(e.target).data('category');
-		Session.set("author",'');
-		Session.set("tag",''); 
-		Session.set('category',category);
-		Session.set('postsServerNonReactive', Category.findOne({name:category}).nRefs);
-		resetPostInterval();
-	}, 	
-	'click .filter-tag': function(e) {
-		e.preventDefault();
-		var tag = $(e.target).data('tag');
-		Session.set("author",'');
-		Session.set("category",''); 
-		Session.set('tag',tag);
-		Session.set('postsServerNonReactive', Tags.findOne({name:tag}).nRefs);
-		resetPostInterval();
-	},
-	// 'click .menu--link-favorites': function(e,template) {
-	// Session.set("filter", "favorites"); 
-	// Session.set('nbPosts',Posts.find({favorites: true}).fetch().length); 
 	// },
 });

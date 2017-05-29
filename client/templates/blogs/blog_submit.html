@@ -3,19 +3,13 @@
 		<div class="page-title">Créer un espace</div>
 		<form id="blog-submit--form" class="blog-submit--form">
 			<div class="blog-submit--wrapper">
-    		    <label>Nom de l'espace</label><br />
+				<label>Nom de l'espace</label><br />
 				<input name="title" id="blog-submit--input-title" type="text" value="" class="blog-submit--input form-control" autofocus />
-                {{#if errorMessage}}
-                    <div class="blog-submit--error">
-                        <br /><span style="color:red;">{{errorMessage}}</span><br />
-                    </div> 
-                {{/if}}  
-<!-- 				<br /><br /><span>Code d'accès : <b>{{code}}</b></span> 
- -->        	</div>
-        	<div class="blog-submit--button-wrapper">
+        	</div>
+			<div class="blog-submit--button-wrapper">
 				<button type="submit" class="button button-primary blog-submit--button-submit">Créer</button>
 				<button class="button button-cancel blog-submit--button-cancel">Annuler</button>  
 			</div> 
 		</form>
-    </div>
+	</div>
 </template>

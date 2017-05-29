@@ -1,25 +1,10 @@
-function resetPostInterval() { // Reset interval of post subscription
-	if (Session.get('postsServerNonReactive') > 10) {
-		Session.set('postsToSkip',Session.get('postsServerNonReactive') - 10);
-		Session.set('postsLimit',10);
-	}
-	else {
-		Session.set('postsToSkip',0);
-		Session.set('postsLimit',Session.get('postsServerNonReactive'));
-	}
-}
-
-
 Template.blogPage.onCreated(function() {
 
 	viewport = document.querySelector("meta[name=viewport]");
 	viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=4');
 
-	var blogId = this.data.blog._id;
 	Session.set('blogId',this.data.blog._id);
-	Session.set('author','');
-	Session.set('tag','');
-	Session.set('category','');
+	resetFilters();
 	Session.set('postsServerNonReactive', Counts.findOne().count); // Set a non-reactive counter of posts -> here = all server posts
 	resetPostInterval();
 
@@ -37,11 +22,53 @@ Template.blogPage.onCreated(function() {
 			filters = {blogId:blogId, tags:Session.get('tag')}
  		// Interval of posts subscription : load every posts from "postsToSkip" (skip) to "postsLimit" (limit)
  		// By default, load the 10 last posts (skip : total posts - 10 / limit : 10)
-		Meteor.subscribe('posts', filters, postsToSkip, postsLimit, function() {
-    		$("img").unveil(); // TODO : check if lazy load is really necessary...
-    		$("img").trigger("unveil");
-		});
+		Meteor.subscribe('posts', filters, postsToSkip, postsLimit);
 	});
+});
+
+
+Template.blogPage.events({
+	'click .button-ok-update-alert': function() {
+		Meteor.users.update(Meteor.user()._id, {$set: {"profile.lastAlert": 1}});
+	},
+	'click .button-send-to-api': function(e, template) {
+			e.preventDefault();
+
+			Meteor.call('sendBlog', {blogId: template.data.blog._id} );
+		},
+	'click .button-hide-code-panel': function(e) {
+		e.preventDefault();
+
+		$( "#codePanel" ).hide();
+
+		Blogs.update(this.blog._id, {$set : {codePanel : 0}});         
+	},
+	'click .blog-page--load-more': function(e) { // If user want to load more posts, it moves the interval (skip : -10 / limit : +10)
+		e.preventDefault();
+			
+		Session.set('postsToSkip',Session.get('postsToSkip')-10);
+		Session.set('postsLimit',Session.get('postsLimit')+10);
+	},
+	'click .blog-page--refresh': function(e) { // Refresh posts when user click on new messages button
+		e.preventDefault();
+
+		if (Session.get('author') !== "") {
+			var author = Session.get('author');
+			Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
+		}
+		else if (Session.get('category') !== "") {
+			var category = Session.get('category');
+			Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
+		}
+		else if (Session.get('tag') !== "") {
+			var tag = Session.get('tag');
+			Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
+		}
+		else
+			Session.set('postsServerNonReactive', Counts.findOne().count);
+
+		resetPostInterval();
+	}  
 });
 
 
@@ -62,8 +89,7 @@ Template.blogPage.helpers({
 		if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
 				return true;
 	},
-	// Check if server posts  > client posts (if reactive is on)
-	newMessages: function() {
+	newMessages: function() { // Check if server posts  > client posts (if reactive is on)
 		if (!Session.get('isReactive'))
 		{
 			var nbPosts = Session.get('postsServerNonReactive');
@@ -94,69 +120,13 @@ Template.blogPage.helpers({
 	isReactive: function() {
 		return Session.get('isReactive');
 	},
-	updateAlert: function() {
-		if (Meteor.user().profile) {
-			if (Meteor.user().profile.lastAlert >= 1)
-				return false
-			else
-				return true
-		}
-		else return true
-	}
-});
-
-
-Template.blogPage.events({
-	'click .button-ok-update-alert': function() {
-		Meteor.users.update(Meteor.user()._id, {$set: {"profile.lastAlert": 1}});
-	},
-	'click .button-send-to-api': function(e, template) {
-			e.preventDefault();
-
-			Meteor.call('sendBlog', {blogId: template.data.blog._id} );
-		},
-	'click .hideCodePanel': function(e) {
-		e.preventDefault();
-
-		$( "#codePanel" ).hide();
-
-		Blogs.update(this.blog._id, {$set : {codePanel : 0}});         
-	},
-	'click .blog-page--button-reactive': function(e) {
-		e.preventDefault();
-
-		Session.set('isReactive', true)        
-	},
-	'click .blog-page--button-stop-reactive': function(e) {
-		e.preventDefault();
-
-		Session.set('isReactive', false)        
-	},
-		// If user want to load more posts, it moves the interval (skip : -10 / limit : +10)
-		'click .blog-page--load-more': function(e) {
-			e.preventDefault();
-			
-			Session.set('postsToSkip',Session.get('postsToSkip')-10);
-			Session.set('postsLimit',Session.get('postsLimit')+10);
-	},
-	'click .blog-page--refresh': function(e) {
-		e.preventDefault();
-
-		if (Session.get('author') !== "") {
-			var author = Session.get('author');
-			Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
-		}
-		else if (Session.get('category') !== "") {
-			var category = Session.get('category');
-			Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
-		}
-		else if (Session.get('tag') !== "") {
-			var tag = Session.get('tag');
-			Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
-		}
-		else
-			Session.set('postsServerNonReactive', Counts.findOne().count);
-
-		resetPostInterval();
-	}  
+    updateAlert: function() {
+      if (Meteor.user().profile) {
+        if (Meteor.user().profile.lastAlert >= 1)
+          return false
+        else
+          return true
+    }
+      else return true
+    }
 });

@@ -1,14 +1,3 @@
-function resetPostInterval() { // Reset interval of post subscription
-  if (Session.get('postsServerNonReactive') > 10) {
-    Session.set('postsToSkip',Session.get('postsServerNonReactive') - 10);
-    Session.set('postsLimit',10);
-  }
-  else {
-    Session.set('postsToSkip',0);
-    Session.set('postsLimit',Session.get('postsServerNonReactive'));
-  }
-}
-
 Template.postItem.helpers({
   commentsAllowed: function() {
     if (Template.parentData().blog.commentsAllowed)
@@ -145,18 +134,7 @@ Template.postItem.events({
 
 
       Posts.remove(currentPostId);
-      // TODO : remove in one call :D
-      image = Images.findOne({'metadata.postId': currentPostId});
-      if (image){
-        Images.remove(image._id);
-      }
 
-      author = Authors.findOne({blogId: this.blogId, name: currentPost.author});
-      Authors.update(author._id, {$inc: {nRefs: -1}});
-
-          // Decrement category list
-      category = Categories.findOne({blogId: this.blogId, name: currentPost.category});
-      Categories.update(category._id, {$inc: {nRefs: -1}});
       
       // Images.remove({'metadata.postId': "Mik2bg7nvT7yHEpR2"});
       //Router.go('blogPage', {_id: currentPost.blogId});
