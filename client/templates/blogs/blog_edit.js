@@ -105,7 +105,7 @@ Template.blogEdit.events({
 	'click .blog-edit--update': function(e, template) {
 		e.preventDefault();
 
-		Meteor.call('getIP', function(error, result){
+		Meteor.call('updateBox', function(error, result){
 			if (error) {
 				alert("Une erreur est survenue : "+error.message);
 			}
