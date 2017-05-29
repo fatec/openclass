@@ -110,7 +110,7 @@ Template.blogEdit.events({
 				alert("Une erreur est survenue : "+error.message);
 			}
 			else {
-				alert("La box est en train d'être mise à jour...");
+				alert("La box va être mise à jour, merci de patienter...");
 			}
 		});
 	}  
