@@ -65,7 +65,12 @@ a.blog-edit--list-item:hover {
 }
 
 .blog-edit--list-item:hover {
-background-color:#ddd;
+	background-color:#ddd;
+}
+
+.blog-edit--list-item:active {
+	color:white;
+	background-color:#353535;
 }
 
 .blog-edit--list-title {

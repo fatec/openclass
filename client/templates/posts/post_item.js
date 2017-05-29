@@ -53,20 +53,18 @@ Template.postItem.helpers({
   },
   editAllowed: function() {
     if (Template.parentData().blog.postEditPermissions !== undefined) {
-            console.log(Template.parentData().blog.postEditPermissions);
-
-    if (Template.parentData().blog.postEditPermissions === "all" || (Template.parentData().blog.postEditPermissions === "own" && Session.get(Template.parentData().blog._id).author === this.author) || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+      if (Template.parentData().blog.postEditPermissions === "all" || (Template.parentData().blog.postEditPermissions === "own" && Session.get(Template.parentData().blog._id).author === this.author) || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+        return true
+      else
+        return false
+    }
+    else 
+      {
+        if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
       return true
     else
       return false
-  }
-  else 
-    {
-      if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
-    return true
-  else
-    return false
-}
+    }
   },
 
   // ownPost: function() {

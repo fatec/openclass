@@ -160,6 +160,11 @@ Authors : Vincent Widmer & Stéphane Morand;
 	text-align: center;
 }
 
+.register--message {
+	margin-top: 15px;
+	color: red;
+}
+
 
 /* ----- notFound template ----- */
 

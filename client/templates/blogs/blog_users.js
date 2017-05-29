@@ -26,7 +26,7 @@ Template.blogUsers.events({
 		}
 	},
 	'click .blog-users--button-submit-author': function(event, template) {
-		e.preventDefault();
+		event.preventDefault();
 		$('#blog-submit--form').submit();
 	},
 	'click .blog-users--button-select-author': function(event, template) {

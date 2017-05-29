@@ -10,9 +10,11 @@
 				{{#if errorMessage}}
 					<div class="login--message">
 						<p>{{t9n errorMessage}}</p>
-						{{#if passwordRecovery}}
-							<br><a href="#" class="send-mail-forgot-password">Réinitialiser mon mot de passe</a>
-						{{/if}}
+						{{#unless isBox}}
+							{{#if passwordRecovery}}
+								<br><a href="#" class="send-mail-forgot-password">Réinitialiser mon mot de passe</a>
+							{{/if}}
+						{{/unless}}
 					</div> 
 				{{/if}}                 
 			</div> 

@@ -36,15 +36,19 @@ a {
 }
 
 a:hover {
-	color: #145679;
-}
-a:hover, a:active {
 	text-decoration: underline;
+	color: #145679;
 }
 
-a:active {
-	color: #145679;
-	}
+a:hover, a:active {
+	text-decoration: underline;
+	color: #353535;
+}
+
+* { 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
 .fixed_to_absolute{
   position:absolute !important;
@@ -102,7 +106,7 @@ a:active {
 }
 
 .button-primary:active {
-	background-color:grey;
+	background-color:#353535;
 	border-color:grey;
 	background-image: none;
 }
@@ -124,7 +128,7 @@ a:active {
 }
 
 .button-secondary:active {
-	background-color:grey;
+	background-color:#353535;
 	border-color:grey;
 	background-image: none;
 }
@@ -150,7 +154,7 @@ a:active {
 }
 
 .button-cancel:active {
-	background-color:grey;
+	background-color:#353535;
 	border-color:grey;
 	background-image: none;
 }
@@ -176,7 +180,7 @@ a:active {
 }
 
 .button-danger:active {
-	background-color:grey;
+	background-color:#353535;
 	border-color:grey;
 	background-image: none;
 }
@@ -247,7 +251,7 @@ a:active {
 }
 
 .list-group-item:active {
-	background-color: grey;
+	background-color: #353535;
 	
 	color:white;
 }

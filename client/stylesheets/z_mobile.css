@@ -73,7 +73,7 @@ background-color: grey;
 font-size:0.8em;
 }
 
-.blogs-list--code-wrapper {
+.blog-list--code-wrapper {
 	width: 80%;
 }
 
@@ -298,11 +298,11 @@ margin-bottom:20px;
 	width:100%;
 }
 
-.blogs-list--message-connect {
+.blog-list--message-connect {
 	font-size:0.9em;
 }
 
-.blogs-list--title {
+.blog-list--title {
 	margin:10px 0 30px 0;
 	}
 

@@ -27,7 +27,7 @@ Template.slideoutMenu.events({
 		var category = $(e.target).data('category');
 		resetFilters();
 		Session.set('category',category);
-		Session.set('postsServerNonReactive', Category.findOne({name:category}).nRefs);
+		Session.set('postsServerNonReactive', Categories.findOne({name:category}).nRefs);
 		resetPostInterval();
 	}, 	
 	'click .filter-tag': function(e) {
@@ -48,16 +48,20 @@ Template.slideoutMenu.events({
 Template.slideoutMenu.helpers({
 
 	postCount: function() {
-		return Counts.findOne().count;
+		var count = Counts.findOne();
+		return count && count.count;
 	},
 	authorNRef: function() {
-		return Authors.findOne({name:this.name}).nRefs;
+		var author = Authors.findOne({name:this.name});
+		return author && author.nRefs;
 	},
 	categoriesNRef: function() {
-		return Category.findOne({name:this.name}).nRefs;
+		var category = Categories.findOne({name:this.name});
+		return category && category.nRefs;
 	},
 	tagsNRef: function() {
-		return Tags.findOne({name:this.name}).nRefs;
+		var tag = Tags.findOne({name:this.name});
+		return tag && tag.nRefs;
 	},
 	authors: function() {
 		return Authors.find({}, {sort: {name: 1}});
@@ -90,9 +94,21 @@ Template.slideoutMenu.helpers({
 		else return null
 	},
 	ownBlog: function() {
-		if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true) 
-			return true;
-	},   	
+		var userId = Meteor.userId();
+		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin'])
+		if (userId && this.blog)
+			if (this.blog.userId === userId)
+				return true;
+		else if (isAdmin)
+			if (isAdmin === true)
+				return true;
+		else
+			return false;
+	},
+	// ownBlog: function() {
+	// 	if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true) 
+	// 		return true;
+	// },   	
 	// favoritesCount: function() {
 	// 	return Posts.find({favorites: true}).fetch().length;
 	// },	

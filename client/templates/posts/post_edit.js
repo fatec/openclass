@@ -120,12 +120,8 @@ Template.postEdit.helpers({
 		return blogId;
 	},
 	categories: function() {
-		// TODO resolve error log while changing picture
-		var currentPostId = this.post._id;
-		var currentPost = Posts.findOne(currentPostId);
-		var blogId = Blogs.findOne(currentPost.blogId);
-		return Categories.find({blogId: blogId._id},{sort: { name: 1 }}); 
-	},
+    	return Categories.find({blogId: this.post.blogId},{sort: { name: 1 }});  
+  	},
 	selectedCategory: function(){
 		var category = this.name;
 		var categoryItem = Template.parentData().post.category;

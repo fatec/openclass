@@ -19,7 +19,7 @@ Template.desktopMenu.events({
 		var category = $(e.target).data('category');
 		resetFilters();
 		Session.set('category',category);
-		Session.set('postsServerNonReactive', Category.findOne({name:category}).nRefs);
+		Session.set('postsServerNonReactive', Categories.findOne({name:category}).nRefs);
 		resetPostInterval();
 	}, 	
 	'click .filter-tag': function(e) {
@@ -42,16 +42,20 @@ Template.desktopMenu.events({
 Template.desktopMenu.helpers({
 
 	postCount: function() {
-		return Counts.findOne().count;
+		var count = Counts.findOne();
+		return count && count.count;
 	},
-	authorNRef: function() { // Number of author's publication
-		return Authors.findOne({name:this.name}).nRefs;
+	authorNRef: function() {
+		var author = Authors.findOne({name:this.name});
+		return author && author.nRefs;
 	},
 	categoriesNRef: function() {
-		return Category.findOne({name:this.name}).nRefs;
+		var category = Categories.findOne({name:this.name});
+		return category && category.nRefs;
 	},
 	tagsNRef: function() {
-		return Tags.findOne({name:this.name}).nRefs;
+		var tag = Tags.findOne({name:this.name});
+		return tag && tag.nRefs;
 	},
 	authors: function() {
 		return Authors.find({}, {sort: {name: 1}});

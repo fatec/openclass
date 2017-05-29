@@ -19,7 +19,6 @@ Template.blogList.events({
 			if (error) {
 				alert("Cet espace n'existe pas.\nAssurez-vous de respecter les majuscules et les minuscules.");
 			} else {
-				console.log("ON a le blog ID :"+result);
 				var blogId = result;
 				var blogsVisited = [];
 				var cookie = Cookie.get('blogsVisited');

@@ -15,11 +15,11 @@ Template.blogPage.onCreated(function() {
 
 		var filters = {blogId:Session.get('blogId')};
 		if (Session.get('author') != "")
-			filters = {blogId:blogId, author:Session.get('author')}
+			filters = {blogId:Session.get('blogId'), author:Session.get('author')}
 		else if (Session.get('category') != "")
-			filters = {blogId:blogId, category:Session.get('category')}
+			filters = {blogId:Session.get('blogId'), category:Session.get('category')}
 		else if (Session.get('tag') != "")
-			filters = {blogId:blogId, tags:Session.get('tag')}
+			filters = {blogId:Session.get('blogId'), tags:Session.get('tag')}
  		// Interval of posts subscription : load every posts from "postsToSkip" (skip) to "postsLimit" (limit)
  		// By default, load the 10 last posts (skip : total posts - 10 / limit : 10)
 		Meteor.subscribe('posts', filters, postsToSkip, postsLimit);
@@ -45,8 +45,11 @@ Template.blogPage.events({
 	},
 	'click .blog-page--load-more': function(e) { // If user want to load more posts, it moves the interval (skip : -10 / limit : +10)
 		e.preventDefault();
-			
-		Session.set('postsToSkip',Session.get('postsToSkip')-10);
+		
+		if (Session.get('postsToSkip') <= 10)
+			Session.set('postsToSkip', 0);
+		else
+			Session.set('postsToSkip',Session.get('postsToSkip')-10);
 		Session.set('postsLimit',Session.get('postsLimit')+10);
 	},
 	'click .blog-page--refresh': function(e) { // Refresh posts when user click on new messages button
@@ -80,14 +83,22 @@ Template.blogPage.helpers({
 		else return null
 	},
 	loadMore: function() { // Check if user can load more posts
-		return (Session.get('postsToSkip') >= 10)
+		return (Session.get('postsToSkip') > 0)
 	},
 	codePanelState: function() {
 		return (this.blog.codePanel)
 	},
 	ownBlog: function() {
-		if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+		var userId = Meteor.userId();
+		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin'])
+		if (userId)
+			if (this.blog.userId === userId)
 				return true;
+		else if (isAdmin)
+			if (isAdmin === true)
+				return true;
+		else
+			return false;
 	},
 	newMessages: function() { // Check if server posts  > client posts (if reactive is on)
 		if (!Session.get('isReactive'))

@@ -225,9 +225,6 @@ if (Session.get("imageId"))
     //Images.insert({imageId:fileInfo.name});
     Session.set("imageId",fileInfo.name);
 
-    console.log(fileInfo.url);
-
-
     //console.log("je rajoute l'image"+fileInfo.name);
 
   }
