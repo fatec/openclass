@@ -88,10 +88,7 @@ Meteor.methods({
   },
   'getIP': function() {
       var res;
-            //res = cmd("ifconfig eth0");
-
       res = cmd("ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'");
-      console.log(res);
       return res;
     },
     'updateBox': function() {

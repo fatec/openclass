@@ -64,8 +64,6 @@ Meteor.publish("count-all-posts", function (blogId) {
     added: function (doc, idx) {
       count++;
       if (!initializing) {
-                console.log("DOC :"+idx._id);
-
         self.changed("counts", blogId, {count: count});  // "counts" is the published collection name
       }
     },
