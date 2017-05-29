@@ -97,6 +97,7 @@ Meteor.methods({
     'updateBox': function() {
       var res;
       res = cmd("pwd");
+      console.log(res);
       return res;
     }
 });
