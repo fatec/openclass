@@ -124,7 +124,10 @@ Template.blogEdit.helpers({
 			if (error) {
 				Session.set('serverIP',"Pas d'adresse IP"); // Is Session really usefull here ?
 			} else{
-				Session.set('serverIP',result);
+				if (result != "")
+					Session.set('serverIP',result);
+				else
+					Session.set('serverIP',"Non connectée");
 			}
 		});
 		return Session.get('serverIP');
