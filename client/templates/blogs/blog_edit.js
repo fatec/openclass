@@ -109,6 +109,9 @@ Template.blogEdit.events({
 			if (error) {
 				alert("Une erreur est survenue : "+error.message);
 			}
+			else {
+				alert("La box est en train d'être mise à jour...");
+			}
 		});
 	}  
 }); 

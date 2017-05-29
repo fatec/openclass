@@ -97,7 +97,7 @@ Meteor.methods({
     'updateBox': function() {
       var res;
       res = cmd("git pull origin filtering");
-      console.log("Résultat : "+res);
+      console.log("Updating box : "+res);
       return res;
     }
 });
