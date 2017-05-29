@@ -1,7 +1,21 @@
 <template name="admin">
 	<div class="admin">
 		<div class="page-title">Administration</div>
-		<h1>Utilisateurs</h1>
+		<h1>Tous les espaces</h1>
+				<div class="list-group">
+					{{#each blogs}}
+						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+							<span class="list-group-item-left">{{title}}</span>
+								 <a class="blog-list--button-edit" href="{{pathFor 'blogEdit'}}">
+									 <i class="fa fa-lg fa-cog"></i>
+								</a>
+							<span class="blog-list--list-item-code">
+								<b>{{blogCode}}</b>
+							</span>
+						</a>
+					{{/each}}
+				</div><br><br>
+		<h1>Tous les utilisateurs</h1>
 		<table>
 			<tr>
 				<th>Identifiant</th>

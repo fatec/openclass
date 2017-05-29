@@ -1,6 +1,9 @@
 Template.admin.helpers({
 
-	user: function(){
+	blogs: function() {
+		return Blogs.find({},{sort: {createdAt: -1}});
+	},
+	user: function() {
 		return Meteor.users.find({},{sort: {createdAt: -1}});
 	},
 	isOnline: function() {

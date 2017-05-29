@@ -1,9 +1,12 @@
+Meteor.publish('allBlogs', function() {
+  return Blogs.find({});
+});
+
 Meteor.publish('blogs', function(userId) {
   return Blogs.find({userId:userId});
 });
 
 Meteor.publish('blogsVisited', function(blogsId) {
-  console.log("ON a les ID : "+blogsId);
   return Blogs.find({});
 });
 

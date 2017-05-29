@@ -101,8 +101,17 @@ Template.blogEdit.events({
 				if (error)
 					alert("Un problème est survenu. Vérifiez que la box est bien connectée à internet et recommencez.");
 			});
-		}  
-	}); 
+		},
+	'click .blog-edit--update': function(e, template) {
+		e.preventDefault();
+
+		Meteor.call('getIP', function(error, result){
+			if (error) {
+				alert("Une erreur est survenue : "+error.message);
+			}
+		});
+	}  
+}); 
 
 
 Template.blogEdit.helpers({
