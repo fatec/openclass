@@ -6,7 +6,7 @@
 		return Authors.find({blogId: this.blog._id});  
 	},
 	authorName: function() {
-		return Session.get(this.blog._id).author; 
+		return Session.get(this.blog._id) && Session.get(this.blog._id).author; 
 	},    
 	optionIsSelected: function(authorName) {
 		return authorName === Session.get(Template.parentData().blog._id).author;

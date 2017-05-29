@@ -1,4 +1,4 @@
-Template.blogSubmit.onCreated(function() {
+Template.blogSubmit.onRendered(function() {
 
 	this.$('.blog-submit--input').focus();
 });
