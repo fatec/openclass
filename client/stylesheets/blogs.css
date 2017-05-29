@@ -422,6 +422,18 @@ margin-top:10px;
 	font-size:0.8em;
 }
 
+.blog-page--load-more {
+	text-align: center;
+	background-color:#2a8bbf;
+	color:white;
+	padding: 8px;
+	cursor: pointer;
+}
+
+.blog-page--load-more:active {
+	background-color:#353535;
+}
+
 /* ----- blog-submit template ----- */
 
 .blog-submit--wrapper {
