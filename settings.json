@@ -1,5 +1,5 @@
 {
-  "syncServerIP": "http://192.168.0.13:3000",
+  "syncServerIP": "http://localhost:3100",
   "adminPassword": "admin",
    "public" : {
   		"isBox": "true",
