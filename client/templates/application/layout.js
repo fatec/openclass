@@ -16,17 +16,19 @@ Template.layout.onRendered(function () {
 		event.stopPropagation(); // Prevent click propagation to menu wrapper button
 	}
 
-	// Close lateral menu on click
+	//Close lateral menu on click
 	slideout
-	.on('beforeopen', function() {
+	.on('beforeopen', function(event) {
 		this.panel.classList.add('panel-open');
 	})
-	.on('open', function() {
+	.on('open', function(event) {
 		this.panel.addEventListener('click', closeMenu);
+		this.panel.classList.add('overflow-hidden');
 	})
-	.on('beforeclose', function() {
+	.on('beforeclose', function(event) {
 		this.panel.classList.remove('panel-open');
 		this.panel.removeEventListener('click', closeMenu);
+		this.panel.classList.remove('overflow-hidden');
 	});
 
 	T9n.setLanguage("fr"); // Localization
