@@ -1,0 +1,27 @@
+<template name="blogUsers">
+	<div class="blog-users">
+		<div class="blog-users--wrapper">
+			<div class="page-title">S'identifier</div>
+			<div class="page-description">Choisissez un nom d'utilisateur</div>
+			{{#if createUserAllowed}}
+				<form id="blog-users--form">
+					<input id="authorName" class="blog-users--input-choose-author" placeholder="Entrez un nom..." />
+					<button type="submit" class="button button-primary blog-users--button-submit-author"> Valider</button>
+				</form>
+			{{else}}
+				<div class="list-group">
+					{{#each authors}}
+						<a class="list-group-item blog-users--button-select-author" data-author="{{name}}">
+							<span>{{name}}</span>
+							{{#if optionIsSelected name}}
+								<a class="blog-users--user-checked"  href="#">
+									<i class="fa fa-lg fa-check" data-delete-author="{{name}}"></i>
+								</a>
+							{{/if}}
+						</a>
+					{{/each}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

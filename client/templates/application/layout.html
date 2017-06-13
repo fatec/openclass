@@ -1,18 +1,22 @@
+<!-- Global layout template -->
 <template name="layout">
 	<div id="slideout-menu">
-		{{> yield "layout--menu"}}
+		{{> yield region="layout--menu"}}
 	</div>
-    <div id="content">
-		<div class="layout">	
+	<div id="content" class="panel">
+		<div class="layout">		
 			<div class="layout--header">
-				{{> yield "layout--header"}}
+				{{> yield region="layout--header"}}
 			</div>
+			{{#if isBox}}
+				<div class="layout--connection-status {{status}}">Déconnecté</div>
+			{{/if}}
 			<div class="layout--main">
-				{{> yield "layout--main"}}
+				{{> yield}}
 			</div>
 			<div class="layout--footer">
-				{{> yield "layout--footer"}}
+				{{> yield region="layout--footer"}}
 			</div>
-	  	</div>
-  	</div>
+		</div>
+	</div>
 </template>

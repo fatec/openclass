@@ -1,0 +1,72 @@
+<template name="blogList">
+	<div class="blog-list">
+		<div class="blog-list--logo"><img src="/img/logo.png" /></div>
+		{{#if currentUser}}
+			{{#if ownBlogs.count}}
+				<div class="list-group">
+					<div class="blog-list--blogs-title">
+						<span>Vos espaces :</span>
+					</div>
+					{{#each ownBlogs}}
+						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+							<span class="list-group-item-left">{{title}}</span>
+								 <a class="blog-list--button-edit" href="{{pathFor 'blogEdit'}}">
+									 <i class="fa fa-lg fa-cog"></i>
+								</a>
+							<span class="blog-list--list-item-code">
+								<b>{{blogCode}}</b>
+							</span>
+						</a>
+					{{/each}}
+				</div>
+			{{else}}
+				<div class="blog-list--no-blog">Vous n'avez pas encore créé d'espace.</div>
+			{{/if}}
+		{{else}}
+			<div class="blog-list--wrapper-text">Un espace privé pour partager photos et messages<br>avec vos étudiants, collègues ou amis.</div>
+			<form class="blog-list--code-link-form">
+				<div class="blog-list--code-wrapper">
+					<span>Accéder à un espace</span><br /><br />
+					<input class="blog-list--code-input" id="code" type="text" placeholder="Entrez un code d'accès"/><br />
+					<button type="submit" class="button button-primary blog-list--button-code-link">Valider</button>
+				</div>
+			</form>     
+			<div style="text-align: center;"><span style="color:#979797">- ou -</span><br><br><br>
+			<a href="{{pathFor 'login'}}"><button class="button button-primary">Créer un espace</button></a>
+</div>
+			{{#if blogsVisited.count}}
+				<div class="list-group blog-list--visited-blogs">
+					<div class="blog-list--visited-title">
+						<span>Récemment visité :</span><br />
+						<a class="blog-list--delete-recent" href="#">(effacer)</a>
+					</div> 
+					{{#each blogsVisited}}
+						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+							<span class="list-group-item-left">{{title}}</span>
+							<span class="blog-list--list-item-code">
+								<b>{{blogCode}}</b>
+							</span>
+						</a>
+					{{/each}}
+					<br /><br />
+				</div>
+			{{/if}}
+		{{/if}}
+	</div>
+	<div class="blog-list--wrapper">
+		{{#if currentUser}}
+			<a href="{{pathFor 'blogSubmit'}}">
+				<button class="button button-primary blog-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouvel espace</button>
+			</a>
+		{{else}}
+		{{/if}}
+		{{#unless isBox}}
+<!-- 			<div class="blog-list-2-wrapper-beta-warning"><em>Cette plateforme est encore en développement, des bugs peuvent survenir.</em><br></div>
+ -->			<div class="blog-list--footer">
+				<a href="http://infos.beekee.ch">À PROPOS</a>
+				<a href="{{pathFor 'dataProtection'}}">PROTECTION DES DONNÉES</a>
+				<a href="mailto:vincent.widmer@beekee.ch">CONTACT</a>
+			</div>
+		{{/unless}}
+	</div>
+</template>

@@ -1,43 +1,35 @@
 <template name="postEdit">
-    <div class="post-edit">
-        <div class="page-title">Modifier la publication</div>
-            <div class="post-edit--wrapper">
-            <form name="post-edit--form" id="post-edit--form">        
-                <div class="post-edit--image-wrapper">
-                    {{#if image}}
-                            {{#if image.url}}
-                                <a href="{{image.url store='images'}}" target="_blank">
-                                    <img src="{{image.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="post-edit--image" />
-                                </a>
-                                <div class="post-edit--button-delete-image-wrapper">
-                                    <button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
-                                </div>
-                        {{else}}
-                            <div class="post-edit--spinner"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
-                        {{/if}}
-                    {{else}}
-                        <label class="post-edit--input-file-wrapper">
-                            <input type="file" name="file" accept="image/*" class="post-edit--input-file" />Ajouter une photo...
-                        </label>
-                    {{/if}}
-                </div>
-                <textarea name="body" id="body" class="post-edit--textarea" autofocus>{{post.body}}</textarea>
-
-                    <br /><br />
-                    <input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/><br /><br />
-                    <select name="category" class="post-submit--select-categories">
-                        <option value="" disabled selected >Sélectionnez une catégorie :</option>
-                        <option value="" >Aucune catégorie</option>
-                        {{#each categories}}
-                            <option selected="{{selectedCategory}}">{{name}}</option>
-                        {{/each}}
-                    </select>
-                </form>
-            </div>
-        <a href="{{pathFor 'postSubmit'}}">
-            <button class="button button-primary post-edit--button-submit">
-                <i class="fa fa-paper-plane"></i> Modifier
-            </button>
-        </a>         
-    </div>
+	<div class="post-edit">
+		<div class="page-title">Modifier la publication</div>
+		<div class="post-edit--wrapper">
+			<div class="images post-edit--image-wrapper">
+				{{#if image}}
+					<img src="../../upload/{{image.imageId}}" alt="" class="post-edit--image"/>
+				{{/if}}
+			</div>
+			<form name="post-edit--form" id="post-edit--form">        
+				{{#if image}}
+					<div class="post-edit--button-delete-image-wrapper">
+						<button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
+					</div>
+				{{else}}
+					{{>postUploadImage autoStart=true}}
+				{{/if}}
+				<textarea name="body" id="body" class="post-edit--textarea">{{post.body}}</textarea><br /><br />
+				<input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Mots-clés : feuille, insecte, etc."/><br /><br />
+				<select name="category" class="post-edit--select-categories">
+					<option value="" disabled selected >Sélectionnez une catégorie :</option>
+					<option value="" >Aucune catégorie</option>
+					{{#each categories}}
+						<option selected="{{selectedCategory}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</form>
+		</div>
+		<button href="{{pathFor 'postSubmit'}}" class="button button-primary post-edit--button-submit">
+			<i class="post-edit--button-spinner fa fa-spinner fa-pulse" style="display:none;"></i>
+			<i class="post-edit--button-icon fa fa-paper-plane"></i>
+			<span class="post-edit--button-text"> Modifier</span>
+		</button>
+	</div>
 </template>

@@ -1,0 +1,23 @@
+<template name="postsHeader">
+	<div class="posts-header">
+		<div class="header">
+			<div class="header--wrapper">
+				<div class="header--left">
+					<i class="ion-navicon header--button-menu"></i>
+					<span class="header--blog-title">{{blog.title}}</span>
+				</div>			
+				<div class="header--right">
+					<a href="{{pathFor 'blogUsers' _id=this.blog._id}}" class="header--user-name">
+						<i class="ion-ios-person header--user-icon"></i>
+						<span >{{authorName}}</span>
+					</a>
+					{{#if submitAllowed}}
+						<a href="{{pathFor 'postSubmit' _id=this.blog._id}}">
+							<i class="ion-android-add posts-header--button-submit"></i>
+						</a>
+					{{/if}}
+				</div>							
+			</div>
+		</div>
+	</div>
+</template>

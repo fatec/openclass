@@ -1,8 +1,14 @@
 {
-  "syncServerIP": "",
-  "adminPassword": "admin",
-   "public" : {
-  		"isBox": "false",
-  		 "prefix": "W1"
-   }
+	"syncServerIP": "",
+	"adminPassword": "",
+	"mailAddress": "",
+	"mailPassword": "",
+	"mailServer": "",
+	"public" : {
+		"isBox": "false",
+		 "prefix": "BX",
+		 "ga": {
+			"id": ""
+		}
+	}
 }

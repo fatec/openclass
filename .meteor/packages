@@ -8,10 +8,7 @@ underscore
 iron:router
 sacha:spin
 accounts-password
-cfs:standard-packages
-cfs:filesystem
 cfs:graphicsmagick
-cfs:ejson-file
 jquery
 copleykj:livestamp
 rzymek:moment-locale-fr
@@ -22,7 +19,6 @@ alanning:roles
 msavin:mongol
 fortawesome:fontawesome
 sergeyt:typeahead
-smallhacks:bootstrap-tagsinput-custom
 chriswessels:slideout
 copleykj:jquery-autosize
 froatsnook:request
@@ -43,3 +39,17 @@ ejson
 spacebars
 check
 themeteorchef:jquery-validation
+chuangbo:cookie
+tomi:upload-server
+tomi:upload-jquery
+email
+meteorhacks:fast-render
+smallhacks:bootstrap-tagsinput-custom
+u2622:persistent-session
+ls3271:meteor-linkify
+reywood:iron-router-ga
+mizzao:user-status
+luisalmeida:unveil
+http
+pagebakers:ionicons
+meteorhacks:inject-initial

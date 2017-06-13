@@ -1,0 +1,25 @@
+<template name="desktopMenu">
+	<div class="desktop-menu">
+		<ul class="desktop-menu--list">
+			<li class="desktop-menu--show-all {{selectedShowAll}}">Tout afficher <span data-author="{{name}}">{{postCount}}</span></li>
+		</ul>
+		<div class="desktop-menu--list-title">Auteurs</div>
+		<ul class="desktop-menu--list">
+			{{#each authors}}
+				<li class="filter-author {{selectedAuthorClass}} {{isDisabled authorNRef}}" data-author="{{name}}" href="#">{{name}} <span data-author="{{name}}">{{authorNRef}}</span></li>
+			{{/each}}
+		</ul>
+		<div class="desktop-menu--list-title">Catégories</div>
+		<ul class="desktop-menu--list">
+			{{#each categories}}
+				<li class="filter-category {{selectedCategoryClass}} {{isDisabled categoriesNRef}}" data-category="{{name}}" href="#">{{name}} <span data-category="{{name}}">{{categoriesNRef}}</span></li>
+			{{/each}}
+		</ul>
+		<div class="desktop-menu--list-title">Mots-clés</div>
+		<ul class="desktop-menu--list">
+			{{#each tags}}
+				<li class="filter-tag {{selectedTagClass}} {{isDisabled tagsNRef}}" data-tag="{{name}}" href="#">{{name}} <span data-tag="{{name}}">{{tagsNRef}}</span></li>
+			{{/each}}
+		</ul>
+	</div>
+</template>

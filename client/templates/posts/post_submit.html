@@ -1,42 +1,36 @@
 <template name="postSubmit">
-    <div class="post-submit">
-        <div class="page-title">Ajouter une publication</div>
-        <div class="post-submit--wrapper">
-            <div class="images post-submit--image-wrapper">
-                                    <div class="post-edit--spinner" style="display:none;"><i class="fa  fa-3x fa-spinner fa-spin"></i></div>
-
-                {{#with image}}
-                            <img src="{{url store='thumbs' uploading='/img/upload-spinner2.gif' storing='/img/upload-spinner2.gif'}}" alt="" class="post-submit--image thumbnail"/>
-                {{/with}}
-            </div>        
-            <form name="post-submit--form" id="post-submit--form">
-                {{#if image}}
-                    <div class="post-edit--button-delete-image-wrapper">
-                        <button class="button button-danger post-submit--button-delete-image" href="#">Supprimer l'image</button>
-                    </div>
-                {{else}}                
-                    <label class="post-submit--input-file-wrapper">
-                        <input type="file" name="file" accept="image/*" class="post-submit--input-file" /><span class="post-submit--input-file-icon"><i class="fa fa-camera"></i>
-</span><span class="post-submit--input-file-text"> Ajouter une photo...</span>
-                    </label>
-                {{/if}}
-                <textarea name="body" id="body" rows='2' class="post-submit--textarea" placeholder="Écrivez quelque chose..."></textarea>
-
-                <br /><br />
-                    <input name="tags" type="text" data-role="tagsinput" class="suggest" placeholder="Ajoutez des tags..."/><br /><br />
-                    <select name="category" class="post-submit--select-categories">
-                        <option value="" disabled selected >Sélectionnez une catégorie :</option>
-                        <option value="" >Aucune catégorie</option>
-                        {{#each categories}}
-                            <option>{{name}}</option>
-                        {{/each}}
-                    </select>
-            </form>
-        </div>
-        <a href="{{pathFor 'postSubmit'}}">
-            <button class="button button-primary post-submit--button-submit">
-                <i class="fa fa-paper-plane"></i> Envoyer
-            </button>
-        </a>                       
-    </div>
+	<div class="post-submit">
+		<div class="page-title">Ajouter une publication</div>
+		<div class="post-submit--wrapper">
+			{{#unless image}}
+				{{>postUploadImage autoStart=true}}
+			{{/unless}}
+			<div class="images post-submit--image-wrapper">
+				{{#if image}}
+	 				<img src="../../upload/{{image.imageId}}" id="img" alt="" class="post-submit--image"/>
+				{{/if}}
+			</div>        
+			<form name="post-submit--form" id="post-submit--form">
+				{{#if image}}
+					<div class="post-submit--button-delete-image-wrapper">
+						<button class="button button-danger post-submit--button-delete-image" href="#">Supprimer l'image</button>
+					</div>
+				{{/if}}
+				<textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..."></textarea><br /><br />
+				<input name="tags" type="text" data-role="tagsinput" class="post-submit--tags suggest" placeholder="Ajoutez des mots-clés..."/><br /><br />
+				<select name="category" class="post-submit--select-categories">
+					<option value="" disabled selected >Sélectionnez une catégorie :</option>
+					<option value="" >Aucune catégorie</option>
+					{{#each categories}}
+						<option>{{name}}</option>
+					{{/each}}
+				</select>
+			</form>
+		</div>
+		<button href="{{pathFor 'postSubmit'}}" class="button button-primary post-submit--button-submit">
+			<i class="post-submit--button-spinner fa fa-spinner fa-pulse" style="display:none;"></i>
+			<i class="post-submit--button-icon fa fa-paper-plane"></i>
+			<span class="post-submit--button-text"> Envoyer</span>
+		</button>
+	</div>
 </template>

@@ -1,0 +1,18 @@
+<template name="registerHeader">
+	<div class="login-header">
+		<div class="header">
+			<div class="header--wrapper">
+				<div class="header--left">
+					<i class="ion-ios-arrow-back header--button-back"></i>
+				</div>	
+				{{#unless currentUser}}
+					<div class="header--right">
+						<a href="{{pathFor 'login'}}" class="header--user-name">
+							<span >S'identifier</span>
+						</a>
+					</div>							
+				{{/unless}}
+			</div>
+		</div>
+	</div>
+</template>
