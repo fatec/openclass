@@ -85,18 +85,9 @@ Template.blogPage.events({
 Template.blogPage.helpers({
 
 	posts: function() {
-		if (this.blog !== undefined) {
-			var posts = Posts.find({},{sort: {submitted: -1}});
-			if (posts && subscription.ready()) {
-				return posts;
-			}
-			else {
-				return null
-			}
-		}
-		else {
-			return null
-		}
+		if (this.blog !== undefined)
+			return Posts.find({},{sort: {submitted: -1}});
+		else return null
 	},
 	loadMore: function() { // Check if user can load more posts
 		return (Session.get('postsToSkip') > 0)
