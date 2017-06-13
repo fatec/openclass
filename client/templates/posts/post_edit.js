@@ -6,6 +6,11 @@ Template.postEdit.onRendered(function() {
 	if (this.data.post.imageId) // If image already exist, set imageId in session
 		Session.set('imageId', this.data.post.imageId);
 
+	Deps.autorun(function() { // Autorun to reactively update subscription of image
+		if (Session.get("imageId"))
+			Meteor.subscribe('image', Session.get("imageId"));
+	});
+
 	Uploader.finished = function(index, fileInfo, templateContext) { // Triggered when image upload is finished
 	// TODO : don't upload image before submit post (or remove after if post isn't submitted)	
 		Session.set("imageId",fileInfo.name);
@@ -35,6 +40,7 @@ Template.postEdit.onRendered(function() {
 
 
 Template.postEdit.events({
+
 	'submit form': function(e) {
 		e.preventDefault();
 
@@ -100,9 +106,9 @@ Template.postEdit.events({
 
 
 Template.postEdit.helpers({
+	
 	image: function() {
-		if (Session.get("imageId"))
-		{
+		if (Session.get("imageId")) {
 			var imageId = Session.get("imageId");
 			var imageInCollection = Images.findOne({imageId:imageId});
 

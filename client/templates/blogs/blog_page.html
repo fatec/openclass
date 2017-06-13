@@ -15,30 +15,32 @@
 						<a href="#">{{newMessages}} nouveau(x) message(s)</a>
 					</div>
 				{{/if}}
-				{{#if posts.count}}
-					{{#each posts}}
-						{{> postItem}}
-					{{/each}}
-					{{#if loadMore}}
-						<div class="blog-page--load-more">
-							<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> Charger plus...
+				{{#if codePanelState}}
+					{{#if ownBlog}}
+						<div id="codePanel" class="blog-page--code-panel">
+							<span class="blog-page--code-panel-title">Code d'accès de l'espace : 
+								<div class="blog-page--code-panel-code"><b>{{blog.blogCode}}</b></div> <br /><br />
+								<span>Transmettez ce code pour que d'autres vous rejoignent!</span>
+							</span><br><br>
+							<button class="button button-primary button-hide-code-panel">OK</button>
 						</div>
 					{{/if}}
-				{{else}}
-					{{#if codePanelState}}
-						{{#if ownBlog}}
-							<div id="codePanel" class="blog-page--code-panel">
-								<span class="blog-page--code-panel-title">Code d'accès de l'espace : 
-									<div class="blog-page--code-panel-code"><b>{{blog.blogCode}}</b></div> <br /><br />
-									<span>Transmettez ce code pour que d'autres vous rejoignent!</span>
-								</span><br><br>
-								<button class="button button-primary button-hide-code-panel">OK</button>
+				{{/if}}
+				{{#if posts}}
+					{{#if posts.count}}
+						{{#each posts}}
+							{{> postItem}}
+						{{/each}}
+						{{#if loadMore}}
+							<div class="blog-page--load-more">
+								<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> Charger plus...
 							</div>
 						{{/if}}
+					{{else}}
+						<div class="blog-page--no-post-message">
+							<span>Il n'y pas encore de publication à afficher.</span><br />
+						</div>
 					{{/if}}
-					<div class="blog-page--no-post-message">
-						<span>Il n'y pas encore de publication à afficher.</span><br />
-					</div>
 				{{/if}}
 			</div>
 		</div>

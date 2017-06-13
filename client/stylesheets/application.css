@@ -1,9 +1,10 @@
-/*
+/* 
 application.css
-Authors : Vincent Widmer & Stéphane Morand;
 */
 
-/* ----- admin template ----- */
+
+/* ----- access-denied template ----- */
+
 .access-denied {
 	text-align: center;
 }
@@ -11,6 +12,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 .access-denied .page-title {
 	margin-bottom: 40px;
 }
+
 
 /* ----- admin template ----- */
 
@@ -58,12 +60,56 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 
+/* ----- data protection template ----- */
+
+.data-protection {
+	margin: 15px auto 0 auto;
+
+}
+
+.data-protection p {
+	margin-top: 15px;
+	text-align: justify;
+}
+
+
+/* ----- layout template ----- */
+
+.layout--connection-status {
+	position: fixed;
+	text-align: center;
+	color:white;
+	line-height: 40px;
+	width: 150px;;
+	left: 50%;
+	right: 50%;
+	margin-left: -75px;
+	height: 40px;
+	background-color: #d24848;
+	display:none;
+;}
+
+.layout--status-connected {
+	display:none;
+}
+
+.layout--status-disconnected {
+	display:block;
+}
+
+.layout--main {
+	width: 730px;
+	margin: 0 auto 0 auto;
+	padding: 74px 0 100px 0;
+}
+
+
 /* ----- login template ----- */
 
 .login--wrapper {
-	text-align:left;
-	margin:0 auto 20px auto;
-	padding: 20px 7px 20px 7px;
+	text-align: left;
+	margin: 0 auto 20px auto;
+	padding: 20px;
 	width: 60%;
 	border: 1px solid #e2e3e7;
 	border-radius: 4px;
@@ -85,8 +131,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 .login--button-wrapper {
 	text-align: center;
 	width: 60%;
-	margin-left:auto;
-	margin-right:auto;	
+	margin-left: auto;
+	margin-right: auto;	
 }
 
 .login--register-link-wrapper {
@@ -98,7 +144,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 /* ----- logout template ----- */
 
 .logout--wrapper {
-	text-align:center;
+	text-align: center;
 	margin: 0 auto 20px auto;
 	padding: 20px 7px 20px 7px;
 	width: 60%;
@@ -110,39 +156,31 @@ Authors : Vincent Widmer & Stéphane Morand;
 .logout--button-wrapper {
 	text-align: center;
 	width: 60%;
-	margin-left:auto;
-	margin-right:auto;	
+	margin-left: auto;
+	margin-right: auto;	
 }
 
 
-/* ----- data protection template ----- */
+/* ----- notFound template ----- */
 
-.data-protection {
-	text-align: justify;
+.not-found {
+	margin-top: 50px;
+	text-align: center;
 }
-
-.data-protection p {
-	margin-top:15px;
-}
-
-
-
 
 
 /* ----- register template ----- */
 
 .register--wrapper {
-	margin:0 0 20px 0;
-	padding: 20px 7px 20px 7px;
+	margin: 0 0 20px 0;
+	padding: 20px;
 	width: 60%;
-	margin-left:auto;
-	margin-right:auto;
-
+	margin-left: auto;
+	margin-right: auto;
 	border: 1px solid #e2e3e7;
 	border-radius: 4px;	
-
 	background-color: white;
-	text-align:left;
+	text-align: left;
 }
 
 .register--input {
@@ -154,22 +192,12 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .register--button-wrapper {
 	width: 60%;
-	margin-left:auto;
-	margin-right:auto;	
-
+	margin-left: auto;
+	margin-right: auto;	
 	text-align: center;
 }
 
 .register--message {
 	margin-top: 15px;
 	color: red;
-}
-
-
-/* ----- notFound template ----- */
-
-.not-found {
-	margin-top: 50px;
-
-	text-align: center;
 }

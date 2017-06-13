@@ -57,7 +57,7 @@ Template.layout.events({
 	'touchend textarea': function(e) {
 		$(e.target).focus();
 	},  
-	'click .header--button-menu-wrapper': function(e) {
+	'click .header--button-menu': function(e) {
 		e.preventDefault();
 		slideout.toggle();
 	}

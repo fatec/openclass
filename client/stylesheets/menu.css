@@ -1,7 +1,17 @@
 /*
 menu.css
-Authors : Vincent Widmer & Stéphane Morand;
 */
+
+
+/* ----- desktop-menu template ----- */
+
+.desktop-menu--list-title {
+	font-size: 0.7em;
+	color: grey;
+	text-transform: uppercase;
+	margin-top: 18px;
+	margin-bottom: 5px;
+}
 
 .desktop-menu--list li {
 	font-size: 0.75em;
@@ -20,14 +30,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 	font-size: 0.8em;
 }
 
-.desktop-menu--list-title {
-	font-size: 0.7em;
-	color:grey;
-	text-transform: uppercase;
-	margin-top:18px;
-	margin-bottom: 5px;
-}
-
 .desktop-menu--list-element-selected {
 	border: solid 1px #e8e8e8;
 	background-color: white;
@@ -39,7 +41,7 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 
-/* slideout-menu */
+/* ----- mobile-menu template (slideout) ----- */
 
 .slideout-menu--header {
 	font-size: 0.9em;
@@ -51,38 +53,46 @@ Authors : Vincent Widmer & Stéphane Morand;
 
 .slideout-menu--header-left-element {
 	display: table-cell;
-	width:80%
+	width: 80%;
 }
 
 .slideout-menu--header-right-element {
 	display: table-cell;
-	width:10%;
+	width: 10%;
 	font-family: Helvetica, Arial, Sans-Serif;
 }
 
 .slideout-menu--list-settings li {
-	padding:10px;
+	padding: 10px;
 	font-size: 0.9em;
 	cursor: pointer;
 }
 
 .slideout-menu--list-settings li > i {
-	margin-right:10px;
-}
-
-.slideout-menu--list-settings li:first-of-type {
+	margin-right: 10px;
 }
 
 .slideout-menu--list-settings li:last-of-type {
-	margin-bottom:16px;
+	margin-bottom: 16px;
 }
 
 .slideout-menu--list-settings li:hover {
-	background-color:#eef0f3;
+	background-color: #eef0f3;
 }
 
-.slideout-menu--filters-list { /* hide menu if desktop */
-	display:none;
+.slideout-menu--list-settings li:active {
+	background-color: #353535;
+}
+
+.slideout-menu--filters-list { /* hide filter menu if desktop */
+	display: none;
+}
+
+.slideout-menu--list-title {
+	color: grey;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	padding: 20px 0 10px 10px
 }
 
 .slideout-menu--list:first-of-type {
@@ -97,8 +107,8 @@ Authors : Vincent Widmer & Stéphane Morand;
 }
 
 .slideout-menu--list li > span {
-	color:grey;font-size:0.8em;
-
+	color: grey;
+	font-size: 0.8em;
 }
 
 .slideout-menu--list li:hover {
@@ -109,165 +119,6 @@ Authors : Vincent Widmer & Stéphane Morand;
 	background-color: #eef0f3;
 }
 
-.slideout-menu--list-title {
-	color: grey;
-	text-transform: uppercase;
-	font-size:0.8em;
-	padding:20px 0 10px 10px
-}
-
 .slideout-menu--list-element-disabled {
 	color: #c5c5c5;
 }
-
-
-
-
-
-
-
-
-
-/*.menu--link-favorites {
-	display: block;
-	margin: 10px 0 0px 0;
-
-	font-size: 0.9em;
-	color:#2A90C6;
-}
-
-.menu--link-favorites-selected {
-	font-family: "Montserrat-Regular";
-	color: #2c5267;
-}
-
-.menu--link-sort-selected {
-font-family: "Montserrat-Regular";
-color: #2c5267;
-}
-
-.menu--title {
-	margin:20px 0 -2px 0;
-
-	color:#a0a0a0;
-	font-size: 0.8em;
-/*	font-weight: 500;
-*//*	border:solid 1px red;
-*/}
-
-.menu--categories {
-	display: inline-block;
-		margin: 5px 0 0px 10px;
-
-	color: #2A90C6;
-}
-
-.menu--categories:first-of-type {
-	margin-top: 8px;
-}
-
-/*.menu--authors {
-	display: inline-block;
-	margin: 5px 0 0px 10px;
-
-	color: #2A90C6;
-}*/
-
-
-.menu--authors {
-	font-size:0.8em;
-	padding:6px;
-	color: #2A90C6;
-}
-
-.menu--author-selected {
-	border:solid 1px #e8e8e8;
-	background-color: white;
-	font-weight: bold;
-}
-
-.menu--authors:first-of-type {
-	margin-top:8px;
-}
-
-.menu--authors a:visited {
-	color:white;
-}
-
-/*.menu--author-selected {
-font-family: "Montserrat-Regular";
-}*/
-
-.menu--tags {
-	display: inline-block;
-	width:auto;
-	margin: 5px 0 0px 10px;
-}
-
-/*.menu--tag-disabled span {
-	background-color:grey;
-
-}*/
-
-.menu--tags-box {
-	display: inline-block;
-	padding:6px;
-	background-color: #2A90C6;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-
-	color:white;
-}
-
-.menu--tags:first-of-type {
-	margin-top: -1px;
-}
-
-.menu--tags a:visited {
-	color:white;
-}
-
-.menu--tag-selected {
-	color: #2c5267;
-}
-
-a.menu--tag-selected span.menu--tags-box {
-	background-color: #28527c;
-}
-
-.menu--caret {
-	display: none;
-}
-
-a.menu--link-sort-selected i.menu--caret {
-	display:inline;
-}
-
-a.menu--link-favorites-selected i.menu--caret {
-	display:inline;
-}
-
-a.menu--tag-selected i.menu--caret {
-	display:inline;
-}
-
-a.menu--author-selected i.menu--caret {
-	display:inline;
-}
-
-a.menu--category-selected i.menu--caret {
-	display:inline;
-}
-
-.menu--icon {
-	vertical-align:middle;
-	font-size:1em;
-}
-
-
-.menu--title-span {
-	font-size: 0.9em;
-	vertical-align:middle
-}*/
-

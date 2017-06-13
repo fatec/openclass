@@ -1,5 +1,37 @@
 Template.blogEdit.events({
  
+	'click .blog-edit--change-code-button': function(e) {
+		e.preventDefault();
+
+		var currentBlogId = this.blog._id;
+		var currentBlogCode = this.blog.blogCode
+		var newCode = prompt("Chander le code d'accès :", currentBlogCode);
+		if (newCode && newCode != currentBlogCode) {
+			Meteor.call('getBlogId', newCode, function(error,result) {
+				if (error) {
+					alert("Une erreur est survenue : "+error.message);
+				}
+				else {
+					if (result == null) {
+						var blogProperties = { blogCode: newCode }
+						Blogs.update(currentBlogId, {$set: blogProperties}, function(error) {
+							if (error)
+							{
+								alert("Une erreur est survenue : "+error.message);
+							}
+							else {
+								alert("Le code d'accès a été changé.");
+								Meteor.call('updateCode', currentBlogCode, newCode)
+							}
+						});
+					}
+					else {
+						alert("Ce code est déjà attribué à un autre espace.");
+					}
+				}
+			});
+		}
+	},
 	'click .blog-edit--rename-button': function(e) {
 		e.preventDefault();
 
@@ -94,7 +126,7 @@ Template.blogEdit.events({
 	'click .blog-edit--sync': function(e, template) {
 		e.preventDefault();
 		Session.set('isSyncing',true);
-		var serverOwnerEmail = prompt("Utilisateur :"); //
+		var serverOwnerEmail = prompt("Pour synchroniser cet espace avec le cloud, vous devez posséder un compte sur www.beekee.ch.\nSi c'est le cas, entrez le nom d'utilisateur de votre compte :"); //
 
 		if (serverOwnerEmail)
 			Meteor.call('sendBlog', {blogId: this.blog._id, serverOwner: serverOwnerEmail}, function(error,result) {
@@ -105,14 +137,17 @@ Template.blogEdit.events({
 	'click .blog-edit--update': function(e, template) {
 		e.preventDefault();
 
-		Meteor.call('updateBox', function(error, result){
-			if (error) {
-				alert("Une erreur est survenue : "+error.message);
-			}
-			else {
-				alert("La box va être mise à jour, merci de patienter...");
-			}
-		});
+		var alert = confirm("La mise à jour de la box peut rendre la plateforme inaccessible pendant plusieurs minutes.\nVoulez-vous continuer ?");
+		if (alert) {
+			Meteor.call('updateBox', function(error, result){
+				if (error) {
+					alert("Une erreur est survenue : "+error.message);
+				}
+				else {
+					alert("La box va être mise à jour, merci de patienter...");
+				}
+			});
+		}
 	}  
 }); 
 
@@ -123,7 +158,7 @@ Template.blogEdit.helpers({
 		Meteor.call('getIP', function(error, result){
 			if (error) {
 				Session.set('serverIP',"Pas d'adresse IP"); // Is Session really usefull here ?
-			} else{
+			} else {
 				if (result != "")
 					Session.set('serverIP',result);
 				else

@@ -1,4 +1,5 @@
 Template.resetPassword.events({
+    
     'submit form': function(e) {
 
         e.preventDefault();

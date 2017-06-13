@@ -1,11 +1,14 @@
 {
-  "syncServerIP": "http://localhost:3100",
-  "adminPassword": "admin",
-   "public" : {
-  		"isBox": "true",
-  		 "prefix": "BX",
-  		 "ga": {
-            "id": "UA-72195513-1"
-        }
-   }
+	"syncServerIP": "",
+	"adminPassword": "",
+	"mailAddress": "",
+	"mailPassword": "",
+	"mailServer": "",
+	"public" : {
+		"isBox": "false",
+		 "prefix": "BX",
+		 "ga": {
+			"id": ""
+		}
+	}
 }

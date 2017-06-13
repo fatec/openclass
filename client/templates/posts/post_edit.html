@@ -4,7 +4,7 @@
 		<div class="post-edit--wrapper">
 			<div class="images post-edit--image-wrapper">
 				{{#if image}}
-					<img src="../../upload/{{image.imageId}}" alt="" class="post-submit--image thumbnail"/>
+					<img src="../../upload/{{image.imageId}}" alt="" class="post-edit--image"/>
 				{{/if}}
 			</div>
 			<form name="post-edit--form" id="post-edit--form">        
@@ -13,11 +13,11 @@
 						<button class="button button-danger post-edit--button-delete-image" href="#">Supprimer l'image</button>
 					</div>
 				{{else}}
-					{{>uploadForm autoStart=true}}
+					{{>postUploadImage autoStart=true}}
 				{{/if}}
 				<textarea name="body" id="body" class="post-edit--textarea">{{post.body}}</textarea><br /><br />
 				<input name="tags" type="text" value={{post.tags}} data-role="tagsinput" class="suggest" placeholder="Mots-clés : feuille, insecte, etc."/><br /><br />
-				<select name="category" class="post-submit--select-categories">
+				<select name="category" class="post-edit--select-categories">
 					<option value="" disabled selected >Sélectionnez une catégorie :</option>
 					<option value="" >Aucune catégorie</option>
 					{{#each categories}}
@@ -26,12 +26,10 @@
 				</select>
 			</form>
 		</div>
-		<a href="{{pathFor 'postSubmit'}}">
-			<button class="button button-primary post-edit--button-submit">
-				<i class="post-edit--button-spinner fa fa-spinner fa-pulse" style="display:none;"></i>
-				<i class="post-edit--button-icon fa fa-paper-plane"></i>
-				<span class="post-edit--button-text"> Modifier</span>
-			</button>
-		</a>         
+		<button href="{{pathFor 'postSubmit'}}" class="button button-primary post-edit--button-submit">
+			<i class="post-edit--button-spinner fa fa-spinner fa-pulse" style="display:none;"></i>
+			<i class="post-edit--button-icon fa fa-paper-plane"></i>
+			<span class="post-edit--button-text"> Modifier</span>
+		</button>
 	</div>
 </template>

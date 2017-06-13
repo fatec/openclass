@@ -20,12 +20,14 @@ Template.login.events({
 		var email = e.target.email.value;
 		var password = e.target.password.value;
 
-		Meteor.loginWithPassword(email.trim(), password, function(err) {
-			if(!err)
-				Router.go('blogList');
-			else    
-				Session.set('errorMessage', err.reason);
-		});
+		if (email && password) {
+			Meteor.loginWithPassword(email.trim(), password, function(err) {
+				if(!err)
+					Router.go('blogList');
+				else    
+					Session.set('errorMessage', err.reason);
+			});
+		}
 	},
 	'click .login--button-submit': function(e) {
 		e.preventDefault();

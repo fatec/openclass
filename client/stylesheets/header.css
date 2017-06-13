@@ -1,198 +1,146 @@
 /*
 header.css
-Authors : Vincent Widmer & Stéphane Morand;
 */
 
 
 .header {
-	line-height: 52px;
+	line-height: 48px;
 	position: fixed;
-	height:52px;
-	width:100%;
+	height: 52px;
+	width: 100%;
 	border-bottom: solid 1px #e3e3e3;
 	background-color: white;
 	opacity: 0.9;
 }
 
 .header--wrapper {
-	width:730px;
-	height:100%;
-	margin-left:auto;
+	width: 730px;
+	height: 100%;
+	margin-left: auto;
 	margin-right: auto;
 }
 
+.header--left {
+	float: left;
+}
+
+.header--right {
+	float: right;
+}
+
+.header--logo {
+	float: left;
+	margin-top: 11px;
+	width: 20px;
+	margin-right: 1px;
+	vertical-align: middle;
+}
+
+.header--user-icon {
+	font-size: 24px;
+	vertical-align: middle;
+	display: inline-block;
+	padding-right: 2px;
+}
+
+.header--login-icon {
+	font-size: 22px;
+	vertical-align: middle;
+	display: inline-block;
+	padding-right: 2px;
+}
+
+.header--logout-icon {
+	font-size: 22px;
+	vertical-align: middle;
+	display: inline-block;
+	padding-left: 2px;
+}
+
+.header--user {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.header--user-name {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 25px;
+}
+
+.header--user-name i, span {
+	vertical-align: middle;
+}
+
 .header--button-back-wrapper {
-	float:left;
-	vertical-align:middle;
-	width:40px;
+	float: left;
+	vertical-align: middle;
+	width: 40px;
 }
 
 .header--button-back-wrapper i {
 	vertical-align: middle;
 }
 
-.header--button-login {
-	float:right;
-	vertical-align:middle;
-	margin-left:10px;
-}
-
-
-
-
-
-
-
-
-
-
-/*.header * {
-border: solid 1px blue;
-}*/
-
-
-
-/*.header--wrapper a {
-	text-decoration: none;
-}*/
-
-.header--button-menu-wrapper {
-/*	display:none;
-*/	float:left;
-	vertical-align:middle;
-	margin-right:6px;
-
-/*	line-height:44px;
-*/
+.header--button-back {
+	font-size: 40px;
+	vertical-align: middle;
+	display: inline-block;
+	padding-right: 10px;
+	color: #3b75d9;
 	cursor: pointer;
-	padding-left:6px;
-padding-right:6px;
 }
 
-
-
-.header--button-back-text {
-	margin-left:6px;
-	vertical-align: top;
+.header--button-back:hover {
+	color: #185373;
 }
 
-.header--logo {
-	float:left;
-	margin-top:11px;
-	width:20px;
-	margin-right:1px;
+.header--button-back:active {
+	color: #353535;
+}
+
+.header--button-login {
+	float: right;
 	vertical-align: middle;
+	margin-left: 10px;
+}
 
-/*	border: solid 0px red;
-*/}
-
-.header--select-author-wrapper {
-	float:right;
-
+.header--button-menu {
+	font-size: 40px;
 	vertical-align: middle;
+	display: inline-block;
+	padding-right: 10px;
+	color: #3b75d9;
+	cursor: pointer;
 }
 
-.header--status {
-	float:right;
-	margin-right:25px;
-	font-size: 3.5em;
-	line-height: 0.7em;
+.header--button-menu:hover {
+	color: #185373;
+}
 
+.header--button-menu:active {
+	color: #353535;
+}
+
+.header--blog-title {
+	display: inline-block;
 	vertical-align: middle;
+	padding-left: 10px;
 }
 
-.header--select-author {
-	width:100px;
-	font-family: inherit;
-    border-color:#999; /* Font styling trick for webkit browsers */
-	font-size: 0.8em;
-/*	background-color: green;
-*/
-border-radius: 12px;
-border:solid 1px #5dabd4;
-height: 26px;
-width:80px;
-color:black;
-text-indent: 0.2em;
- -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    text-overflow: '';
-   background: url('img/icon-carret-down.png') no-repeat right;
-
-padding:0 10px 0 1px;
-    }
-
-.header--select-author::-ms-expand {
-    display: none;
-}
-
-
-
-.header--button-setings {
-	float:right;
-	vertical-align:middle;
-	margin-left:25px;
-
-/*	line-height:46px;
-*/	color: grey;
-
-/*	border: solid 1px yellow;
-*/}
-
-.header--title {
-	float:left;
-	margin:0px 0 0 5px;
+.posts-header--button-submit {
+	font-size: 34px;
 	vertical-align: middle;
-
-
-	text-decoration: none;
-	color:#3270ae;
-	font-size:1.5em;
-	border:solid 0px green;
+	display: inline-block;
+	padding-left: 25px;
+	color: #3b75d9;
+	cursor: pointer;
 }
 
-.header--title:hover {
-	color:#2a90c6;
+.posts-header--button-submit:hover {
+		color: #185373;
 }
 
-.header--login {
-	float:right;
-	margin: 0 40px 0 0;
-	height:100%;
-
-	line-height:46px;
-	font-size: 1em;
-}
-
-.header--page-name {
-display: inline-block;
-text-align: left;
-max-width: 50%;
-margin-left: 15px;
-font-size: 0.9em;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-vertical-align: top;
-margin-right: 5px;
-}
-
-.header--blog-code {
-border-radius: 5px;
-border:solid 1px #afc9d6;
-display: inline-block;
-height:10px;
-line-height:1em;
-padding: 5px 5px 8px 5px;
-letter-spacing: 0.05em;
-font-size:0.8em;
-vertical-align:middle;
-  font-family: Helvetica, Arial, Sans-Serif;
-
-}
-
-.header--button-back-icon {
-	padding-right:15px;
-	border-right:solid 1px #e3e3e3;
+.posts-header--button-submit:active {
+		color: #353535;
 }

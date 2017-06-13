@@ -20,14 +20,21 @@ Template.blogPage.onCreated(function() {
 			filters = {blogId:Session.get('blogId'), category:Session.get('category')}
 		else if (Session.get('tag') != "")
 			filters = {blogId:Session.get('blogId'), tags:Session.get('tag')}
+
  		// Interval of posts subscription : load every posts from "postsToSkip" (skip) to "postsLimit" (limit)
  		// By default, load the 10 last posts (skip : total posts - 10 / limit : 10)
-		Meteor.subscribe('posts', filters, postsToSkip, postsLimit);
+ 		// postsLimit (limit) is used to disable reactivity
+
+ 		if (!Session.get('isReactive')) 
+			subscription = Meteor.subscribe('posts', filters, postsToSkip, postsLimit);
+		else
+			subscription = Meteor.subscribe('posts', filters, postsToSkip, 0);
 	});
 });
 
 
 Template.blogPage.events({
+
 	'click .button-ok-update-alert': function() {
 		Meteor.users.update(Meteor.user()._id, {$set: {"profile.lastAlert": 1}});
 	},
@@ -61,11 +68,11 @@ Template.blogPage.events({
 		}
 		else if (Session.get('category') !== "") {
 			var category = Session.get('category');
-			Session.set('nbPosts',Posts.find({category: category}).fetch().length); 
+			Session.set('postsServerNonReactive', Categories.findOne({name:category}).nRefs);
 		}
 		else if (Session.get('tag') !== "") {
 			var tag = Session.get('tag');
-			Session.set('nbPosts',Posts.find({tags: tag}).fetch().length); 
+			Session.set('postsServerNonReactive', Tags.findOne({name:tag}).nRefs);
 		}
 		else
 			Session.set('postsServerNonReactive', Counts.findOne().count);
@@ -78,9 +85,18 @@ Template.blogPage.events({
 Template.blogPage.helpers({
 
 	posts: function() {
-		if (this.blog !== undefined)
-			return Posts.find({},{sort: {submitted: -1}});
-		else return null
+		if (this.blog !== undefined) {
+			var posts = Posts.find({},{sort: {submitted: -1}});
+			if (posts && subscription.ready()) {
+				return posts;
+			}
+			else {
+				return null
+			}
+		}
+		else {
+			return null
+		}
 	},
 	loadMore: function() { // Check if user can load more posts
 		return (Session.get('postsToSkip') > 0)
@@ -112,7 +128,7 @@ Template.blogPage.helpers({
 			}
 			else if (Session.get('category') !== "") {
 				var category = Session.get('category');
-				postsReactiveCount = Category.findOne({name:category}).nRefs;  
+				postsReactiveCount = Categories.findOne({name:category}).nRefs;  
 			}
 			else if (Session.get('tag') !== "") {
 				var tag = Session.get('tag');
@@ -127,17 +143,22 @@ Template.blogPage.helpers({
 			else
 				return false;
 		}
+		else
+			return false;
 	},
 	isReactive: function() {
 		return Session.get('isReactive');
 	},
     updateAlert: function() {
-      if (Meteor.user().profile) {
-        if (Meteor.user().profile.lastAlert >= 1)
-          return false
-        else
-          return true
-    }
-      else return true
+    	if (Meteor.user()) {
+      		if (Meteor.user().profile) {
+        		if (Meteor.user().profile.lastAlert >= 1)
+          			return false
+        		else
+          			return true
+    		}
+      		else return false
+      	}
+        else return false
     }
 });

@@ -1,4 +1,5 @@
 Template.blogUsers.events({
+	
 	'submit form': function(event, template) {
 		event.preventDefault();
 

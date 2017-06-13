@@ -5,6 +5,7 @@ Template.blogSubmit.onRendered(function() {
 
 
 Template.blogSubmit.events({
+	
 	'submit form': function(e) {
 		e.preventDefault();
 

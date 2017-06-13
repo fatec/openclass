@@ -1,18 +1,18 @@
 <template name="blogEdit">
 	<div class="blog-edit">
-		<div class="blog-page--wrapper">
+		<div class="blog-edit--wrapper">
 			<div class="page-title">Paramètres</div>
 			<ul class="blog-edit--list">
 				<p class="blog-edit--subtitle">GENERAL</p>
-				<a class="blog-edit--list-item">
+				<a class="blog-edit--list-item blog-edit--change-code-button">
 					<div class="blog-edit--list-wrapper-left">
-						<i class="fa fa-key"></i>
+						<i class="fa fa-pencil"></i>
 					</div>
 					<div class="blog-edit--list-wrapper-center">
-						<div class="blog-edit--list-title">Code d'accès</div>
+						<div class="blog-edit--list-title">Changer le code d'accès</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title blog-edit--list-right-title-code"><em>{{blog.blogCode}}</em></span>
 						</div>
 					</div>
@@ -28,7 +28,7 @@
 						<div class="blog-edit--list-title">Renommer cet espace</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title"><em>{{blog.title}}</em></span>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 						<div class="blog-edit--list-title">Supprimer cet espace</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span></span>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 						<div class="blog-edit--list-title">Flux continu</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title">
 								{{#if isReactive}}
 									<i class="fa fa-toggle-on" aria-hidden="true"></i>
@@ -79,7 +79,7 @@
 						<div class="blog-edit--list-title">Gérer les catégories</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 						<div class="blog-edit--list-title">Autoriser les commentaires</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title">
 								{{#if commentsAreAllowed}}
 									<i class="fa fa-toggle-on" aria-hidden="true"></i>
@@ -114,7 +114,7 @@
 						<div class="blog-edit--list-title">Gérer les auteurs</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title">
 								<i class="fa fa-chevron-right" aria-hidden="true"></i>
 							</span>
@@ -129,7 +129,7 @@
 						<div class="blog-edit--list-title">Auteurs libres</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title">
 								{{#if createUserIsAllowed}}
 									<i class="fa fa-toggle-on" aria-hidden="true"></i>	
@@ -161,12 +161,11 @@
 							<div class="blog-edit--list-title">Mettre à jour la box</div>
 						</div>
 						<div class="blog-edit--list-wrapper-right">
-							<div class="blog-edit--chapter-wrapper2">
+							<div class="blog-edit--chapter-wrapper">
 								<span class="blog-edit--list-right-title"></span>
 							</div>
 						</div>
 					</a>
-					<p class="blog-edit--description">La mise à jour de la box peut rendre la plateforme inaccessible pendant plusieurs minutes.</p>
 					<a class="blog-edit--list-item">
 						<div class="blog-edit--list-wrapper-left">
 							<i class="fa fa-plug"></i>
@@ -175,7 +174,7 @@
 							<div class="blog-edit--list-title">Adresse IP :</div>
 						</div>
 						<div class="blog-edit--list-wrapper-right">
-							<div class="blog-edit--chapter-wrapper2">
+							<div class="blog-edit--chapter-wrapper">
 								<span class="blog-edit--list-right-title">{{serverIP}}</span>
 							</div>
 						</div>
@@ -188,12 +187,12 @@
 							<div class="blog-edit--list-title">Syncroniser avec le cloud</div>
 						</div>
 						<div class="blog-edit--list-wrapper-right">
-							<div class="blog-edit--chapter-wrapper2">
+							<div class="blog-edit--chapter-wrapper">
 								<span class="blog-edit--list-right-title"></span>
 							</div>
 						</div>
 					</a>
-					<p class="blog-edit--description">Branchez la beekee box à l'aide d'un cable ethernet pour syncroniser son contenu avec le cloud (www.beekee.ch). Cela peut prendre plusieurs minutes.</p>
+					<p class="blog-edit--description">Branchez la beekee box à l'aide d'un câble ethernet pour syncroniser son contenu avec le cloud (www.beekee.ch). Cela peut prendre plusieurs minutes.</p>
 				</ul>
 			{{/if}}
 			<ul class="blog-edit--list">
@@ -206,7 +205,7 @@
 						<div class="blog-edit--list-title">Changer mot de passe</div>
 					</div>
 					<div class="blog-edit--list-wrapper-right">
-						<div class="blog-edit--chapter-wrapper2">
+						<div class="blog-edit--chapter-wrapper">
 							<span class="blog-edit--list-right-title"></span>
 						</div>
 					</div>
