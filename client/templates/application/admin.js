@@ -1,7 +1,7 @@
 Template.admin.helpers({
 
 	blogs: function() {
-		return Blogs.find({},{sort: {createdAt: -1}});
+		return Blogs.find({},{sort: {submitted: -1}});
 	},
 	user: function() {
 		return Meteor.users.find({},{sort: {createdAt: -1}});
