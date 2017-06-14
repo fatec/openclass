@@ -126,6 +126,10 @@ header.css
 	display: inline-block;
 	vertical-align: middle;
 	padding-left: 10px;
+	width: 450px;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
 
 .posts-header--button-submit {
