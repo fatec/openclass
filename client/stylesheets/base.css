@@ -203,7 +203,7 @@ input.error {
 
 .list-group {
 	display: block;
-	width: 70%;
+	width: 60%;
 	margin-left: auto;
 	margin-right: auto;
 	cursor: pointer;
@@ -240,4 +240,12 @@ input.error {
 	margin-bottom: 0;
 	border-bottom-right-radius: 2px;
 	border-bottom-left-radius: 2px;
+}
+
+.list-group-item-left {
+	display: inline-block;
+	width:80%;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
