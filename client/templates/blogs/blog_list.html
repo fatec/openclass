@@ -31,9 +31,13 @@
 					<button type="submit" class="button button-primary blog-list--button-code-link">Valider</button>
 				</div>
 			</form>     
-			<div style="text-align: center;"><span style="color:#979797">- ou -</span><br><br><br>
-			<a href="{{pathFor 'login'}}"><button class="button button-primary">Créer un espace</button></a>
-</div>
+			<div style="text-align: center;">
+				<span style="color:#979797">- ou -</span><br><br><br>
+				<a href="{{pathFor 'login'}}"><button class="button button-primary">Créer un espace</button></a>
+			</div>
+			<div class="blog-list--example">
+				<a href="{{pathFor 'blogPage' _id='oYFmo4WHSt5RqGGPP'}}">(voir un exemple d'espace)</a>
+			</div>
 			{{#if blogsVisited.count}}
 				<div class="list-group blog-list--visited-blogs">
 					<div class="blog-list--visited-title">

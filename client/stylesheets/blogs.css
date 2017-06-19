@@ -334,6 +334,13 @@ blogs.css
 	border-left: none
 }
 
+.blog-list--example {
+	color: #979797;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 0.9em;
+}
+
 
 /* ----- blog-page template ----- */
 
