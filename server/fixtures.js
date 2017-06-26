@@ -12,7 +12,7 @@ if (Blogs.find().count() === 0) {
 			var id;
 			id = Accounts.createUser({
 				username: user.username,
-				email: "admin@admin.com",
+				email: "Admin",
 				password: adminPassword
 			});
 
