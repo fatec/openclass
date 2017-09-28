@@ -6,6 +6,11 @@
 			</a>  
 			<div class="post-item--button post-item--button-delete"><i class="fa fa-lg fa-trash-o"></i></div>
 		{{/if}}
+		{{#if favorite}}
+			<div class="post-item--button post-item--button-remove-favorite"><i class="fa fa-lg fa-star"></i></div>
+		{{else}}
+			<div class="post-item--button post-item--button-add-favorite"><i class="fa fa-lg fa-star-o"></i></div>
+		{{/if}}
 		<a class="post-item--author filter-author {{selectedAuthorClass}}" data-author="{{author}}" href="#">{{author}}</a>
 		<div class="post-item--date">• {{livestamp submitted}}</div>
 		{{#if this.imageId}}  

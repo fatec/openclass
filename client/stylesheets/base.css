@@ -73,6 +73,10 @@ a:hover, a:active {
 	-moz-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.fa {
+	vertical-align: middle;
+}
+
 
 input.error {
  	background-color:rgb(255, 231, 231);

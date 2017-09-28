@@ -19,7 +19,7 @@ Template.blogUsers.events({
 					if(error)
 						alert("Une erreur est survenue : "+error.message);
 					else {
-						Session.setPersistent(template.data.blog._id, {author: authorName});
+						Session.setPersistent(template.data.blog._id, {author: authorName, favorites: []});
 						Router.go('blogPage', {_id: template.data.blog._id});					
 					} 
 				});
@@ -33,7 +33,7 @@ Template.blogUsers.events({
 	'click .blog-users--button-select-author': function(event, template) {
 		event.preventDefault();
 
-		Session.setPersistent(this.blogId, {author: event.currentTarget.dataset.author});
+		Session.setPersistent(this.blogId, {author: event.currentTarget.dataset.author, favorites: []});
 		Router.go('blogPage', {_id: template.data.blog._id});
 	}  
 });

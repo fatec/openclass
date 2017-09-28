@@ -20,6 +20,12 @@ Template.blogPage.onCreated(function() {
 			filters = {blogId:Session.get('blogId'), category:Session.get('category')}
 		else if (Session.get('tag') != "")
 			filters = {blogId:Session.get('blogId'), tags:Session.get('tag')}
+		else if (Session.get('favorites') == true) {
+			var favorites = Session.get(Session.get('blogId')).favorites;
+			if (favorites)
+				filters = {_id:{$in: favorites}}
+		}
+
 
  		// Interval of posts subscription : load every posts from "postsToSkip" (skip) to "postsLimit" (limit)
  		// By default, load the 10 last posts (skip : total posts - 10 / limit : 10)
@@ -124,6 +130,9 @@ Template.blogPage.helpers({
 			else if (Session.get('tag') !== "") {
 				var tag = Session.get('tag');
 				postsReactiveCount = Tags.findOne({name:tag}).nRefs;  
+			}
+			else if (Session.get('favorites') == true) {
+				postsReactiveCount = CountsFavorites.findOne().count;  
 			}
 			else {
 				postsReactiveCount = Counts.findOne().count;

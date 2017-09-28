@@ -17,6 +17,7 @@ resetPostInterval = function() { // Reset interval of post subscription
 }
 
 resetFilters = function() {
+	Session.set('favorites',false);
 	Session.set('author','');
 	Session.set('tag','');
 	Session.set('category','');

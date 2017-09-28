@@ -128,22 +128,62 @@ Template.postItem.events({
 				$(e.target).val('');
 			}
 		}
-	}  	
-// 'click .post-item--button-add-favorite': function(e) {
-// 	e.preventDefault();
-// 	var currentPostId = this._id;
-// 	Posts.update(currentPostId, {$set: {favorites: true}});
-// },
-// 'click .post-item--button-remove-favorite': function(e) {
-// 	e.preventDefault();
-// 	var currentPostId = this._id;
-// 	Posts.update(currentPostId, {$set: {favorites: false}});
-// }, 
+	},  	
+	'click .post-item--button-add-favorite': function(e) {
+		e.preventDefault();
+		var currentPostId = this._id;
+
+		var session = Session.get(Template.parentData(1).blog._id);
+
+		if (session.favorites)
+			session.favorites.push(currentPostId);
+		else {
+			session.favorites = [];
+			session.favorites.push(currentPostId);
+		}
+		
+		Session.setPersistent(Template.parentData(1).blog._id, session); // Persistent to browser refresh
+	},
+	'click .post-item--button-remove-favorite': function(e) {
+		e.preventDefault();
+		var currentPostId = this._id;
+
+		var session = Session.get(Template.parentData(1).blog._id);
+
+		if (session.favorites) {
+			session.favorites = $.grep(session.favorites, function(value) { // Remove currentPostID from favorites array
+			  return value != currentPostId;
+			});
+		}
+
+		Session.setPersistent(Template.parentData(1).blog._id, session);
+	},
+	'click .post-item--button-add-pinned': function(e) {
+		e.preventDefault();
+		var currentPostId = this._id;
+
+		Posts.update(currentPostId, {$set: {pinned: true}});
+	},
+	'click .post-item--button-remove-pinned': function(e) {
+		e.preventDefault();
+		var currentPostId = this._id;
+
+		Posts.update(currentPostId, {$set: {pinned: false}});
+	}	
 });
 
 
 Template.postItem.helpers({
 
+	favorite: function() {
+		if ($.inArray(this._id,Session.get(Template.parentData(1).blog._id).favorites) == -1)
+			return false;
+		else
+			return true;
+	},
+	pinned: function() {
+		return this.pinned;
+	},
 	commentsAllowed: function() {
 		if (Template.parentData().blog.commentsAllowed)
 			return true;

@@ -15,7 +15,7 @@ menu.css
 
 .desktop-menu--list li {
 	font-size: 0.75em;
-	padding: 6px;
+	padding: 4px;
 	color: #2A90C6;	
 	cursor: pointer;
 	border: 1px solid #eef0f3;
@@ -25,7 +25,15 @@ menu.css
 	background-color: white;
 }
 
-.desktop-menu--list li > span {
+.desktop-menu--show-all {
+	padding: 6px !important;
+}
+
+.filter-favorites{
+	padding: 6px !important;
+}
+
+.desktop-menu--nRef {
 	color: grey;
 	font-size: 0.8em;
 }
@@ -38,6 +46,11 @@ menu.css
 
 .desktop-menu--list-element-disabled {
 	color: #c5c5c5 !important;
+}
+
+.filter-favorites .fa-star {
+	font-size: 0.9em;
+	vertical-align: middle;
 }
 
 
@@ -106,7 +119,7 @@ menu.css
 	cursor: pointer;
 }
 
-.slideout-menu--list li > span {
+.desktop-menu--nRef {
 	color: grey;
 	font-size: 0.8em;
 }

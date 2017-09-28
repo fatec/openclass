@@ -30,12 +30,21 @@ Template.desktopMenu.events({
 		Session.set('postsServerNonReactive', Tags.findOne({name:tag}).nRefs);
 		resetPostInterval();
 	},
-	// 'click .desktop-menu--link-favorites': function(e,template) {
-	// 	Session.set("filter", "favorites"); 
-	// 	Session.set('nbPosts',Posts.find({favorites: true}).fetch().length); 
-	// 	Session.set("click", Session.get("click")+1);
-	// 	addClick(template.data.blog._id,"view favorites");
-	// }, 
+	'click .filter-favorites': function(e) {
+		e.preventDefault();
+		resetFilters();
+		Session.set('favorites',true);
+		favorites = Session.get(Template.parentData(1).blog._id).favorites;
+		Session.set('postsServerNonReactive', favorites.length);
+		resetPostInterval();
+	},
+	'click .filter-pinned': function(e) {
+		e.preventDefault();
+		resetFilters();
+		Session.set('pinned',true);
+		Session.set('postsServerNonReactive', CountsPinned.findOne().count);
+		resetPostInterval();
+	}
 });
 
 
@@ -44,6 +53,10 @@ Template.desktopMenu.helpers({
 	postCount: function() {
 		var count = Counts.findOne();
 		return count && count.count;
+	},
+	favoritesCount: function() {
+		var favorites = Session.get(Template.parentData(1).blog._id).favorites;
+		return favorites && favorites.length;
 	},
 	authorNRef: function() {
 		var author = Authors.findOne({name:this.name});
@@ -67,7 +80,11 @@ Template.desktopMenu.helpers({
 		return Tags.find({}, {sort: {name: 1}});
 	},	
 	'selectedShowAll': function() { // Add a class if element is selected
-		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '')
+		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false)
+			return "desktop-menu--list-element-selected"	
+	},
+	'selectedFavorites': function() {
+		if (Session.get('favorites') == true)
 			return "desktop-menu--list-element-selected"	
 	},
 	'selectedAuthorClass': function(){
@@ -87,12 +104,4 @@ Template.desktopMenu.helpers({
 			return "desktop-menu--list-element-disabled"
 		else return null
 	}
-	// 	'selectedFavoritesClass': function(){
-	// 		if (Session.get('filter') === 'favorites')
-	// 			return "desktop-menu--list-element-selected"
-	// 		else return false;
-	// },	
-	// favoritesCount: function(){
-	// 	return Posts.find({favorites: true}).fetch().length;
-	// },
 });
