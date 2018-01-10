@@ -17,7 +17,6 @@ mrt:jquery-imagesloaded
 accounts-ui-unstyled
 alanning:roles
 msavin:mongol
-fortawesome:fontawesome
 sergeyt:typeahead
 chriswessels:slideout
 copleykj:jquery-autosize
@@ -51,5 +50,4 @@ reywood:iron-router-ga
 mizzao:user-status
 luisalmeida:unveil
 http
-pagebakers:ionicons
 meteorhacks:inject-initial
