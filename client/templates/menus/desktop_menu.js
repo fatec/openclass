@@ -10,7 +10,7 @@ Template.desktopMenu.events({
 		e.preventDefault();
 		resetFilters();
 	 	Session.set('pinned',true);
-	 	Session.set('postsServerNonReactive', CountsPinned.findOne().count);
+	 	Session.set('postsServerNonReactive', PinnedCounts.findOne().count);
 		resetPostInterval();
 		},
 	'click .filter-author': function(e) {
