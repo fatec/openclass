@@ -133,6 +133,9 @@ Template.blogPage.helpers({
 				var tag = Session.get('tag');
 				postsReactiveCount = Tags.findOne({name:tag}).nRefs;  
 			}
+			else if (Session.get('pinned') == true) {
+				postsReactiveCount = PinnedCounts.findOne().count;  
+			}
 			else if (Session.get('favorites') == true) {
 				postsReactiveCount = CountsFavorites.findOne().count;  
 			}
