@@ -374,10 +374,10 @@ blogs.css
 }
 
 .blog-page--menu-wrapper {
-	width: 150px;
+	width: 200px;
 	display: table-cell;
 	vertical-align: top;
-	padding: 8px 60px 0px 0px;
+	padding: 8px 40px 0px 0px;
 	font-size: 1em;
 }
 

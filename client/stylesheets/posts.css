@@ -100,6 +100,15 @@ posts.css
 	padding: 12px 16px 10px 0;
 }
 
+.post-item--button-add-pinned {
+	padding: 12px 16px 10px 0;
+}
+
+.post-item--button-remove-pinned {
+	padding: 12px 16px 10px 0;
+	color: #eab41a;
+}
+
 .post-item--button-add-favorite {
 	padding: 12px 16px 10px 0;
 }

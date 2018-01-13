@@ -6,6 +6,13 @@ Template.desktopMenu.events({
 		Session.set('postsServerNonReactive', Counts.findOne().count);
 		resetPostInterval();
 	},
+	'click .filter-pinned': function(e) {
+		e.preventDefault();
+		resetFilters();
+	 	Session.set('pinned',true);
+	 	Session.set('postsServerNonReactive', CountsPinned.findOne().count);
+		resetPostInterval();
+		},
 	'click .filter-author': function(e) {
 		e.preventDefault();
 		var author = $(e.target).data('author');
@@ -37,14 +44,14 @@ Template.desktopMenu.events({
 		favorites = Session.get(Template.parentData(1).blog._id).favorites;
 		Session.set('postsServerNonReactive', favorites.length);
 		resetPostInterval();
-	},
-	'click .filter-pinned': function(e) {
-		e.preventDefault();
-		resetFilters();
-		Session.set('pinned',true);
-		Session.set('postsServerNonReactive', CountsPinned.findOne().count);
-		resetPostInterval();
 	}
+	// 'click .filter-pinned': function(e) {
+	// 	e.preventDefault();
+	// 	resetFilters();
+	// 	Session.set('pinned',true);
+	// 	Session.set('postsServerNonReactive', CountsPinned.findOne().count);
+	// 	resetPostInterval();
+	// }
 });
 
 
@@ -54,6 +61,10 @@ Template.desktopMenu.helpers({
 		var count = Counts.findOne();
 		return count && count.count;
 	},
+	pinnedCount: function() {
+		var pinnedCount = PinnedCounts.findOne();
+		return pinnedCount && pinnedCount.count;
+	},	
 	favoritesCount: function() {
 		var favorites = Session.get(Template.parentData(1).blog._id).favorites;
 		return favorites && favorites.length;
@@ -80,11 +91,23 @@ Template.desktopMenu.helpers({
 		return Tags.find({}, {sort: {name: 1}});
 	},	
 	'selectedShowAll': function() { // Add a class if element is selected
-		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false)
+		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false && Session.get('pinned') == false)
+			return "desktop-menu--list-element-selected"	
+	},
+	'selectedPinned': function() {
+		if (Session.get('pinned') == true)
 			return "desktop-menu--list-element-selected"	
 	},
 	'selectedFavorites': function() {
 		if (Session.get('favorites') == true)
+			return "desktop-menu--list-element-selected"	
+	},
+	'selectedFiles': function() {
+		if (Session.get('files') == true)
+			return "desktop-menu--list-element-selected"	
+	},
+	'selectedImages': function() {
+		if (Session.get('images') == true)
 			return "desktop-menu--list-element-selected"	
 	},
 	'selectedAuthorClass': function(){

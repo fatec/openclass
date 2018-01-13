@@ -82,3 +82,38 @@ Meteor.publish("count-all-posts", function (blogId) {
 		handle.stop();
 	});
 });
+
+
+Meteor.publish("count-all-pinned", function (blogId) {
+	var self = this;
+	var pinnedCounts = 0;
+	var initializing = true;
+
+	var handle = Posts.find({blogId: blogId, pinned:true}).observeChanges({
+		added: function (doc, idx) {
+			pinnedCounts++;
+			if (!initializing) {
+				self.changed("pinnedCounts", blogId, {count: pinnedCounts});  // "counts" is the published collection name
+			}
+		},
+		removed: function (doc, idx) {
+			pinnedCounts--;
+			self.changed("pinnedCounts", blogId, {count: pinnedCounts});  // Same published collection, "counts"
+		}
+	});
+
+	initializing = false;
+
+	// publish the initial count. `observeChanges` guaranteed not to return
+	// until the initial set of `added` callbacks have run, so the `count`
+	// variable is up to date.
+	self.added("pinnedCounts", blogId, {count: pinnedCounts});
+
+	// and signal that the initial document set is now available on the client
+	self.ready();
+
+	// turn off observe when client unsubscribes
+	self.onStop(function () {
+		handle.stop();
+	});
+});

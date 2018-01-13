@@ -11,6 +11,11 @@
 		{{else}}
 			<div class="post-item--button post-item--button-add-favorite"><i class="fa fa-lg fa-star-o"></i></div>
 		{{/if}}
+		{{#if pinned}}
+			<div class="post-item--button post-item--button-remove-pinned"><i class="fa fa-lg fa-thumb-tack"></i></div>
+		{{else}}
+			<div class="post-item--button post-item--button-add-pinned"><i class="fa fa-lg fa-thumb-tack"></i></div>
+		{{/if}}
 		<a class="post-item--author filter-author {{selectedAuthorClass}}" data-author="{{author}}" href="#">{{author}}</a>
 		<div class="post-item--date">• {{livestamp submitted}}</div>
 		{{#if this.imageId}}  

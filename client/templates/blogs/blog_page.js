@@ -20,6 +20,8 @@ Template.blogPage.onCreated(function() {
 			filters = {blogId:Session.get('blogId'), category:Session.get('category')}
 		else if (Session.get('tag') != "")
 			filters = {blogId:Session.get('blogId'), tags:Session.get('tag')}
+		else if (Session.get('pinned') == true) 
+			filters = {blogId:Session.get('blogId'), pinned:true}
 		else if (Session.get('favorites') == true) {
 			var favorites = Session.get(Session.get('blogId')).favorites;
 			if (favorites)
