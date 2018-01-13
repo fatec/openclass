@@ -12,7 +12,7 @@ Template.desktopMenu.events({
 	 	Session.set('pinned',true);
 	 	Session.set('postsServerNonReactive', PinnedCounts.findOne().count);
 		resetPostInterval();
-		},
+	},
 	'click .filter-author': function(e) {
 		e.preventDefault();
 		var author = $(e.target).data('author');
@@ -45,13 +45,6 @@ Template.desktopMenu.events({
 		Session.set('postsServerNonReactive', favorites.length);
 		resetPostInterval();
 	}
-	// 'click .filter-pinned': function(e) {
-	// 	e.preventDefault();
-	// 	resetFilters();
-	// 	Session.set('pinned',true);
-	// 	Session.set('postsServerNonReactive', CountsPinned.findOne().count);
-	// 	resetPostInterval();
-	// }
 });
 
 

@@ -14,6 +14,13 @@ Template.slideoutMenu.events({
 		Session.set('postsServerNonReactive', Counts.findOne().count);
 		resetPostInterval();
 	},
+	'click .filter-pinned': function(e) {
+		e.preventDefault();
+		resetFilters();
+	 	Session.set('pinned',true);
+	 	Session.set('postsServerNonReactive', PinnedCounts.findOne().count);
+		resetPostInterval();
+	},
 	'click .filter-author': function(e) {
 		e.preventDefault();
 		var author = $(e.target).data('author');
@@ -45,13 +52,6 @@ Template.slideoutMenu.events({
 		favorites = Session.get(Template.parentData(2).blog._id).favorites;
 		Session.set('postsServerNonReactive', favorites.length);
 		resetPostInterval();
-	},
-	'click .filter-pinned': function(e) {
-		e.preventDefault();
-		resetFilters();
-		Session.set('pinned',true);
-		Session.set('postsServerNonReactive', CountsPinned.findOne().count);
-		resetPostInterval();
 	}
 });
 
@@ -61,6 +61,10 @@ Template.slideoutMenu.helpers({
 	postCount: function() {
 		var count = Counts.findOne();
 		return count && count.count;
+	},
+	pinnedCount: function() {
+		var pinnedCount = PinnedCounts.findOne();
+		return pinnedCount && pinnedCount.count;
 	},
 	favoritesCount: function() {
 		var favorites = Session.get(Template.parentData(2).blog._id).favorites;
@@ -88,7 +92,11 @@ Template.slideoutMenu.helpers({
 		return Tags.find({}, {sort: {name: 1}});
 	},	
 	'selectedShowAll': function() {
-		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false)
+		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false && Session.get('pinned') == false)
+			return "slideout-menu--list-element-selected"	
+	},
+	'selectedPinned': function() {
+		if (Session.get('pinned') == true)
 			return "slideout-menu--list-element-selected"	
 	},
 	'selectedFavorites': function() {
