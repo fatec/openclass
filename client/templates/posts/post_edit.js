@@ -1,41 +1,60 @@
+
+
+Template.postEdit.onCreated(function() {
+
+
+		if (Session.get("fileId"))
+			delete Session.keys["fileId"]; // Clear fileId session
+
+		if (Session.get("fileExt"))
+			delete Session.keys["fileExt"]; // Clear fileExt session
+});
+
 Template.postEdit.onRendered(function() {
+
+	//post = Posts.findOne(Template.currentData()._id);
+//post5 = Posts.findOne(Template.currentData()._id);
 
 	$('.post-edit--textarea').autosize(); // Set textarea height automatically according to text size
 
-	Session.set('imageId', false);
-	if (this.data.post.imageId) // If image already exist, set imageId in session
-		Session.set('imageId', this.data.post.imageId);
+	// Session.set('fileId', false);
+	// if (this.data.post.fileId) // If image already exist, set imageId in session
+	// 	Session.set('fileId', this.data.post.fileId);
 
-	Deps.autorun(function() { // Autorun to reactively update subscription of image
-		if (Session.get("imageId"))
-			Meteor.subscribe('image', Session.get("imageId"));
+	Deps.autorun(function() { // Autorun to reactively update subscription of file
+		if (Session.get("fileId"))
+			Meteor.subscribe('file', Session.get("fileId"));
+
 	});
 
 	Uploader.finished = function(index, fileInfo, templateContext) { // Triggered when image upload is finished
 	// TODO : don't upload image before submit post (or remove after if post isn't submitted)	
-		Session.set("imageId",fileInfo.name);
+		Session.set("fileId",fileInfo.name);
+
+		var extension = fileInfo.name.substr(fileInfo.name.lastIndexOf('.')+1).toLowerCase();
+		Session.set("fileExt",extension);
 	}
 
-	var tags = new Bloodhound({ // Allow to find and show tags in input if already exists
-		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-		queryTokenizer: Bloodhound.tokenizers.whitespace,
-		local: Tags.find().fetch()
-	});
-	tags.initialize();
-	$('.suggest').tagsinput({
-		typeaheadjs: {
-			name: 'tags',
-			displayKey: 'name',
-			valueKey: 'name',
-			source: tags.ttAdapter()
-		}, 
-		confirmKeys: [32, 9, 13, 44, 188]
-	});
+	// var tags = new Bloodhound({ // Allow to find and show tags in input if already exists
+	// 	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+	// 	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	// 	local: Tags.find().fetch()
+	// });
+	// tags.initialize();
+	// $('.suggest').tagsinput({
+	// 	typeaheadjs: {
+	// 		name: 'tags',
+	// 		displayKey: 'name',
+	// 		valueKey: 'name',
+	// 		source: tags.ttAdapter()
+	// 	}, 
+	// 	confirmKeys: [32, 9, 13, 44, 188]
+	// });
 
-	$('.suggest').tagsinput('input').blur(function() {
-		$('.suggest').tagsinput('add', $(this).val().toLowerCase());
-		$(this).val('');
-	});
+	// $('.suggest').tagsinput('input').blur(function() {
+	// 	$('.suggest').tagsinput('add', $(this).val().toLowerCase());
+	// 	$(this).val('');
+	// });
 });
 
 
@@ -48,22 +67,22 @@ Template.postEdit.events({
 		$(".post-edit--button-icon").hide();
 		$(".post-edit--button-text").hide();
 	
-		var currentPostId = this.post._id;
+		var currentPostId = this._id;
 		var currentPost = Posts.findOne(currentPostId);
 
-		var oldTags = this.post.tags;
-		var newTags = $(e.target).find('[name=tags]').val().toLowerCase().replace(/ /g,'').split(',');
-		var set = {tags: newTags};
+		// var oldTags = this.post.tags;
+		// var newTags = $(e.target).find('[name=tags]').val().toLowerCase().replace(/ /g,'').split(',');
+		var set = {};
 
 		var body = $(e.target).find('[name=body]').val();
-		if (body != this.post.body) // If body has changed, replace by new one
+		if (body != currentPost.body) // If body has changed, replace by new one
 			_.extend(set, {body: body});
 
 		var category = $(e.target).find('[name=category]').val();
-		if (category != this.post.category) {
+		if (category != currentPost.category) {
 			_.extend(set, {category: category})
 
-			var oldCategoryItem = Categories.findOne({blogId: blogId, name: this.post.category}); // Decrement category
+			var oldCategoryItem = Categories.findOne({blogId: blogId, name: currentPost.category}); // Decrement category
 			if (oldCategoryItem)
 				Categories.update(oldCategoryItem._id, {$inc: {nRefs: -1}}); 
 
@@ -74,20 +93,25 @@ Template.postEdit.events({
 
 		// TODO : don't remove an image before form is submitted (check old git commits)
 
-		var imageId = Session.get("imageId");
-		_.extend(set, {imageId: imageId});
+		var fileId = Session.get("fileId");
+		var fileExt = Session.get("fileExt");
+		_.extend(set, {fileId: fileId, fileExt: fileExt});
 
 		Posts.update(currentPostId, {$set: set}, function(error) {
 			if (error) {
           		alert("Une erreur est survenue : "+error.message);
 			} else {
-				Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
-					if (error) {
-          				alert("Une erreur est survenue : "+error.message);
-					} else {						
-						Router.go('blogPage', {_id: currentPost.blogId});  
-					}
-			 	});
+				$.magnificPopup.close();
+				 		//Router.go('blogPage', {_id: currentPost.blogId});  
+
+
+				// Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
+				// 	if (error) {
+    //       				alert("Une erreur est survenue : "+error.message);
+				// 	} else {						
+				// 		Router.go('blogPage', {_id: currentPost.blogId});  
+				// 	}
+			 // 	});
 			}
 		});
 	},
@@ -97,9 +121,9 @@ Template.postEdit.events({
 	},
 	'click .post-edit--button-delete-image': function(e) {
 		e.preventDefault();
-		if (confirm("Effacer l'image?")) {
-			Posts.update(this.post._id, {$unset: {'imageId': ''}});
-			Session.set('imageId', false);
+		if (confirm("Effacer le fichier ?")) {
+			Posts.update(Template.currentData()._id, {$unset: {'fileId': ''}});
+			Session.set('fileId', false);
 		}
 	}
 });
@@ -107,30 +131,41 @@ Template.postEdit.events({
 
 Template.postEdit.helpers({
 	
-	image: function() {
-		if (Session.get("imageId")) {
-			var imageId = Session.get("imageId");
-			var imageInCollection = Images.findOne({imageId:imageId});
+	file: function() {
+		if (Session.get("fileId")) {
+			var fileId = Session.get("fileId");
+			var fileInCollection = Files.findOne({fileId:fileId});
 
-			if (imageInCollection) // Wait until image is in Images collection
-						$(".post-edit--button-submit").show();
-			return imageInCollection;
+			if (fileInCollection) // Wait until file is in Files collection
+				$(".post-edit--button-submit").show();
+			return fileInCollection;
 		}
 		else
 			return false;
 	},
+	post: function() {
+		return Posts.findOne(Template.currentData()._id);
+	},
 	blog: function() {
-		var currentPostId = this.post._id;
+		var currentPostId = Template.currentData()._id;
 		var currentPost = Posts.findOne(currentPostId);
 		var blogId = Blogs.findOne(currentPost.blogId);
 		return blogId;
 	},
 	categories: function() {
-    	return Categories.find({blogId: this.post.blogId},{sort: { name: 1 }});  
+		var currentPostId = Template.currentData()._id;
+		var currentPost = Posts.findOne(currentPostId);
+    	return Categories.find({blogId: currentPost.blogId},{sort: { name: 1 }});  
   	},
 	selectedCategory: function(){
+		var currentPostId = Template.currentData()._id;
+		var currentPost = Posts.findOne(currentPostId);
 		var category = this.name;
-		var categoryItem = Template.parentData().post.category;
+		console.log("category : "+category);
+
+		var categoryItem = currentPost.category;
+				console.log("categoryItem : "+categoryItem);
+
 		return category === categoryItem;
 	}
 });

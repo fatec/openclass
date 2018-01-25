@@ -8,12 +8,173 @@ Template.postItem.onRendered(function() {
 	$('.post-item--image-wrapper').imagesLoaded(function() { // Show image in a lightbox with magnificPopup plugin
 		$('.post-item--image-link').magnificPopup({
 			type:'image',
-			closeOnContentClick:'true',
+			closeOnContentClick:false,
+			closeOnBgClick: false,
+			// callbacks: {
+	  //   		open: function() {
+	  //     		// Will fire when this exact popup is opened
+	  //     		// this - is Magnific Popup object
+	  //  	 		},
+	  //   		close: function() {
+
+	  //   		// reset form	
+	  //   		$(".post-submit--textarea").val('');
+	  //   		$(".post-submit--select-categories").val('');
+
+			// 	if (Session.get("fileId")) {
+			// 		delete Session.keys["fileId"]; // Clear fileId session
+			// 	    Session.set("fileId",''); // needed to set to null to get it work, but don't know why...
+			// 	}
+
+			// 	if (Session.get("fileExt")) 
+			// 		delete Session.keys["fileExt"]; // Clear fileExt session
+			// 	    Session.set("fileExt",''); // needed to set to null to get it work, but don't know why...
+	  //   		}
+   //  		}
 		});
 	});
 
 	$('.post-item--text').linkify(); // Detect URLs and create links
 	$('.post-item--comment-text').linkify();
+
+		
+    // $.contextMenu({
+    //     selector: '.context-menu-'+this.data._id, 
+    //     trigger: 'left',
+    //     callback: function(key, options) {
+    //         var m = "clicked: " + key + $(this).data('postid');
+    //         window.console && console.log(m) || alert(m); 
+    //     },
+    //     items: {
+    //         "edit": {name: testvar, icon: "fa-star"},
+    //         "cut": {name: "Cut", icon: "cut"},
+    //         "copy": {name: "Copy", icon: "copy"},
+    //         "paste": {name: "Paste", icon: "paste"},
+    //         "delete": {name: "Delete", icon: "delete"},
+    //         "sep1": "---------",
+    //         "quit": {name: "Quit", icon: function($element, key, item){ return 'context-menu-icon context-menu-icon-quit'; }}
+    //     }
+    // });
+
+
+
+		var blogId = Template.parentData(1).blog._id;
+
+
+		 // testvar = new ReactiveVar(this.data.pinned);
+
+
+     $.contextMenu({
+        selector: '.context-menu-'+this.data._id, 
+        trigger: 'left',
+        build: function($trigger, e) {
+
+        	var postId = $(e.currentTarget).data('postid');
+
+        	var textPinned;
+        	if ($(e.currentTarget).data('ispinned')) {
+        		textPinned = "Retirer l'épingle";
+        		iconPinned ="fa-thumb-tack strikethrough";
+        	}
+        	else {
+        		textPinned = "Épingler en haut";
+        		iconPinned = "fa-thumb-tack";
+        	}
+
+        	var textFavorite;
+        	if ($(e.currentTarget).data('isfavorite')) {
+        		var isFavorite = true;
+        		textFavorite = "Retirer de mes favoris";
+        		iconFavorite = "fa-star strikethrough";
+        	}
+        	else {
+        		textFavorite = "Ajouter à mes favoris";
+        		iconFavorite = "fa-star";
+        	}
+ 
+            // this callback is executed every time the menu is to be shown
+            // its results are destroyed every time the menu is hidden
+            // e is the original contextmenu event, containing e.pageX and e.pageY (amongst other data)
+            return {
+                callback: function(key, options) {
+                	if (key == "pin") {
+                		var doc = Posts.findOne(postId);
+						Posts.update(postId, {$set: {pinned: !doc.pinned}});
+                	}
+                	else if (key == "favorite") {
+						
+						var session = Session.get(blogId);
+
+                		if (isFavorite) {
+							if (session.favorites) {
+								session.favorites = $.grep(session.favorites, function(value) { // Remove currentPostID from favorites array
+			  						return value != postId;
+								});
+							}
+						}
+						else {
+							if (session.favorites)
+								session.favorites.push(postId);
+							else {
+								session.favorites = [];
+								session.favorites.push(postId);
+							}
+						}
+						Session.setPersistent(blogId, session); // Persistent to browser refresh
+					}
+					else if (key == "edit") {
+
+						//$(".white-popup").html('<div>'+Blaze.renderWithData(Template.postEdit, {_id: "data"}, $("#parrent-node")[0])+'</div>');
+						Blaze.renderWithData(Template.postEdit, {_id: postId}, $('#blog-page--post-edit-'+postId)[0]);
+
+						$.magnificPopup.open({
+							type:'inline',
+							closeOnContentClick: false,
+	  						closeOnBgClick: false,
+							  items: {
+							    src: '#blog-page--post-edit-'+postId
+							  }
+
+  // You may add options here, they're exactly the same as for $.fn.magnificPopup call
+  // Note that some settings that rely on click event (like disableOn or midClick) will not work here
+}, 0);
+
+
+
+	// 						$('.open-popup-link').magnificPopup({
+	//   type:'inline',
+	//   midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+	// });
+
+
+
+
+						//Router.go('postEdit', {_id: postId});
+					}
+					else if (key == "delete") {
+						if (confirm("Effacer la publication ?")) {
+							Posts.remove(postId, function(error) {
+								if (error)
+				          			alert("Une erreur est survenue : "+error.message);
+							});
+						}
+					}
+                },
+                items: {
+                	"pin": {name: textPinned, icon: iconPinned},
+                	"favorite": {name: textFavorite, icon: iconFavorite},
+                	"edit": {name: "Éditer", icon: "fa-pencil"},
+                	"delete": {name: "Supprimer", icon: "fa-trash-o"},
+                }
+            };
+        }
+    });
+
+
+});
+
+Template.postItem.onCreated(function() {
+	imageExtensions = ["jpg","jpeg","png","gif"];
 });
 
 
@@ -175,6 +336,10 @@ Template.postItem.events({
 
 Template.postItem.helpers({
 
+	image: function() {
+		if (this.fileId && $.inArray(this.fileExt, imageExtensions) != -1)
+			return this.fileId
+	},
 	favorite: function() {
 		if ($.inArray(this._id,Session.get(Template.parentData(1).blog._id).favorites) == -1)
 			return false;
@@ -188,12 +353,12 @@ Template.postItem.helpers({
 		if (Template.parentData().blog.commentsAllowed)
 			return true;
 	},
-	tags: function(){
-		if (this.tags.length > 1 || this.tags[0] != "")
-			return this.tags;
-		else
-			return 0;
-	},
+	// tags: function(){
+	// 	if (this.tags.length > 1 || this.tags[0] != "")
+	// 		return this.tags;
+	// 	else
+	// 		return 0;
+	// },
 	likes: function() {
 		if (this.likes)
 			return this.likes.length;

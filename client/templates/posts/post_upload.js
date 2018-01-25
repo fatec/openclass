@@ -1,4 +1,4 @@
-Template.postUploadImage.onCreated(function () {
+Template.postUpload.onCreated(function () {
 
   Uploader.init(this);
   if (this.data)
@@ -6,13 +6,13 @@ Template.postUploadImage.onCreated(function () {
 });
 
 
-Template.postUploadImage.onRendered(function () {
+Template.postUpload.onRendered(function () {
 
   Uploader.render.call(this);
 });
 
 
-Template.postUploadImage.helpers({
+Template.postUpload.helpers({
 
   'infoLabel': function() {
     var instance = Template.instance();

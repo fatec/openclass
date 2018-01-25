@@ -21,6 +21,20 @@ Template.slideoutMenu.events({
 	 	Session.set('postsServerNonReactive', PinnedCounts.findOne().count);
 		resetPostInterval();
 	},
+	'click .filter-files': function(e) {
+		e.preventDefault();
+		resetFilters();
+	 	Session.set('files',true);
+	 	Session.set('postsServerNonReactive', FilesCounts.findOne().count);
+		resetPostInterval();
+	},
+	'click .filter-images': function(e) {
+		e.preventDefault();
+		resetFilters();
+	 	Session.set('images',true);
+	 	Session.set('postsServerNonReactive', ImagesCounts.findOne().count);
+		resetPostInterval();
+	},
 	'click .filter-author': function(e) {
 		e.preventDefault();
 		var author = $(e.target).data('author');
@@ -70,6 +84,14 @@ Template.slideoutMenu.helpers({
 		var favorites = Session.get(Template.parentData(2).blog._id).favorites;
 		return favorites && favorites.length;
 	},
+	filesCount: function() {
+		var filesCount = FilesCounts.findOne();
+		return filesCount && filesCount.count;
+	},	
+	imagesCount: function() {
+		var imagesCount = ImagesCounts.findOne();
+		return imagesCount && imagesCount.count;
+	},	
 	authorNRef: function() {
 		var author = Authors.findOne({name:this.name});
 		return author && author.nRefs;
@@ -92,7 +114,7 @@ Template.slideoutMenu.helpers({
 		return Tags.find({}, {sort: {name: 1}});
 	},	
 	'selectedShowAll': function() {
-		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false && Session.get('pinned') == false)
+		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false && Session.get('pinned') == false && Session.get('files') == false && Session.get('images') == false)
 			return "slideout-menu--list-element-selected"	
 	},
 	'selectedPinned': function() {
@@ -101,6 +123,14 @@ Template.slideoutMenu.helpers({
 	},
 	'selectedFavorites': function() {
 		if (Session.get('favorites') == true)
+			return "slideout-menu--list-element-selected"	
+	},
+	'selectedFiles': function() {
+		if (Session.get('files') == true)
+			return "slideout-menu--list-element-selected"	
+	},
+	'selectedImages': function() {
+		if (Session.get('images') == true)
 			return "slideout-menu--list-element-selected"	
 	},
 	'selectedAuthorClass': function(){

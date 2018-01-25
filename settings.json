@@ -1,6 +1,6 @@
 {
 	"syncServerIP": "",
-	"adminPassword": "",
+	"adminPassword": "admin",
 	"mailAddress": "",
 	"mailPassword": "",
 	"mailServer": "",

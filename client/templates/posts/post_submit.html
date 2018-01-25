@@ -1,24 +1,26 @@
 <template name="postSubmit">
 	<div class="post-submit">
-		<div class="page-title">Ajouter une publication</div>
-		<div class="post-submit--wrapper">
-			{{#unless image}}
-				{{>postUploadImage autoStart=true}}
-			{{/unless}}
-			<div class="images post-submit--image-wrapper">
-				{{#if image}}
-	 				<img src="../../upload/{{image.imageId}}" id="img" alt="" class="post-submit--image"/>
+<!-- 		<div class="page-title">Ajouter une publication</div>
+ -->		<div class="post-submit--wrapper">
+			<div class="files post-submit--image-wrapper">
+				{{#if file}}
+	 				<img src="../../upload/{{file.fileId}}" id="img" alt="" class="post-submit--image"/>
 				{{/if}}
 			</div>        
 			<form name="post-submit--form" id="post-submit--form">
-				{{#if image}}
+				{{#if file}}
 					<div class="post-submit--button-delete-image-wrapper">
-						<button class="button button-danger post-submit--button-delete-image" href="#">Supprimer l'image</button>
+						<button class="button button-danger post-submit--button-delete-image" href="#">Supprimer</button>
 					</div>
 				{{/if}}
-				<textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..."></textarea><br /><br />
-				<input name="tags" type="text" data-role="tagsinput" class="post-submit--tags suggest" placeholder="Ajoutez des mots-clés..."/><br /><br />
-				<select name="category" class="post-submit--select-categories">
+				<textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..."></textarea>
+				<div class="post-submit--attach-buttons">
+					{{#unless file}}
+						{{>postUpload autoStart=true}}
+					{{/unless}}
+				</div>
+<!-- 				<input name="tags" type="text" data-role="tagsinput" class="post-submit-2-tags suggest" placeholder="Ajoutez des mots-clés..."/><br /><br />
+ -->				<select name="category" class="post-submit--select-categories">
 					<option value="" disabled selected >Sélectionnez une catégorie :</option>
 					<option value="" >Aucune catégorie</option>
 					{{#each categories}}

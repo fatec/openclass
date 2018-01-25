@@ -26,6 +26,23 @@
 						</div>
 					{{/if}}
 				{{/if}}
+				{{#if postsPinned}}
+						{{#if postsPinned.count}}
+							<div class="blog-page--posts-pinned">
+								<div class="blog-page--pinned-title"><i class="fa fa-x fa-thumb-tack"></i> Épinglés</div>
+							{{#each postsPinned}}
+								{{> postItem}}
+							{{/each}}
+							</div>
+						{{/if}}
+				{{/if}}
+					<div class="blog-page--posts-order">Tri <select id="blog-page--select-filter"><option value="asc" {{ascendant}}>Plus récents d'abord</option><option value="desc" {{descendant}}>Plus anciens d'abord</option></select>
+<!-- 					{{#if ascendant}}
+						<span>Plus récents d'abord <i class="fa fa-caret-up" aria-hidden="true"></i></span>
+					{{else}}
+						<span>Plus ancien d'abord <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+					{{/if}} -->
+				</div>
 				{{#if posts}}
 					{{#if posts.count}}
 						{{#each posts}}
@@ -45,4 +62,7 @@
 			</div>
 		</div>
 	</div>
+	<div id="blog-page--post-submit" class="white-popup mfp-hide">
+  		<div>{{> postSubmit}}</div>
+  	</div>
 </template>

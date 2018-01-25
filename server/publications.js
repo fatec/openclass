@@ -24,12 +24,12 @@ Meteor.publish('posts', function(filters,skip,limit) {
 	return Posts.find(filters, {sort: {submitted: 1},skip:skip,limit:limit});
 });
 
-Meteor.publish("image", function(imageId) {
-	return Images.find({imageId:imageId})
+Meteor.publish("file", function(fileId) {
+	return Files.find({fileId:fileId})
 });
 
-Meteor.publish("images", function(blogId) {
-	return Images.find({blogId: blogId});
+Meteor.publish("files", function(blogId) {
+	return Files.find({blogId: blogId})
 });
 
 Meteor.publish("authors", function(blogId) {
@@ -108,6 +108,76 @@ Meteor.publish("count-all-pinned", function (blogId) {
 	// until the initial set of `added` callbacks have run, so the `count`
 	// variable is up to date.
 	self.added("pinnedCounts", blogId, {count: pinnedCounts});
+
+	// and signal that the initial document set is now available on the client
+	self.ready();
+
+	// turn off observe when client unsubscribes
+	self.onStop(function () {
+		handle.stop();
+	});
+});
+
+
+Meteor.publish("count-all-files", function (blogId) {
+	var self = this;
+	var filesCounts = 0;
+	var initializing = true;
+
+	var handle = Posts.find({blogId: blogId, $or : [{fileExt:"txt"},{fileExt:"rtf"},{fileExt:"pdf"},{fileExt:"zip"}]}).observeChanges({
+		added: function (doc, idx) {
+			filesCounts++;
+			if (!initializing) {
+				self.changed("filesCounts", blogId, {count: filesCounts});  // "counts" is the published collection name
+			}
+		},
+		removed: function (doc, idx) {
+			filesCounts--;
+			self.changed("filesCounts", blogId, {count: filesCounts});  // Same published collection, "counts"
+		}
+	});
+
+	initializing = false;
+
+	// publish the initial count. `observeChanges` guaranteed not to return
+	// until the initial set of `added` callbacks have run, so the `count`
+	// variable is up to date.
+	self.added("filesCounts", blogId, {count: filesCounts});
+
+	// and signal that the initial document set is now available on the client
+	self.ready();
+
+	// turn off observe when client unsubscribes
+	self.onStop(function () {
+		handle.stop();
+	});
+});
+
+
+Meteor.publish("count-all-images", function (blogId) {
+	var self = this;
+	var imagesCounts = 0;
+	var initializing = true;
+
+	var handle = Posts.find({blogId: blogId, $or : [{fileExt:"jpg"},{fileExt:"jpeg"},{fileExt:"gif"},{fileExt:"png"}]}).observeChanges({
+		added: function (doc, idx) {
+			imagesCounts++;
+			if (!initializing) {
+				self.changed("imagesCounts", blogId, {count: imagesCounts});  // "counts" is the published collection name
+			}
+		},
+		removed: function (doc, idx) {
+			imagesCounts--;
+			self.changed("imagesCounts", blogId, {count: imagesCounts});  // Same published collection, "counts"
+		}
+	});
+
+	initializing = false;
+
+	// publish the initial count. `observeChanges` guaranteed not to return
+	// until the initial set of `added` callbacks have run, so the `count`
+	// variable is up to date.
+	self.added("imagesCounts", blogId, {count: imagesCounts});
 
 	// and signal that the initial document set is now available on the client
 	self.ready();
