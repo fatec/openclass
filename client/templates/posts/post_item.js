@@ -8,8 +8,8 @@ Template.postItem.onRendered(function() {
 	$('.post-item--image-wrapper').imagesLoaded(function() { // Show image in a lightbox with magnificPopup plugin
 		$('.post-item--image-link').magnificPopup({
 			type:'image',
-			closeOnContentClick:false,
-			closeOnBgClick: false,
+			closeOnContentClick:true,
+			closeOnBgClick: true,
 			// callbacks: {
 	  //   		open: function() {
 	  //     		// Will fire when this exact popup is opened
