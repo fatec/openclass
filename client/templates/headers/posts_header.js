@@ -31,13 +31,15 @@ Template.postsHeader.onRendered(function() {
 	});
 });
 
-// Template.postsHeader.events({
+Template.postsHeader.events({
 	
-// 	'click .posts-header--button-submit': function(e) {
-// 		e.preventDefault();
-// 		history.back();
-//   	}
-// });
+	'click .header--logo': function(e) {
+		e.preventDefault();
+		resetFilters();
+		Session.set('postsServerNonReactive', Counts.findOne().count);
+		resetPostInterval();
+  	}
+});
 
 Template.postsHeader.helpers({
 	
