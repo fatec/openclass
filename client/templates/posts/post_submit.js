@@ -83,6 +83,9 @@ Template.postSubmit.events({
 	          	alert("Une erreur est survenue : "+error.message);
 			} else {
 				$.magnificPopup.close();
+				$(".post-submit--button-spinner").hide(); // Show a spiner while sending
+				$(".post-submit--button-icon").show();
+				$(".post-submit--button-text").show();
 
 				// if (tags)
 				// 	Meteor.call('tagsInsert', {blogId: blogId, tags: tags});
