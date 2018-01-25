@@ -70,6 +70,7 @@ Template.postItem.onRendered(function() {
         build: function($trigger, e) {
 
         	var postId = $(e.currentTarget).data('postid');
+        	console.log("postID : "+postId);
 
         	var textPinned;
         	if ($(e.currentTarget).data('ispinned')) {
@@ -124,7 +125,7 @@ Template.postItem.onRendered(function() {
 					}
 					else if (key == "edit") {
 
-						//$(".white-popup").html('<div>'+Blaze.renderWithData(Template.postEdit, {_id: "data"}, $("#parrent-node")[0])+'</div>');
+						$('.blog-page--post-edit').html(''); // delete old content
 						Blaze.renderWithData(Template.postEdit, {_id: postId}, $('#blog-page--post-edit-'+postId)[0]);
 
 						$.magnificPopup.open({
@@ -134,22 +135,7 @@ Template.postItem.onRendered(function() {
 							  items: {
 							    src: '#blog-page--post-edit-'+postId
 							  }
-
-  // You may add options here, they're exactly the same as for $.fn.magnificPopup call
-  // Note that some settings that rely on click event (like disableOn or midClick) will not work here
-}, 0);
-
-
-
-	// 						$('.open-popup-link').magnificPopup({
-	//   type:'inline',
-	//   midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
-	// });
-
-
-
-
-						//Router.go('postEdit', {_id: postId});
+						}, 0);
 					}
 					else if (key == "delete") {
 						if (confirm("Effacer la publication ?")) {

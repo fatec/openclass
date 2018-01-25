@@ -82,11 +82,11 @@ Template.postEdit.events({
 		if (category != currentPost.category) {
 			_.extend(set, {category: category})
 
-			var oldCategoryItem = Categories.findOne({blogId: blogId, name: currentPost.category}); // Decrement category
+			var oldCategoryItem = Categories.findOne({blogId: currentPost.blogId, name: currentPost.category}); // Decrement category
 			if (oldCategoryItem)
 				Categories.update(oldCategoryItem._id, {$inc: {nRefs: -1}}); 
 
-			var newCategoryItem = Categories.findOne({blogId: blogId, name: category}); // Increment category
+			var newCategoryItem = Categories.findOne({blogId: currentPost.blogId, name: category}); // Increment category
 			if (newCategoryItem)
 				Categories.update(newCategoryItem._id, {$inc: {nRefs: 1}});    
 		}
@@ -154,17 +154,16 @@ Template.postEdit.helpers({
 	},
 	categories: function() {
 		var currentPostId = Template.currentData()._id;
-		var currentPost = Posts.findOne(currentPostId);
+		var currentPost = Posts.findOne(Template.currentData()._id)
     	return Categories.find({blogId: currentPost.blogId},{sort: { name: 1 }});  
   	},
 	selectedCategory: function(){
-		var currentPostId = Template.currentData()._id;
+		var currentPostId = Template.parentData()._id;
 		var currentPost = Posts.findOne(currentPostId);
+		console.log("currentPostId : "+currentPostId);
 		var category = this.name;
-		console.log("category : "+category);
 
 		var categoryItem = currentPost.category;
-				console.log("categoryItem : "+categoryItem);
 
 		return category === categoryItem;
 	}

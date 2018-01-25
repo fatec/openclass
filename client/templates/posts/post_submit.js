@@ -5,6 +5,9 @@ Template.postSubmit.onCreated(function() {
 
 		if (Session.get("fileExt"))
 			delete Session.keys["fileExt"]; // Clear fileExt session
+
+	imageExtensions = ["jpg","jpeg","png","gif"];
+
 });
 
 
@@ -28,7 +31,9 @@ Template.postSubmit.onRendered(function() {
 	// Set default author if not defined
 	if (Template.parentData(2))
 		if (!Session.get(Template.parentData(2).blog._id))
-			Session.set(Template.parentData(2).blog._id, {author: 'Invité'});    
+			Session.set(Template.parentData(2).blog._id, {author: 'Invité'});  
+
+	  
 
 	// var tags = new Bloodhound({ // Allow to find and show tags in input if already exists
 	// 	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -108,6 +113,18 @@ Template.postSubmit.events({
 
 Template.postSubmit.helpers({
 
+	// image: function() {
+	// 	if (Session.get("fileId") && $.inArray(Session.get("fileExt"), imageExtensions) != -1 ) {
+	// 		var fileId = Session.get("fileId");
+	// 		var fileInCollection = Files.findOne({fileId:fileId});
+
+	// 		if (fileInCollection) // Wait until file is in Files collection
+	// 			$(".post-submit--button-submit").show();
+	// 		return fileInCollection;
+	// 	}
+	// 	else
+	// 		return false;
+	// },
 	file: function() {
 		if (Session.get("fileId")) {
 			var fileId = Session.get("fileId");

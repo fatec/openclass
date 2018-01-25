@@ -9,6 +9,10 @@ z_mobile.css
 
 	/* ----- application ----- */
 
+	.mfp-content {
+		width:100% !important;
+	}
+
 	.button {
 		height: 40px;
 	}
@@ -190,11 +194,13 @@ z_mobile.css
 
 	.post-edit {
 		width: 100%;
+		padding: 20px 0px;
 	}
 
 	.post-edit--wrapper{
 		margin-top: 0px;
 		border-color: #f6f6f6;
+		padding:10px;
 	}
 
 	.post-edit--image{
@@ -247,11 +253,13 @@ z_mobile.css
 
 	.post-submit {
 		width: 100%;
+		padding: 20px 0px;
 	}
 
 	.post-submit--wrapper{
 		margin-top: 0px;
 		border-color: #f6f6f6;
+		padding:10px;
 	}
 
 	.post-submit--image{
