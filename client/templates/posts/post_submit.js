@@ -82,9 +82,11 @@ Template.postSubmit.events({
 			if (error){
 	          	alert("Une erreur est survenue : "+error.message);
 			} else {
+				$.magnificPopup.close();
+
 				// if (tags)
 				// 	Meteor.call('tagsInsert', {blogId: blogId, tags: tags});
-				Router.go('blogPage', {_id: post.blogId, last: true});
+				//Router.go('blogPage', {_id: post.blogId, last: true});
 			};
 		});
 	},
