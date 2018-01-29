@@ -57,7 +57,6 @@ Template.blogPage.events({
 	},
 	'change #blog-page--select-filter': function(e) {
 		var val = $(e.target).val();
-		console.log("valeur : "+val);
 		if (val == "asc")
   			Session.set("last", true);
   		else

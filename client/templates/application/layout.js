@@ -31,9 +31,34 @@ Template.layout.onRendered(function () {
 		this.panel.classList.remove('overflow-hidden');
 	});
 
-	T9n.setLanguage("fr"); // Localization
 
-	Meteor.autorun(function () { // Check connection status (used for box)
+	//Set locale
+	var lang = null;
+	if (Session.get('lang')) // If locale is set by user
+		lang = Session.get('lang');
+	else {
+		// Set locale according to browser
+		function getLang() {
+			console.log(navigator.languages[0]);
+		    return (
+		        navigator.languages && navigator.languages[0] ||
+		        navigator.language ||
+		        navigator.browserLanguage ||
+		        navigator.userLanguage ||
+		        'en-US'
+		    );
+		}
+		lang = getLang();
+		Session.set('lang',lang);
+	}
+
+	Meteor.autorun(function () { 
+		
+		TAPi18n.setLanguage(Session.get('lang')); // Translation of app-specific texts
+		T9n.setLanguage(Session.get('lang')); // Translation for basic Meteor packages (account, etc.)
+		moment.locale(Session.get('lang')); // Translation for livestamp
+
+	// Check connection status (used for box)
 	    var stat;
 	    if (Meteor.status().status === "connected") {
 	        stat = 1;

@@ -5,19 +5,19 @@ Template.blogEditAuthors.events({
 		var currentBlogId = template.data.blog._id;
 		var authorName = $(event.target).data("delete-author");
 		var author = Authors.findOne({name: authorName, blogId: currentBlogId});
-		if(confirm("Supprimer l'auteur "+authorName+" ?"))
+		if(confirm(TAPi18n.__('blog-edit-authors--delete-author-message',authorName)))
 			Authors.remove(author._id, function(error) {
 				if (error)
-					alert("Une erreur est survenue : "+error.message);
+					alert(TAPi18n.__('error-message')+error.message);
 		});
 	},
 	'click .blog-edit-authors--button-edit-author': function(event, template) {
 		var currentBlogId = template.data.blog._id;
 		var oldName = $(event.target).data("edit-author");
-		var newName = prompt("Modifier l'auteur :",oldName);
+		var newName = prompt(TAPi18n.__('blog-edit-authors--edit-author-message'),oldName);
 		Meteor.call('authorEdit', currentBlogId, oldName, newName, function(error) {
 			if (error)
-				alert("Une erreur est survenue : "+error.message);
+					alert(TAPi18n.__('error-message')+error.message);
 		});
 	},
 	'submit form.blog-edit--form-add-author': function(e) {
@@ -27,11 +27,11 @@ Template.blogEditAuthors.events({
 		if (authorName != "")
 		{
 			if (Authors.findOne({blogId: this.blog._id, name:authorName}))
-				alert("Il y a déjà un auteur avec ce nom.");
+				alert(TAPi18n.__('blog-edit-authors--add-author-error-message'));
 			else {
 				Meteor.call('authorInsert', authorName, this.blog._id, function(error) {
 					if (error)
-						alert("Une erreur est survenue : "+error.message);
+					alert(TAPi18n.__('error-message')+error.message);
 				});
 				$('#authorName').val('');
 				$('*[data-author="'+authorName+'"]').css("background-color", "#77b3d4");  // Animation when add a category

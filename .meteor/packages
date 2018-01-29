@@ -53,3 +53,4 @@ http
 meteorhacks:inject-initial
 liryna:jquery-contextmenu
 reactive-var
+tap:i18n

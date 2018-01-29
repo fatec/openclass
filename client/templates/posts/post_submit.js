@@ -85,7 +85,7 @@ Template.postSubmit.events({
 		 
 		Meteor.call('postInsert', {author: author, body: body, blogId: blogId, fileId: fileId, fileExt: fileExt, category: category}, function(error, postId) {
 			if (error){
-	          	alert("Une erreur est survenue : "+error.message);
+				alert(TAPi18n.__('error-message')+error.message);
 			} else {
 				$.magnificPopup.close();
 				$(".post-submit--button-spinner").hide(); // Show a spiner while sending
@@ -104,7 +104,7 @@ Template.postSubmit.events({
 	},
 	'click .post-submit--button-delete-image': function(e) {
 		e.preventDefault();
-		if (confirm("Effacer l'image?")) {
+		if (confirm(TAPi18n.__('post-submit--confirm-delete-file'))) {
 			Session.set('fileId', false);
 		}  
 	}

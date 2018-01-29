@@ -11,19 +11,19 @@
 			<form name="post-edit--form" id="post-edit--form">
 				{{#if file}}
 					<div class="post-edit--button-delete-image-wrapper">
-						<button class="button button-danger post-edit--button-delete-image" href="#">Supprimer le fichier</button>
+						<button class="button button-danger post-edit--button-delete-image" href="#">{{_ 'post-submit--delete'}}</button>
 					</div>
 				{{/if}}
-				<textarea name="body" id="body" class="post-edit--textarea" placeholder="Écrivez quelque chose...">{{post.body}}</textarea>
+				<textarea name="body" id="body" class="post-edit--textarea" placeholder="{{_ 'post-submit--body-placeholder'}}">{{post.body}}</textarea>
 				<div class="post-submit--attach-buttons">
 					{{#unless file}}
 						{{>postUpload autoStart=true}}
 					{{/unless}}
 				</div>
-				<!-- <input name="tags" type="text" data-role="tagsinput" class="post-edit-2-tags suggest" placeholder="Ajoutez des mots-clés..."/><br /><br /> -->
+				<!-- <input name="tags" type="text" data-role="tagsinput" class="post-edit-2-tags suggest" placeholder="{{_ 'post-submit-2-tags-placeholder'}}"/><br /><br /> -->
 				<select name="category" class="post-edit--select-categories">
-					<option value="" disabled selected >Sélectionnez une catégorie :</option>
-					<option value="" >Aucune catégorie</option>
+					<option value="" disabled selected >{{_ 'post-submit--select-category'}}</option>
+					<option value="" >{{_ 'post-submit--no-category'}}</option>
 					{{#each categories}}
 						<option selected="{{selectedCategory}}">{{name}}</option>
 					{{/each}}
@@ -33,7 +33,7 @@
 		<button href="{{pathFor 'postSubmit'}}" class="button button-primary post-edit--button-submit">
 			<i class="post-edit--button-spinner fa fa-spinner fa-pulse" style="display:none;"></i>
 			<i class="post-edit--button-icon fa fa-paper-plane"></i>
-			<span class="post-edit--button-text"> Modifier</span>
+			<span class="post-edit--button-text"> {{_ 'post-edit--submit-button'}}</span>
 		</button>
 	</div>
 </template>

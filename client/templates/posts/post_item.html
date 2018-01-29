@@ -1,5 +1,5 @@
 <template name="postItem">
-	<div class="post-item" id="hop2">
+	<div class="post-item">
 		<div class="post-item--button post-item--button-contextualmenu context-menu-{{this._id}}" data-ispinned="{{this.pinned}}" data-isfavorite="{{favorite}}" data-postid="{{this._id}}"><i class="fa fa-lg fa-ellipsis-h"></i></div>
 		<!-- {{#if editAllowed}}
 			<a href="{{pathFor 'postEdit'}}">
@@ -53,14 +53,14 @@
 			{{#if likeAlready}}
 				<i class="post-item--already-like post-item--remove-like fa fa-lg fa-thumbs-up" style="color:grey"></i>
 				{{#if othersLikes}}
-					<span>Vous et {{likesWithoutMe}} personnes(s)</span>
+					<span>{{_ 'post-item--nb-likes-with-me' likesWithoutMe}}</span>
 				{{else}}
-					<span>Vous aimez</span>
+					<span>{{_ 'post-item--like'}}</span>
 				{{/if}}
 			{{else}}
 				<i class="post-item--add-like fa fa-lg fa-thumbs-up"></i>
 				{{#if likes}}
-					<span>{{likes}} personne(s)</span>
+					<span>{{likes}} {{_ 'post-item--nb-likes'}}</span>
 				{{/if}}
 			{{/if}}
 		</div>
@@ -78,9 +78,9 @@
 							{{#if likeAlreadyComment}}
 								<i class="post-item--comment-already-like post-item--comment-remove-like fa fa-lg fa-thumbs-up" style="color:grey" data-postid="{{../_id}}"></i>
 								{{#if othersLikesComment}}
-									<span>Vous et {{likesWithoutMeComment}} personne(s)</span>
+									<span>{{_ 'post-item--nb-likes-with-me' likesWithoutMeComment}}</span>
 								{{else}}
-									<span>Vous aimez</span>
+									<span>{{_ 'post-item--like'}}</span>
 								{{/if}}
 							{{else}}
 								<i class="post-item--comment-add-like fa fa-lg fa-thumbs-up" data-postid="{{../_id}}"></i>
@@ -92,8 +92,8 @@
 					</div>
 				{{/each}}
 				<div class="post-item--add-comment">
-				    <span class="post-item--show-comment-input">Ajouter un commentaire...</span>
-					<textarea id="comment" class="post-item--add-comment-textarea" name="comment" type="text" data-role="commentinput" placeholder="Ajoutez un commentaire..."></textarea>
+				    <span class="post-item--show-comment-input">{{_ 'post-item--add-comment'}}</span>
+					<textarea id="comment" class="post-item--add-comment-textarea" name="comment" type="text" data-role="commentinput" placeholder="{{_ 'post-item--add-comment'}}"></textarea>
 				</div>
 			</div>
 		{{/if}}

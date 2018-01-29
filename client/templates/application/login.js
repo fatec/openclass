@@ -4,10 +4,24 @@ Template.login.onRendered(function () {
 
 	this.$('.login--input-username').focus();
 
-	T9n.map('fr', { // Localization mapping
-		'User not found': 'L\'utilisateur n\'existe pas.',
-		'Incorrect password': 'Le mot de passe n\'est pas correct.'
-	});
+	T9n.map(
+		'fr', { // Localization mapping
+			'User not found': TAPi18n.__("login--user-not-found"),
+			'Incorrect password': TAPi18n.__("login--incorrect-password")
+		},
+		'en', {
+			'User not found': TAPi18n.__("login--user-not-found"),
+			'Incorrect password': TAPi18n.__("login--incorrect-password")			
+		},
+		'es', {
+			'User not found': TAPi18n.__("login--user-not-found"),
+			'Incorrect password': TAPi18n.__("login--incorrect-password")			
+		},
+		'de', {
+			'User not found': TAPi18n.__("login--user-not-found"),
+			'Incorrect password': TAPi18n.__("login--incorrect-password")			
+		}
+	);
 });
 
 
@@ -33,15 +47,15 @@ Template.login.events({
 		e.preventDefault();
 		$('#login--form').submit();
 	},
-	'click .send-mail-forgot-password': function(e) {
+	'click .login--send-mail-forgot-password': function(e) {
 		e.preventDefault();
 		var email = $('#email').val();
 		Accounts.forgotPassword({email:email},function(err) {
 			if(!err)
-				alert("Un e-mail a été envoyé à l'adresse "+email+" comprenant un lien pour réinitialiser votre mot de passe.")    
+				alert(TAPi18n.__("login--send-mail-forgot-password",email));    
 			else {
-				alert("Une erreur est survenue. Merci de contacter l'administrateur à l'adresse : vincent.widmer@beekee.ch");
-				console.log("Erreur lors de l'envoi d'un e-mail pour récupérer un mot de passe : "+err);
+				alert(TAPi18n.__("login--send-mail-forgot-password-error"));
+				console.log(TAPi18n.__("login--send-mail-forgot-password-error-log",err));
 			}
 		});
 	}

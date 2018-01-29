@@ -99,7 +99,7 @@ Template.postEdit.events({
 
 		Posts.update(currentPostId, {$set: set}, function(error) {
 			if (error) {
-          		alert("Une erreur est survenue : "+error.message);
+				alert(TAPi18n.__('error-message')+error.message);
 			} else {
 				$.magnificPopup.close();
 				 		//Router.go('blogPage', {_id: currentPost.blogId});  
@@ -121,7 +121,7 @@ Template.postEdit.events({
 	},
 	'click .post-edit--button-delete-image': function(e) {
 		e.preventDefault();
-		if (confirm("Effacer le fichier ?")) {
+		if (confirm(TAPi18n.__('post-submit--confirm-delete-file'))) {
 			Posts.update(Template.currentData()._id, {$unset: {'fileId': ''}});
 			Session.set('fileId', false);
 		}

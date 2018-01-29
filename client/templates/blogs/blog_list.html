@@ -5,7 +5,7 @@
 			{{#if ownBlogs.count}}
 				<div class="list-group">
 					<div class="blog-list--blogs-title">
-						<span>Vos espaces :</span>
+						<span>{{_ 'blog-list--blogs-title'}}</span>
 					</div>
 					{{#each ownBlogs}}
 						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
@@ -20,29 +20,29 @@
 					{{/each}}
 				</div>
 			{{else}}
-				<div class="blog-list--no-blog">Vous n'avez pas encore créé d'espace.</div>
+				<div class="blog-list--no-blog">{{_ 'blog-list--no-blog'}}</div>
 			{{/if}}
 		{{else}}
-			<div class="blog-list--wrapper-text">Partagez facilement du contenu et collaborez<br>Même là où vous ne pensiez pas pouvoir</div>
+			<div class="blog-list--wrapper-text">{{{_ 'blog-list--wrapper-text'}}}</div>
 			<form class="blog-list--code-link-form">
 				<div class="blog-list--code-wrapper">
-					<span>Accéder à un espace</span><br /><br />
-					<input class="blog-list--code-input" id="code" type="text" placeholder="Entrez un code d'accès"/><br />
-					<button type="submit" class="button button-primary blog-list--button-code-link">Valider</button>
+					<span>{{_ 'blog-list--code-wrapper'}}</span><br /><br />
+					<input class="blog-list--code-input" id="code" type="text" placeholder="{{_ 'blog-list--code-input-placeholder'}}"/><br />
+					<button type="submit" class="button button-primary blog-list--button-code-link">{{_ 'blog-list--button-code-link'}}</button>
 				</div>
 			</form>     
-			<div style="text-align: center;">
-				<span style="color:#979797">- ou -</span><br><br><br>
-				<a href="{{pathFor 'login'}}"><button class="button button-primary">Créer un espace</button></a>
+			<div class="blog-list--new-space-wrapper">
+				<span>- {{_ 'blog-list--new-space-wrapper'}} -</span><br><br><br>
+				<a href="{{pathFor 'login'}}"><button class="button button-primary">{{_ 'blog-list--new-space-button'}}</button></a>
 			</div>
 <!-- 			<div class="blog-list-2-example">
-				(voir un <a href="{{pathFor 'blogPage' _id='oYFmo4WHSt5RqGGPP'}}">exemple d'espace</a>)
+				{{_ "blog-list-2-example-1"}} <a href="{{pathFor 'blogPage' _id='oYFmo4WHSt5RqGGPP'}}">{{_ "blog-list-2-example-2"}}</a> {{_ "blog-list-2-example-3"}}
 			</div> -->
 			{{#if blogsVisited.count}}
 				<div class="list-group blog-list--visited-blogs">
 					<div class="blog-list--visited-title">
-						<span>Récemment visité :</span><br />
-						<a class="blog-list--delete-recent" href="#">(effacer)</a>
+						<span>{{_ 'blog-list--visited-title'}}</span><br />
+						<a class="blog-list--delete-recent" href="#">{{_ 'blog-list--delete-recent'}}</a>
 					</div> 
 					{{#each blogsVisited}}
 						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
@@ -60,14 +60,20 @@
 	<div class="blog-list--wrapper">
 		{{#if currentUser}}
 			<a href="{{pathFor 'blogSubmit'}}">
-				<button class="button button-primary blog-list--button-submit-blog"><i class="fa fa-plus"></i> Créer un nouvel espace</button>
+				<button class="button button-primary blog-list--button-submit-blog"><i class="fa fa-plus"></i> {{_ 'blog-list--button-submit-blog'}}</button>
 			</a>
 		{{else}}
 		{{/if}}
-		{{#unless isBox}}
-<!-- 			<div class="blog-list-2-wrapper-beta-warning"><em>Cette plateforme est encore en développement, des bugs peuvent survenir.</em><br></div>
- -->			<div class="blog-list--footer">
+<!-- 		{{#unless isBox}}
+ 			<div class="blog-list-2-footer-wrapper">
+				<a class="blog-list-2-footer-about" href="http://infos.beekee.ch">{{_ 'blog-list-2-footer-about'}}</a>
+				<a class="blog-list-2-footer-privacy" href="{{pathFor 'privacy'}}">{{_ 'blog-list-2-footer-privacy'}}</a>
+				<a class="blog-list-2-footer-contact" href="mailto:vincent.widmer@beekee.ch">{{_ 'blog-list-2-footer-contact'}}</a>
 			</div>
-		{{/unless}}
+		{{/unless}} -->
+		<div class="blog-list--lang-wrapper">
+			<a href="#" class="blog-list--select-lang {{isLangSelected 'en'}}" data-lang="en">EN</a>
+			<a href="#" class="blog-list--select-lang {{isLangSelected 'fr'}}" data-lang="fr">FR</a>
+		</div>
 	</div>
 </template>

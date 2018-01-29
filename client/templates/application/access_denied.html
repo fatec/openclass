@@ -1,6 +1,6 @@
 <template name="accessDenied">
 	<div class="access-denied">
-		<div class="page-title">Accès refusé !</div>
-		<p><a href="{{pathFor 'login'}}">Connectez-vous</a> si vous êtes un administrateur.</p>
+		<div class="page-title">{{_ 'access-denied--page-title'}}</div>
+		<p><a href="{{pathFor 'login'}}">{{_ 'access-denied--login'}}</a></p>
 	</div>
 </template>

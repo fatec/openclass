@@ -1,11 +1,11 @@
 <template name="register">
     <div class="register">
-        <div class="page-title">Créer un compte</div>
+        <div class="page-title">{{_ 'register--page-title'}}</div>
         <form id="register--form" class="register--form">
             <div class="register--wrapper">
-                <label>E-mail</label>
+                <label>{{_ 'register--mail'}}</label>
                 <input type="text"  class="register--input register--input-email form-control email" id="email" value="" autofocus><br /><br />           
-                <label>Mot de passe</label><br />
+                <label>{{_ 'register--password'}}</label><br />
                 <input type="password" name="" class="register--input form-control" id="password" value=""><br />
                 {{#if errorMessage}}
                     <div class="register--message">
@@ -13,9 +13,9 @@
                     </div> 
                 {{/if}}  
             </div>
-            <p class="register--terms">En vous enregistrant, vous acceptez notre <a href="{{pathFor 'privacy'}}" target="_blank">politique de confidentialité</a>.<br>Votre adresse e-mail ne sera pas transmise à des tiers.</p>
+            <p class="register--terms">{{{_ 'register--terms'}}}</p>
             <div class="register--button-wrapper">
-                <button type="submit" class="button button-primary register--button-submit">S'enregistrer</button>
+                <button type="submit" class="button button-primary register--button-submit">{{_ 'register--button-submit'}}</button>
             </div>    
         </form>
     </div>

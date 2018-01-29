@@ -9,7 +9,7 @@
 				{{> yield region="layout--header"}}
 			</div>
 			{{#if isBox}}
-				<div class="layout--connection-status {{status}}">Déconnecté</div>
+				<div class="layout--connection-status {{status}}">{{_ 'layout--connection-status'}}</div>
 			{{/if}}
 			<div class="layout--main">
 				{{> yield}}

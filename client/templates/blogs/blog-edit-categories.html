@@ -1,7 +1,7 @@
 <template name="blogEditCategories">
 	<div class="blog-edit-categories">
-		<div class="page-title">Gérer les catégories</div>
-		<div class="page-description">Les catégories servent à classer les publications.<br />À la différence des tags, les catégories sont définies à l'avance par l'enseignant.</div>
+		<div class="page-title">{{_ 'blog-edit-categories--page-title'}}</div>
+		<div class="page-description">{{{_ 'blog-edit-categories--page-description'}}}</div>
 		<div class="list-group">
 			{{#each categories}}
 				<a class="list-group-item" data-category="{{name}}">
@@ -18,7 +18,7 @@
 		<div class="blog-edit-authors--form-wrapper">
 			<form id="blog-edit--form-add-category" class="blog-edit--form-add-category">
 				<input id="categoryName" class="blog-edit-categories--input-add-category" placeholder="Ajouter une catégorie..." />
-				<button type="submit" class="button button-primary blog-edit--button-submit-add-category"><i class="fa fa-plus"></i> Ajouter</button>
+				<button type="submit" class="button button-primary blog-edit--button-submit-add-category"><i class="fa fa-plus"></i> {{_ 'blog-edit--button-submit-add-category'}}</button>
 			</form>
 		</div>
 	</div>

@@ -47,6 +47,7 @@ blogs.css
 	margin: 30px auto 10px auto;
 	color: grey;
 	font-size: 0.9em;
+	text-transform: uppercase;
 }
 
 .blog-edit--list-item {
@@ -278,6 +279,10 @@ blogs.css
 	margin: 25px 0 0 0;
 }
 
+.blog-list--new-space-wrapper {
+	text-align: center;
+}
+
 .blog-list--no-blog {
 	text-align: center;
 	margin-top: 40px;
@@ -339,6 +344,29 @@ blogs.css
 	text-align: center;
 	margin-top: 15px;
 	font-size: 0.85em;
+}
+
+.blog-list--lang-wrapper {
+	margin-top: 40px;
+}
+
+.blog-list--lang-wrapper a {
+	padding: 6px;
+	border-left: solid 1px #b7b7b7;
+}
+
+.blog-list--lang-wrapper a:first-of-type {
+	border-left: none;
+}
+
+.blog-list--lang-wrapper a.selected {
+	font-weight: bold;
+	color:grey;
+	cursor: default;
+}
+
+.blog-list--lang-wrapper a.selected:hover {
+	text-decoration: none;
 }
 
 
@@ -432,7 +460,7 @@ blogs.css
 	color: white !important;
 }
 
-.blog-page--no-post-message {
+.blog-page--no-post {
 	margin-top: 20px;
 	text-align: center;
 	background-color: white;

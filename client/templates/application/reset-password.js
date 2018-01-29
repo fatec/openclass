@@ -7,7 +7,7 @@ Template.resetPassword.events({
         console.log(Accounts._resetPasswordToken);
 
         Accounts.resetPassword(Accounts._resetPasswordToken, password,function(){
-            alert("Le mot de passe a été changé.");
+            alert(TAPi18n.__("register--password-changed-message"));
             Router.go('blogList');
         });
     },

@@ -10,7 +10,7 @@
 			<form name="post-submit--form" id="post-submit--form">
 				{{#if file}}
 					<div class="post-submit--button-delete-image-wrapper">
-						<button class="button button-danger post-submit--button-delete-image" href="#">Supprimer</button>
+						<button class="button button-danger post-submit--button-delete-image" href="#">{{_ 'post-submit--delete'}}</button>
 					</div>
 				{{/if}}
 				<textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..."></textarea>
@@ -19,10 +19,10 @@
 						{{>postUpload autoStart=true}}
 					{{/unless}}
 				</div>
-<!-- 				<input name="tags" type="text" data-role="tagsinput" class="post-submit-2-tags suggest" placeholder="Ajoutez des mots-clés..."/><br /><br />
+<!-- 				<input name="tags" type="text" data-role="tagsinput" class="post-submit-2-tags suggest" placeholder="{{_ 'post-submit-2-tags-placeholder'}}"/><br /><br />
  -->				<select name="category" class="post-submit--select-categories">
-					<option value="" disabled selected >Sélectionnez une catégorie :</option>
-					<option value="" >Aucune catégorie</option>
+					<option value="" disabled selected >{{_ 'post-submit--select-category'}}</option>
+					<option value="" >{{_ 'post-submit--no-category'}}</option>
 					{{#each categories}}
 						<option>{{name}}</option>
 					{{/each}}
@@ -32,7 +32,7 @@
 		<button href="{{pathFor 'postSubmit'}}" class="button button-primary post-submit--button-submit">
 			<i class="post-submit--button-spinner fa fa-spinner fa-pulse" style="display:none;"></i>
 			<i class="post-submit--button-icon fa fa-paper-plane"></i>
-			<span class="post-submit--button-text"> Envoyer</span>
+			<span class="post-submit--button-text"> {{_ 'post-submit--submit-button'}}</span>
 		</button>
 	</div>
 </template>
