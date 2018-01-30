@@ -58,10 +58,24 @@ Template.postItem.onRendered(function() {
 
 
 
-		var blogId = Template.parentData(1).blog._id;
+	var blogOwner = Template.parentData(1).blog.userId;
+	var blogId = Template.parentData(1).blog._id;
+	var postOwner = this.data.author;
 
 
-		 // testvar = new ReactiveVar(this.data.pinned);
+	function isBlogOwner() {
+		var userId = Meteor.userId();
+		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin']);
+
+		if (userId)
+			if (blogOwner === userId)
+				return true;
+		else if (isAdmin)
+			if (isAdmin === true)
+				return true;
+		else
+			return false;
+       }
 
 
      $.contextMenu({
@@ -69,17 +83,23 @@ Template.postItem.onRendered(function() {
         trigger: 'left',
         build: function($trigger, e) {
 
-        	var postId = $(e.currentTarget).data('postid');
-        	console.log("postID : "+postId);
 
-        	var textPinned;
-        	if ($(e.currentTarget).data('ispinned')) {
-        		textPinned = "Retirer l'épingle";
-        		iconPinned ="fa-thumb-tack strikethrough";
-        	}
-        	else {
-        		textPinned = "Épingler en haut";
-        		iconPinned = "fa-thumb-tack";
+        	var postId = $(e.currentTarget).data('postid');
+        	var contextualItems = {};
+        	var permissions = Blogs.findOne(blogId).postEditPermissions;
+        	console.log("rights : "+Blogs.findOne(blogId).postEditPermissions);
+
+        	if (isBlogOwner()) {
+	        	var textPinned;
+	        	if ($(e.currentTarget).data('ispinned')) {
+	        		textPinned = "Retirer l'épingle";
+	        		iconPinned ="fa-thumb-tack strikethrough";
+	        	}
+	        	else {
+	        		textPinned = "Épingler en haut";
+	        		iconPinned = "fa-thumb-tack";
+	        	}
+        		$.extend(contextualItems, {"pin":{name:textPinned, icon:iconPinned}});
         	}
 
         	var textFavorite;
@@ -92,6 +112,15 @@ Template.postItem.onRendered(function() {
         		textFavorite = "Ajouter à mes favoris";
         		iconFavorite = "fa-star";
         	}
+        	$.extend(contextualItems, {"favorite":{name:textFavorite, icon:iconFavorite}});
+
+        	if (isBlogOwner() || postOwner == Session.get(blogId).author && permissions === "own" || permissions === "all") {
+        		$.extend(contextualItems, {"edit":{name:"Éditer", icon:"fa-pencil"}});
+        		$.extend(contextualItems, {"delete":{name:"Supprimer", icon:"fa-trash-o"}});
+        	}
+
+        	//if (Template.parentData().blog.postEditPermissions === "all" || (Template.parentData().blog.postEditPermissions === "own" && Session.get(Template.parentData().blog._id).author === this.author) || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+
  
             // this callback is executed every time the menu is to be shown
             // its results are destroyed every time the menu is hidden
@@ -146,12 +175,14 @@ Template.postItem.onRendered(function() {
 						}
 					}
                 },
-                items: {
-                	"pin": {name: textPinned, icon: iconPinned},
-                	"favorite": {name: textFavorite, icon: iconFavorite},
-                	"edit": {name: "Éditer", icon: "fa-pencil"},
-                	"delete": {name: "Supprimer", icon: "fa-trash-o"},
-                }
+                items: contextualItems
+                // items: {
+                // 	pin
+                // 	// "pin": {name: textPinned, icon: iconPinned},
+                // 	// "favorite": {name: textFavorite, icon: iconFavorite},
+                // 	// "edit": {name: "Éditer", icon: "fa-pencil"},
+                // 	// "delete": {name: "Supprimer", icon: "fa-trash-o"},
+                // }
             };
         }
     });
