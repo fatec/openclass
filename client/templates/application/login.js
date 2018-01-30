@@ -6,20 +6,20 @@ Template.login.onRendered(function () {
 
 	T9n.map(
 		'fr', { // Localization mapping
-			'User not found': TAPi18n.__("login--user-not-found"),
-			'Incorrect password': TAPi18n.__("login--incorrect-password")
+			'User not found': TAPi18n.__('login--user-not-found'),
+			'Incorrect password': TAPi18n.__('login--incorrect-password')
 		},
 		'en', {
-			'User not found': TAPi18n.__("login--user-not-found"),
-			'Incorrect password': TAPi18n.__("login--incorrect-password")			
+			'User not found': TAPi18n.__('login--user-not-found'),
+			'Incorrect password': TAPi18n.__('login--incorrect-password')			
 		},
 		'es', {
-			'User not found': TAPi18n.__("login--user-not-found"),
-			'Incorrect password': TAPi18n.__("login--incorrect-password")			
+			'User not found': TAPi18n.__('login--user-not-found'),
+			'Incorrect password': TAPi18n.__('login--incorrect-password')			
 		},
 		'de', {
-			'User not found': TAPi18n.__("login--user-not-found"),
-			'Incorrect password': TAPi18n.__("login--incorrect-password")			
+			'User not found': TAPi18n.__('login--user-not-found'),
+			'Incorrect password': TAPi18n.__('login--incorrect-password')			
 		}
 	);
 });

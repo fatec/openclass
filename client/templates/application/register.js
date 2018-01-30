@@ -6,21 +6,21 @@ Template.register.onRendered(function () {
     if (Meteor.isClient) { // Localization mapping
         T9n.map(
             'fr', {
-                'Email already exists.': TAPi18n.__("register--mail-exist")
+                'Email already exists.': TAPi18n.__('register--mail-exist')
             },
             'en', {
-                'Email already exists.': TAPi18n.__("register--mail-exist")
+                'Email already exists.': TAPi18n.__('register--mail-exist')
             },
             'es', {
-                'Email already exists.': TAPi18n.__("register--mail-exist")
+                'Email already exists.': TAPi18n.__('register--mail-exist')
             },
             'de', {
-                'Email already exists.': TAPi18n.__("register--mail-exist")
+                'Email already exists.': TAPi18n.__('register--mail-exist')
             }         
         );
     }
 
-    $.validator.messages.email = TAPi18n.__("register--mail-no-valid-message");
+    $.validator.messages.email = TAPi18n.__('register--mail-no-valid-message');
     $(".register--form").validate();
 });
 
