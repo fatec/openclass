@@ -38,6 +38,11 @@ Template.postsHeader.events({
 		resetFilters();
 		Session.set('postsServerNonReactive', Counts.findOne().count);
 		resetPostInterval();
+  	},
+  	'click .header--exit-button': function(e) {
+		e.preventDefault();
+		if (confirm(TAPi18n.__('header--exit-message')))
+			Router.go('blogList');
   	}
 });
 

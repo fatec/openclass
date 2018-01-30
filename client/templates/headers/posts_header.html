@@ -6,6 +6,10 @@
 					<a class="header--logo"><img src="/img/logo_header.png" /></a>
 					<i class="ion-navicon header--button-menu"></i>
 					<span class="header--blog-title">{{blog.title}} 
+						<div class="header--blog-code">{{blog.blogCode}}</div>
+						<a href="#" class="header--exit-button">
+							<i class="fa fa-sign-out" aria-hidden="true"></i>
+						</a>
 						{{# if ownBlog}}
 							<a href="{{pathFor 'blogEdit' _id=this.blog._id}}">
 								<i class="header--settings-button fa fa-cog"></i>
@@ -17,7 +21,7 @@
 				<div class="header--right">
 					<a href="{{pathFor 'blogUsers' _id=this.blog._id}}" class="header--user-name">
 						<i class="ion-ios-person header--user-icon"></i>
-						<span >{{authorName}}</span>
+						<span>{{authorName}}</span>
 					</a>
 					{{#if submitAllowed}}
 						<a href=""> 
