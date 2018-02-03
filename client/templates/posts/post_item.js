@@ -92,11 +92,11 @@ Template.postItem.onRendered(function() {
         	if (isBlogOwner()) {
 	        	var textPinned;
 	        	if ($(e.currentTarget).data('ispinned')) {
-	        		textPinned = "Retirer l'épingle";
+	        		textPinned = TAPi18n.__('post-item--remove-pin');
 	        		iconPinned ="fa-thumb-tack strikethrough";
 	        	}
 	        	else {
-	        		textPinned = "Épingler en haut";
+	        		textPinned = TAPi18n.__('post-item--add-pin');
 	        		iconPinned = "fa-thumb-tack";
 	        	}
         		$.extend(contextualItems, {"pin":{name:textPinned, icon:iconPinned}});
@@ -105,18 +105,18 @@ Template.postItem.onRendered(function() {
         	var textFavorite;
         	if ($(e.currentTarget).data('isfavorite')) {
         		var isFavorite = true;
-        		textFavorite = "Retirer de mes favoris";
+        		textFavorite = TAPi18n.__('post-item--remove-favorites');
         		iconFavorite = "fa-star strikethrough";
         	}
         	else {
-        		textFavorite = "Ajouter à mes favoris";
+        		textFavorite = TAPi18n.__('post-item--add-pin');
         		iconFavorite = "fa-star";
         	}
         	$.extend(contextualItems, {"favorite":{name:textFavorite, icon:iconFavorite}});
 
         	if (isBlogOwner() || postOwner == Session.get(blogId).author && permissions === "own" || permissions === "all") {
-        		$.extend(contextualItems, {"edit":{name:"Éditer", icon:"fa-pencil"}});
-        		$.extend(contextualItems, {"delete":{name:"Supprimer", icon:"fa-trash-o"}});
+        		$.extend(contextualItems, {"edit":{name:TAPi18n.__('post-item--edit'), icon:"fa-pencil"}});
+        		$.extend(contextualItems, {"delete":{name:TAPi18n.__('post-item--delete'), icon:"fa-trash-o"}});
         	}
 
         	//if (Template.parentData().blog.postEditPermissions === "all" || (Template.parentData().blog.postEditPermissions === "own" && Session.get(Template.parentData().blog._id).author === this.author) || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
@@ -167,10 +167,10 @@ Template.postItem.onRendered(function() {
 						}, 0);
 					}
 					else if (key == "delete") {
-						if (confirm("Effacer la publication ?")) {
+						if (confirm(TAPi18n.__('post-item--delete-post-confirm'))) {
 							Posts.remove(postId, function(error) {
 								if (error)
-				          			alert("Une erreur est survenue : "+error.message);
+									alert(TAPi18n.__('error-message')+error.message);
 							});
 						}
 					}
@@ -286,7 +286,7 @@ Template.postItem.events({
 		var currentPostId = $(e.target).data('postid');
 		var currentCommentId = this.id;
 
-		if (confirm("Effacer le commentaire ?"))
+		if (confirm(TAPi18n.__('post-item--delete-comment-confirm')))
 			Posts.update(currentPostId, {$pull: {comments: {id:currentCommentId}}});
 	},
 	'click .post-item--show-comment-input': function(e) {
