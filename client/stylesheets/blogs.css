@@ -210,11 +210,11 @@ blogs.css
 .blog-list--logo {
 	text-align: center;
 	margin-bottom: 10px;
-	margin-top: 15px;
+	margin-top: 30px;
 }
 
 .blog-list--logo img {
-	width: 130px;
+	width: 120px;
 }
 
 .blog-list--button-edit {
