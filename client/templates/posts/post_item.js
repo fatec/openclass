@@ -109,7 +109,7 @@ Template.postItem.onRendered(function() {
         		iconFavorite = "fa-star strikethrough";
         	}
         	else {
-        		textFavorite = TAPi18n.__('post-item--add-pin');
+        		textFavorite = TAPi18n.__('post-item--add-favorites');
         		iconFavorite = "fa-star";
         	}
         	$.extend(contextualItems, {"favorite":{name:textFavorite, icon:iconFavorite}});

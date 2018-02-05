@@ -157,7 +157,7 @@
 	"post-item--remove-pin":"Remove pin",
 	"post-item--add-pin":"Pin on top",
 	"post-item--remove-favorites":"Remove from my favorites",
-	"post-item--add-pin":"Add to my favorites",
+	"post-item--add-favorites":"Add to my favorites",
 	"post-item--edit":"Edit",
 	"post-item--delete":"Delete",
 	"post-item--delete-post-confirm":"Delete the post ?",
