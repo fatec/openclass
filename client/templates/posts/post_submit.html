@@ -13,7 +13,7 @@
 						<button class="button button-danger post-submit--button-delete-image" href="#">{{_ 'post-submit--delete'}}</button>
 					</div>
 				{{/if}}
-				<textarea name="body" id="body" class="post-submit--textarea" placeholder="Écrivez quelque chose..."></textarea>
+				<textarea name="body" id="body" class="post-submit--textarea" placeholder="{{_ 'post-submit--body-placeholder'}}"></textarea>
 				<div class="post-submit--attach-buttons">
 					{{#unless file}}
 						{{>postUpload autoStart=true}}

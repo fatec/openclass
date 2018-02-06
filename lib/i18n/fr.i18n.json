@@ -150,7 +150,7 @@
 	"menu--settings":"Paramètres",
 	"menu--exit":"Quitter cet espace",
 	"post-edit--submit-button":"Modifier",
-	"post-item--nb-likes":"Vous et %s personne(s)",
+	"post-item--nb-likes-with-me":"Vous et %s personne(s)",
 	"post-item--like":"Vous aimez",
 	"post-item--nb-likes":"personne(s)",
 	"post-item--add-comment":"Ajoutez un commentaire...",

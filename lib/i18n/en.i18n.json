@@ -150,7 +150,7 @@
 	"menu--settings":"Settings",
 	"menu--exit":"Leave this space",
 	"post-edit--submit-button":"Edit",
-	"post-item--nb-likes":"You and %s people",
+	"post-item--nb-likes-with-me":"You and %s people",
 	"post-item--like":"You like",
 	"post-item--nb-likes":"people",
 	"post-item--add-comment":"Add a comment...",
