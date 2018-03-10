@@ -124,7 +124,9 @@ Meteor.publish("count-all-files", function (blogId) {
 	var filesCounts = 0;
 	var initializing = true;
 
-	var handle = Posts.find({blogId: blogId, $or : [{fileExt:"txt"},{fileExt:"rtf"},{fileExt:"pdf"},{fileExt:"zip"}]}).observeChanges({
+	//var handle = Posts.find({blogId: blogId, $or : [{fileExt:"txt"},{fileExt:"rtf"},{fileExt:"pdf"},{fileExt:"zip"}]}).observeChanges({
+
+	var handle = Posts.find({blogId: blogId, $and : [{fileId:{$exists:true} },{fileId:{$ne:false} },{fileExt:{$nin : ["jpg","jpeg","png","gif"]}}]}).observeChanges({
 		added: function (doc, idx) {
 			filesCounts++;
 			if (!initializing) {

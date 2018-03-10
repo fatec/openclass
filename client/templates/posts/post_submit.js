@@ -7,7 +7,6 @@ Template.postSubmit.onCreated(function() {
 			delete Session.keys["fileExt"]; // Clear fileExt session
 
 	imageExtensions = ["jpg","jpeg","png","gif"];
-
 });
 
 
@@ -33,9 +32,7 @@ Template.postSubmit.onRendered(function() {
 		if (!Session.get(Template.parentData(2).blog._id))
 			Session.set(Template.parentData(2).blog._id, {author: 'Invité'});  
 
-	  
-
-	// var tags = new Bloodhound({ // Allow to find and show tags in input if already exists
+	  	// var tags = new Bloodhound({ // Allow to find and show tags in input if already exists
 	// 	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 	// 	queryTokenizer: Bloodhound.tokenizers.whitespace,
 	// 	local: Tags.find().fetch()
@@ -104,6 +101,12 @@ Template.postSubmit.events({
 	},
 	'click .post-submit--button-delete-image': function(e) {
 		e.preventDefault();
+		if (confirm(TAPi18n.__('post-submit--confirm-delete-image'))) {
+			Session.set('fileId', false);
+		}  
+	},
+	'click .post-submit--button-delete-file': function(e) {
+		e.preventDefault();
 		if (confirm(TAPi18n.__('post-submit--confirm-delete-file'))) {
 			Session.set('fileId', false);
 		}  
@@ -125,7 +128,7 @@ Template.postSubmit.helpers({
 	// 	else
 	// 		return false;
 	// },
-	file: function() {
+	fileUploaded: function() {
 		if (Session.get("fileId")) {
 			var fileId = Session.get("fileId");
 			var fileInCollection = Files.findOne({fileId:fileId});
@@ -136,6 +139,14 @@ Template.postSubmit.helpers({
 		}
 		else
 			return false;
+	},
+	file: function() {
+		if (Session.get("fileExt") && $.inArray(Session.get("fileExt"), imageExtensions) == -1 )
+			return true;
+	},
+	image: function() {
+		if (Session.get("fileExt") && $.inArray(Session.get("fileExt"), imageExtensions) != -1 )
+			return Session.get("fileId");
 	},
 	categories: function() {
 		return Categories.find({blogId: this.blog._id},{sort: { name: 1 }});  

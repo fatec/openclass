@@ -48,6 +48,7 @@ posts.css
 }
 
 .post-edit--image-wrapper {
+	margin-bottom:15px;
 	text-align: center;
 }
 
@@ -403,14 +404,22 @@ color:black;
 }
 
 .post-submit--image-wrapper {
-	margin-top: 11px;	
+	margin-top: 11px;
+	margin-bottom:15px;	
 	text-align: center;
 }
 
-.post-submit--button-delete-image-wrapper {
-	margin: 3px 0 30px 0;
-	text-align: center;
-	font-size: 0.85em;
+.post-submit--button-delete-image i {
+	vertical-align: top;
+}
+
+.post-submit--file-uploaded {
+	padding: 20px 0px 30px 10px;
+}
+
+.post-submit--file-uploaded i {
+	vertical-align: top;
+	padding:0px 5px;
 }
 
 .post-submit--textarea {

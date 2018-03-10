@@ -15,7 +15,7 @@
 	"login--page-title":"Vous avez déjà un compte ?",
 	"login--mail":"E-mail",
 	"login--password":"Mot de passe",
-	"login--send-mail-forgot-password":"Réinitialiser mon mot de passe",
+	"login--send-mail-forgot-password-link":"Réinitialiser mon mot de passe",
 	"login--button-submit":"S'identifier",
 	"login--register":"Vous n'avez pas encore de compte ?",
 	"login--register-link":"Créez un compte",
@@ -166,7 +166,8 @@
 	"post-submit--tags-placeholder":"Ajoutez des mots-clés...",
 	"post-submit--select-category":"Sélectionnez une catégorie :",
 	"post-submit--no-category":"Aucune catégorie",
-	"post-submit--delete":"Supprimer",
-	"post-submit--confirm-delete-file":"Effacer le fichier ?",
+	"post-submit--delete-image":"Supprimer l'image",
+	"post-submit--confirm-delete-image":"Effacer l'image ?\nCette action est irréversible.",
+	"post-submit--confirm-delete-file":"Effacer le fichier ?\nCette action est irréversible.",
 	"post-submit--submit-button":"Envoyer"
 }

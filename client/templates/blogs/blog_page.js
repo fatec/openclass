@@ -26,9 +26,9 @@ Template.blogPage.onCreated(function() {
 		else if (Session.get('pinned') == true) 
 			filters = {blogId:Session.get('blogId'), pinned:true}
 		else if (Session.get('files') == true) 
-			filters = {blogId:Session.get('blogId'), fileExt:{$in : ["pdf", "rtf", "zip"]}}
+			filters = {blogId:Session.get('blogId'), $and : [{fileId:{$exists:true} },{fileId:{$ne:false} },{fileExt:{$nin : ["jpg","jpeg","png","gif"]}}]}
 		else if (Session.get('images') == true) 
-			filters = {blogId:Session.get('blogId'), fileExt:{$in : ["jpg","jpeg","png","gif"]}}
+			filters = {blogId:Session.get('blogId'), $and : [{fileId:{$exists:true} },{fileId:{$ne:false} },{fileExt:{$in : ["jpg","jpeg","png","gif"]}}]}
 		else if (Session.get('favorites') == true) {
 			var favorites = Session.get(Session.get('blogId')).favorites;
 			if (favorites)

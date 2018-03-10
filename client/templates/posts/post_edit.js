@@ -1,5 +1,3 @@
-
-
 Template.postEdit.onCreated(function() {
 
 
@@ -8,23 +6,24 @@ Template.postEdit.onCreated(function() {
 
 		if (Session.get("fileExt"))
 			delete Session.keys["fileExt"]; // Clear fileExt session
+
+		imageExtensions = ["jpg","jpeg","png","gif"];
 });
+
 
 Template.postEdit.onRendered(function() {
 
-	//post = Posts.findOne(Template.currentData()._id);
-//post5 = Posts.findOne(Template.currentData()._id);
-
 	$('.post-edit--textarea').autosize(); // Set textarea height automatically according to text size
 
-	// Session.set('fileId', false);
-	// if (this.data.post.fileId) // If image already exist, set imageId in session
-	// 	Session.set('fileId', this.data.post.fileId);
+	 Session.set('fileId', false);
+	 if (Posts.findOne(Template.currentData()._id).fileId) {// If image already exist, set fileId + fileExt in session
+	 	Session.set('fileId', Posts.findOne(Template.currentData()._id).fileId);
+	 	Session.set('fileExt', Posts.findOne(Template.currentData()._id).fileExt);
+	 }
 
 	Deps.autorun(function() { // Autorun to reactively update subscription of file
 		if (Session.get("fileId"))
 			Meteor.subscribe('file', Session.get("fileId"));
-
 	});
 
 	Uploader.finished = function(index, fileInfo, templateContext) { // Triggered when image upload is finished
@@ -95,6 +94,10 @@ Template.postEdit.events({
 
 		var fileId = Session.get("fileId");
 		var fileExt = Session.get("fileExt");
+		if (fileId == "" || fileId == false) {
+			fileId = false;
+			fileExt = false;
+		}
 		_.extend(set, {fileId: fileId, fileExt: fileExt});
 
 		Posts.update(currentPostId, {$set: set}, function(error) {
@@ -115,33 +118,57 @@ Template.postEdit.events({
 			}
 		});
 	},
-	'click .post-edit--button-submit': function(e) {
+	'click .post-submit--button-submit': function(e) {
 		e.preventDefault();
 		$('#post-edit--form').submit();
+
+		if (Session.get("fileId")) {
+			delete Session.keys["fileId"]; // Clear fileId session
+			Session.set("fileId",false);
+		}
+
+		if (Session.get("fileExt")) {
+			delete Session.keys["fileExt"]; // Clear fileExt session
+			Session.set("fileExt",false);
+	    }
 	},
-	'click .post-edit--button-delete-image': function(e) {
+	'click .post-submit--button-delete-image': function(e) {
 		e.preventDefault();
 		if (confirm(TAPi18n.__('post-submit--confirm-delete-file'))) {
 			Posts.update(Template.currentData()._id, {$unset: {'fileId': ''}});
 			Session.set('fileId', false);
 		}
+	},
+	'click .post-submit--button-delete-file': function(e) {
+		e.preventDefault();
+		if (confirm(TAPi18n.__('post-submit--confirm-delete-file'))) {
+			Session.set('fileId', false);
+		}  
 	}
 });
 
 
 Template.postEdit.helpers({
-	
-	file: function() {
+
+	fileUploaded: function() {
 		if (Session.get("fileId")) {
 			var fileId = Session.get("fileId");
 			var fileInCollection = Files.findOne({fileId:fileId});
 
 			if (fileInCollection) // Wait until file is in Files collection
-				$(".post-edit--button-submit").show();
+				$(".post-submit--button-submit").show();
 			return fileInCollection;
 		}
 		else
 			return false;
+	},
+	file: function() {
+		if (Session.get("fileExt") && $.inArray(Session.get("fileExt"), imageExtensions) == -1 )
+			return true;
+	},
+	image: function() {
+		if (Session.get("fileExt") && $.inArray(Session.get("fileExt"), imageExtensions) != -1 )
+			return Session.get("fileId");
 	},
 	post: function() {
 		return Posts.findOne(Template.currentData()._id);

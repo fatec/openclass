@@ -161,9 +161,28 @@ Template.postItem.onRendered(function() {
 							type:'inline',
 							closeOnContentClick: false,
 	  						closeOnBgClick: false,
-							  items: {
-							    src: '#blog-page--post-edit-'+postId
-							  }
+							items: {
+								src: '#blog-page--post-edit-'+postId
+							},
+							callbacks: {
+					    		close: function() {
+
+						    		// Reset form	
+						    		$(".post-submit--textarea").val('');
+						    		$(".post-submit--select-categories").val('');
+
+									if (Session.get("fileId")) {
+										delete Session.keys["fileId"]; // Clear fileId session
+									    Session.set("fileId",false);
+									}
+
+									if (Session.get("fileExt")) {
+										delete Session.keys["fileExt"]; // Clear fileExt session
+									    Session.set("fileExt",false);
+						    		}
+
+								}
+    						}
 						}, 0);
 					}
 					else if (key == "delete") {
@@ -355,6 +374,10 @@ Template.postItem.helpers({
 
 	image: function() {
 		if (this.fileId && $.inArray(this.fileExt, imageExtensions) != -1)
+			return this.fileId
+	},
+	file: function() {
+		if (this.fileId && $.inArray(this.fileExt, imageExtensions) == -1)
 			return this.fileId
 	},
 	favorite: function() {

@@ -12,22 +12,22 @@ Template.postsHeader.onRendered(function() {
     		},
     		close: function() {
 
-    		// reset form	
-    		$(".post-submit--textarea").val('');
-    		$(".post-submit--select-categories").val('');
+	    		// Reset form	
+	    		$(".post-submit--textarea").val('');
+	    		$(".post-submit--select-categories").val('');
 
-			if (Session.get("fileId")) {
-				delete Session.keys["fileId"]; // Clear fileId session
-			    Session.set("fileId",''); // needed to set to null to get it work, but don't know why...
+				if (Session.get("fileId")) {
+					delete Session.keys["fileId"]; // Clear fileId session
+				    Session.set("fileId",false);
+				}
+
+				if (Session.get("fileExt")) {
+					delete Session.keys["fileExt"]; // Clear fileExt session
+				    Session.set("fileExt",false);
+	    		}
+
 			}
-
-			if (Session.get("fileExt")) 
-				delete Session.keys["fileExt"]; // Clear fileExt session
-			    Session.set("fileExt",''); // needed to set to null to get it work, but don't know why...
-    		}
-
     	}
-
 	});
 });
 
