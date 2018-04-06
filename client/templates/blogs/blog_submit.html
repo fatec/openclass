@@ -1,14 +1,14 @@
 <template name="blogSubmit">
 	<div class="blog-submit">
-		<div class="page-title">Créer un espace</div>
+		<div class="page-title">{{_ 'blog-submit--page-title'}}</div>
 		<form id="blog-submit--form" class="blog-submit--form">
 			<div class="blog-submit--wrapper">
-				<label>Nom de l'espace</label><br />
+				<label>{{_ 'blog-submit--space-name'}}</label><br />
 				<input name="title" id="blog-submit--input-title" type="text" value="" class="blog-submit--input form-control" autofocus />
         	</div>
 			<div class="blog-submit--button-wrapper">
-				<button type="submit" class="button button-primary blog-submit--button-submit">Créer</button>
-				<button class="button button-cancel blog-submit--button-cancel">Annuler</button>  
+				<button type="submit" class="button button-primary blog-submit--button-submit">{{_ 'blog-submit--button-submit'}}</button>
+				<button class="button button-cancel blog-submit--button-cancel">{{_ 'blog-submit--button-cancel'}}</button>  
 			</div> 
 		</form>
 	</div>

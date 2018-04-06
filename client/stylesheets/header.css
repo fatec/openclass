@@ -8,9 +8,19 @@ header.css
 	position: fixed;
 	height: 52px;
 	width: 100%;
-	border-bottom: solid 1px #e3e3e3;
-	background-color: white;
-	opacity: 0.9;
+	border-bottom: solid 1px rgba(46, 56, 66, 0.54);
+/*	background-color: rgb(255, 234, 5);
+	background-color: #FFFF66;*/
+	background-color: #2E3842;
+	color:white;
+}
+
+.header a {
+	color:white;
+}
+
+.header a:hover {
+	color:#6a829a;
 }
 
 .header--wrapper {
@@ -29,11 +39,30 @@ header.css
 }
 
 .header--logo {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.header--logo img {
+	width:32px;
+	vertical-align: middle;
+}
+
+/*.header--logo {
 	float: left;
 	margin-top: 11px;
 	width: 20px;
 	margin-right: 1px;
 	vertical-align: middle;
+}*/
+
+.header--exit-button {
+	padding: 5px 0px 5px 5px;
+}
+
+.header--settings-button {
+	padding: 5px 0px 5px 5px;
+/*	margin-left: 6px;*/
 }
 
 .header--user-icon {
@@ -87,8 +116,8 @@ header.css
 	vertical-align: middle;
 	display: inline-block;
 	padding-right: 10px;
-	color: #3b75d9;
-	cursor: pointer;
+/*	color: #3b75d9;
+	cursor: pointer;*/
 }
 
 .header--button-back:hover {
@@ -108,7 +137,7 @@ header.css
 .header--button-menu {
 	font-size: 40px;
 	vertical-align: middle;
-	display: inline-block;
+	display: none;
 	padding-right: 10px;
 	color: #3b75d9;
 	cursor: pointer;
@@ -123,7 +152,7 @@ header.css
 }
 
 .header--blog-title {
-	display: inline-block;
+	display: inline;
 	vertical-align: middle;
 	padding-left: 10px;
 	width: 450px;
@@ -132,14 +161,23 @@ header.css
   	text-overflow: ellipsis;
 }
 
+.header--blog-code {
+	display: inline;
+	font-size: 0.7em;
+	padding: 2px;
+	border: solid 1px grey;
+	margin-left:3px;
+}
+
 .posts-header--button-submit {
 	font-size: 34px;
 	vertical-align: middle;
 	display: inline-block;
 	padding-left: 25px;
-	color: #3b75d9;
-	cursor: pointer;
-}
+/*	color: #3b75d9;
+*/	
+/*	cursor: pointer;
+*/}
 
 .posts-header--button-submit:hover {
 		color: #185373;

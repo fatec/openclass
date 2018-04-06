@@ -1,7 +1,7 @@
 <template name="admin">
 	<div class="admin">
-		<div class="page-title">Administration</div>
-		<h1>Tous les espaces</h1>
+		<div class="page-title">{{_ 'admin--page-title'}}</div>
+		<h1>{{_ 'admin--spaces-list'}}</h1>
 				<div class="list-group">
 					{{#each blogs}}
 						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
@@ -15,20 +15,20 @@
 						</a>
 					{{/each}}
 				</div><br><br>
-		<h1>Tous les utilisateurs</h1>
+		<h1>{{_ 'admin--users-list'}}</h1>
 		<table>
 			<tr>
-				<th>Identifiant</th>
-				<th>Date de création</th>
-				<th>Dernière connexion</th>
-				<th>État</th>
+				<th>{{_ 'admin--users-logins'}}</th>
+				<th>{{_ 'admin--users-creation'}}</th>
+				<th>{{_ 'admin--users-last-connexion'}}</th>
+				<th>{{_ 'admin--users-state'}}</th>
 			</tr>
 			{{#each user}}
 				<tr>
 					<td>{{emails.[0].address}}</td>
 					<td>{{userCreatedAt}}</td>
 					<td>{{#if this.status.lastLogin.date}}{{livestamp this.status.lastLogin.date}}{{/if}}</td>
-					<td>{{#if isOnline}}<span class="admin--is-connected">Connecté</span>{{else}}<span class="admin--is-disconnected">Déconnecté</span>{{/if}}</td>
+					<td>{{#if isOnline}}<span class="admin--is-connected">{{_ 'admin--is-connected'}}</span>{{else}}<span class="admin--is-disconnected">{{_ 'admin--is-disconnected'}}</span>{{/if}}</td>
 				</tr>
 			{{/each}}
 		</table>

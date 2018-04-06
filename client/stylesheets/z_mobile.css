@@ -9,6 +9,10 @@ z_mobile.css
 
 	/* ----- application ----- */
 
+	.mfp-content {
+		width:100% !important;
+	}
+
 	.button {
 		height: 40px;
 	}
@@ -145,6 +149,8 @@ z_mobile.css
 
 	.header--button-menu {
 		padding-left: 10px;
+		display: inline-block;
+		color:white;
 	}
 
 	.header--wrapper {
@@ -152,7 +158,7 @@ z_mobile.css
 	}
 
 	.header--logo {
-		margin-left: 5px;
+		display: none;
 	}	
 
 	.posts-header--blog-title {
@@ -189,11 +195,13 @@ z_mobile.css
 
 	.post-edit {
 		width: 100%;
+		padding: 20px 0px;
 	}
 
 	.post-edit--wrapper{
 		margin-top: 0px;
 		border-color: #f6f6f6;
+		padding:10px;
 	}
 
 	.post-edit--image{
@@ -219,13 +227,17 @@ z_mobile.css
 		border-left: 0;
 	}
 
+	.blog-page--posts-pinned .post-item {
+		border:solid 1px #e8e8e8;
+	}
+
 	.post-item--button {	
 		font-size: 0.8em;
 	}	
 
 	.post-item--comment-wrapper {
-		margin-top: -11px;
-	}
+/*		margin-top: -11px;
+*/	}
 
 	.post-item--image{
 		width: 100%;
@@ -242,11 +254,13 @@ z_mobile.css
 
 	.post-submit {
 		width: 100%;
+		padding: 20px 0px;
 	}
 
 	.post-submit--wrapper{
 		margin-top: 0px;
 		border-color: #f6f6f6;
+		padding:10px;
 	}
 
 	.post-submit--image{

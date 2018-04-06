@@ -17,7 +17,6 @@ mrt:jquery-imagesloaded
 accounts-ui-unstyled
 alanning:roles
 msavin:mongol
-fortawesome:fontawesome
 sergeyt:typeahead
 chriswessels:slideout
 copleykj:jquery-autosize
@@ -47,9 +46,10 @@ meteorhacks:fast-render
 smallhacks:bootstrap-tagsinput-custom
 u2622:persistent-session
 ls3271:meteor-linkify
-reywood:iron-router-ga
 mizzao:user-status
 luisalmeida:unveil
 http
-pagebakers:ionicons
 meteorhacks:inject-initial
+liryna:jquery-contextmenu
+reactive-var
+tap:i18n

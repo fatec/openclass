@@ -12,20 +12,37 @@
 			<div class="blog-page--main"> 
 				{{#if newMessages}}
 					<div class="blog-page--notification-panel blog-page--refresh">
-						<a href="#">{{newMessages}} nouveau(x) message(s)</a>
+						<a href="#">{{newMessages}} {{_ 'blog-page--notification-panel'}}</a>
 					</div>
 				{{/if}}
 				{{#if codePanelState}}
 					{{#if ownBlog}}
 						<div id="codePanel" class="blog-page--code-panel">
-							<span class="blog-page--code-panel-title">Code d'accès de l'espace : 
+							<span class="blog-page--code-panel-title">{{_ 'blog-page--code-panel-title'}} 
 								<div class="blog-page--code-panel-code"><b>{{blog.blogCode}}</b></div> <br /><br />
-								<span>Transmettez ce code pour que d'autres vous rejoignent!</span>
+								<span>{{_ 'blog-page--code-panel-description'}}</span>
 							</span><br><br>
 							<button class="button button-primary button-hide-code-panel">OK</button>
 						</div>
 					{{/if}}
 				{{/if}}
+				{{#if postsPinned}}
+						{{#if postsPinned.count}}
+							<div class="blog-page--posts-pinned">
+								<div class="blog-page--pinned-title"><i class="fa fa-x fa-thumb-tack"></i> {{_ 'blog-page--pinned-title'}}</div>
+							{{#each postsPinned}}
+								{{> postItem}}
+							{{/each}}
+							</div>
+						{{/if}}
+				{{/if}}
+					<div class="blog-page--posts-order">{{_ 'blog-page--post-order'}} <select id="blog-page--select-filter"><option value="asc" {{ascendant}}>{{_ 'blog-page--post-order-asc'}}</option><option value="desc" {{descendant}}>{{_ 'blog-page--post-order-desc'}}</option></select>
+<!-- 					{{#if ascendant}}
+						<span>Plus récents d'abord <i class="fa fa-caret-up" aria-hidden="true"></i></span>
+					{{else}}
+						<span>Plus ancien d'abord <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+					{{/if}} -->
+				</div>
 				{{#if posts}}
 					{{#if posts.count}}
 						{{#each posts}}
@@ -33,16 +50,19 @@
 						{{/each}}
 						{{#if loadMore}}
 							<div class="blog-page--load-more">
-								<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> Charger plus...
+								<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> {{_ 'blog-page--load-more'}}
 							</div>
 						{{/if}}
 					{{else}}
-						<div class="blog-page--no-post-message">
-							<span>Il n'y pas encore de publication à afficher.</span><br />
+						<div class="blog-page--no-post">
+							<span>{{_ 'blog-page--no-post'}}</span><br />
 						</div>
 					{{/if}}
 				{{/if}}
 			</div>
 		</div>
 	</div>
+	<div id="blog-page--post-submit" class="white-popup mfp-hide">
+  		<div>{{> postSubmit}}</div>
+  	</div>
 </template>

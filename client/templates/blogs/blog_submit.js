@@ -15,7 +15,7 @@ Template.blogSubmit.events({
 		
 		Meteor.call('blogInsert', blog, function(error, result) {
 			if(error)
-				alert("Une erreur est survenue : "+error.message);
+				alert(TAPi18n.__('error-message')+error.message);
 			else {
 				Router.go('blogPage', {_id: result._id});
 			}       

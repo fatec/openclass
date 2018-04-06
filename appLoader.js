@@ -1,6 +1,7 @@
 if (Meteor.isServer) {
-	Inject.meta("metaLoader", '<meta name="viewport" content="initial-scale=1.0, user-scalable=0, width=device-width, height=device-height"/>');
-	Inject.rawHead("htmlLoader", Assets.getText('appLoader.html'));
+	Inject.rawHead("metaLoader", '<meta name="viewport" content="initial-scale=1.0, user-scalable=0, width=device-width, height=device-height"/><meta name="apple-mobile-web-app-capable" content="yes">');
+
+	Inject.rawBody("htmlLoader", Assets.getText('appLoader.html'));
 }
 
 if (Meteor.isClient) {

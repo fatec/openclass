@@ -46,7 +46,10 @@ base.css
 
 html {
 	font-family: 'Raleway Regular', sans-serif;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 body {
@@ -56,6 +59,8 @@ body {
 a {
 	text-decoration: none;
 	color: #3b75d9;
+	color:#1607d9;
+	color:#3f50d9;
 }
 
 a:hover {
@@ -77,6 +82,15 @@ a:hover, a:active {
 	vertical-align: middle;
 }
 
+.strikethrough:after {
+  position: absolute;
+  content: "/";
+  color: red;
+  font-weight: 500;
+  font-size: 1.5em;
+  left: 12px;
+  top: -3px;
+}
 
 input.error {
  	background-color:rgb(255, 231, 231);
@@ -252,4 +266,8 @@ input.error {
 	white-space: nowrap;
   	overflow: hidden;
   	text-overflow: ellipsis;
+}
+
+.mfp-content {
+	width:auto !important;
 }

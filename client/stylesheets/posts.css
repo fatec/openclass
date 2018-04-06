@@ -2,6 +2,16 @@
 posts.css
 */
 
+.strikethrough:after {
+  position: absolute;
+  content: "\\";
+  color: red;
+  font-weight: 500;
+  font-size: 1.5em;
+  left: 10px;
+  top: -3px;
+
+}
 
 /* ----- post-edit template ----- */
 
@@ -9,6 +19,17 @@ posts.css
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: white;
+	padding: 20px;
+}
+
+.post-edit--attach-buttons {
+	font-size: 1.4em;
+	margin-bottom: 8px;
+}
+
+.post-edit--attach-buttons i {
+	padding: 10px;
 }
 
 .post-edit--image {
@@ -27,6 +48,7 @@ posts.css
 }
 
 .post-edit--image-wrapper {
+	margin-bottom:15px;
 	text-align: center;
 }
 
@@ -92,6 +114,10 @@ posts.css
 	border-color: black;
 }
 
+.post-item--button-contextualmenu {
+	padding: 12px 12px 10px 0;
+}
+
 .post-item--button-edit {
 	padding: 12px 12px 10px 0;
 }
@@ -118,10 +144,21 @@ posts.css
 	color: #eab41a;
 }
 
+.post-item--file-wrapper {
+	font-size: 0.9em;
+	color: grey;
+	padding: 12px 12px 0px 18px;
+}
+
+.post-item--file-wrapper i {
+	margin-right: 5px;
+	vertical-align: top;
+}
+
 .post-item--likes-wrapper {
 	font-size: 0.8em;
 	color: grey;
-	padding: 12px 12px 12px 12px;
+	padding: 14px 12px 12px 12px;
 }
 
 .post-item--likes-wrapper i {
@@ -200,8 +237,9 @@ posts.css
 }
 
 .post-item--category {
+	float:right;
 	display: inline-block;
-	padding: 12px 12px 0px 12px;
+	padding: 14px 12px 0px 12px;
 	font-size: 0.8em;
 	color: #5996b8;
 }
@@ -262,10 +300,10 @@ posts.css
 }
 
 .post-item--comment-wrapper {
-	margin: -10px auto 20px auto;
-	border-right: solid 1px #ececec;
-	border-left: solid 1px #ececec;
-	border-bottom: solid 1px #ececec;
+/*	margin: -10px auto 20px auto;
+*/	border-top: solid 1px #ececec;
+/*	border-left: solid 1px #ececec;
+	border-bottom: solid 1px #ececec;*/
 	font-size: 0.8em;
 	line-height: 1.2em;
 	background-color: #f6f7f9;
@@ -343,6 +381,8 @@ color:black;
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: white;
+	padding: 20px;
 }
 
 .post-submit--image {
@@ -354,14 +394,32 @@ color:black;
 	box-sizing: border-box;
 }
 
+.post-submit--attach-buttons {
+	font-size: 1.4em;
+	margin-bottom: 8px;
+}
+
+.post-submit--attach-buttons i {
+	padding: 10px;
+}
+
 .post-submit--image-wrapper {
-	margin-top: 11px;	
+	margin-top: 11px;
+	margin-bottom:15px;	
 	text-align: center;
 }
 
-.post-submit--button-delete-image-wrapper {
-	margin: 3px 0 30px 0;
-	text-align: center;
+.post-submit--button-delete-image i {
+	vertical-align: top;
+}
+
+.post-submit--file-uploaded {
+	padding: 20px 0px 30px 10px;
+}
+
+.post-submit--file-uploaded i {
+	vertical-align: top;
+	padding:0px 5px;
 }
 
 .post-submit--textarea {
@@ -397,8 +455,9 @@ color:black;
 
 /* ----- post-update-image template ----- */
 
-.post-upload-image--input-file-wrapper {
-	display: block;
+.post-upload--input-file-wrapper {
+	cursor: pointer;
+/*	display: block;
 	width: 200px;	
 	height: 34px;
 	margin-left: auto;
@@ -420,21 +479,25 @@ color:black;
 	font-size: 1em;
 	line-height: 30px;
 	color: white;
-	cursor: pointer;
+	cursor: pointer;*/
 }
 
-.post-upload-image--input-file-wrapper:hover {
-	border-color: #185372;
+.post-upload--input-file-wrapper i:hover {
+	color: grey;
+}
+
+.post-upload--input-file-wrapper:hover {
+/*	border-color: #185372;
 	background-color: #21719c; background-image: -webkit-gradient(linear, left top, left bottom, from(#21719c), to(#275686));
 	background-image: -webkit-linear-gradient(top, #21719c, #275686);
 	background-image: -moz-linear-gradient(top, #21719c, #275686);
 	background-image: -ms-linear-gradient(top, #21719c, #275686);
 	background-image: -o-linear-gradient(top, #21719c, #275686);
 	background-image: linear-gradient(to bottom, #21719c, #275686);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#21719c, endColorstr=#275686);
- }
+ */}
  
  /* CSS Tric to hide original file input */
-.post-upload-image--input-file {
+.post-upload--input-file {
 	position: fixed;
 	top: -1000px;
 }

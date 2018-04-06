@@ -19,7 +19,7 @@ Template.blogList.events({
 		if (code && code != "") {
 			Meteor.call('getBlogId', code, function(error, result) {
 				if (error) {
-					alert("Une erreur est survenue : "+error.message);
+					alert(TAPi18n.__('error-message')+error.message);
 				} else if (result != null) {
 					var blogId = result;
 					var blogsVisited = [];
@@ -35,7 +35,7 @@ Template.blogList.events({
 					Router.go('blogPage', {_id: blogId});
 				}
 				else if (result == null) {
-					alert("Cet espace n'existe pas.\nAssurez-vous de respecter les majuscules et les minuscules.");
+					alert(TAPi18n.__('blog-list--blog-doesnt-exist-message'));
 				}
 			});
 		}
@@ -50,6 +50,11 @@ Template.blogList.events({
 
 		Cookie.remove('blogsVisited');
 		$('.blog-list--visited-blogs').hide();
+	},
+	'click .blog-list--select-lang': function(e) {
+		e.preventDefault();
+
+		Session.setPersistent('lang',$(e.currentTarget).data('lang'));
 	}
 });
 
@@ -67,7 +72,16 @@ Template.blogList.helpers({
 	},
 	isBox: function() {
     	return (Meteor.settings.public.isBox === "true")
-  	}
+  	},
+  	isLangSelected: function(lang) {
+  		if (Session.get('lang')) {
+	  		langSelected = Session.get('lang');
+	  		langSelected = langSelected.split("-");
+			langSelected = langSelected[0]; // Remove country code
+			if (lang == langSelected)
+	  			return 'selected';
+	  		}
+	  	}
 });
 
 

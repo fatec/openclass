@@ -47,6 +47,7 @@ blogs.css
 	margin: 30px auto 10px auto;
 	color: grey;
 	font-size: 0.9em;
+	text-transform: uppercase;
 }
 
 .blog-edit--list-item {
@@ -208,12 +209,12 @@ blogs.css
 
 .blog-list--logo {
 	text-align: center;
-	margin-bottom: 0px;
-	margin-top: 15px;
+	margin-bottom: 10px;
+	margin-top: 30px;
 }
 
 .blog-list--logo img {
-	width: 160px;
+	width: 120px;
 }
 
 .blog-list--button-edit {
@@ -276,6 +277,10 @@ blogs.css
 
 .blog-list--button-submit-blog {
 	margin: 25px 0 0 0;
+}
+
+.blog-list--new-space-wrapper {
+	text-align: center;
 }
 
 .blog-list--no-blog {
@@ -341,6 +346,29 @@ blogs.css
 	font-size: 0.85em;
 }
 
+.blog-list--lang-wrapper {
+	margin-top: 40px;
+}
+
+.blog-list--lang-wrapper a {
+	padding: 6px;
+	border-left: solid 1px #b7b7b7;
+}
+
+.blog-list--lang-wrapper a:first-of-type {
+	border-left: none;
+}
+
+.blog-list--lang-wrapper a.selected {
+	font-weight: bold;
+	color:grey;
+	cursor: default;
+}
+
+.blog-list--lang-wrapper a.selected:hover {
+	text-decoration: none;
+}
+
 
 /* ----- blog-page template ----- */
 
@@ -377,12 +405,42 @@ blogs.css
 	width: 200px;
 	display: table-cell;
 	vertical-align: top;
-	padding: 8px 40px 0px 0px;
+	padding: 20px 40px 0px 0px;
 	font-size: 1em;
 }
 
 .blog-page--main {
 	margin-top: 10px;
+}
+
+.blog-page--pinned-title {
+	font-size: 0.8em;
+	padding: 5px;
+	color: grey;
+/*	border-bottom: solid 1px #c6c6c6;
+*/	margin-bottom: 10px;
+}
+
+.blog-page--pinned-title i {
+	margin-right:3px;
+}
+
+.blog-page--posts-pinned {
+	background-color: white;
+/*	border: solid 1px #d8d8d8;
+*/	padding: 5px;
+	margin-bottom: 40px;
+}
+
+.blog-page--posts-order {
+	text-align: right;
+	padding:10px;
+	margin-top: -26px;
+	font-size: 0.9em;
+}
+
+.blog-page--posts-order span {
+	cursor: pointer;
 }
 
 .blog-page--notification-panel {
@@ -402,7 +460,7 @@ blogs.css
 	color: white !important;
 }
 
-.blog-page--no-post-message {
+.blog-page--no-post {
 	margin-top: 20px;
 	text-align: center;
 	background-color: white;
@@ -414,7 +472,7 @@ blogs.css
 .blog-page--code-panel {
 	text-align: center;
 	background-color: white;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 	border: solid 1px #ddd;
 	border-radius: 2px;
 	padding: 15px;
@@ -464,6 +522,15 @@ blogs.css
 
 .blog-page--load-more:active {
 	background-color: #353535;
+}
+
+.blog-page--post-submit {
+	position: relative;
+	background: #FFF;
+	padding: 20px;
+	width: auto;
+	max-width: 500px;
+	margin: 20px auto;
 }
 
 

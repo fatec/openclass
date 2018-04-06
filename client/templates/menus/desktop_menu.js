@@ -6,11 +6,32 @@ Template.desktopMenu.events({
 		Session.set('postsServerNonReactive', Counts.findOne().count);
 		resetPostInterval();
 	},
+	'click .filter-last': function(e) {
+		e.preventDefault();
+		resetFilters();
+		Session.set('last', true);
+		Session.set('postsServerNonReactive', Counts.findOne().count);
+		resetPostInterval();
+	},
 	'click .filter-pinned': function(e) {
 		e.preventDefault();
 		resetFilters();
 	 	Session.set('pinned',true);
 	 	Session.set('postsServerNonReactive', PinnedCounts.findOne().count);
+		resetPostInterval();
+	},
+	'click .filter-files': function(e) {
+		e.preventDefault();
+		resetFilters();
+	 	Session.set('files',true);
+	 	Session.set('postsServerNonReactive', FilesCounts.findOne().count);
+		resetPostInterval();
+	},
+	'click .filter-images': function(e) {
+		e.preventDefault();
+		resetFilters();
+	 	Session.set('images',true);
+	 	Session.set('postsServerNonReactive', ImagesCounts.findOne().count);
 		resetPostInterval();
 	},
 	'click .filter-author': function(e) {
@@ -20,7 +41,7 @@ Template.desktopMenu.events({
 		Session.set('author',author);
 		Session.set('postsServerNonReactive', Authors.findOne({name:author}).nRefs);
 		resetPostInterval();
-		},
+	},
 	'click .filter-category': function(e) {
 		e.preventDefault();
 		var category = $(e.target).data('category');
@@ -62,6 +83,14 @@ Template.desktopMenu.helpers({
 		var favorites = Session.get(Template.parentData(1).blog._id).favorites;
 		return favorites && favorites.length;
 	},
+	filesCount: function() {
+		var filesCount = FilesCounts.findOne();
+		return filesCount && filesCount.count;
+	},	
+	imagesCount: function() {
+		var imagesCount = ImagesCounts.findOne();
+		return imagesCount && imagesCount.count;
+	},	
 	authorNRef: function() {
 		var author = Authors.findOne({name:this.name});
 		return author && author.nRefs;
@@ -84,7 +113,11 @@ Template.desktopMenu.helpers({
 		return Tags.find({}, {sort: {name: 1}});
 	},	
 	'selectedShowAll': function() { // Add a class if element is selected
-		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false && Session.get('pinned') == false)
+		if (Session.get('author') == '' && Session.get('category') == '' && Session.get('tag') == '' && Session.get('favorites') == false && Session.get('pinned') == false && Session.get('files') == false && Session.get('images') == false)
+			return "desktop-menu--list-element-selected"	
+	},
+	'selectedLast': function() {
+		if (Session.get('last') == true)
 			return "desktop-menu--list-element-selected"	
 	},
 	'selectedPinned': function() {
@@ -119,5 +152,17 @@ Template.desktopMenu.helpers({
 		if (nRef == 0)
 			return "desktop-menu--list-element-disabled"
 		else return null
-	}
+	},
+	ownBlog: function() {
+		var userId = Meteor.userId();
+		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin'])
+		if (userId)
+			if (Template.parentData(1).blog._id === userId)
+				return true;
+		else if (isAdmin)
+			if (isAdmin === true)
+				return true;
+		else
+			return false;
+	},
 });

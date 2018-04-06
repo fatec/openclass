@@ -2,45 +2,56 @@
 	<div class="desktop-menu">
 		<ul class="desktop-menu--list">
 			<li class="desktop-menu--show-all {{selectedShowAll}}"><i class="fa fa-list-alt fa-fw" aria-hidden="true"></i>
- <span>Tout afficher </span><span class="desktop-menu--nRef">{{postCount}}</span></li>
-		</ul>
-		<ul class="desktop-menu--list">
-			<li class="filter filter-pinned {{selectedPinned}}">
-				<i class="fa fa-thumb-tack fa-fw"></i> <span>Épinglé </span><span class="desktop-menu--nRef">{{pinnedCount}}</span>
-			</li>
-		</ul>
-		<ul class="desktop-menu--list">
-			<li class="filter filter-favorites {{selectedFavorites}}">
-				<i class="fa fa-star-o fa-fw"></i> <span>Mes favoris </span><span class="desktop-menu--nRef">{{favoritesCount}}</span>
-			</li>
+ <span>{{_ 'menu--show-all'}} </span><span class="desktop-menu--nRef">{{postCount}}</span></li>
 		</ul>
 <!-- 		<ul class="desktop-menu-2-list">
-			<li class="filter filter-favorites {{selectedFiles}}">
-				<i class="fa fa-files-o fa-fw"></i> <span>Fichiers </span><span class="desktop-menu-2-nRef">{{favoritesCount}}</span>
+			<li class="filter filter-last {{selectedLast}}">
+				<i class="fa fa-clock-o fa-fw"></i> <span>Derniers posts </span><span class="desktop-menu-2-nRef"></span>
 			</li>
-		</ul>
-		<ul class="desktop-menu-2-list">
-			<li class="filter-favorites {{selectedImages}}">
-				<i class="fa fa-picture-o fa-fw"></i> <span>Images </span><span class="desktop-menu-2-nRef">{{favoritesCount}}</span>
+		</ul>	 -->	
+<!-- 		<ul class="desktop-menu-2-list">
+			<li class="filter filter-pinned {{selectedPinned}}">
+				<i class="fa fa-thumb-tack fa-fw"></i> <span>Épinglés </span><span class="desktop-menu-2-nRef">{{pinnedCount}}</span>
 			</li>
 		</ul> -->
-				<div class="desktop-menu--list-title">Catégories</div>
 		<ul class="desktop-menu--list">
+			<li class="filter filter-favorites {{selectedFavorites}}">
+				<i class="fa fa-star-o fa-fw"></i> <span>{{_ 'menu--favorites'}} </span><span class="desktop-menu--nRef">{{favoritesCount}}</span>
+			</li>
+		</ul>
+		<ul class="desktop-menu--list">
+			<li class="filter filter-files {{selectedFiles}}">
+				<i class="fa fa-files-o fa-fw"></i> <span>{{_ 'menu--files'}} </span><span class="desktop-menu--nRef">{{filesCount}}</span>
+			</li>
+		</ul>
+		<ul class="desktop-menu--list">
+			<li class="filter filter-images {{selectedImages}}">
+				<i class="fa fa-picture-o fa-fw"></i> <span>{{_ 'menu--images'}} </span><span class="desktop-menu--nRef">{{imagesCount}}</span>
+			</li>
+		</ul>
+				<div class="desktop-menu--list-title"><i class="fa fa-tags fa-fw"></i> {{_ 'menu--categories'}} 
+					{{# if ownBlog}}
+						<a href="{{pathFor 'blogEditCategories' _id=blog._id}}" class="desktop-menu--categories-settings">
+							<i class="fa fa-cog"></i>
+						</a>
+					{{/if}}
+				</div>
+		<ul class="desktop-menu--sublist">
 			{{#each categories}}
 				<li class="filter-category {{selectedCategoryClass}} {{isDisabled categoriesNRef}}" data-category="{{name}}" href="#"><span data-category="{{name}}">{{name}} </span><span class="desktop-menu--nRef" data-category="{{name}}">{{categoriesNRef}}</span></li>
 			{{/each}}
-		</ul><div class="desktop-menu--list-title">Auteurs</div>
-		<ul class="desktop-menu--list">
+		</ul><div class="desktop-menu--list-title"><i class="fa fa-users fa-fw"></i> {{_ 'menu--authors'}}</div>
+		<ul class="desktop-menu--sublist">
 			{{#each authors}}
 				<li class="filter-author {{selectedAuthorClass}} {{isDisabled authorNRef}}" data-author="{{name}}" href="#"><span data-author="{{name}}">{{name}} </span><span class="desktop-menu--nRef" data-author="{{name}}">{{authorNRef}}</span></li>
 			{{/each}}
 		</ul>
 
-		<div class="desktop-menu--list-title">Mots-clés</div>
-		<ul class="desktop-menu--list">
+<!-- 		<div class="desktop-menu-2-list-title">{{_ 'menu-2-tags'}}</div>
+		<ul class="desktop-menu-2-list">
 			{{#each tags}}
-				<li class="filter-tag {{selectedTagClass}} {{isDisabled tagsNRef}}" data-tag="{{name}}" href="#"><span data-tag="{{name}}">{{name}} </span><span class="desktop-menu--nRef" data-tag="{{name}}">{{tagsNRef}}</span></li>
+				<li class="filter-tag {{selectedTagClass}} {{isDisabled tagsNRef}}" data-tag="{{name}}" href="#"><span data-tag="{{name}}">{{name}} </span><span class="desktop-menu-2-nRef" data-tag="{{name}}">{{tagsNRef}}</span></li>
 			{{/each}}
-		</ul>
+		</ul> -->
 	</div>
 </template>

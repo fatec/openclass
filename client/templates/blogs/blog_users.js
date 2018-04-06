@@ -7,7 +7,7 @@ Template.blogUsers.events({
 
 		if (authorName != "") {
 			if (Authors.findOne({name:authorName})) {
-				if (confirm("L'utilisateur "+authorName+" existe déjà. Se connecter avec ce nom ?")) {
+				if (confirm(TAPi18n.__('blog-users--user-exist',authorName))) {
 					Session.setPersistent(template.data.blog._id, {author: authorName}); // Persistent to browser refresh
 					Router.go('blogPage', {_id: template.data.blog._id});
 				}
@@ -17,7 +17,7 @@ Template.blogUsers.events({
 			else {
 				Meteor.call('authorInsert', authorName, template.data.blog._id, function(error) {
 					if(error)
-						alert("Une erreur est survenue : "+error.message);
+						alert(TAPi18n.__('error-message')+error.message);
 					else {
 						Session.setPersistent(template.data.blog._id, {author: authorName, favorites: []});
 						Router.go('blogPage', {_id: template.data.blog._id});					

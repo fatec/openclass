@@ -4,12 +4,23 @@ Template.register.onRendered(function () {
     Session.set('errorMessage', ''); // Hide error messages
 
     if (Meteor.isClient) { // Localization mapping
-        T9n.map('fr', {
-            'Email already exists.': 'Un compte lié à cet e-mail existe déjà.'
-        });
+        T9n.map(
+            'fr', {
+                'Email already exists.': TAPi18n.__('register--mail-exist')
+            },
+            'en', {
+                'Email already exists.': TAPi18n.__('register--mail-exist')
+            },
+            'es', {
+                'Email already exists.': TAPi18n.__('register--mail-exist')
+            },
+            'de', {
+                'Email already exists.': TAPi18n.__('register--mail-exist')
+            }         
+        );
     }
 
-    $.validator.messages.email = "Merci d'entrer une adresse e-mail valide.";
+    $.validator.messages.email = TAPi18n.__('register--mail-no-valid-message');
     $(".register--form").validate();
 });
 
@@ -28,10 +39,11 @@ Template.register.events({
                 if(!err) {
                     Router.go('blogList');
                     Meteor.call('sendEmail', // Send an e-mail to user
-                    Meteor.user().emails[0].address,
-                    'vincent.widmer@beekee.ch',
-                    'Votre inscription sur beekee.ch',
-                    'Bonjour, \n\n Bienvenue sur beekee.ch ! \n\n Cette plateforme est en développement, n\'hésitez pas à nous contacter pour nous faire part de vos questions ou remarques. \n\n L\'équipe beekee.ch');
+                        Meteor.user().emails[0].address,
+                        'vincent.widmer@beekee.ch',
+                        TAPi18n.__("register--mail-subject"),
+                        TAPi18n.__("register--mail-content")
+                    );
                 }
                 else {
                     Session.set('errorMessage', err.reason);
