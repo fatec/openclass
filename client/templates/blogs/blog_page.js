@@ -131,9 +131,9 @@ Template.blogPage.helpers({
 	posts: function() {
 		if (this.blog !== undefined && Session.get('last') == "")
 			//return Posts.find({},{sort: {pinned: -1, submitted: 1}});
-			return Posts.find({pinned:false},{sort: {pinned: -1, submitted: 1}});
+			return Posts.find({pinned: {$ne: true}},{sort: {pinned: -1, submitted: 1}});
 		else if (this.blog !== undefined && Session.get('last') !== "")
-			return Posts.find({pinned:false},{sort: {pinned: -1, submitted: -1}});
+			return Posts.find({pinned: {$ne: true}},{sort: {pinned: -1, submitted: -1}});
 		else return null
 	},
 	postsPinned: function() {

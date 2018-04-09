@@ -61,7 +61,7 @@ Template.blogEdit.events({
 					alert(TAPi18n.__('error-message')+error.message);
 				else {
 					alert(TAPi18n.__('blog-edit--delete-blog-confirm-message'));
-					Router.go('blogList');
+					Router.go('indexTeacher');
 				}
 			});
 		}

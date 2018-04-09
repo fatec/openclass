@@ -1,0 +1,72 @@
+<template name="indexTeacher">
+	<div class="blog-list">
+		{{#if currentUser}}
+			<div class="blog-list--logo"><img src="/img/logo.png" /></div>
+			{{#if ownBlogs.count}}
+				<div class="list-group">
+					<div class="blog-list--blogs-title">
+						<span>{{_ 'blog-list--blogs-title'}}</span>
+					</div>
+					{{#each ownBlogs}}
+						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+							<span class="list-group-item-left">{{title}}</span>
+								 <a class="blog-list--button-edit" href="{{pathFor 'blogEdit'}}">
+									 <i class="fa fa-lg fa-cog"></i>
+								</a>
+							<span class="blog-list--list-item-code">
+								<b>{{blogCode}}</b>
+							</span>
+						</a>
+					{{/each}}
+				</div>
+			{{else}}
+				<div class="blog-list--no-blog">{{_ 'blog-list--no-blog'}}</div>
+			{{/if}}
+		{{else}}
+			<div class="page-title">{{_ 'login--page-title'}}</div>
+			<form id="login--form" class="login--form">        
+				<div class="login--wrapper">
+					<label>{{_ 'login--mail'}}</label>
+					<input type="text" class="login--input login--input-username form-control" id="email" value="" autofocus><br><br>
+					<label>{{_ 'login--password'}}</label>
+					<input type="password" name="" class="login--input form-control" id="password" value=""><br>
+					{{#if errorMessage}}
+						<div class="login--message">
+							<p>{{t9n errorMessage}}</p>
+							{{#unless isBox}}
+								{{#if passwordRecovery}}
+									<br><a href="#" class="login--send-mail-forgot-password">{{_ 'login--send-mail-forgot-password-link'}}</a>
+								{{/if}}
+							{{/unless}}
+						</div> 
+					{{/if}}                 
+				</div> 
+				<div class="login--button-wrapper">
+					<button type="submit" class="button button-primary login--button-submit">{{_ 'login--button-submit'}}</button>
+				</div>   
+			</form>
+			<div class="login--register-link-wrapper">{{_ 'login--register'}}<br><br>
+				<a href="{{pathFor 'register'}}"> {{_ 'login--register-link'}}</a> !
+			</div>
+		{{/if}}
+	</div>
+	<div class="blog-list--wrapper">
+		{{#if currentUser}}
+			<a href="{{pathFor 'blogSubmit'}}">
+				<button class="button button-primary blog-list--button-submit-blog"><i class="fa fa-plus"></i> {{_ 'blog-list--button-submit-blog'}}</button>
+			</a>
+		{{else}}
+		{{/if}}
+<!-- 		{{#unless isBox}}
+ 			<div class="blog-list-2-footer-wrapper">
+				<a class="blog-list-2-footer-about" href="http://infos.beekee.ch">{{_ 'blog-list-2-footer-about'}}</a>
+				<a class="blog-list-2-footer-privacy" href="{{pathFor 'privacy'}}">{{_ 'blog-list-2-footer-privacy'}}</a>
+				<a class="blog-list-2-footer-contact" href="mailto:vincent.widmer@beekee.ch">{{_ 'blog-list-2-footer-contact'}}</a>
+			</div>
+		{{/unless}} -->
+		<div class="blog-list--lang-wrapper">
+			<a href="#" class="blog-list--select-lang {{isLangSelected 'en'}}" data-lang="en">EN</a>
+			<a href="#" class="blog-list--select-lang {{isLangSelected 'fr'}}" data-lang="fr">FR</a>
+		</div>
+	</div>
+</template>

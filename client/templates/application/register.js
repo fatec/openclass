@@ -37,7 +37,7 @@ Template.register.events({
         if (email && password) {
             Accounts.createUser({email:email.toLowerCase().trim(),password:password,profile:{lastAlert:1}},function(err){
                 if(!err) {
-                    Router.go('blogList');
+                    Router.go('indexTeacher');
                     Meteor.call('sendEmail', // Send an e-mail to user
                         Meteor.user().emails[0].address,
                         'vincent.widmer@beekee.ch',

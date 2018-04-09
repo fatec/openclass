@@ -2,7 +2,10 @@ Template.slideoutMenu.events({
 
 	'click .slideout-menu--exit': function(e){
 		e.preventDefault();
-		Router.go('blogList');
+		if (Meteor.userId())
+			Router.go('indexTeacher');
+		else
+			Router.go('indexStudent');
 	},
 	'click .slideout-menu--settings': function(e,template){
 		e.preventDefault();
