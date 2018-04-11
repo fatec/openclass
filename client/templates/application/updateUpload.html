@@ -1,0 +1,18 @@
+<template name="updateUpload">
+	<form method="POST" enctype="multipart/form-data" style="text-align: center;">
+		{{#unless infoLabel}}
+			<label class="post-upload--input-file-wrapper" style="border: solid 1px grey;padding: 5px;background-color: white;">
+				<input type="file" accept="file/*" class="post-upload--input-file jqUploadclass" data-form-data='{{ submitData }}'>
+					<span class="post-upload--input-file-icon">Upload the file <i class="fa fa-upload"></i></span>
+					<span class="post-upload--input-file-text"></span>
+			</label>
+		{{/unless}}
+		{{#with infoLabel}} 
+			<div class="progress-bar blue stripes" style="margin-bottom:30px;margin-left:auto;margin-right:auto;width: 200px; height: 11px; border: 1px solid #e8e8e8;background-color:white;font-size:0.7em;color:white;">
+				<span  style="width: {{ progress }}"> <!-- Don't modify this or no progress bar is shown -->
+					<!-- {{ progress }} -->
+				</span>
+			</div>
+		{{/with}}
+	</form>
+</template>

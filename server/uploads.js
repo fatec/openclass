@@ -11,6 +11,14 @@ Meteor.startup(function () {
 		},
 		finished: function(fileInfo, formFields) {
 
+			if (fileInfo.name == "box-update.tar") {
+				cmd = Meteor.wrapAsync(exec);
+				res = cmd("mv ../../../../../.uploads/"+fileInfo.name+" ../../../../../updates/");
+				res2 = cmd("tar xvf ../../../../../updates/"+fileInfo.name+" -C ../../../../../");
+				res3 = cmd("rm ../../../../../updates/"+fileInfo.name);
+				console.log("sur le serveur : "+res2);
+			}
+
 			var extension = fileInfo.name.substr(fileInfo.name.lastIndexOf('.')+1).toLowerCase();
 
 			if (extension == "jpg" || extension == "jpeg" || extension == "png") {
