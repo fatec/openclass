@@ -52,5 +52,5 @@ reactive-var
 tap:i18n
 smallhacks:jquery-contextmenu
 ecmascript
-tomi:upload-server
-tomi:upload-jquery
+tomi:upload-server@=1.3.3
+tomi:upload-jquery@=2.2.1
