@@ -39,8 +39,6 @@ spacebars
 check
 themeteorchef:jquery-validation
 chuangbo:cookie
-tomi:upload-server
-tomi:upload-jquery
 email
 meteorhacks:fast-render
 smallhacks:bootstrap-tagsinput-custom
@@ -50,6 +48,9 @@ mizzao:user-status
 luisalmeida:unveil
 http
 meteorhacks:inject-initial
-liryna:jquery-contextmenu
 reactive-var
 tap:i18n
+smallhacks:jquery-contextmenu
+ecmascript
+tomi:upload-server
+tomi:upload-jquery
