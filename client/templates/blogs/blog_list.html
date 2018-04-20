@@ -75,5 +75,10 @@
 			<a href="#" class="blog-list--select-lang {{isLangSelected 'en'}}" data-lang="en">EN</a>
 			<a href="#" class="blog-list--select-lang {{isLangSelected 'fr'}}" data-lang="fr">FR</a>
 		</div>
+		{{#if isBox}}
+			{{#if currentUser}}
+				<div class="blog-list--shutdown"><i class="fa fa-power-off"></i><br><span>Shutdown</span></div>
+			{{/if}}
+		{{/if}}
 	</div>
 </template>

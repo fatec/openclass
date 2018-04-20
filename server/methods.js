@@ -51,5 +51,10 @@ Meteor.methods({
 			res = cmd("git pull origin filtering");
 			console.log("Updating box : "+res);
 			return res;
+	},
+	'shutdownBox': function() { // Shutdown the Raspberry Pi
+			var res;
+			res = cmd("sudo shutdown");
+			return res;
 	}
 });

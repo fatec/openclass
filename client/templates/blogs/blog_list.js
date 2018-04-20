@@ -55,7 +55,22 @@ Template.blogList.events({
 		e.preventDefault();
 
 		Session.setPersistent('lang',$(e.currentTarget).data('lang'));
-	}
+	},
+	'click .blog-list--shutdown': function(e, template) {
+		e.preventDefault();
+
+		var alert = confirm(TAPi18n.__('blog-list--shutdown-message'));
+		if (alert) {
+			Meteor.call('shutdownBox', function(error, result){
+				if (error) {
+					alert(TAPi18n.__('error-message')+error.message);
+				}
+				else {
+					alert(TAPi18n.__('blog-list--shutdown-confirm'));
+				}
+			});
+		}
+	}  
 });
 
 

@@ -148,7 +148,7 @@ Template.blogEdit.events({
 				}
 			});
 		}
-	}  
+	} 
 }); 
 
 

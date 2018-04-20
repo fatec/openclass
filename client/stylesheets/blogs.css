@@ -369,6 +369,34 @@ blogs.css
 	text-decoration: none;
 }
 
+.blog-list--shutdown {
+	display: inline-block;
+	margin-top:30px;
+	font-size: 1.3em;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 2px;
+	color: #7d7d7d;
+}
+
+.blog-list--shutdown:hover {
+	background-color: #d9d9d9;
+	color: white !important;
+}
+
+.blog-list--shutdown:active {
+	background-color: grey;
+	color: white;
+}
+
+.blog-list--shutdown span {
+	font-size: 0.6em;
+}
+
+.blog-list--shutdown span:hover {
+	color:white;
+}
+
 
 /* ----- blog-page template ----- */
 
