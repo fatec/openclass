@@ -46,12 +46,6 @@ Meteor.methods({
 			res = cmd("ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'");
 			return res;
 	},
-	'updateBox': function() { // Fetch changes from GitHub repository
-			var res;
-			res = cmd("git pull origin filtering");
-			console.log("Updating box : "+res);
-			return res;
-	},
 	'shutdownBox': function() { // Shutdown the Raspberry Pi
 			var res;
 			res = cmd("sudo shutdown");

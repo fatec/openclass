@@ -137,17 +137,7 @@ Template.blogEdit.events({
 	'click .blog-edit--update': function(e, template) {
 		e.preventDefault();
 
-		var alert = confirm(TAPi18n.__('blog-edit--update-message'));
-		if (alert) {
-			Meteor.call('updateBox', function(error, result){
-				if (error) {
-					alert(TAPi18n.__('error-message')+error.message);
-				}
-				else {
-					alert(TAPi18n.__('blog-edit--update-waiting-message'));
-				}
-			});
-		}
+		Router.go('update');
 	} 
 }); 
 
