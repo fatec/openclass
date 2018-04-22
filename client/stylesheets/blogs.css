@@ -489,12 +489,14 @@ blogs.css
 }
 
 .blog-page--no-post {
-	margin-top: 20px;
 	text-align: center;
-	background-color: white;
-	border: solid 1px #ddd;
-	border-radius: 2px;
-	padding: 15px;
+	display:inline;
+	float:left;
+	margin-left:auto;
+	margin-right:auto;
+	width:100%;
+	height:0;
+	margin-top: 15px;
 }
 
 .blog-page--code-panel {
@@ -550,6 +552,28 @@ blogs.css
 
 .blog-page--load-more:active {
 	background-color: #353535;
+}
+
+.blog-page--loading {
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	float: left;
+	width: 100%;
+	height: 0; 
+	animation: 0.5s loadingDelay;
+	animation-fill-mode: forwards;
+	visibility: hidden;
+}
+
+@keyframes loadingDelay {
+  	99% {
+  		visibility: hidden;
+	}
+  	100% {
+    	visibility: visible;
+  	}
 }
 
 .blog-page--post-submit {

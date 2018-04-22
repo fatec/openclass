@@ -18,11 +18,10 @@
 				{{#if codePanelState}}
 					{{#if ownBlog}}
 						<div id="codePanel" class="blog-page--code-panel">
-							<span class="blog-page--code-panel-title">{{_ 'blog-page--code-panel-title'}} 
-								<div class="blog-page--code-panel-code"><b>{{blog.blogCode}}</b></div> <br /><br />
-								<span>{{_ 'blog-page--code-panel-description'}}</span>
-							</span><br><br>
-							<button class="button button-primary button-hide-code-panel">OK</button>
+							<span class="blog-page--code-panel-title">{{_ 'blog-page--code-panel-description'}} 
+								<div class="blog-page--code-panel-code"><b>{{blog.blogCode}}</b></div><br />
+							</span>
+							<button class="button button-primary button-hide-code-panel">{{_ 'blog-page--hide-panel'}}</button>
 						</div>
 					{{/if}}
 				{{/if}}
@@ -43,21 +42,27 @@
 						<span>Plus ancien d'abord <i class="fa fa-caret-down" aria-hidden="true"></i></span>
 					{{/if}} -->
 				</div>
-				{{#if posts}}
-					{{#if posts.count}}
-						{{#each posts}}
-							{{> postItem}}
-						{{/each}}
-						{{#if loadMore}}
-							<div class="blog-page--load-more">
-								<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> {{_ 'blog-page--load-more'}}
+				{{#if initialLoadCompleted}}
+					{{#if posts}}
+						{{#if posts.count}}
+							{{#each posts}}
+								{{> postItem}}
+							{{/each}}
+							{{#if loadMore}}
+								<div class="blog-page--load-more">
+									<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> {{_ 'blog-page--load-more'}}
+								</div>
+							{{/if}}
+						{{else}}
+							<div class="blog-page--no-post" style="">
+								<span>{{_ 'blog-page--no-post'}}</span>
 							</div>
 						{{/if}}
-					{{else}}
-						<div class="blog-page--no-post">
-							<span>{{_ 'blog-page--no-post'}}</span><br />
-						</div>
 					{{/if}}
+				{{else}}
+					<div class="blog-page--loading">
+						{{> loading}}
+					</div>
 				{{/if}}
 			</div>
 		</div>

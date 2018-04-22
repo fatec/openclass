@@ -9,7 +9,7 @@ Template.blogPage.onCreated(function() {
 	resetPostInterval();
 	Session.set('last', true);
 
-	Deps.autorun(function() { // Autorun to reactively update subscription (filtering + interval of loaded posts)
+	this.autorun(function() { // Autorun to reactively update subscription (filtering + interval of loaded posts)
 
 		var postsToSkip = Session.get('postsToSkip');
 		var postsLimit = Session.get('postsLimit');
@@ -128,6 +128,9 @@ Template.blogPage.events({
 
 Template.blogPage.helpers({
 
+	initialLoadCompleted: function() { 
+  		return subscription.ready();
+  	},
 	posts: function() {
 		if (this.blog !== undefined && Session.get('last') == "")
 			//return Posts.find({},{sort: {pinned: -1, submitted: 1}});
