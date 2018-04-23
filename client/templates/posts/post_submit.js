@@ -29,8 +29,8 @@ Template.postSubmit.onRendered(function() {
 
 	// Set default author if not defined
 	if (Template.parentData(2))
-		if (!Session.get(Template.parentData(2).blog._id))
-			Session.set(Template.parentData(2).blog._id, {author: 'Invité'});  
+		if (!Session.get(Template.parentData(2).space._id))
+			Session.set(Template.parentData(2).space._id, {author: 'Invité'});  
 
 	  	// var tags = new Bloodhound({ // Allow to find and show tags in input if already exists
 	// 	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -66,9 +66,9 @@ Template.postSubmit.events({
 		$(".post-submit--button-text").hide();
 
 			
-		var author = Session.get(this.blog._id).author;  
+		var author = Session.get(this.space._id).author;  
 		var body = $(e.target).find('[name=body]').val();
-		var blogId = template.data.blog._id;
+		var spaceId = template.data.space._id;
 		var fileId = Session.get("fileId");
 		var fileExt = Session.get("fileExt");
 		//var tags = $(e.target).find('[name=tags]').val().toLowerCase().replace(/ /g,'').split(',');
@@ -80,7 +80,7 @@ Template.postSubmit.events({
 		// 		Images.remove(imageId);
 		// });
 		 
-		Meteor.call('postInsert', {author: author, body: body, blogId: blogId, fileId: fileId, fileExt: fileExt, category: category}, function(error, postId) {
+		Meteor.call('postInsert', {author: author, body: body, spaceId: spaceId, fileId: fileId, fileExt: fileExt, category: category}, function(error, postId) {
 			if (error){
 				alert(TAPi18n.__('error-message')+error.message);
 			} else {
@@ -90,8 +90,8 @@ Template.postSubmit.events({
 				$(".post-submit--button-text").show();
 
 				// if (tags)
-				// 	Meteor.call('tagsInsert', {blogId: blogId, tags: tags});
-				//Router.go('blogPage', {_id: post.blogId, last: true});
+				// 	Meteor.call('tagsInsert', {spaceId: spaceId, tags: tags});
+				//Router.go('spacePage', {_id: post.spaceId, last: true});
 			};
 		});
 	},
@@ -149,6 +149,6 @@ Template.postSubmit.helpers({
 			return Session.get("fileId");
 	},
 	categories: function() {
-		return Categories.find({blogId: this.blog._id},{sort: { name: 1 }});  
+		return Categories.find({spaceId: this.space._id},{sort: { name: 1 }});  
 	} 
 });

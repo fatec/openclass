@@ -40,7 +40,7 @@
 			{{/unless}}
 		{{/if}}
 		{{#if category}}
-			<a class="post-item--category filter-category {{selectedCategoryClass}}" data-category="{{this.category}}" href="{{pathFor 'blogPage' _id=blogId}}"><i class="fa fa-tag" aria-hidden="true"></i> {{category}}</a>
+			<a class="post-item--category filter-category {{selectedCategoryClass}}" data-category="{{this.category}}" href="{{pathFor 'spacePage' _id=spaceId}}"><i class="fa fa-tag" aria-hidden="true"></i> {{category}}</a>
 		{{/if}}
 <!-- 		{{#if tags}}
 			<div class="post-item-2-tags-wrapper">
@@ -98,5 +98,5 @@
 			</div>
 		{{/if}}
 	</div>
-	<div id="blog-page--post-edit-{{this._id}}" class="blog-page--post-edit white-popup mfp-hide"></div>
+	<div id="space-page--post-edit-{{this._id}}" class="space-page--post-edit white-popup mfp-hide"></div>
 </template>

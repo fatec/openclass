@@ -1,6 +1,6 @@
 // ###  Create admin user at first start  ###
 
-if (Blogs.find().count() === 0) {
+if (Spaces.find().count() === 0) {
 	if (Meteor.users.find().count() === 0) {
 		var adminPassword = Meteor.settings.adminPassword;
 

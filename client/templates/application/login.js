@@ -37,7 +37,7 @@ Template.login.events({
 		if (email && password) {
 			Meteor.loginWithPassword(email.trim(), password, function(err) {
 				if(!err)
-					Router.go('blogList');
+					Router.go('spaceList');
 				else    
 					Session.set('errorMessage', err.reason);
 			});

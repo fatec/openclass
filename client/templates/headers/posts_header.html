@@ -5,13 +5,13 @@
 				<div class="header--left">
 					<a class="header--logo"><img src="/img/logo_header.png" /></a>
 					<i class="ion-navicon header--button-menu"></i>
-					<span class="header--blog-title">{{blog.title}} 
-						<div class="header--blog-code">{{blog.blogCode}}</div>
+					<span class="header--space-title">{{space.title}} 
+						<div class="header--space-code">{{space.spaceCode}}</div>
 						<a href="#" class="header--exit-button">
 							<i class="fa fa-sign-out" aria-hidden="true"></i>
 						</a>
-						{{# if ownBlog}}
-							<a href="{{pathFor 'blogEdit' _id=this.blog._id}}">
+						{{# if ownSpace}}
+							<a href="{{pathFor 'spaceEdit' _id=this.space._id}}">
 								<i class="header--settings-button fa fa-cog"></i>
 							</a>
 						{{/if}}
@@ -19,12 +19,12 @@
 
 				</div>			
 				<div class="header--right">
-					<a href="{{pathFor 'blogUsers' _id=this.blog._id}}" class="header--user-name">
+					<a href="{{pathFor 'spaceUsers' _id=this.space._id}}" class="header--user-name">
 						<i class="ion-ios-person header--user-icon"></i>
 						<span>{{authorName}}</span>
 					</a>
 					{{#if submitAllowed}}
-						<a href="#blog-page--post-submit" class="posts-header--button-submit open-popup-link">
+						<a href="#space-page--post-submit" class="posts-header--button-submit open-popup-link">
 							<i class="ion-android-add"></i>
 						</a> 
 					{{/if}}

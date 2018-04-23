@@ -62,7 +62,7 @@ Template.desktopMenu.events({
 		e.preventDefault();
 		resetFilters();
 		Session.set('favorites',true);
-		favorites = Session.get(Template.parentData(1).blog._id).favorites;
+		favorites = Session.get(Template.parentData(1).space._id).favorites;
 		Session.set('postsServerNonReactive', favorites.length);
 		resetPostInterval();
 	}
@@ -80,7 +80,7 @@ Template.desktopMenu.helpers({
 		return pinnedCount && pinnedCount.count;
 	},	
 	favoritesCount: function() {
-		var favorites = Session.get(Template.parentData(1).blog._id).favorites;
+		var favorites = Session.get(Template.parentData(1).space._id).favorites;
 		return favorites && favorites.length;
 	},
 	filesCount: function() {
@@ -153,11 +153,11 @@ Template.desktopMenu.helpers({
 			return "desktop-menu--list-element-disabled"
 		else return null
 	},
-	ownBlog: function() {
+	ownSpace: function() {
 		var userId = Meteor.userId();
 		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin'])
 		if (userId)
-			if (Template.parentData(1).blog._id === userId)
+			if (Template.parentData(1).space._id === userId)
 				return true;
 		else if (isAdmin)
 			if (isAdmin === true)

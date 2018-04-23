@@ -81,11 +81,11 @@ Template.postEdit.events({
 		if (category != currentPost.category) {
 			_.extend(set, {category: category})
 
-			var oldCategoryItem = Categories.findOne({blogId: currentPost.blogId, name: currentPost.category}); // Decrement category
+			var oldCategoryItem = Categories.findOne({spaceId: currentPost.spaceId, name: currentPost.category}); // Decrement category
 			if (oldCategoryItem)
 				Categories.update(oldCategoryItem._id, {$inc: {nRefs: -1}}); 
 
-			var newCategoryItem = Categories.findOne({blogId: currentPost.blogId, name: category}); // Increment category
+			var newCategoryItem = Categories.findOne({spaceId: currentPost.spaceId, name: category}); // Increment category
 			if (newCategoryItem)
 				Categories.update(newCategoryItem._id, {$inc: {nRefs: 1}});    
 		}
@@ -105,14 +105,14 @@ Template.postEdit.events({
 				alert(TAPi18n.__('error-message')+error.message);
 			} else {
 				$.magnificPopup.close();
-				 		//Router.go('blogPage', {_id: currentPost.blogId});  
+				 		//Router.go('spacePage', {_id: currentPost.spaceId});  
 
 
-				// Meteor.call('tagsEdit', {blogId: blogId, newTags: newTags, oldTags: oldTags}, function(error) {
+				// Meteor.call('tagsEdit', {spaceId: spaceId, newTags: newTags, oldTags: oldTags}, function(error) {
 				// 	if (error) {
     //       				alert("Une erreur est survenue : "+error.message);
 				// 	} else {						
-				// 		Router.go('blogPage', {_id: currentPost.blogId});  
+				// 		Router.go('spacePage', {_id: currentPost.spaceId});  
 				// 	}
 			 // 	});
 			}
@@ -173,16 +173,16 @@ Template.postEdit.helpers({
 	post: function() {
 		return Posts.findOne(Template.currentData()._id);
 	},
-	blog: function() {
+	space: function() {
 		var currentPostId = Template.currentData()._id;
 		var currentPost = Posts.findOne(currentPostId);
-		var blogId = Blogs.findOne(currentPost.blogId);
-		return blogId;
+		var spaceId = Spaces.findOne(currentPost.spaceId);
+		return spaceId;
 	},
 	categories: function() {
 		var currentPostId = Template.currentData()._id;
 		var currentPost = Posts.findOne(Template.currentData()._id)
-    	return Categories.find({blogId: currentPost.blogId},{sort: { name: 1 }});  
+    	return Categories.find({spaceId: currentPost.spaceId},{sort: { name: 1 }});  
   	},
 	selectedCategory: function(){
 		var currentPostId = Template.parentData()._id;

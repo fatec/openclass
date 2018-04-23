@@ -1,48 +1,48 @@
 /*
-blogs.css
+spaces.css
 */
 
 
-/* ----- blog-edit-categories template ----- */
+/* ----- space-edit-categories template ----- */
 
-.blog-edit-categories--item-name {
+.space-edit-categories--item-name {
 	margin-left: 10px;
 	font-size: 0.9em;
 }
 
-.blog-edit-categories--input-add-category {
+.space-edit-categories--input-add-category {
 	font-size: 1em;
 	padding: 8px;
 	box-sizing: border-box;
 }
 
-.blog-edit-categories--button-delete-category {
+.space-edit-categories--button-delete-category {
 	float: right;
 }
 
-.blog-edit-categories--button-delete-category i {
+.space-edit-categories--button-delete-category i {
 	vertical-align: middle;
 }
 
-.blog-edit-categories--button-edit-category {
+.space-edit-categories--button-edit-category {
 	float: right;
 	margin-right: 10px;
 }
 
-.blog-edit-categories--button-edit-category i {
+.space-edit-categories--button-edit-category i {
 	vertical-align: middle;
 }
 
 
-/* ----- blog-edit template ----- */
+/* ----- space-edit template ----- */
 
-.blog-edit--wrapper {
+.space-edit--wrapper {
 	table-layout: fixed;
 	display: table;
 	width: 100%;
 }
 
-.blog-edit--subtitle {
+.space-edit--subtitle {
 	width: 75%;
 	margin: 30px auto 10px auto;
 	color: grey;
@@ -50,7 +50,7 @@ blogs.css
 	text-transform: uppercase;
 }
 
-.blog-edit--list-item {
+.space-edit--list-item {
 	height: 20px;
 	padding: 10px 14px;
 	background-color: white;
@@ -66,79 +66,79 @@ blogs.css
 	color: black;
 }
 
-.blog-edit--list-item:hover {
+.space-edit--list-item:hover {
 	text-decoration: none;
 	background-color: #ddd;
 }
 
-.blog-edit--list-item:active {
+.space-edit--list-item:active {
 	color: white;
 	background-color: #353535;
 }
 
-.blog-edit--list-item:first-of-type {
+.space-edit--list-item:first-of-type {
 	border-top:solid 1px #ddd;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 }
 
-.blog-edit--list-item:last-of-type {
+.space-edit--list-item:last-of-type {
 	border-bottom-right-radius: 2px;
 	border-bottom-left-radius: 2px;
 }
 
-.blog-edit--list-title {
+.space-edit--list-title {
 	font-size: 0.9em;
 }
 
-.blog-edit--description {
+.space-edit--description {
 	width: 75%;
 	margin: 6px auto 20px auto;
 	color: grey;
 	font-size: 0.8em;
 }
 
-.blog-edit--list-wrapper-left {
+.space-edit--list-wrapper-left {
 	vertical-align: middle;	
 	display: table-cell;
 	width: 7%;
 	font-size: 1.1em;
 }
 
-.blog-edit--list-wrapper-center {
+.space-edit--list-wrapper-center {
 	vertical-align:middle;	
 	display: table-cell;
 	width: 50%;
 }
 
-.blog-edit--list-wrapper-right {
+.space-edit--list-wrapper-right {
 	display: table-cell;
 	vertical-align: middle;
 }
 
-.blog-edit--list-right-title {
+.space-edit--list-right-title {
 	color: grey;
 }
 
-.blog-edit--list-right-title i {
+.space-edit--list-right-title i {
 	font-size: 1.6em;
 }
 
-.blog-edit--list-right-title i.fa-toggle-on {
+.space-edit--list-right-title i.fa-toggle-on {
 	color: green;
 }
 
-.blog-edit--list-right-title-code {
+.space-edit--list-right-title-code {
 	font-family: Helvetica, Arial, Sans-Serif;
 }
 
-.blog-edit--select-wrapper {
+.space-edit--select-wrapper {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 }
 
-.blog-edit--select-permissions {
+.space-edit--select-permissions {
 	height: 43px;
 	padding: 10px 14px;
 	border-top: none;
@@ -156,11 +156,11 @@ blogs.css
 	background: url(img/arrow.png) no-repeat right white;
 }
 
-.blog-edit--select-permissions:hover {
+.space-edit--select-permissions:hover {
 	background-color: #ddd;
 }
 
-.blog-edit--chapter-wrapper {
+.space-edit--chapter-wrapper {
 	font-size: 0.9em;
 	text-align: right;
 	text-overflow: ellipsis;
@@ -169,68 +169,68 @@ blogs.css
 }
 
 
-/* ----- blog-edit-authors template ----- */
+/* ----- space-edit-authors template ----- */
 
-.blog-edit-authors--form-wrapper {
+.space-edit-authors--form-wrapper {
 	margin-top: 30px;
 	text-align: center;
 }
 
-.blog-edit-authors--name {
+.space-edit-authors--name {
 	margin-left: 10px;
 	font-size: 0.9em;
 }
 
-.blog-edit-authors--button-delete-author {
+.space-edit-authors--button-delete-author {
 	float: right;
 }
 
-.blog-edit-authors--button-delete-author i {
+.space-edit-authors--button-delete-author i {
 	vertical-align: middle;
 }
 
-.blog-edit-authors--button-edit-author {
+.space-edit-authors--button-edit-author {
 	float: right;
 	margin-right: 10px;
 }
 
-.blog-edit-authors--button-edit-author i {
+.space-edit-authors--button-edit-author i {
 	vertical-align:middle;
 }
 
-.blog-edit-authors--input-add-author {
+.space-edit-authors--input-add-author {
 	font-size: 1em;
 	padding: 8px;
 	box-sizing: border-box;
 }
 
 
-/* ----- blog-list template ----- */
+/* ----- space-list template ----- */
 
-.blog-list--logo {
+.space-list--logo {
 	text-align: center;
 	margin-bottom: 10px;
 	margin-top: 30px;
 }
 
-.blog-list--logo img {
+.space-list--logo img {
 	width: 120px;
 }
 
-.blog-list--button-edit {
+.space-list--button-edit {
 	font-size: 0.8em;
 }
 
-.blog-list--button-edit i {
+.space-list--button-edit i {
 	float: right;
 	vertical-align: middle;
 }
 
-.blog-list--wrapper {
+.space-list--wrapper {
 	text-align: center;
 }
 
-.blog-list--blogs-title {
+.space-list--spaces-title {
 	text-align: center;
 	margin-top: 40px;
 	margin-bottom: 20px;
@@ -238,14 +238,14 @@ blogs.css
 	font-weight: 400;
 }
 
-.blog-list--list-item-code {
+.space-list--list-item-code {
 	font-size: 1em;
 	font-family: Helvetica, Arial, Sans-Serif;
 	float: right;
 	margin-right: 8px;
 }
 
-.blog-list--code-wrapper {
+.space-list--code-wrapper {
 	width: 38%;
 	padding: 19px 28px 24px 28px;
 	margin: 15px auto 30px auto;
@@ -255,15 +255,15 @@ blogs.css
 	border: solid 1px #e6e6e6;
 }
 
-.blog-list--code-wrapper span {
+.space-list--code-wrapper span {
 	font-size: 1.1em;
 }
 
-.blog-list--code-wrapper button {
+.space-list--code-wrapper button {
 	width: 100%;
 }
 
-.blog-list--code-input {
+.space-list--code-input {
 	font-size: 1em;
 	margin-bottom: 8px;
 	height: 100%;
@@ -275,36 +275,36 @@ blogs.css
 	text-align: center;
 }
 
-.blog-list--button-submit-blog {
+.space-list--button-submit-space {
 	margin: 25px 0 0 0;
 }
 
-.blog-list--new-space-wrapper {
+.space-list--new-space-wrapper {
 	text-align: center;
 }
 
-.blog-list--no-blog {
+.space-list--no-space {
 	text-align: center;
 	margin-top: 40px;
 	font-size: 0.9em;
 }
 
-.blog-list--visited-title {
+.space-list--visited-title {
 	text-align: center;
 	margin-top: 40px;
 	margin-bottom: 20px;
 }
 
-.blog-list--visited-title span {
+.space-list--visited-title span {
 	font-size: 1.2em;
 	font-weight: 400;
 }
 
-.blog-list--visited-title a {
+.space-list--visited-title a {
 	font-size: 0.8em;
 }
 
-.blog-list--wrapper-text {
+.space-list--wrapper-text {
 	line-height: 1.2em;
 	font-size: 0.9em;
 	text-align: center;
@@ -312,11 +312,11 @@ blogs.css
 	margin-bottom: 40px;
 }
 
-.blog-list--wrapper-text span {
+.space-list--wrapper-text span {
 	font-size: 0.6em;
 }
 
-.blog-list--wrapper-beta-warning {
+.space-list--wrapper-beta-warning {
 	margin-top: 50px;
 	font-size: 0.7em;
 	line-height: 1.2em;
@@ -324,52 +324,52 @@ blogs.css
 	color: #959595;
 }
 
-.blog-list--footer {
+.space-list--footer {
 	font-size: 0.85em;
 	margin-top: 80px;
 }
 
-.blog-list--footer a {
+.space-list--footer a {
 	color: #6e6e6e;
 	padding: 2px 8px;
 	border-left: solid 1px grey;
 }
 
-.blog-list--footer a:first-of-type {
+.space-list--footer a:first-of-type {
 	border-left: none
 }
 
-.blog-list--example {
+.space-list--example {
 	color: #979797;
 	text-align: center;
 	margin-top: 15px;
 	font-size: 0.85em;
 }
 
-.blog-list--lang-wrapper {
+.space-list--lang-wrapper {
 	margin-top: 40px;
 }
 
-.blog-list--lang-wrapper a {
+.space-list--lang-wrapper a {
 	padding: 6px;
 	border-left: solid 1px #b7b7b7;
 }
 
-.blog-list--lang-wrapper a:first-of-type {
+.space-list--lang-wrapper a:first-of-type {
 	border-left: none;
 }
 
-.blog-list--lang-wrapper a.selected {
+.space-list--lang-wrapper a.selected {
 	font-weight: bold;
 	color:grey;
 	cursor: default;
 }
 
-.blog-list--lang-wrapper a.selected:hover {
+.space-list--lang-wrapper a.selected:hover {
 	text-decoration: none;
 }
 
-.blog-list--shutdown {
+.space-list--shutdown {
 	display: inline-block;
 	margin-top:30px;
 	font-size: 1.3em;
@@ -379,28 +379,28 @@ blogs.css
 	color: #7d7d7d;
 }
 
-.blog-list--shutdown:hover {
+.space-list--shutdown:hover {
 	background-color: #d9d9d9;
 	color: white !important;
 }
 
-.blog-list--shutdown:active {
+.space-list--shutdown:active {
 	background-color: grey;
 	color: white;
 }
 
-.blog-list--shutdown span {
+.space-list--shutdown span {
 	font-size: 0.6em;
 }
 
-.blog-list--shutdown span:hover {
+.space-list--shutdown span:hover {
 	color:white;
 }
 
 
-/* ----- blog-page template ----- */
+/* ----- space-page template ----- */
 
-.blog-page--alert {
+.space-page--alert {
 	font-size: 0.9em;
 	text-align: center;
 	background-color: white;
@@ -410,26 +410,26 @@ blogs.css
 	padding: 15px;
 }
 
-.blog-page--alert h3 {
+.space-page--alert h3 {
 	margin-bottom: 5px;
 }
 
-.blog-page--alert i {
+.space-page--alert i {
 	color: #2a8bbf;
 	vertical-align: middle;
 }
 
-.blog-page--alert button {
+.space-page--alert button {
 	margin-top: 8px;
 }
 
-.blog-page--wrapper {
+.space-page--wrapper {
 	table-layout: fixed;
 	display: table;
 	width: 100%;
 }
 
-.blog-page--menu-wrapper {
+.space-page--menu-wrapper {
 	width: 200px;
 	display: table-cell;
 	vertical-align: top;
@@ -437,11 +437,11 @@ blogs.css
 	font-size: 1em;
 }
 
-.blog-page--main {
+.space-page--main {
 	margin-top: 10px;
 }
 
-.blog-page--pinned-title {
+.space-page--pinned-title {
 	font-size: 0.8em;
 	padding: 5px;
 	color: grey;
@@ -449,29 +449,29 @@ blogs.css
 */	margin-bottom: 10px;
 }
 
-.blog-page--pinned-title i {
+.space-page--pinned-title i {
 	margin-right:3px;
 }
 
-.blog-page--posts-pinned {
+.space-page--posts-pinned {
 	background-color: white;
 /*	border: solid 1px #d8d8d8;
 */	padding: 5px;
 	margin-bottom: 40px;
 }
 
-.blog-page--posts-order {
+.space-page--posts-order {
 	text-align: right;
 	padding:10px;
 	margin-top: -26px;
 	font-size: 0.9em;
 }
 
-.blog-page--posts-order span {
+.space-page--posts-order span {
 	cursor: pointer;
 }
 
-.blog-page--notification-panel {
+.space-page--notification-panel {
 	padding: 5px;
 	height: 20px;
 	line-height: 20px;
@@ -484,11 +484,11 @@ blogs.css
 	background-color: #2A90C6;
 }
 
-.blog-page--notification-panel a {
+.space-page--notification-panel a {
 	color: white !important;
 }
 
-.blog-page--no-post {
+.space-page--no-post {
 	text-align: center;
 	display:inline;
 	float:left;
@@ -499,7 +499,7 @@ blogs.css
 	margin-top: 15px;
 }
 
-.blog-page--code-panel {
+.space-page--code-panel {
 	text-align: center;
 	background-color: white;
 	margin-bottom: 25px;
@@ -508,7 +508,7 @@ blogs.css
 	padding: 15px;
 }
 
-.blog-page--code-panel-own-blog {
+.space-page--code-panel-own-space {
 	margin-top:20px;
 	text-align: center;
 	background-color:white;
@@ -518,11 +518,11 @@ blogs.css
 	padding:15px;
 }
 
-.blog-page--code-panel-title {
+.space-page--code-panel-title {
 	font-size: 1em;
 }
 
-.blog-page--code-panel-code {
+.space-page--code-panel-code {
 	border-radius: 20px;
 	display: inline-block;
 	padding: 10px;
@@ -532,11 +532,11 @@ blogs.css
 	font-family: Helvetica, Arial, Sans-Serif;
 }
 
-.blog-page--code-panel-code span {
+.space-page--code-panel-code span {
 	font-size: 0.8em;
 }
 
-.blog-page--load-more {
+.space-page--load-more {
 	text-align: center;
 	background-color: #2a8bbf;
 	color: white;
@@ -546,15 +546,15 @@ blogs.css
 	border-radius: 2px;
 }
 
-.blog-page--load-more:hover {
+.space-page--load-more:hover {
 	background-color: #1d5f83;
 }
 
-.blog-page--load-more:active {
+.space-page--load-more:active {
 	background-color: #353535;
 }
 
-.blog-page--loading {
+.space-page--loading {
 	text-align: center;
 	display: block;
 	margin-left: auto;
@@ -576,7 +576,7 @@ blogs.css
   	}
 }
 
-.blog-page--post-submit {
+.space-page--post-submit {
 	position: relative;
 	background: #FFF;
 	padding: 20px;
@@ -586,9 +586,9 @@ blogs.css
 }
 
 
-/* ----- blog-submit template ----- */
+/* ----- space-submit template ----- */
 
-.blog-submit--wrapper {
+.space-submit--wrapper {
 	margin: 0 0 20px 0;
 	padding: 20px 7px 20px 7px;
 	width: 60%;
@@ -599,33 +599,33 @@ blogs.css
 	text-align: left;
 }
 
-.blog-submit--input {
+.space-submit--input {
 	font-size: 1em;
 	padding: 8px;
 	width: 100%;
 	box-sizing: border-box;
 }
 
-.blog-submit--button-wrapper {
+.space-submit--button-wrapper {
 	width: 60%;
 	margin-left: auto;
 	margin-right: auto;	
 }
 
-.blog-submit--button-submit {
+.space-submit--button-submit {
 	float: right;
 	margin: 0px -7px 0 15px;
 }
 
-.blog-submit--button-cancel {
+.space-submit--button-cancel {
 	float: right;
 	margin-top: 0px;
 }
 
 
-/* ----- blog-users template ----- */
+/* ----- space-users template ----- */
 
-.blog-users--wrapper {
+.space-users--wrapper {
 	table-layout: fixed;
 	display: table;
 	width: 100%;
@@ -634,7 +634,7 @@ blogs.css
 	margin-right: auto;
 }
 
-.blog-users--input-choose-author {
+.space-users--input-choose-author {
 	border: solid 1px #dedede;
 	font-size: 1em;
 	padding: 8px;
@@ -642,16 +642,16 @@ blogs.css
 	vertical-align: middle;
 }
 
-.blog-users--button-select-author {
+.space-users--button-select-author {
 	padding-left: 10px;
 	font-size: 0.9em;
 }
 
-.blog-users--user-checked {
+.space-users--user-checked {
 	float: right
 }
 
-.blog-users--user-checked i {
+.space-users--user-checked i {
 	color: green;
 	vertical-align: middle;
 }

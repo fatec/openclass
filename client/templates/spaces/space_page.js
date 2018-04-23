@@ -1,9 +1,9 @@
-Template.blogPage.onCreated(function() {
+Template.spacePage.onCreated(function() {
 
 	viewport = document.querySelector("meta[name=viewport]");
 	viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=4');
 
-	Session.set('blogId',this.data.blog._id);
+	Session.set('spaceId',this.data.space._id);
 	resetFilters();
 	Session.set('postsServerNonReactive', Counts.findOne().count); // Set a non-reactive counter of posts -> here = all server posts
 	resetPostInterval();
@@ -16,21 +16,21 @@ Template.blogPage.onCreated(function() {
 				var postsLimit2 = Session.get('postsLimit2');
 
 
-		var filters = {blogId:Session.get('blogId')};
+		var filters = {spaceId:Session.get('spaceId')};
 		if (Session.get('author') != "")
-			filters = {blogId:Session.get('blogId'), author:Session.get('author')}
+			filters = {spaceId:Session.get('spaceId'), author:Session.get('author')}
 		else if (Session.get('category') != "")
-			filters = {blogId:Session.get('blogId'), category:Session.get('category')}
+			filters = {spaceId:Session.get('spaceId'), category:Session.get('category')}
 		else if (Session.get('tag') != "")
-			filters = {blogId:Session.get('blogId'), tags:Session.get('tag')}
+			filters = {spaceId:Session.get('spaceId'), tags:Session.get('tag')}
 		else if (Session.get('pinned') == true) 
-			filters = {blogId:Session.get('blogId'), pinned:true}
+			filters = {spaceId:Session.get('spaceId'), pinned:true}
 		else if (Session.get('files') == true) 
-			filters = {blogId:Session.get('blogId'), $and : [{fileId:{$exists:true} },{fileId:{$ne:false} },{fileExt:{$nin : ["jpg","jpeg","png","gif"]}}]}
+			filters = {spaceId:Session.get('spaceId'), $and : [{fileId:{$exists:true} },{fileId:{$ne:false} },{fileExt:{$nin : ["jpg","jpeg","png","gif"]}}]}
 		else if (Session.get('images') == true) 
-			filters = {blogId:Session.get('blogId'), $and : [{fileId:{$exists:true} },{fileId:{$ne:false} },{fileExt:{$in : ["jpg","jpeg","png","gif"]}}]}
+			filters = {spaceId:Session.get('spaceId'), $and : [{fileId:{$exists:true} },{fileId:{$ne:false} },{fileExt:{$in : ["jpg","jpeg","png","gif"]}}]}
 		else if (Session.get('favorites') == true) {
-			var favorites = Session.get(Session.get('blogId')).favorites;
+			var favorites = Session.get(Session.get('spaceId')).favorites;
 			if (favorites)
 				filters = {_id:{$in: favorites}}
 		}
@@ -50,12 +50,12 @@ Template.blogPage.onCreated(function() {
 });
 
 
-Template.blogPage.events({
+Template.spacePage.events({
 
 	'click .button-ok-update-alert': function() {
 		Meteor.users.update(Meteor.user()._id, {$set: {"profile.lastAlert": 1}});
 	},
-	'change #blog-page--select-filter': function(e) {
+	'change #space-page--select-filter': function(e) {
 		var val = $(e.target).val();
 		if (val == "asc")
   			Session.set("last", true);
@@ -65,20 +65,20 @@ Template.blogPage.events({
 	'click .button-send-to-api': function(e, template) {
 			e.preventDefault();
 
-			Meteor.call('sendBlog', {blogId: template.data.blog._id} );
+			Meteor.call('sendSpace', {spaceId: template.data.space._id} );
 		},
 	'click .button-hide-code-panel': function(e) {
 		e.preventDefault();
 
 		$( "#codePanel" ).hide();
 
-		Blogs.update(this.blog._id, {$set : {codePanel : 0}});         
+		Spaces.update(this.space._id, {$set : {codePanel : 0}});         
 	},
-	// 'click .blog-page--posts-order': function(e) {
+	// 'click .space-page--posts-order': function(e) {
 	// 	e.preventDefault();
 	// 	Session.set('last', !Session.get('last'));
 	// },
-	'click .blog-page--load-more': function(e) { // If user want to load more posts, it moves the interval (skip : -10 / limit : +10)
+	'click .space-page--load-more': function(e) { // If user want to load more posts, it moves the interval (skip : -10 / limit : +10)
 		e.preventDefault();
 		
 		// if (Session.get('postsToSkip') <= 10)
@@ -94,7 +94,7 @@ Template.blogPage.events({
 		else
 			Session.set('postsLimit2',Session.get('postsLimit2')+Counts.findOne().count - Session.get('postsLimit2'));
 	},
-	'click .blog-page--refresh': function(e) { // Refresh posts when user click on new messages button
+	'click .space-page--refresh': function(e) { // Refresh posts when user click on new messages button
 		e.preventDefault();
 
 		if (Session.get('author') !== "") {
@@ -126,24 +126,24 @@ Template.blogPage.events({
 });
 
 
-Template.blogPage.helpers({
+Template.spacePage.helpers({
 
 	initialLoadCompleted: function() { 
   		return subscription.ready();
   	},
 	posts: function() {
-		if (this.blog !== undefined && Session.get('last') == "")
+		if (this.space !== undefined && Session.get('last') == "")
 			//return Posts.find({},{sort: {pinned: -1, submitted: 1}});
 			return Posts.find({pinned:false},{sort: {pinned: -1, submitted: 1}});
-		else if (this.blog !== undefined && Session.get('last') !== "")
+		else if (this.space !== undefined && Session.get('last') !== "")
 			return Posts.find({pinned:false},{sort: {pinned: -1, submitted: -1}});
 		else return null
 	},
 	postsPinned: function() {
-		if (this.blog !== undefined && Session.get('last') == "")
+		if (this.space !== undefined && Session.get('last') == "")
 			//return Posts.find({},{sort: {pinned: -1, submitted: 1}});
 			return Posts.find({pinned:true},{sort: {submitted: 1}});
-		else if (this.blog !== undefined && Session.get('last') !== "")
+		else if (this.space !== undefined && Session.get('last') !== "")
 			return Posts.find({pinned:true},{sort: {submitted: -1}});
 		else return null
 	},
@@ -190,13 +190,13 @@ Template.blogPage.helpers({
 			return null
 	},
 	codePanelState: function() {
-		return (this.blog.codePanel)
+		return (this.space.codePanel)
 	},
-	ownBlog: function() {
+	ownSpace: function() {
 		var userId = Meteor.userId();
 		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin'])
 		if (userId)
-			if (this.blog.userId === userId)
+			if (this.space.userId === userId)
 				return true;
 		else if (isAdmin)
 			if (isAdmin === true)

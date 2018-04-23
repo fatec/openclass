@@ -2,8 +2,8 @@ Template.postItem.onRendered(function() {
 
 	$('.post-item--add-comment-textarea').autosize(); // Textarea autosize
 
-	if (!Session.get(Template.parentData(1).blog._id)) // Set default author
-		Session.set(Template.parentData(1).blog._id, {author: 'Invité'});    
+	if (!Session.get(Template.parentData(1).space._id)) // Set default author
+		Session.set(Template.parentData(1).space._id, {author: 'Invité'});    
 
 	$('.post-item--image-wrapper').imagesLoaded(function() { // Show image in a lightbox with magnificPopup plugin
 		$('.post-item--image-link').magnificPopup({
@@ -58,17 +58,17 @@ Template.postItem.onRendered(function() {
 
 
 
-	var blogOwner = Template.parentData(1).blog.userId;
-	var blogId = Template.parentData(1).blog._id;
+	var spaceOwner = Template.parentData(1).space.userId;
+	var spaceId = Template.parentData(1).space._id;
 	var postOwner = this.data.author;
 
 
-	function isBlogOwner() {
+	function isSpaceOwner() {
 		var userId = Meteor.userId();
 		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin']);
 
 		if (userId)
-			if (blogOwner === userId)
+			if (spaceOwner === userId)
 				return true;
 		else if (isAdmin)
 			if (isAdmin === true)
@@ -86,10 +86,10 @@ Template.postItem.onRendered(function() {
 
         	var postId = $(e.currentTarget).data('postid');
         	var contextualItems = {};
-        	var permissions = Blogs.findOne(blogId).postEditPermissions;
-        	console.log("rights : "+Blogs.findOne(blogId).postEditPermissions);
+        	var permissions = Spaces.findOne(spaceId).postEditPermissions;
+        	console.log("rights : "+Spaces.findOne(spaceId).postEditPermissions);
 
-        	if (isBlogOwner()) {
+        	if (isSpaceOwner()) {
 	        	var textPinned;
 	        	if ($(e.currentTarget).data('ispinned')) {
 	        		textPinned = TAPi18n.__('post-item--remove-pin');
@@ -114,12 +114,12 @@ Template.postItem.onRendered(function() {
         	}
         	$.extend(contextualItems, {"favorite":{name:textFavorite, icon:iconFavorite}});
 
-        	if (isBlogOwner() || postOwner == Session.get(blogId).author && permissions === "own" || permissions === "all") {
+        	if (isSpaceOwner() || postOwner == Session.get(spaceId).author && permissions === "own" || permissions === "all") {
         		$.extend(contextualItems, {"edit":{name:TAPi18n.__('post-item--edit'), icon:"fa-pencil"}});
         		$.extend(contextualItems, {"delete":{name:TAPi18n.__('post-item--delete'), icon:"fa-trash-o"}});
         	}
 
-        	//if (Template.parentData().blog.postEditPermissions === "all" || (Template.parentData().blog.postEditPermissions === "own" && Session.get(Template.parentData().blog._id).author === this.author) || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+        	//if (Template.parentData().space.postEditPermissions === "all" || (Template.parentData().space.postEditPermissions === "own" && Session.get(Template.parentData().space._id).author === this.author) || Template.parentData().space.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
 
  
             // this callback is executed every time the menu is to be shown
@@ -133,7 +133,7 @@ Template.postItem.onRendered(function() {
                 	}
                 	else if (key == "favorite") {
 						
-						var session = Session.get(blogId);
+						var session = Session.get(spaceId);
 
                 		if (isFavorite) {
 							if (session.favorites) {
@@ -150,19 +150,19 @@ Template.postItem.onRendered(function() {
 								session.favorites.push(postId);
 							}
 						}
-						Session.setPersistent(blogId, session); // Persistent to browser refresh
+						Session.setPersistent(spaceId, session); // Persistent to browser refresh
 					}
 					else if (key == "edit") {
 
-						$('.blog-page--post-edit').html(''); // delete old content
-						Blaze.renderWithData(Template.postEdit, {_id: postId}, $('#blog-page--post-edit-'+postId)[0]);
+						$('.space-page--post-edit').html(''); // delete old content
+						Blaze.renderWithData(Template.postEdit, {_id: postId}, $('#space-page--post-edit-'+postId)[0]);
 
 						$.magnificPopup.open({
 							type:'inline',
 							closeOnContentClick: false,
 	  						closeOnBgClick: false,
 							items: {
-								src: '#blog-page--post-edit-'+postId
+								src: '#space-page--post-edit-'+postId
 							},
 							callbacks: {
 					    		close: function() {
@@ -273,14 +273,14 @@ Template.postItem.events({
 		e.preventDefault();
 
 		var currentPostId = this._id;
-		var author = Session.get(Template.parentData(1).blog._id).author; 
+		var author = Session.get(Template.parentData(1).space._id).author; 
 		Posts.update(currentPostId, {$push: {likes: author}});
 	}, 
 	'click .post-item--remove-like': function(e) {
 		e.preventDefault();
 
 		var currentPostId = this._id;
-		var author = Session.get(Template.parentData(1).blog._id).author; 
+		var author = Session.get(Template.parentData(1).space._id).author; 
 		Posts.update(currentPostId, {$pull: {likes: author}});
 	}, 
 	'click .post-item--comment-add-like': function(e) {
@@ -288,7 +288,7 @@ Template.postItem.events({
 
 		var currentPostId = $(e.target).data('postid');
 		var currentCommentId = this.id;
-		var author = Session.get(Template.parentData(1).blog._id).author; 
+		var author = Session.get(Template.parentData(1).space._id).author; 
 		Meteor.call('addLikeComment',{currentPostId:currentPostId,currentCommentId:currentCommentId,author,author});
 	}, 
 	'click .post-item--comment-remove-like': function(e) {
@@ -296,7 +296,7 @@ Template.postItem.events({
 
 		var currentPostId = $(e.target).data('postid');
 		var currentCommentId = this.id;
-		var author = Session.get(Template.parentData(1).blog._id).author; 
+		var author = Session.get(Template.parentData(1).space._id).author; 
 		Meteor.call('removeLikeComment',{currentPostId:currentPostId,currentCommentId:currentCommentId,author,author});
 	}, 
 	'click .post-item--comment-delete': function(e) {
@@ -319,7 +319,7 @@ Template.postItem.events({
 			e.preventDefault();
 			var currentPostId = this._id;
 			var comment = $(e.target).val();
-			var author = Session.get(Template.parentData(1).blog._id).author; 
+			var author = Session.get(Template.parentData(1).space._id).author; 
 			if (comment != "") {
 				Posts.update(currentPostId, {$push: {comments: {id:Random.id(),author: author, submitted:Date.now(),text:comment}}});
 				$(e.target).val('');
@@ -330,7 +330,7 @@ Template.postItem.events({
 		e.preventDefault();
 		var currentPostId = this._id;
 
-		var session = Session.get(Template.parentData(1).blog._id);
+		var session = Session.get(Template.parentData(1).space._id);
 
 		if (session.favorites)
 			session.favorites.push(currentPostId);
@@ -339,13 +339,13 @@ Template.postItem.events({
 			session.favorites.push(currentPostId);
 		}
 		
-		Session.setPersistent(Template.parentData(1).blog._id, session); // Persistent to browser refresh
+		Session.setPersistent(Template.parentData(1).space._id, session); // Persistent to browser refresh
 	},
 	'click .post-item--button-remove-favorite': function(e) {
 		e.preventDefault();
 		var currentPostId = this._id;
 
-		var session = Session.get(Template.parentData(1).blog._id);
+		var session = Session.get(Template.parentData(1).space._id);
 
 		if (session.favorites) {
 			session.favorites = $.grep(session.favorites, function(value) { // Remove currentPostID from favorites array
@@ -353,7 +353,7 @@ Template.postItem.events({
 			});
 		}
 
-		Session.setPersistent(Template.parentData(1).blog._id, session);
+		Session.setPersistent(Template.parentData(1).space._id, session);
 	},
 	'click .post-item--button-add-pinned': function(e) {
 		e.preventDefault();
@@ -381,7 +381,7 @@ Template.postItem.helpers({
 			return this.fileId
 	},
 	favorite: function() {
-		if ($.inArray(this._id,Session.get(Template.parentData(1).blog._id).favorites) == -1)
+		if ($.inArray(this._id,Session.get(Template.parentData(1).space._id).favorites) == -1)
 			return false;
 		else
 			return true;
@@ -390,7 +390,7 @@ Template.postItem.helpers({
 		return this.pinned;
 	},
 	commentsAllowed: function() {
-		if (Template.parentData().blog.commentsAllowed)
+		if (Template.parentData().space.commentsAllowed)
 			return true;
 	},
 	// tags: function(){
@@ -408,7 +408,7 @@ Template.postItem.helpers({
 			return this.likes.length-1;
 	},
 	likeAlready: function() { // Check if user already like the post
-		var author = Session.get(Template.parentData(1).blog._id).author; 
+		var author = Session.get(Template.parentData(1).space._id).author; 
 		if ($.inArray(author,this.likes) != -1)
 			return true
 	},
@@ -422,7 +422,7 @@ Template.postItem.helpers({
 			return this.likes.length;
 	},
 	likeAlreadyComment: function() {
-		var author = Session.get(Template.parentData(2).blog._id).author; 
+		var author = Session.get(Template.parentData(2).space._id).author; 
 		if ($.inArray(author,this.likes) != -1)
 			return true;
 	},
@@ -436,28 +436,28 @@ Template.postItem.helpers({
 			return this.likes.length-1;
 	},
 	editAllowed: function() {
-		if (Template.parentData().blog.postEditPermissions !== undefined) {
-			if (Template.parentData().blog.postEditPermissions === "all" || (Template.parentData().blog.postEditPermissions === "own" && Session.get(Template.parentData().blog._id).author === this.author) || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+		if (Template.parentData().space.postEditPermissions !== undefined) {
+			if (Template.parentData().space.postEditPermissions === "all" || (Template.parentData().space.postEditPermissions === "own" && Session.get(Template.parentData().space._id).author === this.author) || Template.parentData().space.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
 				return true
 			else
 				return false
 		}
 		else {
-			if (Session.get(Template.parentData().blog._id).author === this.author || Template.parentData().blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+			if (Session.get(Template.parentData().space._id).author === this.author || Template.parentData().space.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
 				return true
 			else
 				return false
 		}
 	},
 	commentEditAllowed: function() {
-		if (Template.parentData(2).blog.postEditPermissions !== undefined) {
-			if (Template.parentData(2).blog.postEditPermissions === "all" || (Template.parentData(2).blog.postEditPermissions === "own" && Session.get(Template.parentData(2).blog._id).author === this.author) || Template.parentData(2).blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+		if (Template.parentData(2).space.postEditPermissions !== undefined) {
+			if (Template.parentData(2).space.postEditPermissions === "all" || (Template.parentData(2).space.postEditPermissions === "own" && Session.get(Template.parentData(2).space._id).author === this.author) || Template.parentData(2).space.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
 				return true
 			else
 				return false
 		}
 		else {
-			if (Session.get(Template.parentData(2).blog._id).author === this.author || Template.parentData(2).blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
+			if (Session.get(Template.parentData(2).space._id).author === this.author || Template.parentData(2).space.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true)
 				return true
 			else
 				return false

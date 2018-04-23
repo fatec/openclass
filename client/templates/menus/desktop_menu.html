@@ -30,8 +30,8 @@
 			</li>
 		</ul>
 				<div class="desktop-menu--list-title"><i class="fa fa-tags fa-fw"></i> {{_ 'menu--categories'}} 
-					{{# if ownBlog}}
-						<a href="{{pathFor 'blogEditCategories' _id=blog._id}}" class="desktop-menu--categories-settings">
+					{{# if ownSpace}}
+						<a href="{{pathFor 'spaceEditCategories' _id=space._id}}" class="desktop-menu--categories-settings">
 							<i class="fa fa-cog"></i>
 						</a>
 					{{/if}}

@@ -3,14 +3,14 @@
 		<div class="page-title">{{_ 'admin--page-title'}}</div>
 		<h1>{{_ 'admin--spaces-list'}}</h1>
 				<div class="list-group">
-					{{#each blogs}}
-						<a class="list-group-item" href="{{pathFor 'blogPage'}}">
+					{{#each spaces}}
+						<a class="list-group-item" href="{{pathFor 'spacePage'}}">
 							<span class="list-group-item-left">{{title}}</span>
-								 <a class="blog-list--button-edit" href="{{pathFor 'blogEdit'}}">
+								 <a class="space-list--button-edit" href="{{pathFor 'spaceEdit'}}">
 									 <i class="fa fa-lg fa-cog"></i>
 								</a>
-							<span class="blog-list--list-item-code">
-								<b>{{blogCode}}</b>
+							<span class="space-list--list-item-code">
+								<b>{{spaceCode}}</b>
 							</span>
 						</a>
 					{{/each}}

@@ -2,11 +2,11 @@ Template.slideoutMenu.events({
 
 	'click .slideout-menu--exit': function(e){
 		e.preventDefault();
-		Router.go('blogList');
+		Router.go('spaceList');
 	},
 	'click .slideout-menu--settings': function(e,template){
 		e.preventDefault();
-		Router.go('blogEdit',{_id: template.data.blog._id});
+		Router.go('spaceEdit',{_id: template.data.space._id});
 	},
 	'click .slideout-menu--show-all': function(e) {
 		e.preventDefault();
@@ -63,7 +63,7 @@ Template.slideoutMenu.events({
 		e.preventDefault();
 		resetFilters();
 		Session.set('favorites',true);
-		favorites = Session.get(Template.parentData(2).blog._id).favorites;
+		favorites = Session.get(Template.parentData(2).space._id).favorites;
 		Session.set('postsServerNonReactive', favorites.length);
 		resetPostInterval();
 	}
@@ -81,7 +81,7 @@ Template.slideoutMenu.helpers({
 		return pinnedCount && pinnedCount.count;
 	},
 	favoritesCount: function() {
-		var favorites = Session.get(Template.parentData(2).blog._id).favorites;
+		var favorites = Session.get(Template.parentData(2).space._id).favorites;
 		return favorites && favorites.length;
 	},
 	filesCount: function() {
@@ -150,11 +150,11 @@ Template.slideoutMenu.helpers({
 			return "slideout-menu--list-element-disabled"
 		else return null
 	},
-	ownBlog: function() {
+	ownSpace: function() {
 		var userId = Meteor.userId();
 		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin'])
-		if (userId && this.blog)
-			if (this.blog.userId === userId)
+		if (userId && this.space)
+			if (this.space.userId === userId)
 				return true;
 		else if (isAdmin)
 			if (isAdmin === true)
@@ -162,8 +162,8 @@ Template.slideoutMenu.helpers({
 		else
 			return false;
 	}
-	// ownBlog: function() {
-	// 	if (this.blog.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true) 
+	// ownSpace: function() {
+	// 	if (this.space.userId === Meteor.userId() || Roles.userIsInRole(Meteor.userId(), ['admin']) === true) 
 	// 		return true;
 	// }   	
 });

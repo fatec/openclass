@@ -10,6 +10,6 @@ Template.postSubmitHeader.events({
 Template.postSubmitHeader.helpers({
 
 	authorName: function() {
-		return Session.get(this.blog._id).author; 
+		return Session.get(this.space._id).author; 
 	}
 });

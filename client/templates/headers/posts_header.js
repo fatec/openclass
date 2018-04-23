@@ -42,19 +42,19 @@ Template.postsHeader.events({
   	'click .header--exit-button': function(e) {
 		e.preventDefault();
 		if (confirm(TAPi18n.__('header--exit-message')))
-			Router.go('blogList');
+			Router.go('spaceList');
   	}
 });
 
 Template.postsHeader.helpers({
 	
 	authorName: function() {
-		if (Session.get(this.blog._id).author)
-		return Session.get(this.blog._id).author; 
+		if (Session.get(this.space._id).author)
+		return Session.get(this.space._id).author; 
 	},    
 	submitAllowed: function() {
-		if (this.blog.postEditPermissions !== undefined) {
-			if (this.blog.postEditPermissions === "none" && Roles.userIsInRole(Meteor.userId(), ['admin']) != true && this.blog.userId != Meteor.userId())
+		if (this.space.postEditPermissions !== undefined) {
+			if (this.space.postEditPermissions === "none" && Roles.userIsInRole(Meteor.userId(), ['admin']) != true && this.space.userId != Meteor.userId())
 				return false
 			else
 				return true
@@ -62,11 +62,11 @@ Template.postsHeader.helpers({
 		else 
 			return true
 	},
-	ownBlog: function() {
+	ownSpace: function() {
 		var userId = Meteor.userId();
 		var isAdmin = Roles.userIsInRole(Meteor.userId(), ['admin'])
 		if (userId)
-			if (this.blog.userId === userId)
+			if (this.space.userId === userId)
 				return true;
 		else if (isAdmin)
 			if (isAdmin === true)

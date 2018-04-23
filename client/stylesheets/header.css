@@ -151,7 +151,7 @@ header.css
 	color: #353535;
 }
 
-.header--blog-title {
+.header--space-title {
 	display: inline;
 	vertical-align: middle;
 	padding-left: 10px;
@@ -161,7 +161,7 @@ header.css
   	text-overflow: ellipsis;
 }
 
-.header--blog-code {
+.header--space-code {
 	display: inline;
 	font-size: 0.7em;
 	padding: 2px;
